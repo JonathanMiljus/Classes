@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cornell Notes Multilingual Guide</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        @media print {
+            body {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .no-print {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <div class="container mx-auto p-4 sm:p-8">
+        <!-- Header -->
+        <header class="text-center mb-10">
+            <h1 class="text-4xl md:text-5xl font-bold text-slate-900 flex items-center justify-center gap-3">
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-600"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+                Cornell Notes Guide
+            </h1>
+            <p class="mt-2 text-lg text-slate-600">A Simple Guide for Students in English, Spanish, Portuguese, and French.</p>
+        </header>
+
+        <!-- Visual Example Section -->
+        <section class="mb-10 bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+            <h2 class="text-2xl font-bold mb-4 text-center text-slate-900">Visual Example of Cornell Notes Layout</h2>
+            <div class="max-w-2xl mx-auto border-2 border-slate-400 rounded-lg p-2 bg-slate-50">
+                <svg viewBox="0 0 300 400" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto">
+                    <!-- Page Outline -->
+                    <rect x="1" y="1" width="298" height="398" fill="white" stroke="#d1d5db" stroke-width="2" rx="4"/>
+
+                    <!-- Vertical Divider -->
+                    <line x1="95" y1="1" x2="95" y2="340" stroke="#ef4444" stroke-width="2"/>
+
+                    <!-- Horizontal Divider -->
+                    <line x1="1" y1="340" x2="299" y2="340" stroke="#9ca3af" stroke-width="2"/>
+
+                    <!-- Labels -->
+                    <text x="15" y="30" font-family="Inter, sans-serif" font-size="12" font-weight="600" fill="#ef4444">Left Column</text>
+                    <text x="15" y="48" font-family="Inter, sans-serif" font-size="10" fill="#475569">(Main Idea or</text>
+                    <text x="15" y="62" font-family="Inter, sans-serif" font-size="10" fill="#475569">Question)</text>
+                    
+                    <text x="110" y="30" font-family="Inter, sans-serif" font-size="12" font-weight="600" fill="#1e293b">Right Column</text>
+                    <text x="110" y="48" font-family="Inter, sans-serif" font-size="10" fill="#475569">(Detailed Notes)</text>
+                    <text x="110" y="62" font-family="Inter, sans-serif" font-size="10" fill="#475569">- Point 1</text>
+                    <text x="110" y="76" font-family="Inter, sans-serif" font-size="10" fill="#475569">- Point 2</text>
+                     <text x="110" y="90" font-family="Inter, sans-serif" font-size="10" fill="#475569">- Details...</text>
+
+                    <text x="15" y="365" font-family="Inter, sans-serif" font-size="12" font-weight="600" fill="#1e293b">Bottom Section</text>
+                    <text x="15" y="382" font-family="Inter, sans-serif" font-size="10" fill="#475569">(Summary in your own words)</text>
+                </svg>
+            </div>
+        </section>
+
+
+        <!-- Language Sections Grid -->
+        <main class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+            <!-- English Section -->
+            <section class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+                <h2 class="text-2xl font-bold mb-4 border-b pb-3 text-slate-900">📘 English Guide</h2>
+                <div class="space-y-4 text-slate-700">
+                    <p>Every Cornell Notes page must have <strong>three parts</strong>:</p>
+                    <ol class="list-decimal list-inside space-y-2 pl-2">
+                        <li><strong>Left Column (RED):</strong> Write the <strong>main idea</strong> or the <strong>main question</strong>.</li>
+                        <li><strong>Right Column:</strong> Write the <strong>detailed notes</strong> and information.</li>
+                        <li><strong>Bottom Section:</strong> Write a short <strong>summary</strong> or a personal answer in your own words.</li>
+                    </ol>
+                    <div>
+                        <h3 class="font-semibold text-lg flex items-center gap-2 mt-6 mb-2 text-amber-600">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.46 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"></path><line x1="12" x2="12" y1="9" y2="13"></line><line x1="12" x2="12.01" y1="17" y2="17"></line></svg>
+                            Grading Rule
+                        </h3>
+                        <p>For <strong>every missing summary</strong>, <strong>–10 points</strong> will be taken off. Even if you write all the notes, the highest grade you can get <strong>without summaries is 50%</strong>.</p>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-lg flex items-center gap-2 mt-6 mb-2 text-green-600">
+                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            To Get Full Credit
+                        </h3>
+                        <ul class="list-disc list-inside space-y-1 pl-2">
+                            <li>Put the <strong>question/main idea</strong> in the left (red) column.</li>
+                            <li>Put the <strong>information</strong> in the right column.</li>
+                            <li>Write a <strong>summary/answer</strong> at the bottom.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Spanish Section -->
+            <section class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+                <h2 class="text-2xl font-bold mb-4 border-b pb-3 text-slate-900">📘 Guía en Español</h2>
+                <div class="space-y-4 text-slate-700">
+                    <p>Cada página de Apuntes Cornell debe tener <strong>tres partes</strong>:</p>
+                    <ol class="list-decimal list-inside space-y-2 pl-2">
+                        <li><strong>Columna Izquierda (ROJA):</strong> Escribe la <strong>idea principal</strong> o la <strong>pregunta principal</strong>.</li>
+                        <li><strong>Columna Derecha:</strong> Escribe las <strong>notas detalladas</strong> y la información.</li>
+                        <li><strong>Sección Inferior:</strong> Escribe un <strong>resumen</strong> corto o una respuesta personal en tus propias palabras.</li>
+                    </ol>
+                    <div>
+                        <h3 class="font-semibold text-lg flex items-center gap-2 mt-6 mb-2 text-amber-600">
+                           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.46 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"></path><line x1="12" x2="12" y1="9" y2="13"></line><line x1="12" x2="12.01" y1="17" y2="17"></line></svg>
+                            Regla de Calificación
+                        </h3>
+                        <p>Por <strong>cada resumen que falte</strong>, se restarán <strong>–10 puntos</strong>. Aunque escribas todas las notas, la calificación más alta que puedes obtener <strong>sin los resúmenes es 50%</strong>.</p>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-lg flex items-center gap-2 mt-6 mb-2 text-green-600">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            Para Obtener la Calificación Completa
+                        </h3>
+                        <ul class="list-disc list-inside space-y-1 pl-2">
+                            <li>Pon la <strong>pregunta/idea principal</strong> en la columna izquierda (roja).</li>
+                            <li>Pon la <strong>información</strong> en la columna derecha.</li>
+                            <li>Escribe un <strong>resumen/respuesta</strong> en la parte inferior.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Portuguese Section -->
+            <section class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+                <h2 class="text-2xl font-bold mb-4 border-b pb-3 text-slate-900">📘 Guia em Português</h2>
+                <div class="space-y-4 text-slate-700">
+                    <p>Cada página de Anotações Cornell deve ter <strong>três partes</strong>:</p>
+                    <ol class="list-decimal list-inside space-y-2 pl-2">
+                        <li><strong>Coluna Esquerda (VERMELHA):</strong> Escreva a <strong>ideia principal</strong> ou a <strong>pergunta principal</strong>.</li>
+                        <li><strong>Coluna Direita:</strong> Escreva as <strong>anotações detalhadas</strong> e as informações.</li>
+                        <li><strong>Seção Inferior:</strong> Escreva um <strong>resumo</strong> curto ou uma resposta pessoal com suas próprias palavras.</li>
+                    </ol>
+                    <div>
+                        <h3 class="font-semibold text-lg flex items-center gap-2 mt-6 mb-2 text-amber-600">
+                           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.46 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"></path><line x1="12" x2="12" y1="9" y2="13"></line><line x1="12" x2="12.01" y1="17" y2="17"></line></svg>
+                            Regra de Avaliação
+                        </h3>
+                        <p>Para <strong>cada resumo em falta</strong>, serão descontados <strong>–10 pontos</strong>. Mesmo que você escreva todas as anotações, a nota máxima que pode obter <strong>sem os resumos é 50%</strong>.</p>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-lg flex items-center gap-2 mt-6 mb-2 text-green-600">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            Para Obter a Nota Máxima
+                        </h3>
+                        <ul class="list-disc list-inside space-y-1 pl-2">
+                            <li>Coloque a <strong>pergunta/ideia principal</strong> na coluna esquerda (vermelha).</li>
+                            <li>Coloque as <strong>informações</strong> na coluna direita.</li>
+                            <li>Escreva um <strong>resumo/resposta</strong> na parte inferior.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- French Section -->
+            <section class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+                <h2 class="text-2xl font-bold mb-4 border-b pb-3 text-slate-900">📘 Guide en Français</h2>
+                <div class="space-y-4 text-slate-700">
+                    <p>Chaque page de notes Cornell doit comporter <strong>trois parties</strong> :</p>
+                    <ol class="list-decimal list-inside space-y-2 pl-2">
+                        <li><strong>Colonne de Gauche (ROUGE):</strong> Écrivez l'<strong>idée principale</strong> ou la <strong>question principale</strong>.</li>
+                        <li><strong>Colonne de Droite:</strong> Écrivez les <strong>notes détaillées</strong> et les informations.</li>
+                        <li><strong>Section du Bas:</strong> Rédigez un court <strong>résumé</strong> ou une réponse personnelle dans vos propres mots.</li>
+                    </ol>
+                    <div>
+                        <h3 class="font-semibold text-lg flex items-center gap-2 mt-6 mb-2 text-amber-600">
+                           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.46 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"></path><line x1="12" x2="12" y1="9" y2="13"></line><line x1="12" x2="12.01" y1="17" y2="17"></line></svg>
+                            Règle de Notation
+                        </h3>
+                        <p>Pour <strong>chaque résumé manquant</strong>, <strong>–10 points</strong> seront retirés. Même si vous écrivez toutes les notes, la note maximale que vous pouvez obtenir <strong>sans les résumés est de 50 %</strong>.</p>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-lg flex items-center gap-2 mt-6 mb-2 text-green-600">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            Pour Obtenir la Note Complète
+                        </h3>
+                        <ul class="list-disc list-inside space-y-1 pl-2">
+                            <li>Mettez la <strong>question/l'idée principale</strong> dans la colonne de gauche (rouge).</li>
+                            <li>Mettez les <strong>informations</strong> dans la colonne de droite.</li>
+                            <li>Écrivez un <strong>résumé/réponse</strong> en bas de la page.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="text-center mt-10 pt-6 border-t border-slate-200">
+            <p class="text-sm text-slate-500">For Mr. Miljus' social science classes.</p>
+        </footer>
+    </div>
+
+</body>
+</html>
+
