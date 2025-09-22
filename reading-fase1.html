@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fase 1: Fundamentos de Lectura en Inglés</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+        }
+        .story-word {
+            cursor: pointer;
+            transition: background-color 0.2s;
+            border-radius: 4px;
+            padding: 1px 0;
+        }
+        .story-word:hover {
+            background-color: #dbeafe;
+        }
+        .tooltip {
+            position: absolute;
+            background-color: #1f2937;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 6px;
+            z-index: 50;
+            opacity: 0;
+            transition: opacity 0.2s;
+            pointer-events: none;
+            font-size: 0.875rem;
+            transform: translate(-50%, -110%);
+        }
+        .tooltip.visible {
+            opacity: 1;
+        }
+        .option-btn {
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 2px solid #e5e7eb;
+        }
+        .option-btn:hover:not(:disabled) {
+            border-color: #6366f1;
+            background-color: #eef2ff;
+        }
+        .option-btn.correct {
+            background-color: #dcfce7;
+            border-color: #22c55e;
+            color: #15803d;
+        }
+        .option-btn.incorrect {
+            background-color: #fee2e2;
+            border-color: #ef4444;
+            color: #b91c1c;
+        }
+        .option-btn:disabled {
+            cursor: not-allowed;
+        }
+        .feedback-msg {
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            margin-top: 0.75rem;
+            font-weight: 500;
+        }
+        .feedback-correct {
+            background-color: #dcfce7;
+            color: #166534;
+        }
+        .feedback-incorrect {
+            background-color: #fee2e2;
+            color: #991b1b;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+    <div id="tooltip" class="tooltip"></div>
+
+    <div class="container mx-auto p-4 md:p-8 max-w-4xl">
+        <header class="text-center mb-10">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900">📘 Fase 1: Fundamentos</h1>
+            <p class="text-lg text-gray-600 mt-2">(para hispanohablantes)</p>
+        </header>
+
+        <main class="space-y-12">
+            <!-- Section 1: Main Idea -->
+            <section class="bg-white rounded-lg shadow-lg p-6 md:p-8">
+                <h2 class="text-3xl font-bold text-gray-800 border-b pb-4 mb-4">1. Idea Principal + Detalles</h2>
+                <div>
+                    <h3 class="text-2xl font-semibold mb-2 text-indigo-700">Explicación</h3>
+                    <ul class="list-disc list-inside space-y-2 text-lg text-gray-700">
+                        <li><strong>Tema (topic):</strong> palabra corta, como una etiqueta.</li>
+                        <li><strong>Idea principal (main idea):</strong> oración completa con el mensaje del autor.</li>
+                        <li><strong>Detalles (details):</strong> ejemplos o datos que apoyan.</li>
+                    </ul>
+                    <p class="mt-4 text-lg p-3 bg-indigo-50 rounded-md">👉 <strong>Truco:</strong> Si tienes dudas, resume en español primero y después traduce.</p>
+                </div>
+
+                <div class="mt-6 border-t pt-6">
+                    <h3 class="text-2xl font-semibold mb-3">Texto de práctica 1</h3>
+                    <div class="bg-gray-50 p-4 rounded-lg border">
+                        <h4 class="font-bold text-gray-600">Inglés</h4>
+                        <p class="english-text text-lg text-gray-700 leading-relaxed mt-1">Many people ride bicycles to work. Biking saves money on gas, reduces pollution, and provides good exercise. Some cities even build special bike lanes to make it safer.</p>
+                    </div>
+                    <div class="mt-4">
+                        <h4 class="font-bold text-gray-600">Preguntas</h4>
+                        <div class="space-y-4 mt-2" data-question-set="1">
+                            <div>
+                                <p class="font-semibold text-gray-700">What is the topic?</p>
+                                <div class="grid grid-cols-1 md:grid-cols-3 gap-2 mt-2">
+                                    <button class="option-btn p-3 rounded-lg" data-correct="false" data-feedback-incorrect="Incorrecto. La contaminación se menciona, pero es solo un detalle de apoyo. El tema principal es más amplio.">a) Pollution</button>
+                                    <button class="option-btn p-3 rounded-lg" data-correct="true" data-feedback-correct="¡Correcto! Todo el texto habla sobre 'biking' (andar en bicicleta) y sus diferentes beneficios.">b) Biking</button>
+                                    <button class="option-btn p-3 rounded-lg" data-correct="false" data-feedback-incorrect="Incorrecto. Las ciudades son el lugar donde ocurre la acción, pero no son el tema central del texto.">c) Cities</button>
+                                </div>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-gray-700">What is the main idea?</p>
+                                <div class="flex flex-col space-y-2 mt-2">
+                                    <button class="option-btn p-3 rounded-lg text-left" data-correct="false" data-feedback-incorrect="Cuidado. El texto menciona que se hacen carriles para que sea 'safer' (más seguro), lo que sugiere lo contrario.">a) Cities are dangerous for bikers</button>
+                                    <button class="option-btn p-3 rounded-lg text-left" data-correct="true" data-feedback-correct="¡Exacto! Esta oración resume perfectamente los beneficios mencionados: salud (exercise), costos (saves money) y medio ambiente (reduces pollution).">b) Biking is healthy and reduces costs and pollution</button>
+                                    <button class="option-btn p-3 rounded-lg text-left" data-correct="false" data-feedback-incorrect="Incorrecto. El texto no compara los carros con las bicicletas; se enfoca solo en los beneficios de andar en bicicleta.">c) Cars are better than bikes</button>
+                                </div>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-gray-700">Which is a supporting detail?</p>
+                                <div class="flex flex-col space-y-2 mt-2">
+                                    <button class="option-btn p-3 rounded-lg text-left" data-correct="false" data-feedback-incorrect="Incorrecto. El texto no menciona nada sobre si a la gente le gustan los carros.">a) People like cars</button>
+                                    <button class="option-btn p-3 rounded-lg text-left" data-correct="true" data-feedback-correct="¡Muy bien! Esta es una de las frases específicas que apoya la idea principal. Es un ejemplo de cómo las ciudades ayudan.">b) Bike lanes make it safer</button>
+                                    <button class="option-btn p-3 rounded-lg text-left" data-correct="false" data-feedback-incorrect="Incorrecto. El texto dice que andar en bicicleta reduce la contaminación, pero no especifica de dónde viene esa contaminación.">c) Pollution comes from factories</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Section 2: Context Clues -->
+            <section class="bg-white rounded-lg shadow-lg p-6 md:p-8">
+                <h2 class="text-3xl font-bold text-gray-800 border-b pb-4 mb-4">2. Pistas de Contexto (Context Clues)</h2>
+                 <div>
+                    <h3 class="text-2xl font-semibold mb-2 text-indigo-700">Explicación</h3>
+                     <p class="text-lg text-gray-700">Cuando no entiendas una palabra:</p>
+                    <ul class="list-disc list-inside space-y-2 text-lg text-gray-700 mt-2">
+                        <li>Busca definiciones, ejemplos, sinónimos, contrastes.</li>
+                        <li>No traduzcas todo: usa el texto como detective.</li>
+                    </ul>
+                </div>
+                <div class="mt-6 border-t pt-6" data-question-set="2">
+                     <h3 class="text-2xl font-semibold mb-3">Texto de práctica 1</h3>
+                     <div class="bg-gray-50 p-4 rounded-lg border">
+                        <h4 class="font-bold text-gray-600">Inglés</h4>
+                        <p class="text-lg text-gray-700 leading-relaxed mt-1">The storm was <strong class="english-text">ferocious</strong>, destroying houses with strong winds.</p>
+                     </div>
+                     <div class="mt-4">
+                        <p class="font-semibold text-gray-700">In the text, “ferocious” means:</p>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-2 mt-2">
+                            <button class="option-btn p-3 rounded-lg" data-correct="false" data-feedback-incorrect="Incorrecto. 'Gentle' es lo opuesto. Las pistas 'destroying houses' y 'strong winds' indican algo fuerte, no suave.">a) Gentle</button>
+                            <button class="option-btn p-3 rounded-lg" data-correct="true" data-feedback-correct="¡Correcto! Las palabras 'destroying houses' (destruyendo casas) y 'strong winds' (vientos fuertes) son pistas que nos dicen que 'ferocious' significa algo violento y fuerte.">b) Very strong and violent</button>
+                            <button class="option-btn p-3 rounded-lg" data-correct="false" data-feedback-incorrect="Incorrecto. El texto no da ninguna pista sobre colores. Se enfoca en la fuerza de la tormenta.">c) Colorful</button>
+                        </div>
+                     </div>
+                </div>
+            </section>
+            
+            <!-- Passage Bank -->
+            <section class="bg-white rounded-lg shadow-lg p-6 md:p-8">
+                 <h2 class="text-3xl font-bold text-gray-800 border-b pb-4 mb-4">📘 Banco de Pasajes – Fase 1</h2>
+                 <div class="space-y-8">
+                    <!-- Passage 1 -->
+                    <div class="border-t pt-6" data-question-set="3">
+                        <h3 class="text-2xl font-semibold mb-3">📖 Pasaje 1: The Benefits of Sleep</h3>
+                        <p class="english-text text-lg text-gray-700 leading-relaxed">Many teenagers do not get enough sleep. They stay up late watching videos, texting friends, or playing games. As a result, they often feel tired during the day. Lack of sleep can affect concentration, memory, and even health. Experts recommend that teenagers sleep at least eight hours each night. Simple habits, like turning off devices before bed and keeping a regular schedule, can improve sleep quality.</p>
+                        <div class="mt-4 space-y-4">
+                            <div>
+                                <p class="font-semibold text-gray-700">What is the topic of the passage?</p>
+                                <div class="grid grid-cols-1 md:grid-cols-3 gap-2 mt-2">
+                                    <button class="option-btn p-3 rounded-lg" data-correct="false" data-feedback-incorrect="Incorrecto. La tecnología es una de las razones por las que los adolescentes no duermen, pero el tema principal es el sueño en sí.">a) Technology</button>
+                                    <button class="option-btn p-3 rounded-lg" data-correct="true" data-feedback-correct="¡Correcto! Aunque el texto menciona el sueño ('sleep'), se enfoca específicamente en cómo afecta a los 'teenagers' (adolescentes).">b) Teenagers</button>
+                                    <button class="option-btn p-3 rounded-lg" data-correct="false" data-feedback-incorrect="Incorrecto. 'Sleep' es una parte importante, pero el texto es más específico. Se centra en el sueño de un grupo particular: los adolescentes.">c) Sleep</button>
+                                </div>
+                            </div>
+                             <div>
+                                <p class="font-semibold text-gray-700">What is the main idea?</p>
+                                <div class="flex flex-col space-y-2 mt-2">
+                                    <button class="option-btn p-3 rounded-lg text-left" data-correct="true" data-feedback-correct="¡Excelente! Esta frase captura las dos partes del texto: la importancia del sueño y el problema que causa la tecnología.">a) Sleep is important for teenagers, but technology reduces it</button>
+                                    <button class="option-btn p-3 rounded-lg text-left" data-correct="false" data-feedback-incorrect="Incorrecto. El texto claramente dice 'Experts recommend...', lo que significa que sí están de acuerdo.">b) Experts don’t agree about sleep</button>
+                                    <button class="option-btn p-3 rounded-lg text-left" data-correct="false" data-feedback-incorrect="Incorrecto. El texto dice que se sienten 'tired' (cansados), no que son 'lazy' (perezosos). Hay una gran diferencia.">c) Teenagers are lazy</button>
+                                </div>
+                            </div>
+                             <div>
+                                <p class="font-semibold text-gray-700">Which is a supporting detail?</p>
+                                <div class="flex flex-col space-y-2 mt-2">
+                                    <button class="option-btn p-3 rounded-lg text-left" data-correct="true" data-feedback-correct="¡Correcto! Esta es una recomendación específica de los expertos mencionada en el texto para apoyar la idea principal.">a) Experts recommend eight hours of sleep</button>
+                                    <button class="option-btn p-3 rounded-lg text-left" data-correct="false" data-feedback-incorrect="Incorrecto. El texto no menciona los deportes en ninguna parte.">b) Many teenagers like sports</button>
+                                    <button class="option-btn p-3 rounded-lg text-left" data-correct="false" data-feedback-incorrect="Si bien esto es cierto en la vida real, el texto no lo menciona. Debemos usar solo la información del pasaje.">c) Memory is part of the brain</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Passage 2 -->
+                    <div class="border-t pt-6" data-question-set="4">
+                        <h3 class="text-2xl font-semibold mb-3">📖 Pasaje 2: Recycling Plastic</h3>
+                        <p class="english-text text-lg text-gray-700 leading-relaxed">Plastic is everywhere in modern life. People use it for bottles, bags, and packaging. Unfortunately, most plastic is not biodegradable, meaning it does not break down quickly. It can stay in the environment for hundreds of years. Recycling helps reduce this problem by turning old plastic into new products. However, not all communities have strong recycling programs, and some plastic items cannot be recycled at all. Experts suggest using less plastic in daily life, such as carrying reusable bags and water bottles.</p>
+                        <div class="mt-4 space-y-4">
+                            <div>
+                                <p class="font-semibold text-gray-700">What is the problem in the passage?</p>
+                                <div class="flex flex-col space-y-2 mt-2">
+                                    <button class="option-btn p-3 rounded-lg text-left" data-correct="false" data-feedback-incorrect="Incorrecto. El precio del plástico no se menciona como el problema. El problema es lo que sucede después de usarlo.">a) Plastic is cheap</button>
+                                    <button class="option-btn p-3 rounded-lg text-left" data-correct="true" data-feedback-correct="¡Correcto! El texto dice que el plástico 'does not break down quickly' y 'can stay in the environment for hundreds of years'.">b) Plastic lasts a long time and damages the environment</button>
+                                    <button class="option-btn p-3 rounded-lg text-left" data-correct="false" data-feedback-incorrect="Incorrecto. Esto es un uso del plástico, no el problema principal que describe el texto.">c) People like bottles</button>
+                                </div>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-gray-700">What solution does the text give?</p>
+                                <div class="flex flex-col space-y-2 mt-2">
+                                    <button class="option-btn p-3 rounded-lg text-left" data-correct="true" data-feedback-correct="¡Exacto! El texto menciona explícitamente 'Recycling' y 'using less plastic in daily life' como soluciones.">a) Using less plastic and recycling</button>
+                                    <button class="option-btn p-3 rounded-lg text-left" data-correct="false" data-feedback-incorrect="Incorrecto. El texto sugiere lo contrario: 'using less plastic'.">b) Buying more plastic</button>
+                                    <button class="option-btn p-3 rounded-lg text-left" data-correct="false" data-feedback-incorrect="Incorrecto. El vidrio no se menciona en el texto.">c) Avoiding glass</button>
+                                </div>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-gray-700">Which text structure is used?</p>
+                                <div class="grid grid-cols-1 md:grid-cols-3 gap-2 mt-2">
+                                    <button class="option-btn p-3 rounded-lg" data-correct="true" data-feedback-correct="¡Correcto! El texto presenta una causa (el plástico daña el ambiente) y un efecto (la necesidad de reciclar y usar menos).">a) Cause/Effect</button>
+                                    <button class="option-btn p-3 rounded-lg" data-correct="false" data-feedback-incorrect="Incorrecto. El texto no compara dos cosas diferentes; se enfoca en un solo tema.">b) Compare/Contrast</button>
+                                    <button class="option-btn p-3 rounded-lg" data-correct="false" data-feedback-incorrect="Incorrecto. Una narrativa cuenta una historia con personajes. Este texto es informativo.">c) Narrative</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                 </div>
+            </section>
+        </main>
+
+        <footer class="text-center mt-12 text-gray-500 text-sm">
+            <p>All rights reserved by Jonathan Miljus for his students.</p>
+            <p>Copyright The Language Labs LLC.</p>
+        </footer>
+    </div>
+
+    <script>
+        const tooltip = document.getElementById('tooltip');
+
+        function wrapEnglishText() {
+            const englishTextElements = document.querySelectorAll('.english-text');
+            englishTextElements.forEach(element => {
+                if (element.hasAttribute('data-wrapped')) return;
+                const originalText = element.innerText;
+                element.innerHTML = ''; 
+                originalText.split(/(\s+)/).forEach(word => {
+                    if (word.trim().length > 0) {
+                        const span = document.createElement('span');
+                        span.textContent = word;
+                        span.className = 'story-word';
+                        span.addEventListener('mouseenter', (e) => showTranslation(e, word));
+                        span.addEventListener('mouseleave', hideTranslation);
+                        element.appendChild(span);
+                    } else {
+                        element.appendChild(document.createTextNode(word));
+                    }
+                });
+                element.setAttribute('data-wrapped', 'true');
+            });
+        }
+        
+        async function showTranslation(event, word) {
+            const cleanWord = word.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"").toLowerCase();
+            if (!cleanWord) return;
+            
+            tooltip.style.left = `${event.pageX}px`;
+            tooltip.style.top = `${event.pageY}px`;
+            tooltip.innerHTML = `Traduciendo...`;
+            tooltip.classList.add('visible');
+
+            try {
+                const response = await fetch(`https://api.mymemory.translated.net/get?q=${cleanWord}&langpair=en|es`);
+                const data = await response.json();
+                if (data.responseData && data.responseData.translatedText) {
+                    const translation = data.responseData.translatedText;
+                    tooltip.innerHTML = `<strong>${word}</strong><br><em>${translation}</em>`;
+                } else {
+                     tooltip.innerHTML = `<strong>${word}</strong><br><em>No se encontró traducción.</em>`;
+                }
+            } catch (error) {
+                console.error("Translation error:", error);
+                tooltip.innerHTML = "Error de traducción.";
+            }
+        }
+
+        function hideTranslation() {
+            tooltip.classList.remove('visible');
+        }
+        
+        function handleQuestionInteraction() {
+            const questionSets = document.querySelectorAll('[data-question-set]');
+            
+            questionSets.forEach(set => {
+                const questions = set.querySelectorAll('.option-btn');
+                
+                questions.forEach(button => {
+                    button.addEventListener('click', (e) => {
+                        const isCorrect = button.getAttribute('data-correct') === 'true';
+                        const parentQuestionDiv = button.parentElement.parentElement;
+
+                        // Disable all buttons for this specific question
+                        button.parentElement.querySelectorAll('.option-btn').forEach(btn => {
+                            btn.disabled = true;
+                        });
+
+                        // Provide visual feedback on buttons
+                        if (isCorrect) {
+                            button.classList.add('correct');
+                        } else {
+                            button.classList.add('incorrect');
+                            const correctButton = button.parentElement.querySelector('[data-correct="true"]');
+                            if(correctButton) {
+                                correctButton.classList.add('correct');
+                            }
+                        }
+                        
+                        // Add detailed feedback message
+                        let feedbackEl = parentQuestionDiv.querySelector('.feedback-container');
+                        if (!feedbackEl) {
+                            feedbackEl = document.createElement('div');
+                            feedbackEl.className = 'feedback-container';
+                            parentQuestionDiv.appendChild(feedbackEl);
+                        }
+                        
+                        let feedbackText = '';
+                        let feedbackClasses = 'feedback-msg ';
+
+                        if(isCorrect) {
+                            feedbackText = button.getAttribute('data-feedback-correct');
+                            feedbackClasses += 'feedback-correct';
+                        } else {
+                            feedbackText = button.getAttribute('data-feedback-incorrect');
+                            feedbackClasses += 'feedback-incorrect';
+                        }
+                        
+                        feedbackEl.innerHTML = `<p class="${feedbackClasses}">${feedbackText}</p>`;
+                    });
+                });
+            });
+        }
+
+        // Initial Load
+        document.addEventListener('DOMContentLoaded', () => {
+            wrapEnglishText();
+            handleQuestionInteraction();
+        });
+    </script>
+
+</body>
+</html>
+
