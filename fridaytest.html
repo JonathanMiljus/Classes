@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mr. Miljus' Classroom Testing Expectations</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .lang-btn.active {
+            background-color: #3b82f6; /* blue-500 */
+            color: white;
+            font-weight: 600;
+        }
+        .option {
+            transition: all 0.2s ease-in-out;
+        }
+        .option.correct {
+            background-color: #22c55e; /* green-500 */
+            color: white;
+            border-color: #16a34a; /* green-600 */
+            transform: scale(1.02);
+        }
+        .option.incorrect {
+            background-color: #ef4444; /* red-500 */
+            color: white;
+            border-color: #dc2626; /* red-600 */
+        }
+        .option.disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800 antialiased">
+
+    <!-- Language Switcher -->
+    <div class="fixed top-4 right-4 z-10 bg-white shadow-lg rounded-full p-1 flex space-x-1">
+        <button id="lang-en" class="lang-btn active w-10 h-10 rounded-full text-sm font-medium transition-colors duration-300 hover:bg-gray-200" onclick="changeLanguage('en')">EN</button>
+        <button id="lang-es" class="lang-btn w-10 h-10 rounded-full text-sm font-medium transition-colors duration-300 hover:bg-gray-200" onclick="changeLanguage('es')">ES</button>
+        <button id="lang-fr" class="lang-btn w-10 h-10 rounded-full text-sm font-medium transition-colors duration-300 hover:bg-gray-200" onclick="changeLanguage('fr')">FR</button>
+        <button id="lang-pt" class="lang-btn w-10 h-10 rounded-full text-sm font-medium transition-colors duration-300 hover:bg-gray-200" onclick="changeLanguage('pt')">PT</button>
+    </div>
+
+    <div class="container mx-auto max-w-4xl p-4 sm:p-8">
+        
+        <header class="text-center mb-10">
+            <h1 id="main-title" class="text-3xl sm:text-4xl font-bold text-gray-900">Classroom Testing Expectations</h1>
+            <p id="main-subtitle" class="mt-2 text-lg text-gray-600">A message from Mr. Miljus</p>
+        </header>
+
+        <main class="space-y-8">
+            <!-- Introduction Section -->
+            <section class="bg-white p-6 rounded-lg shadow-md">
+                <p id="intro-text" class="text-base leading-relaxed">Last Friday’s testing environment was not acceptable. Too much talking, movement, and lack of focus took away from the purpose of testing. From now on, our testing expectations will be strictly enforced.</p>
+            </section>
+
+            <!-- Rules Section -->
+            <section class="bg-white p-6 rounded-lg shadow-md">
+                <h2 id="rules-title" class="text-2xl font-bold mb-4 text-blue-600">During any test or quiz on your Chromebook:</h2>
+                <ul id="rules-list" class="space-y-3 list-decimal list-inside text-gray-700">
+                    <li><strong class="font-semibold">Absolute Silence</strong> – No talking, whispering, or unnecessary noise.</li>
+                    <li><strong class="font-semibold">Eyes on Your Own Screen</strong> – Stay focused only on your Chromebook.</li>
+                    <li><strong class="font-semibold">Do Not Exit the Form</strong> – If I see that you leave the quiz and re-enter, your test will be given a zero.</li>
+                    <li><strong class="font-semibold">No Phones or Other Tabs</strong> – Only the Google Form is allowed to be open.</li>
+                    <li><strong class="font-semibold">Stay Seated and Respectful</strong> – Do not distract yourself or others.</li>
+                </ul>
+            </section>
+
+            <!-- Academic Integrity Section -->
+            <section class="bg-yellow-50 border-l-4 border-yellow-400 p-6 rounded-r-lg">
+                <h2 id="integrity-title" class="text-2xl font-bold mb-3 text-yellow-800">Academic Integrity:</h2>
+                <p id="integrity-text" class="text-base leading-relaxed text-yellow-900">The most important rule is academic integrity. Your grade must represent your own knowledge and effort. If you talk, share answers, look at someone else’s screen, or leave the quiz to open anything else, you are breaking that trust. Any violation will result in your test being invalidated and a zero being recorded.</p>
+            </section>
+
+            <!-- Why This Matters Section -->
+            <section class="bg-white p-6 rounded-lg shadow-md">
+                <h2 id="why-title" class="text-2xl font-bold mb-3 text-blue-600">Why This Matters:</h2>
+                <p id="why-text" class="text-base leading-relaxed">I expect better because I know you are capable of better. Testing is not just about grades — it’s about honesty, respect, and discipline. These values will serve you far beyond this classroom. I want every one of you to succeed, but you can only do that through your own work.</p>
+            </section>
+
+            <!-- Interactive Quiz Section -->
+            <section class="bg-white p-6 rounded-lg shadow-md">
+                <h2 id="quiz-title" class="text-2xl font-bold mb-2 text-center">Quick Check – Multiple Choice</h2>
+                <p id="quiz-subtitle" class="text-center text-gray-600 mb-8">Read the rules above carefully. Answer these questions to show you understand the expectations:</p>
+
+                <div class="space-y-8">
+                    <!-- Question 1 -->
+                    <div class="question-container">
+                        <p id="q1-text" class="font-semibold text-lg mb-4">1. What happens if you leave the Google Form during a test?</p>
+                        <div id="q1-options" class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                            <button class="option p-4 border rounded-lg text-left hover:bg-gray-100" data-question="1" data-correct="false">A) Nothing, as long as you come back.</button>
+                            <button class="option p-4 border rounded-lg text-left hover:bg-gray-100" data-question="1" data-correct="false">B) You may receive a warning.</button>
+                            <button class="option p-4 border rounded-lg text-left hover:bg-gray-100" data-question="1" data-correct="true">C) You will receive a zero.</button>
+                            <button class="option p-4 border rounded-lg text-left hover:bg-gray-100" data-question="1" data-correct="false">D) You can explain why and avoid consequences.</button>
+                        </div>
+                        <p id="q1-feedback" class="feedback mt-3 text-sm hidden"></p>
+                    </div>
+
+                    <!-- Question 2 -->
+                    <div class="question-container">
+                        <p id="q2-text" class="font-semibold text-lg mb-4">2. What is the most important rule during testing?</p>
+                        <div id="q2-options" class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                            <button class="option p-4 border rounded-lg text-left hover:bg-gray-100" data-question="2" data-correct="false">A) Staying quiet.</button>
+                            <button class="option p-4 border rounded-lg text-left hover:bg-gray-100" data-question="2" data-correct="false">B) Finishing quickly.</button>
+                            <button class="option p-4 border rounded-lg text-left hover:bg-gray-100" data-question="2" data-correct="true">C) Academic integrity.</button>
+                            <button class="option p-4 border rounded-lg text-left hover:bg-gray-100" data-question="2" data-correct="false">D) Keeping your Chromebook charged.</button>
+                        </div>
+                        <p id="q2-feedback" class="feedback mt-3 text-sm hidden"></p>
+                    </div>
+
+                    <!-- Question 3 -->
+                    <div class="question-container">
+                        <p id="q3-text" class="font-semibold text-lg mb-4">3. Which of these is NOT allowed during testing?</p>
+                        <div id="q3-options" class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                            <button class="option p-4 border rounded-lg text-left hover:bg-gray-100" data-question="3" data-correct="false">A) Staying silent and focused.</button>
+                            <button class="option p-4 border rounded-lg text-left hover:bg-gray-100" data-question="3" data-correct="true">B) Opening other tabs or using your phone.</button>
+                            <button class="option p-4 border rounded-lg text-left hover:bg-gray-100" data-question="3" data-correct="false">C) Keeping your eyes on your own screen.</button>
+                            <button class="option p-4 border rounded-lg text-left hover:bg-gray-100" data-question="3" data-correct="false">D) Respecting the testing environment.</button>
+                        </div>
+                        <p id="q3-feedback" class="feedback mt-3 text-sm hidden"></p>
+                    </div>
+
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        const translations = {
+            en: {
+                mainTitle: "Classroom Testing Expectations",
+                mainSubtitle: "A message from Mr. Miljus",
+                introText: "Last Friday’s testing environment was not acceptable. Too much talking, movement, and lack of focus took away from the purpose of testing. From now on, our testing expectations will be strictly enforced.",
+                rulesTitle: "During any test or quiz on your Chromebook:",
+                rules: [
+                    "<strong>Absolute Silence</strong> – No talking, whispering, or unnecessary noise.",
+                    "<strong>Eyes on Your Own Screen</strong> – Stay focused only on your Chromebook.",
+                    "<strong>Do Not Exit the Form</strong> – If I see that you leave the quiz and re-enter, your test will be given a zero.",
+                    "<strong>No Phones or Other Tabs</strong> – Only the Google Form is allowed to be open.",
+                    "<strong>Stay Seated and Respectful</strong> – Do not distract yourself or others."
+                ],
+                integrityTitle: "Academic Integrity:",
+                integrityText: "The most important rule is academic integrity. Your grade must represent your own knowledge and effort. If you talk, share answers, look at someone else’s screen, or leave the quiz to open anything else, you are breaking that trust. Any violation will result in your test being invalidated and a zero being recorded.",
+                whyTitle: "Why This Matters:",
+                whyText: "I expect better because I know you are capable of better. Testing is not just about grades — it’s about honesty, respect, and discipline. These values will serve you far beyond this classroom. I want every one of you to succeed, but you can only do that through your own work.",
+                quizTitle: "Quick Check – Multiple Choice",
+                quizSubtitle: "Read the rules above carefully. Answer these questions to show you understand the expectations:",
+                q1Text: "1. What happens if you leave the Google Form during a test?",
+                q1Options: ["A) Nothing, as long as you come back.", "B) You may receive a warning.", "C) You will receive a zero.", "D) You can explain why and avoid consequences."],
+                q1FeedbackCorrect: "Correct! The rules state that leaving the form will result in a zero.",
+                q1FeedbackIncorrect: "Incorrect. The rules are very clear: leaving the form for any reason will result in a zero.",
+                q2Text: "2. What is the most important rule during testing?",
+                q2Options: ["A) Staying quiet.", "B) Finishing quickly.", "C) Academic integrity.", "D) Keeping your Chromebook charged."],
+                q2FeedbackCorrect: "Correct! Academic integrity is the most important principle, as it's about honesty and your own effort.",
+                q2FeedbackIncorrect: "Incorrect. While other things are important, academic integrity is stated as the most important rule.",
+                q3Text: "3. Which of these is NOT allowed during testing?",
+                q3Options: ["A) Staying silent and focused.", "B) Opening other tabs or using your phone.", "C) Keeping your eyes on your own screen.", "D) Respecting the testing environment."],
+                q3FeedbackCorrect: "Correct! Opening other tabs or using your phone is strictly forbidden.",
+                q3FeedbackIncorrect: "Incorrect. This action is allowed and expected. Try to find the one that is not allowed."
+            },
+            es: {
+                mainTitle: "Expectativas de las Pruebas en el Aula",
+                mainSubtitle: "Un mensaje del Sr. Miljus",
+                introText: "El ambiente de la prueba del viernes pasado no fue aceptable. Demasiadas conversaciones, movimiento y falta de concentración le quitaron el propósito a la prueba. De ahora en adelante, nuestras expectativas para las pruebas se aplicarán estrictamente.",
+                rulesTitle: "Durante cualquier prueba o quiz en tu Chromebook:",
+                rules: [
+                    "<strong>Silencio Absoluto</strong> – No hablar, susurrar o hacer ruidos innecesarios.",
+                    "<strong>Ojos en tu Propia Pantalla</strong> – Mantente enfocado solo en tu Chromebook.",
+                    "<strong>No Salir del Formulario</strong> – Si veo que sales del quiz y vuelves a entrar, tu prueba recibirá un cero.",
+                    "<strong>Sin Teléfonos ni Otras Pestañas</strong> – Solo se permite tener abierto el Formulario de Google.",
+                    "<strong>Permanecer Sentado y Respetuoso</strong> – No te distraigas ni distraigas a los demás."
+                ],
+                integrityTitle: "Integridad Académica:",
+                integrityText: "La regla más importante es la integridad académica. Tu calificación debe representar tu propio conocimiento y esfuerzo. Si hablas, compartes respuestas, miras la pantalla de otra persona o sales del quiz para abrir cualquier otra cosa, estás rompiendo esa confianza. Cualquier violación resultará en la invalidación de tu prueba y se registrará un cero.",
+                whyTitle: "Por Qué Esto Importa:",
+                whyText: "Espero más porque sé que son capaces de más. Las pruebas no son solo sobre calificaciones, son sobre honestidad, respeto y disciplina. Estos valores les servirán mucho más allá de esta aula. Quiero que cada uno de ustedes tenga éxito, pero solo pueden lograrlo a través de su propio trabajo.",
+                quizTitle: "Verificación Rápida – Opción Múltiple",
+                quizSubtitle: "Lee las reglas de arriba con atención. Responde estas preguntas para demostrar que entiendes las expectativas:",
+                q1Text: "1. ¿Qué sucede si sales del Formulario de Google durante una prueba?",
+                q1Options: ["A) Nada, siempre que regreses.", "B) Podrías recibir una advertencia.", "C) Recibirás un cero.", "D) Puedes explicar por qué y evitar las consecuencias."],
+                q1FeedbackCorrect: "¡Correcto! Las reglas establecen que salir del formulario resultará en un cero.",
+                q1FeedbackIncorrect: "Incorrecto. Las reglas son muy claras: salir del formulario por cualquier motivo resultará en un cero.",
+                q2Text: "2. ¿Cuál es la regla más importante durante las pruebas?",
+                q2Options: ["A) Mantenerse en silencio.", "B) Terminar rápidamente.", "C) Integridad académica.", "D) Mantener tu Chromebook cargado."],
+                q2FeedbackCorrect: "¡Correcto! La integridad académica es el principio más importante, ya que se trata de la honestidad y tu propio esfuerzo.",
+                q2FeedbackIncorrect: "Incorrecto. Aunque otras cosas son importantes, la integridad académica se establece como la regla más importante.",
+                q3Text: "3. ¿Cuál de estas acciones NO está permitida durante las pruebas?",
+                q3Options: ["A) Mantenerse en silencio y enfocado.", "B) Abrir otras pestañas o usar tu teléfono.", "C) Mantener tus ojos en tu propia pantalla.", "D) Respetar el ambiente de la prueba."],
+                q3FeedbackCorrect: "¡Correcto! Abrir otras pestañas o usar tu teléfono está estrictamente prohibido.",
+                q3FeedbackIncorrect: "Incorrecto. Esta acción está permitida y se espera. Intenta encontrar la que no está permitida."
+            },
+            fr: {
+                mainTitle: "Attentes Concernant les Évaluations en Classe",
+                mainSubtitle: "Un message de M. Miljus",
+                introText: "L'environnement d'évaluation de vendredi dernier n'était pas acceptable. Trop de bavardages, de mouvements et un manque de concentration ont nui à l'objectif de l'évaluation. Désormais, nos attentes concernant les évaluations seront strictement appliquées.",
+                rulesTitle: "Pendant tout test ou quiz sur votre Chromebook:",
+                rules: [
+                    "<strong>Silence Absolu</strong> – Pas de discussion, de chuchotement ou de bruit inutile.",
+                    "<strong>Les Yeux sur Votre Propre Écran</strong> – Restez concentré uniquement sur votre Chromebook.",
+                    "<strong>Ne Quittez Pas le Formulaire</strong> – Si je vois que vous quittez le quiz et y revenez, votre test recevra un zéro.",
+                    "<strong>Pas de Téléphones ou d'Autres Onglets</strong> – Seul le formulaire Google est autorisé à être ouvert.",
+                    "<strong>Restez Assis et Respectueux</strong> – Ne vous distrayez pas et ne distrayez pas les autres."
+                ],
+                integrityTitle: "Intégrité Académique:",
+                integrityText: "La règle la plus importante est l'intégrité académique. Votre note doit représenter vos propres connaissances et efforts. Si vous parlez, partagez des réponses, regardez l'écran de quelqu'un d'autre ou quittez le quiz pour ouvrir autre chose, vous brisez cette confiance. Toute violation entraînera l'invalidation de votre test et l'enregistrement d'un zéro.",
+                whyTitle: "Pourquoi C'est Important:",
+                whyText: "J'attends mieux car je sais que vous êtes capables de mieux. Les évaluations ne concernent pas seulement les notes — elles concernent l'honnêteté, le respect et la discipline. Ces valeurs vous serviront bien au-delà de cette salle de classe. Je veux que chacun de vous réussisse, mais vous ne pouvez le faire que par votre propre travail.",
+                quizTitle: "Vérification Rapide – Choix Multiples",
+                quizSubtitle: "Lisez attentivement les règles ci-dessus. Répondez à ces questions pour montrer que vous comprenez les attentes:",
+                q1Text: "1. Que se passe-t-il si vous quittez le formulaire Google pendant un test?",
+                q1Options: ["A) Rien, tant que vous revenez.", "B) Vous pourriez recevoir un avertissement.", "C) Vous recevrez un zéro.", "D) Vous pouvez expliquer pourquoi et éviter les conséquences."],
+                q1FeedbackCorrect: "Correct ! Les règles stipulent que quitter le formulaire entraînera un zéro.",
+                q1FeedbackIncorrect: "Incorrect. Les règles sont très claires : quitter le formulaire pour quelque raison que ce soit entraînera un zéro.",
+                q2Text: "2. Quelle est la règle la plus importante pendant les évaluations?",
+                q2Options: ["A) Rester silencieux.", "B) Finir rapidement.", "C) Intégrité académique.", "D) Garder son Chromebook chargé."],
+                q2FeedbackCorrect: "Correct ! L'intégrité académique est le principe le plus important, car il s'agit d'honnêteté et de votre propre effort.",
+                q2FeedbackIncorrect: "Incorrect. Bien que d'autres choses soient importantes, l'intégrité académique est déclarée comme la règle la plus importante.",
+                q3Text: "3. Lequel de ces éléments n'est PAS autorisé pendant les évaluations?",
+                q3Options: ["A) Rester silencieux et concentré.", "B) Ouvrir d'autres onglets ou utiliser son téléphone.", "C) Garder les yeux sur son propre écran.", "D) Respecter l'environnement d'évaluation."],
+                q3FeedbackCorrect: "Correct ! Ouvrir d'autres onglets ou utiliser son téléphone est strictement interdit.",
+                q3FeedbackIncorrect: "Incorrect. Cette action est autorisée et attendue. Essayez de trouver celle qui n'est pas autorisée."
+            },
+            pt: {
+                mainTitle: "Expectativas de Teste em Sala de Aula",
+                mainSubtitle: "Uma mensagem do Sr. Miljus",
+                introText: "O ambiente de teste da última sexta-feira não foi aceitável. Muita conversa, movimento e falta de foco desviaram do propósito do teste. De agora em diante, nossas expectativas de teste serão estritamente aplicadas.",
+                rulesTitle: "Durante qualquer teste ou questionário no seu Chromebook:",
+                rules: [
+                    "<strong>Silêncio Absoluto</strong> – Sem conversas, sussurros ou ruídos desnecessários.",
+                    "<strong>Olhos na Sua Própria Tela</strong> – Mantenha o foco apenas no seu Chromebook.",
+                    "<strong>Não Saia do Formulário</strong> – Se eu vir que você saiu do questionário e entrou novamente, seu teste receberá um zero.",
+                    "<strong>Sem Celulares ou Outras Abas</strong> – Apenas o Formulário Google pode estar aberto.",
+                    "<strong>Permaneça Sentado e Respeitoso</strong> – Não se distraia nem distraia os outros."
+                ],
+                integrityTitle: "Integridade Acadêmica:",
+                integrityText: "A regra mais importante é a integridade acadêmica. Sua nota deve representar seu próprio conhecimento e esforço. Se você conversar, compartilhar respostas, olhar para a tela de outra pessoa ou sair do questionário para abrir qualquer outra coisa, você está quebrando essa confiança. Qualquer violação resultará na invalidação do seu teste e no registro de um zero.",
+                whyTitle: "Por Que Isso Importa:",
+                whyText: "Eu espero mais porque sei que vocês são capazes de mais. Testar não é apenas sobre notas — é sobre honestidade, respeito e disciplina. Esses valores servirão a vocês muito além desta sala de aula. Quero que cada um de vocês tenha sucesso, mas só podem fazer isso através do seu próprio trabalho.",
+                quizTitle: "Verificação Rápida – Múltipla Escolha",
+                quizSubtitle: "Leia as regras acima com atenção. Responda a estas perguntas para mostrar que você entende as expectativas:",
+                q1Text: "1. O que acontece se você sair do Formulário Google durante um teste?",
+                q1Options: ["A) Nada, desde que você volte.", "B) Você pode receber um aviso.", "C) Você receberá um zero.", "D) Você pode explicar o porquê e evitar consequências."],
+                q1FeedbackCorrect: "Correto! As regras afirmam que sair do formulário resultará em um zero.",
+                q1FeedbackIncorrect: "Incorreto. As regras são muito claras: sair do formulário por qualquer motivo resultará em um zero.",
+                q2Text: "2. Qual é a regra mais importante durante os testes?",
+                q2Options: ["A) Ficar em silêncio.", "B) Terminar rapidamente.", "C) Integridade acadêmica.", "D) Manter o Chromebook carregado."],
+                q2FeedbackCorrect: "Correto! A integridade acadêmica é o princípio mais importante, pois trata de honestidade e do seu próprio esforço.",
+                q2FeedbackIncorrect: "Incorreto. Embora outras coisas sejam importantes, a integridade acadêmica é declarada como a regra mais importante.",
+                q3Text: "3. Qual destas ações NÃO é permitida durante os testes?",
+                q3Options: ["A) Ficar em silêncio e focado.", "B) Abrir outras abas ou usar o celular.", "C) Manter os olhos na sua própria tela.", "D) Respeitar o ambiente de teste."],
+                q3FeedbackCorrect: "Correto! Abrir outras abas ou usar o celular é estritamente proibido.",
+                q3FeedbackIncorrect: "Incorreto. Esta ação é permitida e esperada. Tente encontrar a que não é permitida."
+            }
+        };
+
+        function changeLanguage(lang) {
+            const t = translations[lang];
+
+            // Update text content
+            document.getElementById('main-title').textContent = t.mainTitle;
+            document.getElementById('main-subtitle').textContent = t.mainSubtitle;
+            document.getElementById('intro-text').textContent = t.introText;
+            document.getElementById('rules-title').textContent = t.rulesTitle;
+            
+            const rulesList = document.getElementById('rules-list');
+            rulesList.innerHTML = '';
+            t.rules.forEach(rule => {
+                const li = document.createElement('li');
+                li.innerHTML = rule;
+                rulesList.appendChild(li);
+            });
+
+            document.getElementById('integrity-title').textContent = t.integrityTitle;
+            document.getElementById('integrity-text').textContent = t.integrityText;
+            document.getElementById('why-title').textContent = t.whyTitle;
+            document.getElementById('why-text').textContent = t.whyText;
+            document.getElementById('quiz-title').textContent = t.quizTitle;
+            document.getElementById('quiz-subtitle').textContent = t.quizSubtitle;
+
+            // Update questions and options
+            document.getElementById('q1-text').textContent = t.q1Text;
+            const q1Options = document.querySelectorAll('#q1-options .option');
+            q1Options.forEach((btn, i) => btn.textContent = t.q1Options[i]);
+
+            document.getElementById('q2-text').textContent = t.q2Text;
+            const q2Options = document.querySelectorAll('#q2-options .option');
+            q2Options.forEach((btn, i) => btn.textContent = t.q2Options[i]);
+
+            document.getElementById('q3-text').textContent = t.q3Text;
+            const q3Options = document.querySelectorAll('#q3-options .option');
+            q3Options.forEach((btn, i) => btn.textContent = t.q3Options[i]);
+            
+            // Update active button style
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(`lang-${lang}`).classList.add('active');
+
+            // Reset quiz state
+            document.querySelectorAll('.option').forEach(option => {
+                option.classList.remove('correct', 'incorrect', 'disabled');
+                option.disabled = false;
+            });
+            document.querySelectorAll('.feedback').forEach(feedback => {
+                feedback.classList.add('hidden');
+                feedback.textContent = '';
+            });
+        }
+
+        document.querySelectorAll('.option').forEach(button => {
+            button.addEventListener('click', (e) => {
+                const selectedButton = e.target;
+                const isCorrect = selectedButton.dataset.correct === 'true';
+                const questionNumber = selectedButton.dataset.question;
+                
+                const optionsContainer = document.getElementById(`q${questionNumber}-options`);
+                const allOptions = optionsContainer.querySelectorAll('.option');
+                const feedbackEl = document.getElementById(`q${questionNumber}-feedback`);
+                
+                const lang = document.querySelector('.lang-btn.active').id.split('-')[1];
+                const t = translations[lang];
+
+                allOptions.forEach(option => {
+                    option.disabled = true;
+                    option.classList.add('disabled');
+                    if (option.dataset.correct === 'true') {
+                        option.classList.add('correct');
+                    }
+                });
+
+                if (isCorrect) {
+                    selectedButton.classList.add('correct');
+                    feedbackEl.textContent = t[`q${questionNumber}FeedbackCorrect`];
+                    feedbackEl.className = 'feedback mt-3 text-sm text-green-600 font-medium';
+                } else {
+                    selectedButton.classList.add('incorrect');
+                    feedbackEl.textContent = t[`q${questionNumber}FeedbackIncorrect`];
+                    feedbackEl.className = 'feedback mt-3 text-sm text-red-600 font-medium';
+                }
+                feedbackEl.classList.remove('hidden');
+            });
+        });
+
+        // Initial load
+        changeLanguage('en');
+
+    </script>
+
+</body>
+</html>
+
