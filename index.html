@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mr. Miljus' Classroom Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Custom styles to extend Tailwind */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* A light, neutral background */
+        }
+        h1, h2, h3 {
+            font-family: 'Lora', serif;
+        }
+        .hero-section {
+            background: linear-gradient(rgba(0, 51, 102, 0.8), rgba(0, 51, 102, 0.8)), url('https://placehold.co/1920x1080/003366/FFFFFF?text=Classroom+Resources') no-repeat center center;
+            background-size: cover;
+        }
+        .card-hover-effect {
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+        .card-hover-effect:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+    </style>
+</head>
+<body class="antialiased text-slate-700">
+
+    <!-- Header & Navigation -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div>
+                <a href="#" class="text-2xl font-bold text-slate-800">Mr. Miljus' Classes</a>
+            </div>
+            <!-- Mobile Menu Button (hidden for now, can be implemented later) -->
+            <!-- <div class="md:hidden">
+                <button class="text-slate-800 focus:outline-none">
+                    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div> -->
+            <div class="hidden md:flex space-x-6 text-lg items-center">
+                <a href="#home" class="text-slate-600 hover:text-blue-700 transition duration-300" data-lang="navHome">Home</a>
+                <a href="#classes" class="text-slate-600 hover:text-blue-700 transition duration-300" data-lang="navClasses">Classes</a>
+                
+                <!-- Language Selector -->
+                <div class="relative" id="language-switcher-container">
+                    <button id="language-button" class="flex items-center text-slate-600 hover:text-blue-700 transition duration-300 focus:outline-none">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3 5h12M9 3v2m4 0v2M3 17h12M9 15v2M4 11h12M16 5l4 6-4 6M20 11H8" />
+                        </svg>
+                        <span id="current-lang-text" class="font-medium">English</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                           <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                        </svg>
+                    </button>
+                    <div id="language-dropdown" class="absolute right-0 mt-2 w-40 bg-white rounded-md shadow-lg py-1 z-50 hidden">
+                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" data-lang-switch="en">English</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" data-lang-switch="es">Español</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" data-lang-switch="fr">Français</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero-section text-white py-24 md:py-32">
+            <div class="container mx-auto px-6 text-center">
+                <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-4" data-lang="heroTitle">Welcome to the Classroom Hub</h1>
+                <p class="text-lg md:text-xl text-slate-200 max-w-3xl mx-auto" data-lang="heroSubtitle">
+                    Your central resource for class materials, assignments, and support. Let's learn, explore, and succeed together.
+                </p>
+            </div>
+        </section>
+
+        <!-- Class Resources Section -->
+        <section id="classes" class="py-20 md:py-28 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-800" data-lang="resourcesTitle">Class Resources</h2>
+                    <p class="text-lg text-slate-500 mt-2" data-lang="resourcesSubtitle">Find materials and helpful links for your subject below.</p>
+                </div>
+                
+                <!-- Grid of Class Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
+                    
+                    <!-- Card 1: English Learners -->
+                    <div class="bg-slate-50 rounded-lg shadow-md p-8 text-center card-hover-effect">
+                        <div class="text-5xl text-blue-600 mb-4">
+                             <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M3 5h12M9 3v2m4 0v2M3 17h12M9 15v2M4 11h12M16 5l4 6-4 6M20 11H8" />
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-semibold text-slate-800 mb-3" data-lang="elTitle">English Learners</h3>
+                        <p class="text-slate-600 mb-6" data-lang="elDesc">Resources, practice exercises, and tools to help you build your English language skills.</p>
+                        <a href="#" class="inline-block bg-blue-600 text-white font-semibold py-2 px-6 rounded-lg hover:bg-blue-700 transition duration-300" data-lang="elButton">View Materials</a>
+                    </div>
+
+                    <!-- Card 2: Reading Help -->
+                    <div class="bg-slate-50 rounded-lg shadow-md p-8 text-center card-hover-effect">
+                         <div class="text-5xl text-green-600 mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-semibold text-slate-800 mb-3" data-lang="readingTitle">Reading Help</h3>
+                        <p class="text-slate-600 mb-6" data-lang="readingDesc">Strategies, guides, and practice materials to improve reading comprehension and fluency.</p>
+                        <a href="#" class="inline-block bg-green-600 text-white font-semibold py-2 px-6 rounded-lg hover:bg-green-700 transition duration-300" data-lang="readingButton">Find Resources</a>
+                    </div>
+
+                    <!-- Card 3: World History -->
+                    <div class="bg-slate-50 rounded-lg shadow-md p-8 text-center card-hover-effect">
+                         <div class="text-5xl text-purple-600 mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2h10a2 2 0 002-2v-1a2 2 0 012-2h1.945M7.75 11a2.25 2.25 0 012.25-2.25h4.5a2.25 2.25 0 012.25 2.25M4 19h16v-1a2 2 0 00-2-2H6a2 2 0 00-2 2v1zM12 21l-1.5-1.5m1.5 1.5l1.5-1.5" />
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-semibold text-slate-800 mb-3" data-lang="worldHistoryTitle">World History</h3>
+                        <p class="text-slate-600 mb-6" data-lang="worldHistoryDesc">Explore timelines, primary sources, maps, and study guides from ancient civilizations to modern times.</p>
+                        <a href="#" class="inline-block bg-purple-600 text-white font-semibold py-2 px-6 rounded-lg hover:bg-purple-700 transition duration-300" data-lang="worldHistoryButton">Explore History</a>
+                    </div>
+
+                    <!-- Card 4: US History -->
+                    <div class="bg-slate-50 rounded-lg shadow-md p-8 text-center card-hover-effect">
+                         <div class="text-5xl text-red-600 mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                               <path d="M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h6M9 11.25h6M9 15.75h6" />
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-semibold text-slate-800 mb-3" data-lang="usHistoryTitle">US History</h3>
+                        <p class="text-slate-600 mb-6" data-lang="usHistoryDesc">Access lecture notes, historical documents, and review materials for our nation's history.</p>
+                        <a href="#" class="inline-block bg-red-600 text-white font-semibold py-2 px-6 rounded-lg hover:bg-red-700 transition duration-300" data-lang="usHistoryButton">View Documents</a>
+                    </div>
+
+                    <!-- Card 5: US Government -->
+                    <div class="bg-slate-50 rounded-lg shadow-md p-8 text-center card-hover-effect">
+                         <div class="text-5xl text-yellow-500 mb-4">
+                             <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0012 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-semibold text-slate-800 mb-3" data-lang="usGovTitle">US Government</h3>
+                        <p class="text-slate-600 mb-6" data-lang="usGovDesc">Materials on the foundations of American government, civic duties, and political processes.</p>
+                        <a href="#" class="inline-block bg-yellow-500 text-white font-semibold py-2 px-6 rounded-lg hover:bg-yellow-600 transition duration-300" data-lang="usGovButton">Learn Civics</a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const languageButton = document.getElementById('language-button');
+            const languageDropdown = document.getElementById('language-dropdown');
+            const currentLangText = document.getElementById('current-lang-text');
+
+            const translations = {
+                en: {
+                    navHome: "Home",
+                    navClasses: "Classes",
+                    heroTitle: "Welcome to the Classroom Hub",
+                    heroSubtitle: "Your central resource for class materials, assignments, and support. Let's learn, explore, and succeed together.",
+                    resourcesTitle: "Class Resources",
+                    resourcesSubtitle: "Find materials and helpful links for your subject below.",
+                    elTitle: "English Learners",
+                    elDesc: "Resources, practice exercises, and tools to help you build your English language skills.",
+                    elButton: "View Materials",
+                    readingTitle: "Reading Help",
+                    readingDesc: "Strategies, guides, and practice materials to improve reading comprehension and fluency.",
+                    readingButton: "Find Resources",
+                    worldHistoryTitle: "World History",
+                    worldHistoryDesc: "Explore timelines, primary sources, maps, and study guides from ancient civilizations to modern times.",
+                    worldHistoryButton: "Explore History",
+                    usHistoryTitle: "US History",
+                    usHistoryDesc: "Access lecture notes, historical documents, and review materials for our nation's history.",
+                    usHistoryButton: "View Documents",
+                    usGovTitle: "US Government",
+                    usGovDesc: "Materials on the foundations of American government, civic duties, and political processes.",
+                    usGovButton: "Learn Civics",
+                },
+                es: {
+                    navHome: "Inicio",
+                    navClasses: "Clases",
+                    heroTitle: "Bienvenidos al Centro de Clases",
+                    heroSubtitle: "Su recurso central para materiales de clase, tareas y apoyo. Aprendamos, exploremos y tengamos éxito juntos.",
+                    resourcesTitle: "Recursos de Clase",
+                    resourcesSubtitle: "Encuentre materiales y enlaces útiles para su materia a continuación.",
+                    elTitle: "Estudiantes de Inglés",
+                    elDesc: "Recursos, ejercicios de práctica y herramientas para ayudarle a desarrollar sus habilidades en el idioma inglés.",
+                    elButton: "Ver Materiales",
+                    readingTitle: "Ayuda de Lectura",
+                    readingDesc: "Estrategias, guías y materiales de práctica para mejorar la comprensión y fluidez de la lectura.",
+                    readingButton: "Buscar Recursos",
+                    worldHistoryTitle: "Historia Mundial",
+                    worldHistoryDesc: "Explore cronogramas, fuentes primarias, mapas y guías de estudio desde civilizaciones antiguas hasta tiempos modernos.",
+                    worldHistoryButton: "Explorar Historia",
+                    usHistoryTitle: "Historia de EE. UU.",
+                    usHistoryDesc: "Acceda a apuntes de clase, documentos históricos y materiales de repaso de la historia de nuestra nación.",
+                    usHistoryButton: "Ver Documentos",
+                    usGovTitle: "Gobierno de EE. UU.",
+                    usGovDesc: "Materiales sobre los fundamentos del gobierno estadounidense, deberes cívicos y procesos políticos.",
+                    usGovButton: "Aprender Cívica",
+                },
+                fr: {
+                    navHome: "Accueil",
+                    navClasses: "Cours",
+                    heroTitle: "Bienvenue au Pôle Pédagogique",
+                    heroSubtitle: "Votre ressource centrale pour le matériel de cours, les devoirs et le soutien. Apprenons, explorons et réussissons ensemble.",
+                    resourcesTitle: "Ressources de Cours",
+                    resourcesSubtitle: "Trouvez ci-dessous du matériel et des liens utiles pour votre matière.",
+                    elTitle: "Apprenants d'Anglais",
+                    elDesc: "Ressources, exercices pratiques et outils pour vous aider à développer vos compétences en anglais.",
+                    elButton: "Voir le Matériel",
+                    readingTitle: "Aide à la Lecture",
+                    readingDesc: "Stratégies, guides et matériel de pratique pour améliorer la compréhension et la fluidité de la lecture.",
+                    readingButton: "Trouver des Ressources",
+                    worldHistoryTitle: "Histoire du Monde",
+                    worldHistoryDesc: "Explorez les chronologies, les sources primaires, les cartes et les guides d'étude des civilisations anciennes aux temps modernes.",
+                    worldHistoryButton: "Explorer l'Histoire",
+                    usHistoryTitle: "Histoire des États-Unis",
+                    usHistoryDesc: "Accédez aux notes de cours, aux documents historiques et au matériel de révision de l'histoire de notre nation.",
+                    usHistoryButton: "Voir les Documents",
+                    usGovTitle: "Gouvernement des États-Unis",
+                    usGovDesc: "Matériel sur les fondements du gouvernement américain, les devoirs civiques et les processus politiques.",
+                    usGovButton: "Apprendre l'Instruction Civique",
+                }
+            };
+
+            const setLanguage = (lang) => {
+                document.querySelectorAll('[data-lang]').forEach(element => {
+                    const key = element.getAttribute('data-lang');
+                    if (translations[lang] && translations[lang][key]) {
+                        element.textContent = translations[lang][key];
+                    }
+                });
+                
+                if (lang === 'en') currentLangText.textContent = 'English';
+                if (lang === 'es') currentLangText.textContent = 'Español';
+                if (lang === 'fr') currentLangText.textContent = 'Français';
+                
+                localStorage.setItem('language', lang);
+                languageDropdown.classList.add('hidden');
+            };
+
+            // Toggle dropdown visibility
+            languageButton.addEventListener('click', (event) => {
+                event.stopPropagation();
+                languageDropdown.classList.toggle('hidden');
+            });
+
+            // Close dropdown if clicking outside of it
+            document.addEventListener('click', (event) => {
+                const isClickInside = languageButton.contains(event.target);
+                if (!isClickInside && !languageDropdown.classList.contains('hidden')) {
+                    languageDropdown.classList.add('hidden');
+                }
+            });
+            
+            // Set language when a language in the dropdown is clicked
+            languageDropdown.addEventListener('click', (event) => {
+                const lang = event.target.getAttribute('data-lang-switch');
+                if (lang) {
+                    event.preventDefault();
+                    setLanguage(lang);
+                }
+            });
+
+            // On page load, set language from localStorage or default to English
+            const savedLang = localStorage.getItem('language') || 'en';
+            setLanguage(savedLang);
+        });
+    </script>
+</body>
+</html>
+
