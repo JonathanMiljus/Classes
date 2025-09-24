@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Gilded Age: An Economic Revolution</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(0, 194, 255, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(0, 194, 255, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(0, 194, 255, 0); }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        @keyframes flicker {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1) rotate(2deg); opacity: 0.8; }
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #1A2B3C;
+            color: #F0F8FF;
+            background-image: radial-gradient(#2c3e50 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        h1, h2, h3 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+        }
+        .header-title {
+             font-family: 'Press Start 2P', cursive;
+             font-size: 1.75rem;
+             text-shadow: 0 0 5px #00C2FF, 0 0 10px #00C2FF;
+             animation: float 6s ease-in-out infinite;
+        }
+        .header-bg {
+            background-color: rgba(26, 43, 60, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #00C2FF;
+        }
+        .btn {
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid transparent;
+        }
+        .btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 0 20px #FF4081, 0 0 30px #FF4081;
+        }
+        .btn-primary {
+            background: linear-gradient(45deg, #00C2FF, #FF4081);
+            color: white;
+            border-color: #00C2FF;
+        }
+        .card {
+            background-color: rgba(44, 62, 80, 0.6);
+            border: 1px solid #00C2FF;
+            border-radius: 12px;
+            box-shadow: 0 0 15px rgba(0, 194, 255, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 25px rgba(0, 194, 255, 0.7);
+        }
+        .game-card {
+             background: rgba(26, 43, 60, 0.9);
+             border: 2px solid #FF4081;
+             box-shadow: inset 0 0 20px rgba(255, 64, 129, 0.5), 0 0 20px rgba(255, 64, 129, 0.5);
+             border-radius: 15px;
+        }
+        .timeline-item {
+            position: relative;
+            padding-bottom: 2.5rem;
+            padding-left: 2.5rem;
+            border-left: 2px dashed #00C2FF;
+        }
+        .timeline-item:hover .timeline-dot {
+             transform: scale(1.5);
+        }
+        .timeline-dot {
+            position: absolute;
+            left: -12px;
+            top: 0px;
+            height: 22px;
+            width: 22px;
+            background: #1A2B3C;
+            border-radius: 50%;
+            border: 3px solid #00C2FF;
+            box-shadow: 0 0 10px #00C2FF;
+            transition: transform 0.3s ease;
+        }
+        #economic-spectrum-slider::-webkit-slider-thumb {
+            -webkit-appearance: none; appearance: none;
+            width: 30px; height: 30px;
+            background: #FF4081; cursor: pointer; border-radius: 50%;
+            border: 3px solid #fff; box-shadow: 0 0 10px #FF4081;
+        }
+        /* Modal styles */
+        .modal {
+            display: none; align-items: center; justify-content: center;
+            position: fixed; z-index: 100; left: 0; top: 0;
+            width: 100%; height: 100%;
+            background-color: rgba(0,0,0,0.7);
+        }
+        .modal-content {
+            background-color: #1A2B3C; color: #F0F8FF;
+            padding: 2rem; border: 2px solid #00C2FF;
+            width: 90%; max-width: 500px;
+            border-radius: 15px; text-align: center;
+            box-shadow: 0 0 30px #00C2FF;
+        }
+        /* Scroll animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* Quiz styles */
+        .quiz-option {
+            background-color: rgba(44, 62, 80, 0.8);
+            border: 1px solid #00C2FF;
+        }
+        .quiz-option.correct {
+            background-color: #2E7D32; border-color: #66BB6A;
+        }
+        .quiz-option.incorrect {
+            background-color: #C62828; border-color: #EF5350;
+        }
+        
+        /* New Forge Styles */
+        .cause-btn.active-tech { border-color: #FBBF24; background-color: rgba(251, 191, 36, 0.1); }
+        .cause-btn.active-tech svg { color: #FBBF24; transform: rotate(90deg) scale(1.1); }
+        .cause-btn.active-resources { border-color: #4ADE80; background-color: rgba(74, 222, 128, 0.1); }
+        .cause-btn.active-resources svg { color: #4ADE80; transform: translateY(-5px) scale(1.1); }
+        .cause-btn.active-people { border-color: #F472B6; background-color: rgba(244, 114, 182, 0.1); }
+        .cause-btn.active-people svg { color: #F472B6; transform: scale(1.1); }
+        #forge-flame.level1 { color: #FBBF24; }
+        #forge-flame.level2 { color: #F97316; }
+        #forge-flame.level3 { color: #EF4444; animation: flicker 1s infinite alternate; }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header -->
+    <header class="header-bg text-white p-4 shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="header-title" data-key="title">Gilded Age Econ</h1>
+            <div class="flex items-center space-x-2">
+                <button onclick="changeLanguage('en')" class="px-3 py-1 text-sm bg-blue-500 hover:bg-blue-600 rounded-full focus:outline-none ring-2 ring-blue-300">EN</button>
+                <button onclick="changeLanguage('es')" class="px-3 py-1 text-sm bg-green-500 hover:bg-green-600 rounded-full focus:outline-none ring-2 ring-green-300">ES</button>
+                <button onclick="changeLanguage('fr')" class="px-3 py-1 text-sm bg-red-500 hover:bg-red-600 rounded-full focus:outline-none ring-2 ring-red-300">FR</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto p-4 md:p-8">
+
+        <!-- Section 1: Interactive Causes -->
+        <section id="causes" class="mb-16 reveal">
+            <h2 class="text-3xl md:text-5xl font-bold mb-4 text-center text-shadow" data-key="causes_title" style="text-shadow: 0 0 8px #00C2FF;">What Fueled the Fire?</h2>
+            <p class="text-lg text-center mb-10 max-w-3xl mx-auto" data-key="causes_subtitle">The Second Industrial Revolution wasn't a glitch in the matrix. It was the ultimate 'level-up' for America, powered by a perfect combo of cheat codes!</p>
+            
+            <div class="max-w-4xl mx-auto">
+                <div class="flex flex-col md:flex-row items-center justify-center gap-8 mb-6">
+                    <!-- Ingredient 1: Tech -->
+                    <div id="cause-btn-tech" onclick="selectCause('tech')" class="cause-btn group flex flex-col items-center gap-2 cursor-pointer p-4 border border-transparent rounded-lg transition-all duration-300 hover:border-yellow-400 hover:bg-yellow-400/10 w-48">
+                        <svg class="w-16 h-16 text-gray-400 group-hover:text-yellow-400 transition-all duration-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M10.343 3.94c.09-.542.56-1.007 1.11-1.226l.554-.221c.64-.256 1.37-.015 1.722.56l.353.568c.24.385.682.597 1.138.54l.562-.063c.646-.073 1.255.332 1.465.932l.21.598c.16.457.516.84.988 1.05l.553.24c.644.28 1.02.934.82 1.58l-.203.65c-.194.618.105 1.282.688 1.506l.553.22c.64.256.97.924.73 1.54l-.244.622c-.22.56-.678.958-1.244 1.05l-.562.093c-.49.083-.893.445-1.06.91l-.21.598c-.21.6-.82.99-1.465.917l-.562-.063c-.456-.052-.9.155-1.138.54l-.353.568c-.352.575-1.082.816-1.722.56l-.554-.221a1.65 1.65 0 0 1-1.11-1.226l-.09-.542a1.65 1.65 0 0 0-.54-1.138l-.568-.353c-.575-.352-.816-1.082-.56-1.722l.221-.554c.226-1.11 1.007-1.11 1.226-.554l.542.09c.385.24.597.682.54 1.138l-.063.562c-.073.646.332 1.255.932 1.465l.598.21c.457.16.84.516 1.05.988l.24.553c.28.644.934 1.02 1.58.82l.65-.203c.618-.194 1.282.105 1.506.688l.22.553c.256.64.924.97 1.54.73l.622-.244c.56-.22.958-.678 1.05-1.244l.093-.562c.083-.49.445-.893.91-1.06l.598-.21c.6-.21.99-.82.917-1.465l-.063-.562c-.052-.456.155-.9.54-1.138l.568-.353c.575-.352.816-1.082.56-1.722l-.221-.554c-.226-1.11-1.007-1.11-1.226-.554l-.542-.09a1.65 1.65 0 0 0-1.138.54l-.353.568c-.24.385-.682.597-1.138.54l-.562-.063c-.646-.073-1.255.332-1.465.932l-.21.598c-.16.457-.516.84-.988 1.05l-.553.24c-.644.28-1.02.934-.82 1.58l.203.65c.194.618-.105 1.282-.688 1.506l-.553.22c-.64.256-.97.924-.73 1.54l.244.622c.22.56.678.958 1.244 1.05l.562.093c.49.083.893.445 1.06.91l.21.598c.21.6.82.99 1.465.917l.562-.063c.456-.052.9.155 1.138.54l.353.568c.352.575 1.082.816 1.722.56l.554-.221a1.65 1.65 0 0 1 1.11-1.226l.09-.542c.09-.542-.29-1.007-.832-1.226l-.553-.221c-.64-.256-1.37-.015-1.722.56l-.353.568a1.65 1.65 0 0 0-.54 1.138l.063.562c.073.646-.332 1.255-.932 1.465l-.598.21a1.65 1.65 0 0 1-1.05.988l-.553.24c-.644.28-1.287.038-1.58-.52l-.65-.203a1.65 1.65 0 0 0-1.506.688l-.22.553c-.256.64-.924.97-1.54.73l-.622-.244a1.65 1.65 0 0 1-1.05-1.244l-.093-.562a1.65 1.65 0 0 0-.91-1.06l-.598-.21a1.65 1.65 0 0 1-.917-1.465l.063-.562c.052-.456-.155-.9-.54-1.138l-.568-.353c-.575-.352-.816-1.082-.56-1.722l.221-.554a1.65 1.65 0 0 1 1.226-1.11l.554-.09a1.65 1.65 0 0 0 1.138-.54l.353-.568c.24-.385.682-.597 1.138-.54l.562.063c.646.073 1.255-.332 1.465-.932l.21-.598a1.65 1.65 0 0 1 .988-1.05l.553-.24a1.65 1.65 0 0 0 .82-1.58l-.203-.65a1.65 1.65 0 0 1-.688-1.506l-.22-.553c-.256-.64-.924-.97-1.54-.73l-.622.244a1.65 1.65 0 0 1-1.05 1.244l-.093.562c-.083.49-.445.893-.91 1.06l-.598.21c-.6.21-.99.82-.917 1.465l.063.562c.052.456-.155.9-.54 1.138l-.568.353c-.575.352-1.178.112-1.53-.448l-.353-.568a1.65 1.65 0 0 0-1.138-.54l-.562-.063c-.646-.073-1.05.532-1.05 1.132v.002z" /></svg>
+                        <h3 class="font-bold text-xl text-center" data-key="cause1_title">Tech Tree Unlocked</h3>
+                    </div>
+                    <!-- Ingredient 2: Resources -->
+                    <div id="cause-btn-resources" onclick="selectCause('resources')" class="cause-btn group flex flex-col items-center gap-2 cursor-pointer p-4 border border-transparent rounded-lg transition-all duration-300 hover:border-green-400 hover:bg-green-400/10 w-48">
+                         <svg class="w-16 h-16 text-gray-400 group-hover:text-green-400 transition-all duration-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18 9 11.25l4.306 4.306a11.95 11.95 0 0 1 5.814-5.518l2.74-1.22m0 0-5.94-2.281m5.94 2.28-2.28 5.941" /></svg>
+                        <h3 class="font-bold text-xl text-center" data-key="cause2_title">Infinite Resource Glitch</h3>
+                    </div>
+                    <!-- Ingredient 3: People -->
+                    <div id="cause-btn-people" onclick="selectCause('people')" class="cause-btn group flex flex-col items-center gap-2 cursor-pointer p-4 border border-transparent rounded-lg transition-all duration-300 hover:border-pink-400 hover:bg-pink-400/10 w-48">
+                        <svg class="w-16 h-16 text-gray-400 group-hover:text-pink-400 transition-all duration-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m-7.5-2.28a4.5 4.5 0 0 0-1.397 8.93c-2.358 0-4.273-1.915-4.273-4.273s1.915-4.273 4.273-4.273c.26 0 .51.02.75.055a2.25 2.25 0 0 1 .141 2.203m1.262 2.203a2.25 2.25 0 0 1 3.182 0l1.414 1.415a2.25 2.25 0 0 1 0 3.182l-1.414 1.414a2.25 2.25 0 0 1-3.182 0M10.5 1.5a4.5 4.5 0 1 0-1.397 8.93c-2.358 0-4.273-1.915-4.273-4.273s1.915-4.273 4.273-4.273Z" /></svg>
+                        <h3 class="font-bold text-xl text-center" data-key="cause3_title">Player Count Explosion</h3>
+                    </div>
+                </div>
+                
+                <div class="card p-6 rounded-lg text-center flex flex-col md:flex-row items-center gap-6 min-h-[150px]">
+                    <div class="relative">
+                        <svg id="forge-flame" class="w-24 h-24 text-gray-600 transition-all duration-500" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path d="M17.6 3.2C16.8 2.5 16 2 15 2c-1.4 0-2.8.8-3.8 2.2-.9 1.4-1.3 2.9-1.2 4.2.1 1.2.7 2.3 1.5 3.1.8.8 1.9 1.4 3.1 1.5 1.3.1 2.8-.3 4.2-1.2 1.4-.9 2.2-2.3 2.2-3.8.1-1-.4-1.8-1.1-2.6zm-3.1 8.3c-.6-.4-1-1-1.1-1.7-.1-.7.2-1.4.6-1.9.4-.5.9-.7 1.6-.6.7.1 1.3.4 1.8 1 .4.6.7 1.2.6 1.9-.1.7-.6 1.3-1.2 1.7-.6.4-1.2.5-1.9.5-.6 0-1.2-.2-1.4-.5zM12.2 6.2C11 5 10 4.4 9 4.4c-2.3 0-4.4 1.9-4.4 4.4s1.9 4.4 4.4 4.4c1 0 2-.6 3.2-1.8l-1-1c-.8.8-1.6 1.2-2.2 1.2-1.5 0-2.8-1.3-2.8-2.8s1.3-2.8 2.8-2.8c.6 0 1.4.4 2.2 1.2l1-1z"/></svg>
+                    </div>
+                    <div class="text-left flex-1">
+                        <p id="cause-desc" class="text-lg" data-key="causes_select_prompt"></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: The Free Market Game -->
+        <section id="game" class="mb-16 reveal">
+            <h2 class="text-3xl md:text-5xl font-bold mb-4 text-center" data-key="game_title" style="text-shadow: 0 0 8px #FF4081;">The Industrialist Challenge!</h2>
+            <p class="text-lg text-center mb-10 max-w-3xl mx-auto" data-key="game_subtitle">Can you conquer the high-stakes game of the free market? Make choices, manage resources, and become a legendary Tycoon... or get wiped from the server!</p>
+
+            <div id="game-container" class="game-card max-w-2xl mx-auto p-6 md:p-8 rounded-lg text-center">
+                <div id="game-start-screen">
+                    <h3 class="text-3xl font-bold mb-4 text-yellow-300" data-key="game_welcome" style="font-family: 'Press Start 2P';">LEVEL 1: STARTUP</h3>
+                    <p class="mb-6" data-key="game_instructions">Your goal: Reach 5 Factories to win! But be careful, if your capital hits $0, it's GAME OVER.</p>
+                    <button id="start-game-btn" class="btn btn-primary font-bold py-3 px-8 rounded-lg text-lg" data-key="game_start_btn">Start Challenge</button>
+                </div>
+                <div id="game-main-screen" class="hidden">
+                    <div class="flex justify-around mb-6 text-xl font-semibold text-yellow-300">
+                        <div><span data-key="game_capital">Capital:</span> <span id="capital-stat">$10,000</span></div>
+                        <div><span data-key="game_factories">Factories:</span> <span id="factories-stat">1</span> / 5</div>
+                    </div>
+                    <div class="bg-black bg-opacity-50 p-6 rounded-lg border border-gray-600 mb-6 min-h-[100px] text-left" style="font-family: monospace, monospace;">
+                        <p id="event-text" class="text-lg text-green-400 whitespace-pre-wrap"></p>
+                    </div>
+                    <div id="choices-container" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Section 5: Knowledge Check Quiz -->
+        <section id="quiz" class="mb-16 reveal">
+            <h2 class="text-3xl md:text-5xl font-bold mb-4 text-center" data-key="quiz_title" style="text-shadow: 0 0 8px #00C2FF;">Knowledge Check!</h2>
+            <p class="text-lg text-center mb-10 max-w-3xl mx-auto" data-key="quiz_subtitle">Time for a quick test! Did you absorb the intel? Let's find out.</p>
+            <div class="game-card max-w-2xl mx-auto p-6 md:p-8 rounded-lg">
+                <div id="quiz-question-container">
+                    <h3 id="quiz-question" class="text-xl font-bold mb-6 text-center"></h3>
+                    <div id="quiz-options" class="grid grid-cols-1 gap-4"></div>
+                </div>
+                <div id="quiz-feedback" class="hidden mt-4 text-center font-bold text-2xl"></div>
+            </div>
+        </section>
+
+        <!-- Section 3: Economic Spectrum -->
+        <section id="spectrum" class="mb-16 reveal">
+            <h2 class="text-3xl md:text-5xl font-bold mb-4 text-center" data-key="spectrum_title">The Economic Spectrum</h2>
+            <p class="text-lg text-center mb-10 max-w-3xl mx-auto" data-key="spectrum_subtitle">Economies aren't just one way or another. They're on a slider. The Gilded Age cranked the "Market Economy" slider way up. Drag to explore!</p>
+            <div class="max-w-3xl mx-auto card p-6 rounded-lg">
+                <div class="flex justify-between font-bold text-lg mb-2">
+                    <span data-key="spectrum_market">Market Economy</span>
+                    <span data-key="spectrum_command">Command Economy</span>
+                </div>
+                <input type="range" min="0" max="100" value="15" class="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer" id="economic-spectrum-slider">
+                <div class="mt-4 p-4 rounded-lg bg-black bg-opacity-30 text-center">
+                    <h3 id="spectrum-heading" class="font-bold text-2xl mb-2 text-yellow-300"></h3>
+                    <p id="spectrum-desc"></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Timeline -->
+        <section id="timeline" class="reveal">
+            <h2 class="text-3xl md:text-5xl font-bold mb-12 text-center" data-key="timeline_title">Timeline of Game-Changers</h2>
+            <div class="max-w-3xl mx-auto">
+                <div class="timeline-item"><div class="timeline-dot"></div><h3 class="text-2xl font-bold text-yellow-300">1869</h3><p class="font-semibold text-lg" data-key="timeline1_title">The Cross-Country Fast-Travel Network</p><p data-key="timeline1_desc">The Transcontinental Railroad is completed. Suddenly, the entire U.S. becomes one giant server, connecting markets from coast to coast.</p></div>
+                <div class="timeline-item"><div class="timeline-dot"></div><h3 class="text-2xl font-bold text-yellow-300">1876</h3><p class="font-semibold text-lg" data-key="timeline2_title">Instant Messaging Unlocked</p><p data-key="timeline2_desc">Alexander Graham Bell patents the telephone. This new tech allows businesses to coordinate instantly across the map, leading to the rise of massive corporate guilds.</p></div>
+                <div class="timeline-item"><div class="timeline-dot"></div><h3 class="text-2xl font-bold text-yellow-300">1882</h3><p class="font-semibold text-lg" data-key="timeline3_title">The First Mega-Guild is Formed</p><p data-key="timeline3_desc">Rockefeller's Standard Oil Trust basically takes over the entire oil industry. This shows the power of monopolies, raising questions about fair play vs. total server domination.</p></div>
+                <div class="timeline-item" style="border-left: 2px dashed transparent;"><div class="timeline-dot"></div><h3 class="text-2xl font-bold text-yellow-300">1890</h3><p class="font-semibold text-lg" data-key="timeline4_title">The Admins Drop a Patch</p><p data-key="timeline4_desc">The Sherman Antitrust Act is the government's first attempt to nerf monopolies. A major shift from a pure free-for-all market toward admin intervention to keep the game competitive.</p></div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="text-center p-6 mt-12 bg-black bg-opacity-50 text-gray-400 text-sm">
+        <p>Material made by and for Miljus' classes</p>
+    </footer>
+
+    <!-- Game Over Modal -->
+    <div id="game-over-modal" class="modal">
+        <div class="modal-content"><h2 id="modal-title" class="text-4xl font-bold mb-4" style="font-family: 'Press Start 2P';"></h2><p id="modal-message" class="text-lg mb-6"></p><button id="restart-game-btn" class="btn btn-primary font-bold py-2 px-6 rounded-lg" data-key="game_restart_btn">Play Again</button></div>
+    </div>
+
+
+<script>
+    // --- TRANSLATION DATA ---
+    const translations = {
+        en: {
+            title: "Gilded Age Econ",
+            causes_title: "What Fueled the Fire?",
+            causes_subtitle: "The Second Industrial Revolution wasn't a glitch in the matrix. It was the ultimate 'level-up' for America, powered by a perfect combo of cheat codes!",
+            causes_select_prompt: "Click an ingredient above to learn how it fueled the revolution!",
+            causes_ignited: "<strong>REVOLUTION IGNITED!</strong> With technology, resources, and people combined, the engine of industry roared to life, changing America forever.",
+            cause1_title: "Tech Tree Unlocked",
+            cause1_desc: "America started with a launchpad: steam power for speed, mass production for quantity, and factories to bring the players together. The first revolution was just the tutorial!",
+            cause2_title: "Infinite Resource Glitch",
+            cause2_desc: "The U.S. map was overflowing with loot: rich soil, rushing rivers, endless forests, and treasure chests of coal, iron, and oil. All the raw materials needed to craft an empire.",
+            cause3_title: "Player Count Explosion",
+            cause3_desc: "Millions of new players, including immigrants, joined the server. This meant a massive workforce for the factories and a huge market of consumers ready to buy all the new items!",
+            game_title: "The Industrialist Challenge!",
+            game_subtitle: "Can you conquer the high-stakes game of the free market? Make choices, manage resources, and become a legendary Tycoon... or get wiped from the server!",
+            game_welcome: "LEVEL 1: STARTUP",
+            game_instructions: "Your goal: Reach 5 Factories to win! But be careful, if your capital hits $0, it's GAME OVER.",
+            game_start_btn: "Start Challenge",
+            game_capital: "Capital:",
+            game_factories: "Factories:",
+            game_restart_btn: "Play Again",
+            game_win_title: "YOU WIN!",
+            game_win_msg: "A true Captain of Industry! You built an empire and dominated the server. Your legacy is secure!",
+            game_loss_title: "GAME OVER",
+            game_loss_msg: "The free market is brutal. Your decisions led to bankruptcy. You have been kicked from the server.",
+            quiz_title: "Knowledge Check!",
+            quiz_subtitle: "Time for a quick test! Did you absorb the intel? Let's find out.",
+            spectrum_title: "The Economic Spectrum",
+            spectrum_subtitle: "Economies aren't just one way or another. They're on a slider. The Gilded Age cranked the 'Market Economy' slider way up. Drag to explore!",
+            spectrum_market: "Market Economy",
+            spectrum_command: "Command Economy",
+            timeline_title: "Timeline of Game-Changers",
+            timeline1_title: "The Cross-Country Fast-Travel Network",
+            timeline1_desc: "The Transcontinental Railroad is completed. Suddenly, the entire U.S. becomes one giant server, connecting markets from coast to coast.",
+            timeline2_title: "Instant Messaging Unlocked",
+            timeline2_desc: "Alexander Graham Bell patents the telephone. This new tech allows businesses to coordinate instantly across the map, leading to the rise of massive corporate guilds.",
+            timeline3_title: "The First Mega-Guild is Formed",
+            timeline3_desc: "Rockefeller's Standard Oil Trust basically takes over the entire oil industry. This shows the power of monopolies, raising questions about fair play vs. total server domination.",
+            timeline4_title: "The Admins Drop a Patch",
+            timeline4_desc: "The Sherman Antitrust Act is the government's first attempt to nerf monopolies. A major shift from a pure free-for-all market toward admin intervention to keep the game competitive.",
+            game_loading: "Loading next event...",
+            game_events: [
+                { text: "A new invention, the Bessemer Process, makes steel production cheaper. It costs $5000 to implement.", choices: [ { text: "Invest! Efficiency is key.", effect: { capital: -5000, factories: 0.2 }, feedback: "Smart move! Your production is now more efficient." }, { text: "Too risky. Save the cash.", effect: { capital: 0, factories: 0 }, feedback: "You played it safe, but a competitor who invested is now growing faster." } ] },
+                { text: "Workers in your factory are demanding a 10% wage increase. They are threatening to strike!", choices: [ { text: "Agree. Happy workers are productive.", effect: { capital: -2000, factories: 0 }, feedback: "The workers are happy and productivity remains high." }, { text: "Refuse. Can't afford it.", effect: { capital: 0, factories: -0.5 }, feedback: "The strike begins! One of your factories shuts down temporarily, hurting your output." } ] },
+                { text: "A competitor is trying to buy one of your factories for $8000.", choices: [ { text: "Sell. Quick cash is good.", effect: { capital: 8000, factories: -1 }, feedback: "You have more cash, but less production power." }, { text: "Refuse. We're building an empire!", effect: { capital: 0, factories: 0 }, feedback: "You hold your ground, showing the market you're here to stay." } ] },
+                { text: "There's an opportunity to build a new factory in a growing city for $7000.", choices: [ { text: "Build it! Expand the business.", effect: { capital: -7000, factories: 1 }, feedback: "Expansion is risky but necessary for growth. Your new factory is up and running!" }, { text: "No, consolidate what we have.", effect: { capital: 0, factories: 0 }, feedback: "A cautious approach. You focus on your existing operations." } ] },
+                { text: "A railroad company offers you a bulk discount for shipping your goods, but requires a $3000 upfront fee.", choices: [ { text: "Pay the fee. Lower costs long-term.", effect: { capital: -3000, factories: 0.1 }, feedback: "Your logistics are now cheaper, giving you a slight edge." }, { text: "Decline. Too much cash right now.", effect: { capital: 0, factories: 0 }, feedback: "You miss out on the deal. Shipping costs remain the same." } ] }
+            ]
+        },
+        es: {
+            title: "Economía Gilded Age",
+            causes_title: "¿Qué Encendió el Fuego?",
+            causes_subtitle: "La Segunda Revolución Industrial no fue un error en la Matrix. Fue el 'level-up' definitivo para América, ¡impulsado por una combinación perfecta de trucos!",
+            causes_select_prompt: "¡Haz clic en un ingrediente de arriba para saber cómo impulsó la revolución!",
+            causes_ignited: "<strong>¡REVOLUCIÓN ENCENDIDA!</strong> Con la tecnología, los recursos y la gente combinados, el motor de la industria cobró vida, cambiando a América para siempre.",
+            cause1_title: "Árbol Tecnológico Desbloqueado",
+            cause1_desc: "América comenzó con una plataforma de lanzamiento: energía de vapor para velocidad, producción en masa para cantidad y fábricas para reunir a los jugadores. ¡La primera revolución fue solo el tutorial!",
+            cause2_title: "Glitch de Recursos Infinitos",
+            cause2_desc: "El mapa de EE. UU. estaba repleto de botín: suelo fértil, ríos caudalosos, bosques interminables y cofres del tesoro de carbón, hierro y petróleo. Todas las materias primas para forjar un imperio.",
+            cause3_title: "Explosión de Jugadores",
+            cause3_desc: "Millones de nuevos jugadores, incluidos inmigrantes, se unieron al servidor. Esto significó una fuerza laboral masiva para las fábricas y un enorme mercado de consumidores listos para comprar los nuevos artículos.",
+            game_title: "¡Desafío Industrialista!",
+            game_subtitle: "¿Puedes conquistar el juego de alto riesgo del libre mercado? Toma decisiones, gestiona recursos y conviértete en un magnate legendario... ¡o serás eliminado del servidor!",
+            game_welcome: "NIVEL 1: INICIO",
+            game_instructions: "Tu objetivo: ¡Alcanza 5 Fábricas para ganar! Pero cuidado, si tu capital llega a $0, es FIN DEL JUEGO.",
+            game_start_btn: "Empezar Desafío",
+            game_capital: "Capital:",
+            game_factories: "Fábricas:",
+            game_restart_btn: "Jugar de Nuevo",
+            game_win_title: "¡GANASTE!",
+            game_win_msg: "¡Un verdadero Capitán de la Industria! Construiste un imperio y dominaste el servidor. ¡Tu legado está seguro!",
+            game_loss_title: "FIN DEL JUEGO",
+            game_loss_msg: "El libre mercado es brutal. Tus decisiones te llevaron a la bancarrota. Has sido expulsado del servidor.",
+            quiz_title: "¡Prueba de Conocimiento!",
+            quiz_subtitle: "¡Hora de una prueba rápida! ¿Absorbiste la información? Averigüémoslo.",
+            spectrum_title: "El Espectro Económico",
+            spectrum_subtitle: "Las economías no son de una sola manera. Están en un control deslizante. La Edad Dorada subió al máximo el control de 'Economía de Mercado'. ¡Arrastra para explorar!",
+            spectrum_market: "Economía de Mercado",
+            spectrum_command: "Economía Planificada",
+            timeline_title: "Cronología de Cambios Clave",
+            timeline1_title: "La Red de Viaje Rápido Nacional",
+            timeline1_desc: "Se completa el Ferrocarril Transcontinental. De repente, todo EE. UU. se convierte en un servidor gigante, conectando mercados de costa a costa.",
+            timeline2_title: "Mensajería Instantánea Desbloqueada",
+            timeline2_desc: "Alexander Graham Bell patenta el teléfono. Esta nueva tecnología permite a las empresas coordinarse al instante en todo el mapa, lo que lleva al surgimiento de gremios corporativos masivos.",
+            timeline3_title: "Se Forma el Primer Mega-Gremio",
+            timeline3_desc: "El Standard Oil Trust de Rockefeller básicamente se apodera de toda la industria petrolera. Esto muestra el poder de los monopolios, planteando dudas sobre el juego limpio frente a la dominación total del servidor.",
+            timeline4_title: "Los Admins Lanzan un Parche",
+            timeline4_desc: "La Ley Sherman Antitrust es el primer intento del gobierno de 'nerfear' los monopolios. Un cambio importante de un mercado de sálvese quien pueda hacia la intervención de los administradores para mantener el juego competitivo.",
+            game_loading: "Cargando siguiente evento...",
+            game_events: [
+                { text: "Una nueva invención, el Proceso Bessemer, abarata la producción de acero. Cuesta $5000 implementarlo.", choices: [ { text: "¡Invertir! La eficiencia es clave.", effect: { capital: -5000, factories: 0.2 }, feedback: "¡Movimiento inteligente! Tu producción es ahora más eficiente." }, { text: "Demasiado arriesgado. Ahorra el dinero.", effect: { capital: 0, factories: 0 }, feedback: "Jugaste a lo seguro, pero un competidor que invirtió ahora está creciendo más rápido." } ] },
+                { text: "¡Los trabajadores de tu fábrica exigen un aumento salarial del 10%. Amenazan con hacer huelga!", choices: [ { text: "Aceptar. Los trabajadores felices son productivos.", effect: { capital: -2000, factories: 0 }, feedback: "Los trabajadores están contentos y la productividad se mantiene alta." }, { text: "Rechazar. No puedo permitírmelo.", effect: { capital: 0, factories: -0.5 }, feedback: "¡Comienza la huelga! Una de tus fábricas cierra temporalmente, afectando tu producción." } ] },
+                { text: "Un competidor está tratando de comprar una de tus fábricas por $8000.", choices: [ { text: "Vender. El dinero rápido es bueno.", effect: { capital: 8000, factories: -1 }, feedback: "Tienes más dinero, pero menos poder de producción." }, { text: "Rechazar. ¡Estamos construyendo un imperio!", effect: { capital: 0, factories: 0 }, feedback: "Te mantienes firme, mostrando al mercado que estás aquí para quedarte." } ] },
+                { text: "Hay una oportunidad de construir una nueva fábrica en una ciudad en crecimiento por $7000.", choices: [ { text: "¡Construirla! Expandir el negocio.", effect: { capital: -7000, factories: 1 }, feedback: "La expansión es arriesgada pero necesaria para el crecimiento. ¡Tu nueva fábrica está en marcha!" }, { text: "No, consolidar lo que tenemos.", effect: { capital: 0, factories: 0 }, feedback: "Un enfoque cauteloso. Te concentras en tus operaciones existentes." } ] },
+                { text: "Una compañía de ferrocarriles te ofrece un descuento por volumen para enviar tus mercancías, pero requiere una tarifa inicial de $3000.", choices: [ { text: "Pagar la tarifa. Menores costos a largo plazo.", effect: { capital: -3000, factories: 0.1 }, feedback: "Tu logística ahora es más barata, dándote una ligera ventaja." }, { text: "Rechazar. Demasiado dinero ahora mismo.", effect: { capital: 0, factories: 0 }, feedback: "Pierdes la oferta. Los costos de envío siguen igual." } ] }
+            ]
+        },
+        fr: {
+            title: "Économie Gilded Age",
+            causes_title: "Qu'est-ce qui a Allumé le Feu ?",
+            causes_subtitle: "La Seconde Révolution Industrielle n'était pas un bug dans la matrice. C'était la 'montée de niveau' ultime pour l'Amérique, alimentée par une combinaison parfaite de codes de triche !",
+            causes_select_prompt: "Cliquez sur un ingrédient ci-dessus pour savoir comment il a alimenté la révolution !",
+            causes_ignited: "<strong>RÉVOLUTION ENFLAMMÉE !</strong> En combinant la technologie, les ressources et les gens, le moteur de l'industrie s'est mis en marche, changeant l'Amérique pour toujours.",
+            cause1_title: "Arbre Technologique Débloqué",
+            cause1_desc: "L'Amérique a commencé avec une rampe de lancement : la vapeur pour la vitesse, la production de masse pour la quantité et les usines pour rassembler les joueurs. La première révolution n'était que le tutoriel !",
+            cause2_title: "Glitch de Ressources Infinies",
+            cause2_desc: "La carte des États-Unis regorgeait de butin : sol riche, rivières tumultueuses, forêts sans fin et coffres au trésor de charbon, de fer et de pétrole. Toutes les matières premières pour forger un empire.",
+            cause3_title: "Explosion du Nombre de Joueurs",
+            cause3_desc: "Des millions de nouveaux joueurs, y compris des immigrants, ont rejoint le serveur. Cela signifiait une main-d'œuvre massive pour les usines et un énorme marché de consommateurs prêts à acheter tous les nouveaux articles.",
+            game_title: "Le Défi de l'Industriel !",
+            game_subtitle: "Pouvez-vous conquérir le jeu à haut risque du marché libre ? Prenez des décisions, gérez vos ressources et devenez un magnat légendaire... ou soyez banni du serveur !",
+            game_welcome: "NIVEAU 1 : DÉMARRAGE",
+            game_instructions: "Votre but : Atteindre 5 usines pour gagner ! Mais attention, si votre capital atteint 0 $, c'est GAME OVER.",
+            game_start_btn: "Commencer le Défi",
+            game_capital: "Capital:",
+            game_factories: "Usines:",
+            game_restart_btn: "Rejouer",
+            game_win_title: "VOUS GAGNEZ !",
+            game_win_msg: "Un vrai Capitaine d'Industrie ! Vous avez bâti un empire et dominé le serveur. Votre héritage est assuré !",
+            game_loss_title: "GAME OVER",
+            game_loss_msg: "Le marché libre est brutal. Vos décisions ont mené à la faillite. Vous avez été banni du serveur.",
+            quiz_title: "Contrôle des Connaissances !",
+            quiz_subtitle: "C'est l'heure d'un test rapide ! Avez-vous absorbé l'information ? Découvrons-le.",
+            spectrum_title: "Le Spectre Économique",
+            spectrum_subtitle: "Les économies ne sont pas d'une seule manière. Elles sont sur un curseur. L'Âge d'Or a poussé le curseur 'Économie de Marché' au maximum. Faites glisser pour explorer !",
+            spectrum_market: "Économie de Marché",
+            spectrum_command: "Économie Dirigée",
+            timeline_title: "Chronologie des Événements Clés",
+            timeline1_title: "Le Réseau de Voyage Rapide National",
+            timeline1_desc: "Le chemin de fer transcontinental est achevé. Soudain, l'ensemble des États-Unis devient un serveur géant, reliant les marchés d'un océan à l'autre.",
+            timeline2_title: "Messagerie Instantanée Débloquée",
+            timeline2_desc: "Alexander Graham Bell brevète le téléphone. Cette nouvelle technologie permet aux entreprises de se coordonner instantanément sur toute la carte, menant à l'émergence de guildes d'entreprises massives.",
+            timeline3_title: "La Première Méga-Guilde est Formée",
+            timeline3_desc: "Le Standard Oil Trust de Rockefeller prend pratiquement le contrôle de toute l'industrie pétrolière. Cela montre le pouvoir des monopoles, soulevant des questions sur le fair-play contre la domination totale du serveur.",
+            timeline4_title: "Les Admins Lancent un Patch",
+            timeline4_desc: "Le Sherman Antitrust Act est la première tentative du gouvernement de 'nerfer' les monopoles. Un changement majeur d'un marché de laisser-faire pur vers une intervention administrative pour maintenir le jeu compétitif.",
+            game_loading: "Chargement du prochain événement...",
+            game_events: [
+                { text: "Une nouvelle invention, le procédé Bessemer, rend la production d'acier moins chère. Sa mise en œuvre coûte 5000 $.", choices: [ { text: "Investir ! L'efficacité est la clé.", effect: { capital: -5000, factories: 0.2 }, feedback: "Bien joué ! Votre production est maintenant plus efficace." }, { text: "Trop risqué. Gardez l'argent.", effect: { capital: 0, factories: 0 }, feedback: "Vous avez joué la sécurité, mais un concurrent qui a investi se développe maintenant plus rapidement." } ] },
+                { text: "Les ouvriers de votre usine réclament une augmentation de salaire de 10%. Ils menacent de faire la grève !", choices: [ { text: "Accepter. Des ouvriers heureux sont productifs.", effect: { capital: -2000, factories: 0 }, feedback: "Les ouvriers sont contents et la productivité reste élevée." }, { text: "Refuser. Je ne peux pas me le permettre.", effect: { capital: 0, factories: -0.5 }, feedback: "La grève commence ! Une de vos usines ferme temporairement, ce qui nuit à votre production." } ] },
+                { text: "Un concurrent essaie d'acheter une de vos usines pour 8000 $.", choices: [ { text: "Vendre. L'argent rapide est bon.", effect: { capital: 8000, factories: -1 }, feedback: "Vous avez plus d'argent, mais moins de puissance de production." }, { text: "Refuser. Nous bâtissons un empire !", effect: { capital: 0, factories: 0 }, feedback: "Vous tenez bon, montrant au marché que vous êtes là pour durer." } ] },
+                { text: "Il est possible de construire une nouvelle usine dans une ville en pleine croissance pour 7000 $.", choices: [ { text: "La construire ! Développer l'entreprise.", effect: { capital: -7000, factories: 1 }, feedback: "L'expansion est risquée mais nécessaire à la croissance. Votre nouvelle usine est opérationnelle !" }, { text: "Non, consolider ce que nous avons.", effect: { capital: 0, factories: 0 }, feedback: "Une approche prudente. Vous vous concentrez sur vos opérations existantes." } ] },
+                { text: "Une compagnie de chemin de fer vous offre une réduction sur le transport de vos marchandises, mais demande des frais initiaux de 3000 $.", choices: [ { text: "Payer les frais. Coûts réduits à long terme.", effect: { capital: -3000, factories: 0.1 }, feedback: "Votre logistique est maintenant moins chère, vous donnant un léger avantage." }, { text: "Refuser. Trop d'argent en ce moment.", effect: { capital: 0, factories: 0 }, feedback: "Vous manquez l'occasion. Les frais de port restent les mêmes." } ] }
+            ]
+        }
+    };
+
+    let currentLanguage = 'en';
+
+    function changeLanguage(lang) {
+        currentLanguage = lang;
+        document.querySelectorAll('[data-key]').forEach(elem => {
+            const key = elem.getAttribute('data-key');
+            if (translations[lang] && translations[lang][key]) {
+                elem.innerHTML = translations[lang][key];
+            }
+        });
+        updateSpectrumText();
+        setupQuiz();
+        resetCauses();
+    }
+    
+    // --- SCROLL REVEAL ANIMATION ---
+    const revealElements = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.1 });
+    revealElements.forEach(el => observer.observe(el));
+    
+    // --- CAUSES 'FORGE' LOGIC ---
+    const causeMap = { tech: 'cause1_desc', resources: 'cause2_desc', people: 'cause3_desc' };
+    const causeButtonMap = {
+        tech: document.getElementById('cause-btn-tech'),
+        resources: document.getElementById('cause-btn-resources'),
+        people: document.getElementById('cause-btn-people')
+    };
+    const causeDesc = document.getElementById('cause-desc');
+    const forgeFlame = document.getElementById('forge-flame');
+    let selectedCauses = new Set();
+
+    function selectCause(causeName) {
+        selectedCauses.add(causeName);
+        
+        causeButtonMap.tech.classList.toggle('active-tech', selectedCauses.has('tech'));
+        causeButtonMap.resources.classList.toggle('active-resources', selectedCauses.has('resources'));
+        causeButtonMap.people.classList.toggle('active-people', selectedCauses.has('people'));
+        
+        causeDesc.innerHTML = translations[currentLanguage][causeMap[causeName]];
+
+        forgeFlame.classList.remove('level1', 'level2', 'level3');
+        if (selectedCauses.size === 1) forgeFlame.classList.add('level1');
+        if (selectedCauses.size === 2) forgeFlame.classList.add('level2');
+        if (selectedCauses.size === 3) {
+            forgeFlame.classList.add('level3');
+            setTimeout(() => {
+                 causeDesc.innerHTML = translations[currentLanguage].causes_ignited;
+            }, 1500);
+        }
+    }
+
+    function resetCauses() {
+        selectedCauses.clear();
+        Object.values(causeButtonMap).forEach(btn => btn.classList.remove('active-tech', 'active-resources', 'active-people'));
+        forgeFlame.classList.remove('level1', 'level2', 'level3');
+        causeDesc.innerHTML = translations[currentLanguage].causes_select_prompt;
+    }
+
+    // --- ECONOMIC SPECTRUM LOGIC ---
+    const slider = document.getElementById('economic-spectrum-slider');
+    const spectrumHeading = document.getElementById('spectrum-heading');
+    const spectrumDescEl = document.getElementById('spectrum-desc');
+    const spectrumData = {
+        en: [
+            { range: 33, title: "Pure Market Economy", desc: "Private individuals own everything. Government stays out. Prices set by supply and demand. (A theoretical ideal!)" },
+            { range: 66, title: "Mixed Economy", desc: "A blend! Private businesses exist, but government provides services (schools) and creates regulations (safety laws). Most countries are here." },
+            { range: 101, title: "Command Economy", desc: "The government owns and controls all major industries. It decides what gets made, how much it costs, and who gets it." }
+        ],
+        es: [
+            { range: 33, title: "Economía de Mercado Pura", desc: "Los particulares son dueños de todo. El gobierno no interviene. Los precios los fijan la oferta y la demanda. (¡Un ideal teórico!)" },
+            { range: 66, title: "Economía Mixta", desc: "¡Una mezcla! Existen empresas privadas, pero el gobierno proporciona servicios (escuelas) y crea regulaciones (leyes de seguridad). La mayoría de los países están aquí." },
+            { range: 101, title: "Economía Planificada", desc: "El gobierno posee y controla las industrias principales. Decide qué se produce, cuánto cuesta y quién lo obtiene." }
+        ],
+        fr: [
+            { range: 33, title: "Économie de Marché Pure", desc: "Les particuliers possèdent tout. Le gouvernement n'intervient pas. Les prix sont fixés par l'offre et la demande. (Un idéal théorique !)" },
+            { range: 66, title: "Économie Mixte", desc: "Un mélange ! Les entreprises privées existent, mais le gouvernement fournit des services (écoles) et crée des réglementations (lois de sécurité). La plupart des pays sont ici." },
+            { range: 101, title: "Économie Dirigée", desc: "Le gouvernement possède et contrôle les industries principales. Il décide de ce qui est produit, de son coût et de qui l'obtient." }
+        ]
+    };
+    function updateSpectrumText() {
+        const value = slider.value;
+        const data = spectrumData[currentLanguage].find(item => value < item.range);
+        spectrumHeading.textContent = data.title;
+        spectrumDescEl.textContent = data.desc;
+    }
+    slider.addEventListener('input', updateSpectrumText);
+
+    // --- GAME LOGIC ---
+    const gameStartScreen = document.getElementById('game-start-screen');
+    const gameMainScreen = document.getElementById('game-main-screen');
+    const startGameBtn = document.getElementById('start-game-btn');
+    const capitalStat = document.getElementById('capital-stat');
+    const factoriesStat = document.getElementById('factories-stat');
+    const eventText = document.getElementById('event-text');
+    const choicesContainer = document.getElementById('choices-container');
+    const modal = document.getElementById('game-over-modal');
+    const modalTitle = document.getElementById('modal-title');
+    const modalMessage = document.getElementById('modal-message');
+    const restartGameBtn = document.getElementById('restart-game-btn');
+
+    let capital, factories, currentEventIndex;
+    let shuffledEvents = [];
+    const WIN_CONDITION = 5;
+
+    function startGame() {
+        capital = 10000;
+        factories = 1;
+        currentEventIndex = -1;
+        gameStartScreen.classList.add('hidden');
+        gameMainScreen.classList.remove('hidden');
+        nextEvent();
+    }
+
+    function updateStats() {
+        capitalStat.textContent = `$${capital}`;
+        factoriesStat.textContent = `${Math.round(factories * 10) / 10} / ${WIN_CONDITION}`;
+    }
+
+    function typeWriter(element, text, i = 0) {
+        if (i >= text.length) return;
+        if (text.charAt(i) === '<') {
+            const closingTagIndex = text.indexOf('>', i);
+            if (closingTagIndex !== -1) {
+                element.innerHTML += text.substring(i, closingTagIndex + 1);
+                setTimeout(() => typeWriter(element, text, closingTagIndex + 1), 20);
+                return;
+            }
+        }
+        element.innerHTML += text.charAt(i);
+        setTimeout(() => typeWriter(element, text, i + 1), 20);
+    }
+
+    function nextEvent() {
+        if (!shuffledEvents || currentEventIndex >= shuffledEvents.length - 1) {
+            currentEventIndex = 0;
+            shuffledEvents = [...translations[currentLanguage].game_events].sort(() => Math.random() - 0.5);
+        } else {
+            currentEventIndex++;
+        }
+
+        const event = shuffledEvents[currentEventIndex];
+        eventText.innerHTML = '';
+        typeWriter(eventText, `> ${event.text}`);
+        
+        choicesContainer.innerHTML = '';
+        event.choices.forEach(choice => {
+            const button = document.createElement('button');
+            button.textContent = choice.text;
+            button.className = "btn btn-primary font-bold py-3 px-4 rounded-lg";
+            button.onclick = () => handleChoice(choice);
+            choicesContainer.appendChild(button);
+    });
+    updateStats();
+}
+
+function handleChoice(choice) {
+    choicesContainer.querySelectorAll('button').forEach(btn => btn.disabled = true);
+    capital += choice.effect.capital;
+    factories += choice.effect.factories;
+    if (factories < 0) factories = 0;
+    updateStats();
+    eventText.innerHTML += `\n\n<span class="text-yellow-400">> ${choice.feedback}</span>`;
+
+    setTimeout(() => {
+        if (capital <= 0) {
+            endGame(false);
+        } else if (factories >= WIN_CONDITION) {
+            endGame(true);
+        } else {
+            const loadingText = translations[currentLanguage].game_loading || "Loading next event...";
+            eventText.innerHTML += `\n\n<span class="text-gray-500">> ${loadingText}</span>`;
+            setTimeout(() => {
+                nextEvent();
+            }, 1500);
+        }
+    }, 2500);
+}
+    
+    function endGame(isWinner) {
+        modal.style.display = "flex";
+        if (isWinner) {
+            modalTitle.textContent = translations[currentLanguage].game_win_title;
+            modalMessage.textContent = translations[currentLanguage].game_win_msg;
+        } else {
+            modalTitle.textContent = translations[currentLanguage].game_loss_title;
+            modalMessage.textContent = translations[currentLanguage].game_loss_msg;
+        }
+    }
+    
+    startGameBtn.addEventListener('click', startGame);
+    restartGameBtn.addEventListener('click', () => {
+        modal.style.display = "none";
+        gameStartScreen.classList.remove('hidden');
+        gameMainScreen.classList.add('hidden');
+    });
+
+    // --- QUIZ LOGIC ---
+    const quizQuestionEl = document.getElementById('quiz-question');
+    const quizOptionsEl = document.getElementById('quiz-options');
+    const quizFeedbackEl = document.getElementById('quiz-feedback');
+    let currentQuizQuestionIndex = 0;
+
+    const quizData = {
+        en: [
+            { q: "Which of these was NOT a key 'ingredient' for the Second Industrial Revolution?", a: ["Government Regulations", "Natural Resources", "Growing Population", "New Technology"], c: 0 },
+            { q: "What did the Transcontinental Railroad create for businesses?", a: ["Higher shipping costs", "A single national market", "Local monopolies", "Slower transportation"], c: 1 },
+            { q: "The Sherman Antitrust Act was a government action designed to do what?", a: ["Encourage monopolies", "Limit competition", "Fund new inventions", "Break up monopolies"], c: 3 }
+        ],
+        es: [
+            { q: "¿Cuál de estos NO fue un 'ingrediente' clave para la Segunda Revolución Industrial?", a: ["Regulaciones Gubernamentales", "Recursos Naturales", "Población Creciente", "Nueva Tecnología"], c: 0 },
+            { q: "¿Qué creó el Ferrocarril Transcontinental para las empresas?", a: ["Costos de envío más altos", "Un mercado nacional único", "Monopolios locales", "Transporte más lento"], c: 1 },
+            { q: "La Ley Sherman Antitrust fue una acción del gobierno diseñada para...", a: ["Fomentar los monopolios", "Limitar la competencia", "Financiar nuevos inventos", "Disolver los monopolios"], c: 3 }
+        ],
+        fr: [
+            { q: "Lequel de ces éléments n'était PAS un 'ingrédient' clé de la Seconde Révolution Industrielle ?", a: ["Réglementations Gouvernementales", "Ressources Naturelles", "Population Croissante", "Nouvelle Technologie"], c: 0 },
+            { q: "Qu'est-ce que le chemin de fer transcontinental a créé pour les entreprises ?", a: ["Des coûts d'expédition plus élevés", "Un marché national unique", "Des monopoles locaux", "Un transport plus lent"], c: 1 },
+            { q: "Le Sherman Antitrust Act était une action du gouvernement conçue pour...", a: ["Encourager les monopoles", "Limiter la concurrence", "Financer de nouvelles inventions", "Démanteler les monopoles"], c: 3 }
+        ]
+    };
+
+    function setupQuiz() {
+        const lang = currentLanguage;
+        currentQuizQuestionIndex = 0;
+        quizFeedbackEl.classList.add('hidden');
+        loadQuizQuestion(lang);
+    }
+    
+    function loadQuizQuestion(lang) {
+        const questionData = quizData[lang][currentQuizQuestionIndex];
+        quizQuestionEl.textContent = questionData.q;
+        quizOptionsEl.innerHTML = '';
+        questionData.a.forEach((answer, index) => {
+            const button = document.createElement('button');
+            button.textContent = answer;
+            button.className = "btn quiz-option text-white font-bold py-3 px-4 rounded-lg w-full";
+            button.onclick = () => checkAnswer(index, questionData.c, lang);
+            quizOptionsEl.appendChild(button);
+        });
+    }
+
+    function checkAnswer(selectedIndex, correctIndex, lang) {
+        const buttons = quizOptionsEl.querySelectorAll('button');
+        buttons.forEach((btn, index) => {
+            btn.disabled = true;
+            if(index === correctIndex) {
+                btn.classList.add('correct');
+            } else if (index === selectedIndex) {
+                btn.classList.add('incorrect');
+            }
+        });
+
+        setTimeout(() => {
+            currentQuizQuestionIndex = (currentQuizQuestionIndex + 1) % quizData[lang].length;
+            loadQuizQuestion(lang);
+            buttons.forEach(btn => btn.disabled = false);
+        }, 2000);
+    }
+
+    // Initial setup
+    window.onload = () => {
