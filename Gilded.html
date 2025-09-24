@@ -701,3 +701,72 @@ function handleChoice(choice) {
 
     // Initial setup
     window.onload = () => {
+        // --- GET ALL DOM ELEMENTS ---
+        const revealElements = document.querySelectorAll('.reveal');
+        const causeButtonMap = {
+            tech: document.getElementById('cause-btn-tech'),
+            resources: document.getElementById('cause-btn-resources'),
+            people: document.getElementById('cause-btn-people')
+        };
+        const causeDesc = document.getElementById('cause-desc');
+        const forgeFlame = document.getElementById('forge-flame');
+        const slider = document.getElementById('economic-spectrum-slider');
+        const spectrumHeading = document.getElementById('spectrum-heading');
+        const spectrumDescEl = document.getElementById('spectrum-desc');
+        const gameStartScreen = document.getElementById('game-start-screen');
+        const gameMainScreen = document.getElementById('game-main-screen');
+        const startGameBtn = document.getElementById('start-game-btn');
+        const capitalStat = document.getElementById('capital-stat');
+        const factoriesStat = document.getElementById('factories-stat');
+        const eventText = document.getElementById('event-text');
+        const choicesContainer = document.getElementById('choices-container');
+        const modal = document.getElementById('game-over-modal');
+        const modalTitle = document.getElementById('modal-title');
+        const modalMessage = document.getElementById('modal-message');
+        const restartGameBtn = document.getElementById('restart-game-btn');
+        const quizQuestionEl = document.getElementById('quiz-question');
+        const quizOptionsEl = document.getElementById('quiz-options');
+        const quizFeedbackEl = document.getElementById('quiz-feedback');
+
+        // --- SETUP LOGIC & EVENT LISTENERS ---
+        
+        // Scroll Reveal
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+        revealElements.forEach(el => observer.observe(el));
+        
+        // Forge Logic (re-assigning global maps to local constants)
+        Object.assign(window, {
+            selectCause: function(causeName) {
+                selectedCauses.add(causeName);
+                causeButtonMap.tech.classList.toggle('active-tech', selectedCauses.has('tech'));
+                causeButtonMap.resources.classList.toggle('active-resources', selectedCauses.has('resources'));
+                causeButtonMap.people.classList.toggle('active-people', selectedCauses.has('people'));
+                causeDesc.innerHTML = translations[currentLanguage][causeMap[causeName]];
+                forgeFlame.classList.remove('level1', 'level2', 'level3');
+                if (selectedCauses.size === 1) forgeFlame.classList.add('level1');
+                if (selectedCauses.size === 2) forgeFlame.classList.add('level2');
+                if (selectedCauses.size === 3) {
+                    forgeFlame.classList.add('level3');
+                    setTimeout(() => { causeDesc.innerHTML = translations[currentLanguage].causes_ignited; }, 1500);
+                }
+            }
+        });
+
+        // Spectrum Slider
+        slider.addEventListener('input', updateSpectrumText);
+        
+        // Game Logic
+        startGameBtn.addEventListener('click', startGame);
+        restartGameBtn.addEventListener('click', () => {
+            modal.style.display = "none";
+            gameStartScreen.classList.remove('hidden');
+            gameMainScreen.classList.add('hidden');
+        });
+
+        // Initial language load
