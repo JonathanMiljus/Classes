@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Understanding the Supreme Court – A Student Guide</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&family=Lora:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .font-lora {
+            font-family: 'Lora', serif;
+        }
+        .step-item.active .step-circle {
+            background-color: #3b82f6; /* blue-500 */
+            color: white;
+            transform: scale(1.1);
+        }
+        .step-item.active .step-title {
+            color: #3b82f6; /* blue-500 */
+            font-weight: 700;
+        }
+        .step-line {
+            height: calc(100% - 2.5rem);
+        }
+        .content-card, .info-card {
+            transition: opacity 0.5s, transform 0.5s;
+        }
+        .content-card {
+            opacity: 0;
+            transform: translateY(20px);
+            display: none; /* Initially hidden */
+        }
+        .content-card.active {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .lang-btn.active {
+            background-color: #3b82f6;
+            color: white;
+        }
+        .interactive-term {
+            cursor: pointer;
+            color: #2563eb; /* blue-600 */
+            font-weight: 600;
+            border-bottom: 2px dotted #93c5fd; /* blue-300 */
+            transition: all 0.2s ease-in-out;
+        }
+        .interactive-term:hover {
+            background-color: #dbeafe; /* blue-100 */
+            border-bottom-style: solid;
+        }
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 50;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
+        }
+        .modal-overlay.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        .modal-content {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            max-width: 500px;
+            width: 90%;
+            transform: scale(0.9);
+            transition: transform 0.3s;
+        }
+        .modal-overlay.visible .modal-content {
+            transform: scale(1);
+        }
+        /* Accordion styles */
+        .accordion-item .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out, padding 0.4s ease-out;
+        }
+        .accordion-item.active .accordion-content {
+            max-height: 500px; /* Adjust as needed */
+            padding-top: 1rem;
+            padding-bottom: 0.5rem;
+        }
+        .accordion-item.active .accordion-icon {
+            transform: rotate(45deg);
+        }
+        .accordion-icon {
+            transition: transform 0.3s ease-out;
+        }
+        /* Scroll animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s, transform 0.8s;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Header Section -->
+    <header class="relative bg-white shadow-md">
+        <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://placehold.co/1920x1080/111827/FFFFFF?text=%E2%9A%96%EF%B8%8F'); background-position: center 30%;">
+            <div class="absolute inset-0 bg-gray-900 bg-opacity-70"></div>
+        </div>
+        <div class="relative container mx-auto px-6 py-16 text-center text-white">
+            <h1 class="text-4xl md:text-6xl font-bold font-lora" data-key="main_title">Understanding the Supreme Court</h1>
+            <p class="mt-4 text-lg md:text-xl font-light" data-key="main_subtitle">A Student Guide</p>
+        </div>
+        <!-- Language Toggle -->
+        <div class="absolute top-4 right-4 bg-white/80 backdrop-blur-sm rounded-full p-1 shadow-lg">
+            <button id="lang-en" class="lang-btn active px-4 py-2 text-sm font-semibold rounded-full transition-colors duration-300">EN</button>
+            <button id="lang-es" class="lang-btn px-4 py-2 text-sm font-semibold rounded-full transition-colors duration-300">ES</button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto p-4 md:p-8">
+
+        <!-- Section 1: How a Case Moves Through the Courts -->
+        <section id="case-path" class="mb-16">
+            <h2 class="text-3xl font-bold text-center mb-2 font-lora reveal" data-key="section1_title">How a Case Moves Through the Courts</h2>
+            <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto reveal" data-key="section1_subtitle">Think of the court system as a set of steps. Click each step to learn more.</p>
+            
+            <div class="flex flex-col md:flex-row gap-8 items-start reveal">
+                <!-- Interactive Stepper -->
+                <div class="w-full md:w-1/3">
+                    <div class="relative">
+                        <!-- Connecting Line -->
+                        <div class="absolute left-5 top-0 w-0.5 bg-gray-300 step-line"></div>
+                        
+                        <div class="step-item relative mb-8 pl-12 cursor-pointer" data-step="1"><div class="step-circle absolute left-0 top-0 w-10 h-10 rounded-full bg-white border-2 border-gray-300 flex items-center justify-center font-bold text-lg text-gray-500 transition-all duration-300">1</div><h3 class="step-title pt-2 text-xl font-semibold text-gray-700 transition-colors duration-300" data-key="step1_title">Trial Court</h3></div>
+                        <div class="step-item relative mb-8 pl-12 cursor-pointer" data-step="2"><div class="step-circle absolute left-0 top-0 w-10 h-10 rounded-full bg-white border-2 border-gray-300 flex items-center justify-center font-bold text-lg text-gray-500 transition-all duration-300">2</div><h3 class="step-title pt-2 text-xl font-semibold text-gray-700 transition-colors duration-300" data-key="step2_title">Appeals Court</h3></div>
+                        <div class="step-item relative mb-8 pl-12 cursor-pointer" data-step="3"><div class="step-circle absolute left-0 top-0 w-10 h-10 rounded-full bg-white border-2 border-gray-300 flex items-center justify-center font-bold text-lg text-gray-500 transition-all duration-300">3</div><h3 class="step-title pt-2 text-xl font-semibold text-gray-700 transition-colors duration-300" data-key="step3_title">State Supreme Court</h3></div>
+                        <div class="step-item relative pl-12 cursor-pointer" data-step="4"><div class="step-circle absolute left-0 top-0 w-10 h-10 rounded-full bg-white border-2 border-gray-300 flex items-center justify-center font-bold text-lg text-gray-500 transition-all duration-300"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M3 14h18m-9-4v8m-7 0h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg></div><h3 class="step-title pt-2 text-xl font-semibold text-gray-700 transition-colors duration-300" data-key="step4_title">U.S. Supreme Court</h3></div>
+                    </div>
+                </div>
+
+                <!-- Content Display -->
+                <div class="w-full md:w-2/3">
+                    <div id="step-1-content" class="content-card bg-white p-8 rounded-2xl shadow-lg border border-gray-200"><h4 class="text-2xl font-bold mb-4" data-key="step1_content_title">Trial Court (First Step)</h4><ul class="space-y-3 list-disc list-inside text-gray-700"><li data-key="step1_bullet1">This is where the case begins.</li><li data-key="step1_bullet2">A judge (and sometimes a jury) looks at the facts: What actually happened? Who broke the law or who is responsible?</li><li data-key="step1_bullet3"><strong>Example:</strong> If someone is accused of stealing, this is where witnesses testify and evidence is shown.</li></ul></div>
+                    <div id="step-2-content" class="content-card bg-white p-8 rounded-2xl shadow-lg border border-gray-200"><h4 class="text-2xl font-bold mb-4" data-key="step2_content_title">Appeals Court (Second Step)</h4><ul class="space-y-3 list-disc list-inside text-gray-700"><li data-key="step2_bullet1">If one side believes the trial was unfair or the judge made a legal mistake, they can “appeal.”</li><li data-key="step2_bullet2">Appeals courts don’t re-do the trial. Instead, they ask: Did the trial follow the correct rules of law?</li></ul></div>
+                    <div id="step-3-content" class="content-card bg-white p-8 rounded-2xl shadow-lg border border-gray-200"><h4 class="text-2xl font-bold mb-4" data-key="step3_content_title">State Supreme Court (Third Step)</h4><ul class="space-y-3 list-disc list-inside text-gray-700"><li data-key="step3_bullet1">The highest court in a state.</li><li data-key="step3_bullet2">If the issue only involves state law, this is usually the end of the road.</li></ul></div>
+                    <div id="step-4-content" class="content-card bg-white p-8 rounded-2xl shadow-lg border border-gray-200"><h4 class="text-2xl font-bold mb-4" data-key="step4_content_title">U.S. Supreme Court (Final Step)</h4><ul class="space-y-3 list-disc list-inside text-gray-700"><li data-key="step4_bullet1">The Supreme Court only takes a very small number of cases each year (around 70–80).</li><li data-key="step4_bullet2">They choose cases that involve the U.S. Constitution or important national issues that affect everyone.</li></ul></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Other Sections Grid -->
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+            <div class="info-card reveal bg-blue-50 p-8 rounded-2xl shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300"><h3 class="text-2xl font-bold text-blue-800 mb-4 font-lora" data-key="section2_title">What the Supreme Court Does</h3><p class="mb-4" data-key="section2_p1">The Supreme Court does not retry cases or hear new witnesses.</p><p data-key="section2_p2">Instead, it decides big questions like:</p><ul class="list-disc list-inside mt-2 space-y-2 text-blue-900"><li data-key="section2_bullet1">Does this law follow the <span class="interactive-term" data-modal-key="constitution">Constitution</span>?</li><li data-key="section2_bullet2">Does this government action respect people’s rights?</li></ul></div>
+            <div class="info-card reveal bg-yellow-50 p-8 rounded-2xl shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300"><h3 class="text-2xl font-bold text-yellow-800 mb-4 font-lora" data-key="section3_title">Precedent & Stare Decisis</h3><p class="mb-2"><strong class="font-semibold"><span class="interactive-term" data-modal-key="precedent">Precedent</span>:</strong> <span data-key="section3_def1">“what was decided before.”</span></p><p class="mb-4"><strong class="font-semibold"><span class="interactive-term" data-modal-key="stare_decisis">Stare Decisis</span>:</strong> <span data-key="section3_def2">A Latin phrase meaning “let the decision stand.”</span></p><p class="text-sm text-yellow-900" data-key="section3_p1">The idea is to keep law stable, but the Court can <span class="interactive-term" data-modal-key="overturn">overturn</span> precedent.</p></div>
+            <div class="info-card reveal bg-green-50 p-8 rounded-2xl shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300"><h3 class="text-2xl font-bold text-green-800 mb-4 font-lora" data-key="section5_title">Why This Matters</h3><p class="mb-4" data-key="section5_p1">Decisions can change everyday life for millions. Key examples:</p><ul class="list-disc list-inside space-y-2 text-green-900"><li><span class="interactive-term" data-modal-key="brown_v_board">Brown v. Board of Education</span></li><li><span class="interactive-term" data-modal-key="miranda_v_arizona">Miranda v. Arizona</span></li></ul></div>
+        </div>
+        
+        <!-- Section 4 & 6: Accordion Sections -->
+        <div class="grid lg:grid-cols-2 gap-8 mb-16">
+            <!-- Section 4: How the Court Analyzes a Case -->
+            <div class="bg-white p-6 md:p-8 rounded-2xl shadow-lg border border-gray-200 reveal">
+                <h3 class="text-2xl font-bold mb-6 text-center font-lora" data-key="section4_title">How the Supreme Court Analyzes a Case</h3>
+                <div class="space-y-4">
+                    <div class="accordion-item border-b border-gray-200 pb-3"><div class="accordion-header cursor-pointer flex justify-between items-center"><h4 class="text-lg font-semibold" data-key="section4_step1_title">1. Identify the Constitutional Question</h4><div class="accordion-icon text-blue-500 text-3xl font-light">+</div></div><div class="accordion-content text-gray-600" data-key="section4_step1_desc">Which part of the Constitution is being challenged? Is it about free speech, equal protection, or the right to privacy?</div></div>
+                    <div class="accordion-item border-b border-gray-200 pb-3"><div class="accordion-header cursor-pointer flex justify-between items-center"><h4 class="text-lg font-semibold" data-key="section4_step2_title">2. Review Precedent</h4><div class="accordion-icon text-blue-500 text-3xl font-light">+</div></div><div class="accordion-content text-gray-600" data-key="section4_step2_desc">Have similar cases been decided before? Does the precedent support one side, or should it be reconsidered?</div></div>
+                    <div class="accordion-item border-b border-gray-200 pb-3"><div class="accordion-header cursor-pointer flex justify-between items-center"><h4 class="text-lg font-semibold" data-key="section4_step3_title">3. Hear Arguments & Write Opinions</h4><div class="accordion-icon text-blue-500 text-3xl font-light">+</div></div><div class="accordion-content text-gray-600"><p data-key="section4_step3_desc">Lawyers argue, justices debate privately, then they write a <span class="interactive-term" data-modal-key="majority_opinion">Majority Opinion</span>, and sometimes <span class="interactive-term" data-modal-key="concurring_opinion">Concurring</span> or <span class="interactive-term" data-modal-key="dissenting_opinion">Dissenting Opinions</span>.</p></div></div>
+                </div>
+            </div>
+
+            <!-- Section 6: How to Evaluate a Case -->
+            <div class="bg-gray-800 text-white p-6 md:p-8 rounded-2xl shadow-lg reveal">
+                <h3 class="text-2xl font-bold mb-6 text-center font-lora" data-key="section6_title">How to Evaluate a Supreme Court Case</h3>
+                <p class="text-center text-gray-300 mb-6" data-key="section6_subtitle">Click each question to see what to look for:</p>
+                <div class="space-y-4">
+                    <div class="accordion-item bg-gray-700 rounded-lg">
+                        <div class="accordion-header cursor-pointer flex justify-between items-center p-4">
+                            <h4 class="font-semibold" data-key="section6_q1_title">1. What is the constitutional issue?</h4>
+                            <div class="accordion-icon text-gray-400 text-3xl font-light">+</div>
+                        </div>
+                        <div class="accordion-content text-gray-300 px-4" data-key="section6_q1_desc">Pinpoint the exact part of the Constitution in question. Is it the First Amendment's guarantee of free speech? The Fourteenth Amendment's promise of "equal protection"? Naming the specific right or clause is the first step.</div>
+                    </div>
+                     <div class="accordion-item bg-gray-700 rounded-lg">
+                        <div class="accordion-header cursor-pointer flex justify-between items-center p-4">
+                            <h4 class="font-semibold" data-key="section6_q2_title">2. What precedent exists?</h4>
+                            <div class="accordion-icon text-gray-400 text-3xl font-light">+</div>
+                        </div>
+                        <div class="accordion-content text-gray-300 px-4" data-key="section6_q2_desc">How have courts ruled on this issue before? Did the Court follow, ignore, or overturn previous decisions? Mentioning past cases shows you understand that law is a conversation over time.</div>
+                    </div>
+                     <div class="accordion-item bg-gray-700 rounded-lg">
+                        <div class="accordion-header cursor-pointer flex justify-between items-center p-4">
+                            <h4 class="font-semibold" data-key="section6_q3_title">3. How did the justices argue?</h4>
+                            <div class="accordion-icon text-gray-400 text-3xl font-light">+</div>
+                        </div>
+                        <div class="accordion-content text-gray-300 px-4" data-key="section6_q3_desc">Don't just state who won. Explore the *reasoning*. What was the core logic of the majority opinion? What powerful arguments did the dissenting justices make? A strong dissent can influence future law.</div>
+                    </div>
+                     <div class="accordion-item bg-gray-700 rounded-lg">
+                        <div class="accordion-header cursor-pointer flex justify-between items-center p-4">
+                            <h4 class="font-semibold" data-key="section6_q4_title">4. What is the impact?</h4>
+                            <div class="accordion-icon text-gray-400 text-3xl font-light">+</div>
+                        </div>
+                        <div class="accordion-content text-gray-300 px-4" data-key="section6_q4_desc">This is the "so what?" question. How did this ruling change the law or affect the rights of ordinary people? Think about the real-world consequences beyond the courtroom.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Big Idea -->
+        <div class="bg-blue-600 text-white p-8 rounded-2xl shadow-lg flex items-center justify-center text-center reveal">
+            <p class="text-xl font-bold">✨ <span data-key="big_idea">Big Idea: The Supreme Court is not about re-deciding facts. It’s about interpreting the Constitution.</span></p>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white mt-16">
+        <div class="container mx-auto px-6 py-4 text-center text-sm">
+            <p data-key="footer_text">Materials made for Mr. Miljus‘s classes</p>
+        </div>
+    </footer>
+    
+    <!-- Modal -->
+    <div id="info-modal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="flex justify-between items-center mb-4">
+                <h3 id="modal-title" class="text-2xl font-bold font-lora text-gray-800"></h3>
+                <button id="modal-close" class="text-gray-500 hover:text-gray-800 text-3xl">&times;</button>
+            </div>
+            <div id="modal-body" class="text-gray-700"></div>
+        </div>
+    </div>
+
+    <script>
+        // --- TRANSLATION DATA ---
+        const translations = {
+            en: {
+                main_title: 'Understanding the Supreme Court',
+                main_subtitle: 'A Student Guide',
+                section1_title: 'How a Case Moves Through the Courts',
+                section1_subtitle: 'Think of the court system as a set of steps. Click each step to learn more.',
+                step1_title: 'Trial Court',
+                step2_title: 'Appeals Court',
+                step3_title: 'State Supreme Court',
+                step4_title: 'U.S. Supreme Court',
+                step1_content_title: 'Trial Court (First Step)',
+                step1_bullet1: 'This is where the case begins.',
+                step1_bullet2: 'A judge (and sometimes a jury) looks at the facts: What actually happened? Who broke the law or who is responsible?',
+                step1_bullet3: '<strong>Example:</strong> If someone is accused of stealing, this is where witnesses testify and evidence is shown.',
+                step2_content_title: 'Appeals Court (Second Step)',
+                step2_bullet1: 'If one side believes the trial was unfair or the judge made a legal mistake, they can “appeal.”',
+                step2_bullet2: 'Appeals courts don’t re-do the trial. Instead, they ask: Did the trial follow the correct rules of law?',
+                step3_content_title: 'State Supreme Court (Third Step)',
+                step3_bullet1: 'The highest court in a state.',
+                step3_bullet2: 'If the issue only involves state law, this is usually the end of the road.',
+                step4_content_title: 'U.S. Supreme Court (Final Step)',
+                step4_bullet1: 'The Supreme Court only takes a very small number of cases each year (around 70–80).',
+                step4_bullet2: 'They choose cases that involve the U.S. Constitution or important national issues that affect everyone.',
+                section2_title: 'What the Supreme Court Does',
+                section2_p1: 'The Supreme Court does not retry cases or hear new witnesses.',
+                section2_p2: 'Instead, it decides big questions like:',
+                section2_bullet1: 'Does this law follow the <span class="interactive-term" data-modal-key="constitution">Constitution</span>?',
+                section2_bullet2: 'Does this government action respect people’s rights?',
+                section3_title: 'Precedent & Stare Decisis',
+                section3_def1: '“what was decided before.”',
+                section3_def2: 'A Latin phrase meaning “let the decision stand.”',
+                section3_p1: 'The idea is to keep law stable, but the Court can <span class="interactive-term" data-modal-key="overturn">overturn</span> precedent.',
+                section4_title: 'How the Supreme Court Analyzes a Case',
+                section4_step1_title: '1. Identify the Constitutional Question',
+                section4_step1_desc: 'Which part of the Constitution is being challenged? Is it about free speech, equal protection, or the right to privacy?',
+                section4_step2_title: '2. Review Precedent',
+                section4_step2_desc: 'Have similar cases been decided before? Does the precedent support one side, or should it be reconsidered?',
+                section4_step3_title: '3. Hear Arguments & Write Opinions',
+                section4_step3_desc: 'Lawyers argue, justices debate privately, then they write a <span class="interactive-term" data-modal-key="majority_opinion">Majority Opinion</span>, and sometimes <span class="interactive-term" data-modal-key="concurring_opinion">Concurring</span> or <span class="interactive-term" data-modal-key="dissenting_opinion">Dissenting Opinions</span>.',
+                section5_title: 'Why This Matters',
+                section5_p1: 'Decisions can change everyday life for millions. Key examples:',
+                section6_title: 'How to Evaluate a Supreme Court Case',
+                section6_subtitle: 'Click each question to see what to look for:',
+                section6_q1_title: '1. What is the constitutional issue?',
+                section6_q1_desc: 'Pinpoint the exact part of the Constitution in question. Is it the First Amendment\'s guarantee of free speech? The Fourteenth Amendment\'s promise of "equal protection"? Naming the specific right or clause is the first step.',
+                section6_q2_title: '2. What precedent exists?',
+                section6_q2_desc: 'How have courts ruled on this issue before? Did the Court follow, ignore, or overturn previous decisions? Mentioning past cases shows you understand that law is a conversation over time.',
+                section6_q3_title: '3. How did the justices argue?',
+                section6_q3_desc: 'Don\'t just state who won. Explore the *reasoning*. What was the core logic of the majority opinion? What powerful arguments did the dissenting justices make? A strong dissent can influence future law.',
+                section6_q4_title: '4. What is the impact?',
+                section6_q4_desc: 'This is the "so what?" question. How did this ruling change the law or affect the rights of ordinary people? Think about the real-world consequences beyond the courtroom.',
+                big_idea: 'Big Idea: The Supreme Court is not about re-deciding facts. It’s about interpreting the Constitution.',
+                footer_text: 'Materials made for Mr. Miljus‘s classes',
+                
+                // Modal Content
+                constitution: { title: 'The Constitution', body: 'The U.S. Constitution is the supreme law of the United States. It establishes the national government and guarantees fundamental rights for its citizens. The Supreme Court interprets what the Constitution means.' },
+                precedent: { title: 'Precedent', body: 'A precedent is a past court decision that is used as an example or guide for deciding similar cases in the future. It helps make the law consistent and predictable.' },
+                stare_decisis: { title: 'Stare Decisis', body: 'A Latin term for "to stand by things decided." It is the legal principle of determining points in litigation according to precedent. Courts are generally expected to follow their own previous rulings.' },
+                overturn: { title: 'Overturn Precedent', body: 'This is when a court, usually the Supreme Court, decides that a previous decision was wrong and reverses it. This is rare but can happen when society or legal interpretations change significantly.'},
+                brown_v_board: { title: 'Brown v. Board of Education (1954)', body: 'This landmark decision declared that state laws establishing separate public schools for black and white students were unconstitutional. It overturned the "separate but equal" precedent from Plessy v. Ferguson.' },
+                miranda_v_arizona: { title: 'Miranda v. Arizona (1966)', body: 'This ruling established that criminal suspects must be informed of their constitutional rights, including the right to an attorney and the right against self-incrimination, before being questioned by the police. These are now known as "Miranda rights."' },
+                majority_opinion: { title: 'Majority Opinion', body: 'This is the official ruling of the Court. It explains the legal reasoning behind the decision agreed upon by more than half of the justices.' },
+                concurring_opinion: { title: 'Concurring Opinion', body: 'Written by a justice who agrees with the final outcome of the case but for different legal reasons than the majority. They want to add their own points to the discussion.' },
+                dissenting_opinion: { title: 'Dissenting Opinion', body: 'Written by a justice who disagrees with the majority\'s decision. It explains why they believe the majority was wrong and can be influential in future cases that might revisit the issue.' },
+            },
+            es: {
+                main_title: 'Entendiendo la Corte Suprema',
+                main_subtitle: 'Una Guía para Estudiantes',
+                section1_title: 'Cómo un Caso Avanza por los Tribunales',
+                section1_subtitle: 'Piensa en el sistema judicial como una serie de escalones. Haz clic en cada escalón para aprender más.',
+                step1_title: 'Tribunal de Primera Instancia',
+                step2_title: 'Tribunal de Apelaciones',
+                step3_title: 'Corte Suprema Estatal',
+                step4_title: 'Corte Suprema de EE.UU.',
+                step1_content_title: 'Tribunal de Primera Instancia (Primer Paso)',
+                step1_bullet1: 'Aquí es donde comienza el caso.',
+                step1_bullet2: 'Un juez (y a veces un jurado) examina los hechos: ¿Qué sucedió realmente? ¿Quién violó la ley o quién es responsable?',
+                step1_bullet3: '<strong>Ejemplo:</strong> Si alguien es acusado de robar, aquí es donde los testigos testifican y se muestra la evidencia.',
+                step2_content_title: 'Tribunal de Apelaciones (Segundo Paso)',
+                step2_bullet1: 'Si una de las partes cree que el juicio fue injusto o que el juez cometió un error legal, puede “apelar”.',
+                step2_bullet2: 'Los tribunales de apelaciones no rehacen el juicio. En cambio, preguntan: ¿El juicio siguió las reglas correctas de la ley?',
+                step3_content_title: 'Corte Suprema Estatal (Tercer Paso)',
+                step3_bullet1: 'El tribunal más alto de un estado.',
+                step3_bullet2: 'Si el problema solo involucra la ley estatal, este suele ser el final del camino.',
+                step4_content_title: 'Corte Suprema de EE.UU. (Paso Final)',
+                step4_bullet1: 'La Corte Suprema solo acepta un número muy pequeño de casos cada año (alrededor de 70–80).',
+                step4_bullet2: 'Eligen casos que involucran la Constitución de los EE.UU. o asuntos nacionales importantes que afectan a todos.',
+                section2_title: 'Qué Hace la Corte Suprema',
+                section2_p1: 'La Corte Suprema no vuelve a juzgar casos ni escucha a nuevos testigos.',
+                section2_p2: 'En cambio, decide grandes preguntas como:',
+                section2_bullet1: '¿Esta ley sigue la <span class="interactive-term" data-modal-key="constitution">Constitución</span>?',
+                section2_bullet2: '¿Esta acción del gobierno respeta los derechos de las personas?',
+                section3_title: 'Precedente y Stare Decisis',
+                section3_def1: '“lo que se decidió antes.”',
+                section3_def2: 'Una frase en latín que significa “que la decisión se mantenga.”',
+                section3_p1: 'La idea es mantener la ley estable, pero la Corte puede <span class="interactive-term" data-modal-key="overturn">anular</span> un precedente.',
+                section4_title: 'Cómo la Corte Suprema Analiza un Caso',
+                section4_step1_title: '1. Identificar la Cuestión Constitucional',
+                section4_step1_desc: '¿Qué parte de la Constitución se está desafiando? ¿Se trata de la libertad de expresión, la igualdad de protección o el derecho a la privacidad?',
+                section4_step2_title: '2. Revisar el Precedente',
+                section4_step2_desc: '¿Se han decidido casos similares antes? ¿El precedente apoya a una de las partes o debería reconsiderarse?',
+                section4_step3_title: '3. Escuchar Argumentos y Escribir Opiniones',
+                section4_step3_desc: 'Los abogados argumentan, los jueces debaten en privado, y luego escriben una <span class="interactive-term" data-modal-key="majority_opinion">Opinión Mayoritaria</span>, y a veces Opiniones <span class="interactive-term" data-modal-key="concurring_opinion">Concurrentes</span> o <span class="interactive-term" data-modal-key="dissenting_opinion">Disidentes</span>.',
+                section5_title: 'Por Qué Esto Importa',
+                section5_p1: 'Las decisiones pueden cambiar la vida cotidiana de millones. Ejemplos clave:',
+                section6_title: 'Cómo Evaluar un Caso de la Corte Suprema',
+                section6_subtitle: 'Haz clic en cada pregunta para ver qué buscar:',
+                section6_q1_title: '1. ¿Cuál es el problema constitucional?',
+                section6_q1_desc: 'Identifica la parte exacta de la Constitución en cuestión. ¿Es la garantía de libertad de expresión de la Primera Enmienda? ¿La promesa de "igualdad de protección" de la Decimocuarta Enmienda? Nombrar el derecho o cláusula específica es el primer paso.',
+                section6_q2_title: '2. ¿Qué precedente existe?',
+                section6_q2_desc: '¿Cómo han fallado los tribunales sobre este tema antes? ¿La Corte siguió, ignoró o anuló decisiones anteriores? Mencionar casos pasados demuestra que entiendes que la ley es una conversación a lo largo del tiempo.',
+                section6_q3_title: '3. ¿Cómo argumentaron los jueces?',
+                section6_q3_desc: 'No te limites a decir quién ganó. Explora el *razonamiento*. ¿Cuál fue la lógica central de la opinión mayoritaria? ¿Qué argumentos poderosos presentaron los jueces disidentes? Una fuerte disidencia puede influir en la ley futura.',
+                section6_q4_title: '4. ¿Cuál es el impacto?',
+                section6_q4_desc: 'Esta es la pregunta del "¿y qué?". ¿Cómo cambió este fallo la ley o afectó los derechos de la gente común? Piensa en las consecuencias del mundo real más allá de la sala del tribunal.',
+                big_idea: 'Gran Idea: La Corte Suprema no se trata de volver a decidir hechos. Se trata de interpretar la Constitución.',
+                footer_text: 'Materiales hechos para las clases del Sr. Miljus',
+
+                // Modal Content (Spanish)
+                constitution: { title: 'La Constitución', body: 'La Constitución de EE. UU. es la ley suprema de los Estados Unidos. Establece el gobierno nacional y garantiza los derechos fundamentales de sus ciudadanos. La Corte Suprema interpreta lo que significa la Constitución.' },
+                precedent: { title: 'Precedente', body: 'Un precedente es una decisión judicial pasada que se utiliza como ejemplo o guía para decidir casos similares en el futuro. Ayuda a que la ley sea coherente y predecible.' },
+                stare_decisis: { title: 'Stare Decisis', body: 'Término en latín que significa "quedarse con las cosas decididas". Es el principio legal de determinar puntos en un litigio de acuerdo con el precedente. Generalmente se espera que los tribunales sigan sus propias decisiones anteriores.' },
+                overturn: { title: 'Anular Precedente', body: 'Esto ocurre cuando un tribunal, generalmente la Corte Suprema, decide que una decisión anterior fue incorrecta y la revierte. Es poco común pero puede suceder cuando la sociedad o las interpretaciones legales cambian significativamente.'},
+                brown_v_board: { title: 'Brown v. Board of Education (1954)', body: 'Esta decisión histórica declaró inconstitucionales las leyes estatales que establecían escuelas públicas separadas para estudiantes blancos y negros. Anuló el precedente de "separados pero iguales" de Plessy v. Ferguson.' },
+                miranda_v_arizona: { title: 'Miranda v. Arizona (1966)', body: 'Este fallo estableció que los sospechosos de delitos deben ser informados de sus derechos constitucionales, incluido el derecho a un abogado y el derecho a no autoincriminarse, antes de ser interrogados por la policía. Ahora se conocen como los "derechos Miranda".' },
+                majority_opinion: { title: 'Opinión Mayoritaria', body: 'Este es el fallo oficial de la Corte. Explica el razonamiento legal detrás de la decisión acordada por más de la mitad de los jueces.' },
+                concurring_opinion: { title: 'Opinión Concurrente', body: 'Escrita por un juez que está de acuerdo con el resultado final del caso pero por razones legales diferentes a las de la mayoría. Quieren agregar sus propios puntos a la discusión.' },
+                dissenting_opinion: { title: 'Opinión Disidente', body: 'Escrita por un juez que no está de acuerdo con la decisión de la mayoría. Explica por qué cree que la mayoría se equivocó y puede ser influyente en casos futuros que puedan volver a tratar el tema.' },
+            }
+        };
+
+        // --- CORE LOGIC ---
+        document.addEventListener('DOMContentLoaded', () => {
+            let currentLanguage = 'en';
+            const stepItems = document.querySelectorAll('.step-item');
+
+            function activateStep(stepNumber) {
+                stepItems.forEach(item => item.classList.remove('active'));
+                const activeStep = document.querySelector(`.step-item[data-step="${stepNumber}"]`);
+                if (activeStep) activeStep.classList.add('active');
+
+                document.querySelectorAll('.content-card').forEach(card => card.classList.remove('active'));
+                const activeContent = document.getElementById(`step-${stepNumber}-content`);
+                if(activeContent) activeContent.classList.add('active');
+            }
+            
+            stepItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    const step = item.getAttribute('data-step');
+                    activateStep(step);
+                });
+            });
+
+            // --- Language Switcher ---
+            const langEnBtn = document.getElementById('lang-en');
+            const langEsBtn = document.getElementById('lang-es');
+
+            function setLanguage(lang) {
+                currentLanguage = lang;
+                const langData = translations[lang];
+                document.querySelectorAll('[data-key]').forEach(element => {
+                    const key = element.getAttribute('data-key');
+                    if (langData[key] && typeof langData[key] === 'string') {
+                        element.innerHTML = langData[key];
+                    }
+                });
+                document.documentElement.lang = lang;
+                langEnBtn.classList.toggle('active', lang === 'en');
+                langEsBtn.classList.toggle('active', lang === 'es');
+                initInteractiveTerms();
+            }
+
+            langEnBtn.addEventListener('click', () => setLanguage('en'));
+            langEsBtn.addEventListener('click', () => setLanguage('es'));
+            
+            // --- Modal Logic ---
+            const modal = document.getElementById('info-modal');
+            const modalTitle = document.getElementById('modal-title');
+            const modalBody = document.getElementById('modal-body');
+            const modalClose = document.getElementById('modal-close');
+
+            function openModal(key) {
+                const modalData = translations[currentLanguage][key];
+                if (modalData) {
+                    modalTitle.textContent = modalData.title;
+                    modalBody.textContent = modalData.body;
+                    modal.classList.add('visible');
+                }
+            }
+
+            function closeModal() {
+                modal.classList.remove('visible');
+            }
+
+            function initInteractiveTerms() {
+                document.querySelectorAll('.interactive-term').forEach(term => {
+                    const newTerm = term.cloneNode(true);
+                    term.parentNode.replaceChild(newTerm, term);
+                    newTerm.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        const key = newTerm.getAttribute('data-modal-key');
+                        openModal(key);
+                    });
+                });
+            }
+
+            modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+            modalClose.addEventListener('click', closeModal);
+
+            // --- Accordion Logic ---
+            document.querySelectorAll('.accordion-header').forEach(header => {
+                header.addEventListener('click', () => {
+                    const item = header.parentElement;
+                    
+                    // Close other accordions in the same group if you want that behavior
+                    // const parent = item.parentElement;
+                    // parent.querySelectorAll('.accordion-item').forEach(otherItem => {
+                    //    if (otherItem !== item) otherItem.classList.remove('active');
+                    // });
+
+                    item.classList.toggle('active');
+                });
+            });
+
+            // --- Scroll Animation ---
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+            
+            // --- INITIALIZATION ---
+            setLanguage('en');
+            activateStep(1);
+        });
+    </script>
+</body>
+</html>
+
+
