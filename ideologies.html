@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Industrial Age Ideologies</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8;
+            color: #1a202c;
+        }
+        .header-bg {
+            background: linear-gradient(to right, #667eea, #764ba2);
+        }
+        .ideology-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .ideology-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        /* Modal styles */
+        .modal-backdrop {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 50;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+        .modal-backdrop.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .modal-content {
+            background: white;
+            border-radius: 1.5rem;
+            padding: 2rem;
+            width: 90%;
+            max-width: 600px;
+            transform: scale(0.95);
+            transition: transform 0.3s ease;
+        }
+        .modal-backdrop.active .modal-content {
+            transform: scale(1);
+        }
+        
+        /* --- CLEANER ANIMATION STYLES --- */
+        .viz-container {
+            height: 180px; /* Increased height for more space */
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            position: relative;
+            border: 2px dashed #cbd5e0;
+            border-radius: 1rem;
+            padding: 1.5rem; /* Increased padding */
+            background-color: #f7fafc;
+        }
+        .viz-icon {
+            font-size: 3rem; /* Larger icons */
+            text-align: center;
+            color: #4a5568;
+            position: relative; /* Needed for label positioning */
+        }
+        .viz-icon .label {
+            font-size: 0.8rem;
+            margin-top: 0.75rem;
+            font-weight: 600;
+            color: #2d3748;
+        }
+        .viz-arrow {
+            position: absolute;
+            font-size: 2rem;
+            color: #48bb78; /* Green for money/value */
+            opacity: 0;
+        }
+
+        /* Capitalism Animation */
+        .capitalism-flow {
+            animation: flow-right 2s infinite ease-in-out;
+        }
+        @keyframes flow-right {
+            0% { left: 25%; opacity: 0; }
+            50% { opacity: 1; }
+            100% { left: 75%; opacity: 0; transform: scale(1.1); }
+        }
+
+        /* Socialism Animation */
+        .socialism-flow-up {
+            animation: flow-up 2.5s infinite ease-out;
+        }
+        @keyframes flow-up {
+            from { bottom: 25%; opacity: 0; }
+            to { bottom: 65%; opacity: 1; }
+        }
+        .socialism-flow-down {
+            animation: flow-down 2.5s infinite ease-out 0.5s; /* Staggered start */
+        }
+        @keyframes flow-down {
+            from { top: 35%; opacity: 0; }
+            to { top: 75%; opacity: 1; }
+        }
+
+        /* Communism Animation */
+        .communism-pool i {
+            animation: pulse 2s infinite ease-in-out;
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+        }
+        
+        /* Anarchism Animation */
+        .anarchism-ban {
+            transform: scale(3) rotate(-15deg);
+            opacity: 0;
+            animation: stamp 1.5s ease-out forwards;
+        }
+        @keyframes stamp {
+            0% { transform: scale(3) rotate(-15deg); opacity: 0; }
+            60% { transform: scale(0.9) rotate(5deg); opacity: 1; }
+            80% { transform: scale(1.1) rotate(-2deg); }
+            100% { transform: scale(1) rotate(0deg); opacity: 1; }
+        }
+
+        /* Social Darwinism Style */
+        .darwinism-divider {
+            width: 60px;
+            height: 4px;
+            background-color: #a0aec0;
+            border-radius: 2px;
+        }
+
+        /* Language Button */
+        .language-btn {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 1px solid white;
+            transition: background-color 0.2s;
+        }
+        .language-btn:hover, .language-btn.active {
+            background-color: white;
+            color: #667eea;
+        }
+
+        /* Inter Font */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+    </style>
+</head>
+<body class="min-h-screen flex flex-col items-center p-4 sm:p-6 lg:p-8">
+
+    <!-- Header Section -->
+    <header class="header-bg w-full py-6 text-center rounded-2xl mb-8 shadow-lg relative">
+        <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white">Industrial Age Ideologies</h1>
+        <p class="mt-2 text-lg sm:text-xl font-light text-indigo-200">Click a card to see how it works.</p>
+        <div id="language-selector" class="absolute top-4 right-4 flex gap-2">
+             <button class="language-btn active rounded-md px-3 py-1 text-sm font-medium" data-lang="en" onclick="setLanguage('en')">EN</button>
+             <button class="language-btn rounded-md px-3 py-1 text-sm font-medium" data-lang="es" onclick="setLanguage('es')">ES</button>
+             <button class="language-btn rounded-md px-3 py-1 text-sm font-medium" data-lang="fr" onclick="setLanguage('fr')">FR</button>
+        </div>
+    </header>
+
+    <!-- Ideology Cards Grid -->
+    <main id="ideology-grid" class="container mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Cards will be dynamically inserted here by JavaScript -->
+    </main>
+
+    <!-- Footer -->
+    <footer class="w-full mt-12 py-6 text-center text-gray-500 text-base">
+        Made by and for Miljus' Classes
+    </footer>
+
+    <!-- Modal -->
+    <div id="ideology-modal" class="modal-backdrop" onclick="closeModal()">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <div class="flex justify-between items-start">
+                <div>
+                    <h2 id="modal-title" class="text-3xl font-bold text-gray-800"></h2>
+                    <p id="modal-subtitle" class="text-lg text-gray-500 mt-1"></p>
+                </div>
+                <button onclick="closeModal()" class="text-2xl text-gray-400 hover:text-gray-600">&times;</button>
+            </div>
+            
+            <div id="modal-viz" class="viz-container my-6">
+                <!-- Visualization will be injected here -->
+            </div>
+
+            <div id="modal-details" class="space-y-4 text-lg">
+                <!-- Details will be injected here -->
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        const translations = {
+            en: {
+                pageSubtitle: "Click a card to see how it works.",
+                capitalism: {
+                    title: "Capitalism",
+                    icon: "fa-building",
+                    subtitle: "Private Ownership for Profit",
+                    viz: `
+                        <div class="viz-icon"><i class="fas fa-industry text-slate-500"></i><div class="label">Factory</div></div>
+                        <div class="viz-arrow capitalism-flow"><i class="fas fa-dollar-sign"></i></div>
+                        <div class="viz-icon"><i class="fas fa-user-tie text-indigo-600"></i><div class="label">Owner</div></div>`,
+                    details: [
+                        { title: "Key Idea", text: "Businesses are privately owned and compete to make a profit." },
+                        { title: "Who's in Charge?", text: "Private individuals and companies." },
+                        { title: "Government's Role", text: "Minimal ('Laissez-faire'); protects private property." },
+                        { title: "Example", text: "Industrial Revolution in the U.S. ('Gilded Age')." }
+                    ]
+                },
+                socialism: {
+                    title: "Socialism",
+                    icon: "fa-handshake",
+                    subtitle: "Government Control for Fairness",
+                    viz: `
+                        <div class="viz-icon" style="position: absolute; bottom: 10%; left: 50%; transform: translateX(-50%);"><i class="fas fa-users text-slate-500"></i><div class="label">The People</div></div>
+                        <div class="viz-arrow socialism-flow-up" style="left: 50%; transform: translateX(-50%);"><i class="fas fa-arrow-up text-red-500"></i></div>
+                        <div class="viz-icon" style="position: absolute; top: 10%; left: 50%; transform: translateX(-50%);"><i class="fas fa-landmark text-indigo-600"></i><div class="label">Government</div></div>
+                        <div class="viz-arrow socialism-flow-down" style="left: 50%; transform: translateX(-50%);"><i class="fas fa-arrow-down text-green-500"></i></div>`,
+                    details: [
+                        { title: "Key Idea", text: "The government controls key industries to reduce inequality and provide for the public good." },
+                        { title: "Who's in Charge?", text: "The government and public collectives." },
+                        { title: "Government's Role", text: "Owns/regulates major industries like railroads and utilities." },
+                        { title: "Example", text: "Eugene V. Debs's political movement in the early 1900s." }
+                    ]
+                },
+                communism: {
+                    title: "Communism",
+                    icon: "fa-users",
+                    subtitle: "Collective Ownership for Equality",
+                    viz: `
+                        <div class="viz-icon"><i class="fas fa-user"></i></div>
+                        <div class="viz-icon communism-pool" style="font-size: 3.5rem;"><i class="fas fa-hand-holding-hand text-indigo-600"></i><div class="label">Shared Resources</div></div>
+                        <div class="viz-icon"><i class="fas fa-user"></i></div>`,
+                    details: [
+                        { title: "Key Idea", text: "All property is owned by the community, and each person contributes and receives according to their ability and needs." },
+                        { title: "Who's in Charge?", text: "The community as a whole (in theory)." },
+                        { title: "Government's Role", text: "A temporary state leads the worker revolution, then withers away." },
+                        { title: "Example", text: "Inspired radical groups like the IWW ('Wobblies')." }
+                    ]
+                },
+                anarchism: {
+                    title: "Anarchism",
+                    icon: "fa-ban",
+                    subtitle: "No Government, Total Freedom",
+                    viz: `
+                        <div class="viz-icon w-full h-full flex items-center justify-center">
+                            <i class="fas fa-landmark text-gray-300"></i>
+                            <i class="fas fa-ban anarchism-ban text-red-500" style="position: absolute;"></i>
+                        </div>`,
+                    details: [
+                        { title: "Key Idea", text: "Abolish all forms of government and hierarchical rule." },
+                        { title: "Who's in Charge?", text: "No one. People organize in voluntary, self-governing communities." },
+                        { title: "Government's Role", text: "Does not exist." },
+                        { title: "Example", text: "Haymarket Affair (1886) was linked to anarchist activists." }
+                    ]
+                },
+                socialDarwinism: {
+                    title: "Social Darwinism",
+                    icon: "fa-trophy",
+                    subtitle: "'Survival of the Fittest' in Society",
+                    viz: `
+                        <div class="flex flex-col items-center justify-center gap-4">
+                            <div class="viz-icon"><i class="fas fa-crown text-yellow-500"></i><div class="label">'The Fittest'</div></div>
+                            <div class="darwinism-divider"></div>
+                            <div class="viz-icon"><i class="fas fa-user-group text-gray-400"></i><div class="label">'The Weak'</div></div>
+                        </div>`,
+                    details: [
+                        { title: "Key Idea", text: "The rich are successful because they are 'naturally' superior. Society should not interfere." },
+                        { title: "Who's in Charge?", text: "The 'fittest' individuals rise to the top." },
+                        { title: "Government's Role", text: "Should not help the poor or regulate business." },
+                        { title: "Example", text: "Used to justify vast wealth inequality during the Gilded Age." }
+                    ]
+                }
+            },
+            es: {
+                pageSubtitle: "Haz clic en una tarjeta para ver cómo funciona.",
+                capitalism: { title: "Capitalismo", icon: "fa-building", subtitle: "Propiedad Privada para el Beneficio", viz: `<div class="viz-icon"><i class="fas fa-industry text-slate-500"></i><div class="label">Fábrica</div></div><div class="viz-arrow capitalism-flow"><i class="fas fa-dollar-sign"></i></div><div class="viz-icon"><i class="fas fa-user-tie text-indigo-600"></i><div class="label">Dueño</div></div>`, details: [{ title: "Idea Clave", text: "Las empresas son de propiedad privada y compiten para obtener ganancias." },{ title: "¿Quién Manda?", text: "Individuos y empresas privadas." },{ title: "Rol del Gobierno", text: "Mínimo ('Laissez-faire'); protege la propiedad privada." },{ title: "Ejemplo", text: "Revolución Industrial en EE.UU. ('Gilded Age')." }] },
+                socialism: { title: "Socialismo", icon: "fa-handshake", subtitle: "Control del Gobierno para la Equidad", viz: `<div class="viz-icon" style="position: absolute; bottom: 10%; left: 50%; transform: translateX(-50%);"><i class="fas fa-users text-slate-500"></i><div class="label">El Pueblo</div></div><div class="viz-arrow socialism-flow-up" style="left: 50%; transform: translateX(-50%);"><i class="fas fa-arrow-up text-red-500"></i></div><div class="viz-icon" style="position: absolute; top: 10%; left: 50%; transform: translateX(-50%);"><i class="fas fa-landmark text-indigo-600"></i><div class="label">Gobierno</div></div><div class="viz-arrow socialism-flow-down" style="left: 50%; transform: translateX(-50%);"><i class="fas fa-arrow-down text-green-500"></i></div>`, details: [{ title: "Idea Clave", text: "El gobierno controla industrias clave para reducir la desigualdad y proveer para el bien público." },{ title: "¿Quién Manda?", text: "El gobierno y colectivos públicos." },{ title: "Rol del Gobierno", text: "Posee/regula industrias importantes como ferrocarriles y servicios públicos." },{ title: "Ejemplo", text: "Movimiento político de Eugene V. Debs a principios del siglo XX." }] },
+                communism: { title: "Comunismo", icon: "fa-users", subtitle: "Propiedad Colectiva para la Igualdad", viz: `<div class="viz-icon"><i class="fas fa-user"></i></div><div class="viz-icon communism-pool" style="font-size: 3.5rem;"><i class="fas fa-hand-holding-hand text-indigo-600"></i><div class="label">Recursos Compartidos</div></div><div class="viz-icon"><i class="fas fa-user"></i></div>`, details: [{ title: "Idea Clave", text: "Toda la propiedad pertenece a la comunidad, y cada persona contribuye y recibe según su capacidad y necesidades." },{ title: "¿Quién Manda?", text: "La comunidad en su conjunto (en teoría)." },{ title: "Rol del Gobierno", text: "Un estado temporal lidera la revolución obrera y luego desaparece." },{ title: "Ejemplo", text: "Inspiró a grupos radicales como los IWW ('Wobblies')." }] },
+                anarchism: { title: "Anarquismo", icon: "fa-ban", subtitle: "Sin Gobierno, Libertad Total", viz: `<div class="viz-icon w-full h-full flex items-center justify-center"><i class="fas fa-landmark text-gray-300"></i><i class="fas fa-ban anarchism-ban text-red-500" style="position: absolute;"></i></div>`, details: [{ title: "Idea Clave", text: "Abolir todas las formas de gobierno y poder jerárquico." },{ title: "¿Quién Manda?", text: "Nadie. La gente se organiza en comunidades voluntarias y autónomas." },{ title: "Rol del Gobierno", text: "No existe." },{ title: "Ejemplo", text: "El asunto de Haymarket (1886) se vinculó a activistas anarquistas." }] },
+                socialDarwinism: { title: "Darwinismo Social", icon: "fa-trophy", subtitle: "'Supervivencia del más apto' en la Sociedad", viz: `<div class="flex flex-col items-center justify-center gap-4"><div class="viz-icon"><i class="fas fa-crown text-yellow-500"></i><div class="label">'Los más aptos'</div></div><div class="darwinism-divider"></div><div class="viz-icon"><i class="fas fa-user-group text-gray-400"></i><div class="label">'Los débiles'</div></div></div>`, details: [{ title: "Idea Clave", text: "Los ricos tienen éxito porque son 'naturalmente' superiores. La sociedad no debe interferir." },{ title: "¿Quién Manda?", text: "Los individuos 'más aptos' ascienden a la cima." },{ title: "Rol del Gobierno", text: "No debe ayudar a los pobres ni regular los negocios." },{ title: "Ejemplo", text: "Se usó para justificar la gran desigualdad de riqueza durante la Gilded Age." }] }
+            },
+            fr: {
+                pageSubtitle: "Cliquez sur une carte pour voir comment elle fonctionne.",
+                capitalism: { title: "Capitalisme", icon: "fa-building", subtitle: "Propriété Privée pour le Profit", viz: `<div class="viz-icon"><i class="fas fa-industry text-slate-500"></i><div class="label">Usine</div></div><div class="viz-arrow capitalism-flow"><i class="fas fa-dollar-sign"></i></div><div class="viz-icon"><i class="fas fa-user-tie text-indigo-600"></i><div class="label">Patron</div></div>`, details: [{ title: "Idée Clé", text: "Les entreprises sont privées et rivalisent pour faire du profit." },{ title: "Qui Dirige ?", text: "Les particuliers et les entreprises." },{ title: "Rôle du Gouvernement", text: "Minimal ('Laissez-faire'); protège la propriété privée." },{ title: "Exemple", text: "Révolution industrielle aux États-Unis ('Gilded Age')." }] },
+                socialism: { title: "Socialisme", icon: "fa-handshake", subtitle: "Contrôle de l'État pour l'Équité", viz: `<div class="viz-icon" style="position: absolute; bottom: 10%; left: 50%; transform: translateX(-50%);"><i class="fas fa-users text-slate-500"></i><div class="label">Le Peuple</div></div><div class="viz-arrow socialism-flow-up" style="left: 50%; transform: translateX(-50%);"><i class="fas fa-arrow-up text-red-500"></i></div><div class="viz-icon" style="position: absolute; top: 10%; left: 50%; transform: translateX(-50%);"><i class="fas fa-landmark text-indigo-600"></i><div class="label">Gouvernement</div></div><div class="viz-arrow socialism-flow-down" style="left: 50%; transform: translateX(-50%);"><i class="fas fa-arrow-down text-green-500"></i></div>`, details: [{ title: "Idée Clé", text: "Le gouvernement contrôle les industries clés pour réduire les inégalités et servir le bien public." },{ title: "Qui Dirige ?", text: "Le gouvernement et les collectivités publiques." },{ title: "Rôle du Gouvernement", text: "Possède/réglemente les grandes industries comme les chemins de fer et les services publics." },{ title: "Exemple", text: "Mouvement politique d'Eugene V. Debs au début des années 1900." }] },
+                communism: { title: "Communisme", icon: "fa-users", subtitle: "Propriété Collective pour l'Égalité", viz: `<div class="viz-icon"><i class="fas fa-user"></i></div><div class="viz-icon communism-pool" style="font-size: 3.5rem;"><i class="fas fa-hand-holding-hand text-indigo-600"></i><div class="label">Ressources Partagées</div></div><div class="viz-icon"><i class="fas fa-user"></i></div>`, details: [{ title: "Idée Clé", text: "Toute propriété appartient à la communauté, et chacun contribue et reçoit selon ses capacités et ses besoins." },{ title: "Qui Dirige ?", text: "La communauté dans son ensemble (en théorie)." },{ title: "Rôle du Gouvernement", text: "Un État temporaire mène la révolution ouvrière, puis disparaît." },{ title: "Exemple", text: "A inspiré des groupes radicaux comme les IWW ('Wobblies')." }] },
+                anarchism: { title: "Anarchisme", icon: "fa-ban", subtitle: "Pas de Gouvernement, Liberté Totale", viz: `<div class="viz-icon w-full h-full flex items-center justify-center"><i class="fas fa-landmark text-gray-300"></i><i class="fas fa-ban anarchism-ban text-red-500" style="position: absolute;"></i></div>`, details: [{ title: "Idée Clé", text: "Abolir toutes les formes de gouvernement et de pouvoir hiérarchique." },{ title: "Qui Dirige ?", text: "Personne. Les gens s'organisent en communautés volontaires et autonomes." },{ title: "Rôle du Gouvernement", text: "N'existe pas." },{ title: "Exemple", text: "L'affaire de Haymarket (1886) était liée à des militants anarchistes." }] },
+                socialDarwinism: { title: "Darwinisme Social", icon: "fa-trophy", subtitle: "'Survie du plus apte' dans la Société", viz: `<div class="flex flex-col items-center justify-center gap-4"><div class="viz-icon"><i class="fas fa-crown text-yellow-500"></i><div class="label">'Les plus aptes'</div></div><div class="darwinism-divider"></div><div class="viz-icon"><i class="fas fa-user-group text-gray-400"></i><div class="label">'Les faibles'</div></div></div>`, details: [{ title: "Idée Clé", text: "Les riches réussissent car ils sont 'naturellement' supérieurs. La société ne doit pas intervenir." },{ title: "Qui Dirige ?", text: "Les individus les 'plus aptes' s'élèvent au sommet." },{ title: "Rôle du Gouvernement", text: "Ne doit pas aider les pauvres ni réglementer les entreprises." },{ title: "Exemple", text: "Utilisé pour justifier la grande inégalité des richesses pendant l'Âge d'Or." }] }
+            }
+        };
+
+        let currentLanguage = 'en';
+        const modal = document.getElementById('ideology-modal');
+
+        function createIdeologyCards() {
+            const grid = document.getElementById('ideology-grid');
+            const data = translations[currentLanguage];
+            grid.innerHTML = ''; // Clear existing cards
+
+            document.querySelector('.header-bg p').textContent = data.pageSubtitle;
+
+            for (const key in data) {
+                if (typeof data[key] === 'object' && data[key].title) {
+                    const ideology = data[key];
+                    const card = document.createElement('div');
+                    card.className = 'ideology-card bg-white rounded-2xl p-6 cursor-pointer text-center flex flex-col items-center justify-center h-48';
+                    card.onclick = () => showModal(key);
+                    card.innerHTML = `
+                        <i class="fas ${ideology.icon} text-4xl text-indigo-500 mb-3"></i>
+                        <h3 class="text-2xl font-bold text-gray-800">${ideology.title}</h3>
+                        <p class="text-gray-500">${ideology.subtitle}</p>
+                    `;
+                    grid.appendChild(card);
+                }
+            }
+        }
+
+        function showModal(ideologyKey) {
+            const data = translations[currentLanguage][ideologyKey];
+            document.getElementById('modal-title').textContent = data.title;
+            document.getElementById('modal-subtitle').textContent = data.subtitle;
+            document.getElementById('modal-viz').innerHTML = data.viz;
+            
+            const detailsContainer = document.getElementById('modal-details');
+            detailsContainer.innerHTML = '';
+            data.details.forEach(item => {
+                const detailEl = document.createElement('div');
+                detailEl.innerHTML = `<p><strong class="font-semibold text-gray-700">${item.title}:</strong> ${item.text}</p>`;
+                detailsContainer.appendChild(detailEl);
+            });
+
+            modal.classList.add('active');
+        }
+
+        function closeModal() {
+            modal.classList.remove('active');
+        }
+
+        function setLanguage(lang) {
+            currentLanguage = lang;
+            createIdeologyCards();
+            // Update active state of language buttons
+            document.querySelectorAll('.language-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.lang === lang);
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            createIdeologyCards();
+            window.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') closeModal();
+            });
+        });
+
+    </script>
+</body>
+</html>
