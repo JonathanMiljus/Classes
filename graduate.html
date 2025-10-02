@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Junior Meeting Success Guide - East Lee County High School</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f1f5f9; /* Slate 100 */
+            color: #1e293b; /* Slate 800 */
+        }
+        .gradient-text {
+            background: linear-gradient(to right, #2563eb, #7c3aed, #db2777);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .card {
+            background-color: #ffffff;
+            border: 1px solid #e2e8f0; /* Slate 200 */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.07);
+        }
+        .lang-btn {
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            color: #475569; /* Slate 600 */
+        }
+        .lang-btn.active {
+            background-color: #2563eb;
+            color: #ffffff;
+            border-color: #2563eb;
+            box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3);
+        }
+        .lang-btn:not(.active):hover {
+            background-color: #e2e8f0;
+            color: #1e293b;
+        }
+        .progress-bar-container {
+            background-color: #e2e8f0; /* Slate 200 */
+        }
+        .progress-bar {
+            background: linear-gradient(to right, #3b82f6, #8b5cf6);
+        }
+        .counselor-card {
+            background-color: #ffffff;
+            border: 1px solid #e2e8f0;
+        }
+        .content-section {
+            display: none;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        .content-section.active {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .stepper-btn {
+            transition: all 0.3s ease;
+            border-bottom: 4px solid transparent;
+            color: #64748b; /* Slate 500 */
+        }
+        .stepper-btn:hover {
+            color: #2563eb;
+        }
+        .stepper-btn.active {
+            color: #2563eb;
+            font-weight: 700;
+            border-bottom-color: #2563eb;
+        }
+
+        /* Accordion Styles */
+        .accordion-header {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            font-size: 1.125rem;
+            font-weight: 600;
+            text-align: left;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.5rem;
+            background-color: #f8fafc; /* Slate 50 */
+            transition: background-color 0.2s ease-in-out;
+        }
+        .accordion-header:hover {
+            background-color: #f1f5f9; /* Slate 100 */
+        }
+        .accordion-item.active .accordion-header {
+             background-color: #eef2ff; /* Indigo 50 */
+             border-bottom-left-radius: 0;
+             border-bottom-right-radius: 0;
+             border-color: #c7d2fe; /* Indigo 200 */
+        }
+        .accordion-panel {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out;
+            background-color: #ffffff;
+            border-left: 1px solid #c7d2fe;
+            border-right: 1px solid #c7d2fe;
+            border-bottom: 1px solid #c7d2fe;
+            border-bottom-left-radius: 0.5rem;
+            border-bottom-right-radius: 0.5rem;
+        }
+        .accordion-item.active .accordion-panel {
+            max-height: 1000px; /* Large enough to fit content */
+            transition: max-height 0.6s ease-in;
+        }
+        .accordion-chevron {
+            transition: transform 0.3s ease;
+        }
+        .accordion-item.active .accordion-chevron {
+            transform: rotate(180deg);
+        }
+        .styled-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+        .styled-table th, .styled-table td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .styled-table th {
+            background-color: #f1f5f9;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header & Language Switcher -->
+    <header class="sticky top-0 z-50 bg-white/80 backdrop-blur-lg border-b border-slate-200 shadow-sm">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="text-center md:text-left mb-4 md:mb-0">
+                    <h1 class="text-2xl font-bold text-slate-900" data-key="schoolName">East Lee County High School</h1>
+                    <p class="text-lg font-semibold gradient-text" data-key="mainTitle">Junior Meeting 25–26</p>
+                </div>
+                <div class="flex flex-col items-center">
+                     <label class="text-sm font-semibold text-slate-500 mb-2" data-key="langSelectLabel">SELECT LANGUAGE</label>
+                    <div id="language-switcher" class="flex flex-wrap justify-center gap-2 bg-slate-200 p-2 rounded-xl">
+                        <button class="lang-btn px-3 py-1 text-sm font-semibold rounded-lg" data-lang="en">English</button>
+                        <button class="lang-btn px-3 py-1 text-sm font-semibold rounded-lg" data-lang="es">Español</button>
+                        <button class="lang-btn px-3 py-1 text-sm font-semibold rounded-lg" data-lang="pt">Português</button>
+                        <button class="lang-btn px-3 py-1 text-sm font-semibold rounded-lg" data-lang="fr">Français</button>
+                        <button class="lang-btn px-3 py-1 text-sm font-semibold rounded-lg" data-lang="ht">Kreyòl</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto p-4 sm:p-6 lg:p-8">
+        <div class="text-center mb-10">
+            <h2 class="text-4xl md:text-5xl font-extrabold gradient-text leading-tight" data-key="pageHeader">What You Need to Know to Be Successful</h2>
+            <p class="mt-2 text-lg text-slate-600" data-key="pageSubHeader">Navigating the Path to Graduation</p>
+        </div>
+
+        <!-- Stepper Navigation -->
+        <nav id="stepper-nav" class="flex justify-center flex-wrap gap-x-4 gap-y-2 sm:gap-x-8 mb-8 border-b border-slate-200">
+            <button class="stepper-btn py-3 px-2 text-sm sm:text-base" data-step="0" data-key="navStep1">Graduation Requirements</button>
+            <button class="stepper-btn py-3 px-2 text-sm sm:text-base" data-step="1" data-key="navStep2">Attendance & GPA</button>
+            <button class="stepper-btn py-3 px-2 text-sm sm:text-base" data-step="2" data-key="navStep3">Bright Futures</button>
+            <button class="stepper-btn py-3 px-2 text-sm sm:text-base" data-step="3" data-key="navStep4">Support Team</button>
+            <button class="stepper-btn py-3 px-2 text-sm sm:text-base" data-step="4" data-key="navStep5">Keys to Success</button>
+        </nav>
+
+        <div id="content-container">
+            <!-- Step 1: Graduation Requirements -->
+            <section id="step-0" class="content-section">
+                 <div class="card p-6 rounded-2xl max-w-4xl mx-auto">
+                    <h4 class="text-2xl font-bold gradient-text mb-4 text-center" data-key="gradReqTitle"></h4>
+                    <div id="grad-accordion" class="space-y-4">
+                        
+                        <!-- Accordion Item 1 -->
+                        <div class="accordion-item">
+                            <button class="accordion-header">
+                                <span data-key="gradReqAccordion1Title"></span>
+                                <svg class="accordion-chevron w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            </button>
+                            <div class="accordion-panel">
+                                <div class="p-4" data-key="gradReqAccordion1Content"></div>
+                            </div>
+                        </div>
+
+                        <!-- Accordion Item 2 -->
+                         <div class="accordion-item">
+                            <button class="accordion-header">
+                                <span data-key="gradReqAccordion2Title"></span>
+                                <svg class="accordion-chevron w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            </button>
+                            <div class="accordion-panel">
+                               <div class="p-4" data-key="gradReqAccordion2Content"></div>
+                            </div>
+                        </div>
+
+                        <!-- Accordion Item 3 -->
+                        <div class="accordion-item">
+                            <button class="accordion-header">
+                                <span data-key="gradReqAccordion3Title"></span>
+                                <svg class="accordion-chevron w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            </button>
+                            <div class="accordion-panel">
+                               <div class="p-4" data-key="gradReqAccordion3Content"></div>
+                            </div>
+                        </div>
+
+                        <!-- Accordion Item 4 -->
+                        <div class="accordion-item">
+                            <button class="accordion-header">
+                                <span data-key="gradReqAccordion4Title"></span>
+                                <svg class="accordion-chevron w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            </button>
+                            <div class="accordion-panel">
+                                <div class="p-4" data-key="gradReqAccordion4Content"></div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- Step 2: Attendance, GPA, etc. -->
+            <section id="step-1" class="content-section">
+                <div class="card p-6 rounded-2xl max-w-4xl mx-auto">
+                    <h4 class="text-2xl font-bold gradient-text mb-4" data-key="attendanceTitle">Attendance, GPA & Support</h4>
+                    <div class="space-y-6" data-key="attendanceContent"></div>
+                </div>
+            </section>
+
+            <!-- Step 3: Bright Futures -->
+            <section id="step-2" class="content-section">
+                <div class="card p-6 rounded-2xl max-w-4xl mx-auto">
+                     <h4 class="text-2xl font-bold gradient-text mb-4" data-key="bfTitle">Florida Bright Futures Scholarships</h4>
+                     <p class="text-slate-600 mb-6" data-key="bfDesc">This program rewards students for academic performance, test scores, and service/work experience.</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="p-4 rounded-lg bg-slate-100 border border-slate-200" data-key="bfFAS"></div>
+                        <div class="p-4 rounded-lg bg-slate-100 border border-slate-200" data-key="bfFMS"></div>
+                    </div>
+                    <p class="text-sm text-slate-500 mt-6" data-key="bfNotes">Note: Hours must be logged and approved. FFAA application required senior year.</p>
+                    <a href="https://floridabrightfutures.gov" target="_blank" rel="noopener noreferrer" class="inline-block mt-4 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg transition-colors" data-key="bfLink">More Information</a>
+                </div>
+            </section>
+            
+            <!-- Step 4: Support Team -->
+            <section id="step-3" class="content-section">
+                <div class="max-w-5xl mx-auto">
+                    <div class="text-center mb-10">
+                        <h2 class="text-3xl font-bold gradient-text" data-key="supportTitle">Counseling and Student Support Team</h2>
+                    </div>
+                    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 text-center">
+                        <div class="counselor-card p-4 rounded-xl shadow-sm">
+                            <p class="font-bold text-slate-800">Mr. Howe</p>
+                            <p class="text-sm text-blue-600" data-key="counselorHowe"></p>
+                        </div>
+                        <div class="counselor-card p-4 rounded-xl shadow-sm">
+                            <p class="font-bold text-slate-800">Mrs. Cocchieri</p>
+                            <p class="text-sm text-blue-600" data-key="counselorCocchieri"></p>
+                        </div>
+                         <div class="counselor-card p-4 rounded-xl shadow-sm">
+                            <p class="font-bold text-slate-800">Mrs. Leiderman</p>
+                            <p class="text-sm text-blue-600" data-key="counselorLeiderman"></p>
+                        </div>
+                        <div class="counselor-card p-4 rounded-xl shadow-sm">
+                            <p class="font-bold text-slate-800">Mrs. Abrahams</p>
+                            <p class="text-sm text-blue-600" data-key="counselorAbrahams"></p>
+                        </div>
+                        <div class="counselor-card p-4 rounded-xl shadow-sm">
+                            <p class="font-bold text-slate-800">Mr. Jackson</p>
+                            <p class="text-sm text-blue-600" data-key="counselorJackson"></p>
+                        </div>
+                        <div class="counselor-card p-4 rounded-xl shadow-sm">
+                            <p class="font-bold text-slate-800">Mrs. Lepore</p>
+                            <p class="text-sm text-blue-600" data-key="counselorLepore"></p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Step 5: Keys to Success -->
+            <section id="step-4" class="content-section">
+                 <div class="max-w-5xl mx-auto">
+                    <div class="text-center mb-10">
+                        <h2 class="text-3xl font-bold gradient-text" data-key="keysTitle">Keys to Success</h2>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="card p-6 rounded-xl text-center" data-key="keysPlan"></div>
+                        <div class="card p-6 rounded-xl text-center" data-key="keysInvolved"></div>
+                        <div class="card p-6 rounded-xl text-center" data-key="keysBalanced"></div>
+                    </div>
+                    <div class="mt-8 text-center" data-key="contactInfo"></div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <footer class="text-center py-8 mt-12 border-t border-slate-200">
+        <p class="text-slate-500 text-sm" data-key="footer">Website prepared by Miljus</p>
+    </footer>
+
+    <script>
+        const translations = {
+            schoolName: { en: 'East Lee County High School', es: 'Escuela Secundaria East Lee County', pt: 'Escola de Ensino Médio East Lee County', fr: 'Lycée du Comté d\'East Lee', ht: 'Lekòl Segondè East Lee County' },
+            mainTitle: { en: 'Junior Meeting 25–26', es: 'Reunión de Junior 25–26', pt: 'Reunião do 11º Ano 25–26', fr: 'Réunion des Onzièmes Années 25–26', ht: 'Reyinyon Onzyèm Ane 25–26' },
+            langSelectLabel: { en: 'SELECT LANGUAGE', es: 'SELECCIONE IDIOMA', pt: 'SELECIONE O IDIOMA', fr: 'CHOISIR LA LANGUE', ht: 'CHWAZI LANG' },
+            pageHeader: { en: 'What You Need to Know to Be Successful', es: 'Lo que necesitas saber para tener éxito', pt: 'O que você precisa saber para ter sucesso', fr: 'Ce que vous devez savoir pour réussir', ht: 'Sa ou bezwen konnen pou w reyisi' },
+            pageSubHeader: { en: 'Navigating the Path to Graduation', es: 'Navegando el camino hacia la graduación', pt: 'Navegando no caminho para a formatura', fr: 'Naviguer sur le chemin de la remise des diplômes', ht: 'Navige sou chemen gradyasyon an' },
+            navStep1: { en: 'Graduation Requirements', es: 'Requisitos de Graduación', pt: 'Requisitos de Formatura', fr: 'Exigences de Diplôme', ht: 'Kondisyon gradyasyon' },
+            navStep2: { en: 'Attendance & GPA', es: 'Asistencia y GPA', pt: 'Frequência e GPA', fr: 'Présence et GPA', ht: 'Prezans ak GPA' },
+            navStep3: { en: 'Bright Futures', es: 'Bright Futures', pt: 'Bright Futures', fr: 'Bright Futures', ht: 'Bright Futures' },
+            navStep4: { en: 'Support Team', es: 'Equipo de Apoyo', pt: 'Equipe de Suporte', fr: 'Équipe de Soutien', ht: 'Ekip Sipò' },
+            navStep5: { en: 'Keys to Success', es: 'Claves del Éxito', pt: 'Chaves para o Sucesso', fr: 'Clés du Succès', ht: 'Kle Siksè' },
+            gradReqTitle: { en: 'What You Need to Graduate in Florida', es: 'Lo que necesitas para graduarte en Florida', pt: 'O que você precisa para se formar na Flórida', fr: 'Ce dont vous avez besoin pour obtenir votre diplôme en Floride', ht: 'Sa Ou Bezwen Pou Gradyasyon nan Florid' },
+            gradReqDesc: { en: 'Students must earn <strong class="text-blue-600">24 total credits</strong> to receive a standard diploma.', es: 'Los estudiantes deben obtener <strong class="text-blue-600">24 créditos en total</strong> para recibir un diploma estándar.', pt: 'Os alunos devem obter <strong class="text-blue-600">24 créditos totais</strong> para receber um diploma padrão.', fr: 'Les étudiants doivent obtenir <strong class="text-blue-600">24 crédits au total</strong> pour recevoir un diplôme standard.', ht: 'Elèv yo dwe touche <strong class="text-blue-600">24 kredi total</strong> pou resevwa yon diplòm estanda.' },
+            gradReqAccordion1Title: { en: '📚 1. Credits & GPA', es: '📚 1. Créditos y GPA', pt: '📚 1. Créditos e GPA', fr: '📚 1. Crédits et GPA', ht: '📚 1. Kredi & GPA' },
+            gradReqAccordion1Content: {
+                en: `<p class="text-slate-600">To earn a standard high school diploma, you must:</p><ul class="list-disc list-inside text-slate-600 mt-2 space-y-2"><li>✅ Earn <strong class="font-semibold text-slate-800">24 total credits</strong></li><li>✅ Have at least a <strong class="font-semibold text-slate-800">2.0 GPA</strong></li></ul>`,
+                es: `<p class="text-slate-600">Para obtener un diploma de escuela secundaria estándar, debes:</p><ul class="list-disc list-inside text-slate-600 mt-2 space-y-2"><li>✅ Obtener <strong class="font-semibold text-slate-800">24 créditos en total</strong></li><li>✅ Tener al menos un <strong class="font-semibold text-slate-800">GPA de 2.0</strong></li></ul>`,
+                pt: `<p class="text-slate-600">Para obter um diploma de ensino médio padrão, você deve:</p><ul class="list-disc list-inside text-slate-600 mt-2 space-y-2"><li>✅ Obter <strong class="font-semibold text-slate-800">24 créditos totais</strong></li><li>✅ Ter pelo menos um <strong class="font-semibold text-slate-800">GPA de 2.0</strong></li></ul>`,
+                fr: `<p class="text-slate-600">Pour obtenir un diplôme d'études secondaires standard, vous devez :</p><ul class="list-disc list-inside text-slate-600 mt-2 space-y-2"><li>✅ Obtenir <strong class="font-semibold text-slate-800">24 crédits au total</strong></li><li>✅ Avoir au moins un <strong class="font-semibold text-slate-800">GPA de 2.0</strong></li></ul>`,
+                ht: `<p class="text-slate-600">Pou jwenn yon diplòm lekòl segondè estanda, ou dwe:</p><ul class="list-disc list-inside text-slate-600 mt-2 space-y-2"><li>✅ Jwenn <strong class="font-semibold text-slate-800">24 kredi total</strong></li><li>✅ Gen omwen yon <strong class="font-semibold text-slate-800">GPA 2.0</strong></li></ul>`,
+            },
+            gradReqAccordion2Title: { en: '📝 2. Required Tests to Graduate', es: '📝 2. Exámenes Requeridos para Graduarse', pt: '📝 2. Testes Necessários para se Formar', fr: '📝 2. Tests Requis pour le Diplôme', ht: '📝 2. Egzamen Obligatwa pou Gradyasyon' },
+            gradReqAccordion2Content: {
+                en: `<p class="mb-4 text-slate-600">You must pass <strong>two graduation tests</strong> (or use an approved alternate score):</p>
+                    <h5 class="font-semibold text-slate-800 mt-4">✅ A. Reading / English (ELA)</h5>
+                    <p class="text-slate-600 text-sm mb-2">You can meet this requirement by passing the <strong>Grade 10 FAST/FSA ELA</strong> test OR using one of these scores:</p>
+                    <table class="styled-table text-sm"><thead><tr><th>Test</th><th>Score Needed</th></tr></thead><tbody><tr><td>SAT (Reading & Writing)</td><td>490</td></tr><tr><td>ACT (English & Reading Avg.)</td><td>18</td></tr><tr><td>PSAT/NMSQT</td><td>470</td></tr><tr><td>CLT (Grammar/Writing + Verbal)</td><td>39</td></tr></tbody></table>
+                    <h5 class="font-semibold text-slate-800 mt-6">✅ B. Math (Algebra 1)</h5>
+                    <p class="text-slate-600 text-sm mb-2">You can meet this requirement by passing the <strong>Algebra 1 EOC</strong> OR using one of these scores:</p>
+                    <table class="styled-table text-sm"><thead><tr><th>Test</th><th>Score Needed</th></tr></thead><tbody><tr><td>SAT Math</td><td>420–480 (depending on year)</td></tr><tr><td>ACT Math</td><td>16</td></tr><tr><td>PSAT Math</td><td>430</td></tr><tr><td>CLT (Quantitative Reasoning)</td><td>14</td></tr><tr><td>Geometry EOC</td><td>Level 3 can count</td></tr></tbody></table>`,
+                es: `<p class="mb-4 text-slate-600">Debes aprobar <strong>dos exámenes de graduación</strong> (o usar un puntaje alternativo aprobado):</p>
+                    <h5 class="font-semibold text-slate-800 mt-4">✅ A. Lectura / Inglés (ELA)</h5>
+                    <p class="text-slate-600 text-sm mb-2">Puedes cumplir este requisito aprobando el examen <strong>FAST/FSA ELA de 10º Grado</strong> O usando uno de estos puntajes:</p>
+                    <table class="styled-table text-sm"><thead><tr><th>Examen</th><th>Puntaje Necesario</th></tr></thead><tbody><tr><td>SAT (Lectura y Escritura)</td><td>490</td></tr><tr><td>ACT (Promedio Inglés y Lectura)</td><td>18</td></tr><tr><td>PSAT/NMSQT</td><td>470</td></tr><tr><td>CLT (Gramática/Escritura + Verbal)</td><td>39</td></tr></tbody></table>
+                    <h5 class="font-semibold text-slate-800 mt-6">✅ B. Matemáticas (Álgebra 1)</h5>
+                    <p class="text-slate-600 text-sm mb-2">Puedes cumplir este requisito aprobando el <strong>EOC de Álgebra 1</strong> O usando uno de estos puntajes:</p>
+                    <table class="styled-table text-sm"><thead><tr><th>Examen</th><th>Puntaje Necesario</th></tr></thead><tbody><tr><td>SAT Matemáticas</td><td>420–480 (depende del año)</td></tr><tr><td>ACT Matemáticas</td><td>16</td></tr><tr><td>PSAT Matemáticas</td><td>430</td></tr><tr><td>CLT (Razonamiento Cuantitativo)</td><td>14</td></tr><tr><td>EOC de Geometría</td><td>Nivel 3 puede contar</td></tr></tbody></table>`,
+                pt: `<p class="mb-4 text-slate-600">Você deve passar em <strong>dois testes de graduação</strong> (ou usar uma pontuação alternativa aprovada):</p>
+                    <h5 class="font-semibold text-slate-800 mt-4">✅ A. Leitura / Inglês (ELA)</h5>
+                    <p class="text-slate-600 text-sm mb-2">Você pode cumprir este requisito passando no teste <strong>FAST/FSA ELA do 10º ano</strong> OU usando uma destas pontuações:</p>
+                    <table class="styled-table text-sm"><thead><tr><th>Teste</th><th>Pontuação Necessária</th></tr></thead><tbody><tr><td>SAT (Leitura e Escrita)</td><td>490</td></tr><tr><td>ACT (Média de Inglês e Leitura)</td><td>18</td></tr><tr><td>PSAT/NMSQT</td><td>470</td></tr><tr><td>CLT (Gramática/Escrita + Verbal)</td><td>39</td></tr></tbody></table>
+                    <h5 class="font-semibold text-slate-800 mt-6">✅ B. Matemática (Álgebra 1)</h5>
+                    <p class="text-slate-600 text-sm mb-2">Você pode cumprir este requisito passando no <strong>EOC de Álgebra 1</strong> OU usando uma destas pontuações:</p>
+                    <table class="styled-table text-sm"><thead><tr><th>Teste</th><th>Pontuação Necessária</th></tr></thead><tbody><tr><td>SAT Matemática</td><td>420–480 (depende do ano)</td></tr><tr><td>ACT Matemática</td><td>16</td></tr><tr><td>PSAT Matemática</td><td>430</td></tr><tr><td>CLT (Raciocínio Quantitativo)</td><td>14</td></tr><tr><td>EOC de Geometria</td><td>Nível 3 pode contar</td></tr></tbody></table>`,
+                fr: `<p class="mb-4 text-slate-600">Vous devez réussir <strong>deux tests de fin d'études</strong> (ou utiliser un score alternatif approuvé) :</p>
+                    <h5 class="font-semibold text-slate-800 mt-4">✅ A. Lecture / Anglais (ELA)</h5>
+                    <p class="text-slate-600 text-sm mb-2">Vous pouvez satisfaire à cette exigence en réussissant le test <strong>FAST/FSA ELA de 10e année</strong> OU en utilisant l'un de ces scores :</p>
+                    <table class="styled-table text-sm"><thead><tr><th>Test</th><th>Score Requis</th></tr></thead><tbody><tr><td>SAT (Lecture et Écriture)</td><td>490</td></tr><tr><td>ACT (Moyenne Anglais et Lecture)</td><td>18</td></tr><tr><td>PSAT/NMSQT</td><td>470</td></tr><tr><td>CLT (Grammaire/Écriture + Verbal)</td><td>39</td></tr></tbody></table>
+                    <h5 class="font-semibold text-slate-800 mt-6">✅ B. Mathématiques (Algèbre 1)</h5>
+                    <p class="text-slate-600 text-sm mb-2">Vous pouvez satisfaire à cette exigence en réussissant l'<strong>EOC d'Algèbre 1</strong> OU en utilisant l'un de ces scores :</p>
+                    <table class="styled-table text-sm"><thead><tr><th>Test</th><th>Score Requis</th></tr></thead><tbody><tr><td>SAT Math</td><td>420–480 (selon l'année)</td></tr><tr><td>ACT Math</td><td>16</td></tr><tr><td>PSAT Math</td><td>430</td></tr><tr><td>CLT (Raisonnement Quantitatif)</td><td>14</td></tr><tr><td>EOC de Géométrie</td><td>Le niveau 3 peut compter</td></tr></tbody></table>`,
+                ht: `<p class="mb-4 text-slate-600">Ou dwe pase <strong>de egzamen gradyasyon</strong> (oswa itilize yon nòt altènatif apwouve):</p>
+                    <h5 class="font-semibold text-slate-800 mt-4">✅ A. Lekti / Anglè (ELA)</h5>
+                    <p class="text-slate-600 text-sm mb-2">Ou ka satisfè egzijans sa a si w pase egzamen <strong>FAST/FSA ELA 10yèm ane a</strong> OSWA si w itilize youn nan nòt sa yo:</p>
+                    <table class="styled-table text-sm"><thead><tr><th>Egzamen</th><th>Nòt Nesesè</th></tr></thead><tbody><tr><td>SAT (Lekti & Ekriti)</td><td>490</td></tr><tr><td>ACT (Mwayèn Anglè & Lekti)</td><td>18</td></tr><tr><td>PSAT/NMSQT</td><td>470</td></tr><tr><td>CLT (Gramè/Ekriti + Vèbal)</td><td>39</td></tr></tbody></table>
+                    <h5 class="font-semibold text-slate-800 mt-6">✅ B. Matematik (Aljèb 1)</h5>
+                    <p class="text-slate-600 text-sm mb-2">Ou ka satisfè egzijans sa a si w pase <strong>EOC Aljèb 1</strong> OSWA si w itilize youn nan nòt sa yo:</p>
+                    <table class="styled-table text-sm"><thead><tr><th>Egzamen</th><th>Nòt Nesesè</th></tr></thead><tbody><tr><td>SAT Matematik</td><td>420–480 (depann de ane a)</td></tr><tr><td>ACT Matematik</td><td>16</td></tr><tr><td>PSAT Matematik</td><td>430</td></tr><tr><td>CLT (Rèzonman Kantitatif)</td><td>14</td></tr><tr><td>EOC Jeyometri</td><td>Nivo 3 ka konte</td></tr></tbody></table>`,
+            },
+            gradReqAccordion3Title: { en: '🔁 3. Retake Options', es: '🔁 3. Opciones para Repetir', pt: '🔁 3. Opções de Repetição', fr: '🔁 3. Options de Reprise', ht: '🔁 3. Opsyon pou Repran' },
+            gradReqAccordion3Content: {
+                en: `<p class="text-slate-600">If you don’t pass the state test, you can:</p><ul class="list-disc list-inside text-slate-600 mt-2 space-y-2"><li>Retake the test when offered</li><li>OR use your <strong class="font-semibold text-slate-800">SAT, ACT, PSAT, or CLT</strong> score instead</li></ul>`,
+                es: `<p class="text-slate-600">Si no apruebas el examen estatal, puedes:</p><ul class="list-disc list-inside text-slate-600 mt-2 space-y-2"><li>Volver a tomar el examen cuando se ofrezca</li><li>O usar tu puntaje de <strong class="font-semibold text-slate-800">SAT, ACT, PSAT o CLT</strong> en su lugar</li></ul>`,
+                pt: `<p class="text-slate-600">Se você não passar no teste estadual, você pode:</p><ul class="list-disc list-inside text-slate-600 mt-2 space-y-2"><li>Refazer o teste quando oferecido</li><li>OU usar sua pontuação do <strong class="font-semibold text-slate-800">SAT, ACT, PSAT ou CLT</strong> em vez disso</li></ul>`,
+                fr: `<p class="text-slate-600">Si vous ne réussissez pas le test de l'État, vous pouvez :</p><ul class="list-disc list-inside text-slate-600 mt-2 space-y-2"><li>Repasser le test lorsqu'il est proposé</li><li>OU utiliser votre score <strong class="font-semibold text-slate-800">SAT, ACT, PSAT ou CLT</strong> à la place</li></ul>`,
+                ht: `<p class="text-slate-600">Si ou pa pase egzamen eta a, ou kapab:</p><ul class="list-disc list-inside text-slate-600 mt-2 space-y-2"><li>Repran egzamen an lè li disponib</li><li>OSWA itilize nòt <strong class="font-semibold text-slate-800">SAT, ACT, PSAT, oswa CLT</strong> ou pito</li></ul>`,
+            },
+            gradReqAccordion4Title: { en: '✅ 4. Special Exceptions', es: '✅ 4. Excepciones Especiales', pt: '✅ 4. Exceções Especiais', fr: '✅ 4. Exceptions Spéciales', ht: '✅ 4. Eksepsyon Espesyal' },
+            gradReqAccordion4Content: {
+                en: `<p class="text-slate-600"><strong>ESOL students</strong> (less than 2 years in the U.S.) may use class assessments for the reading requirement if they meet all other graduation rules.</p>`,
+                es: `<p class="text-slate-600">Los <strong>estudiantes de ESOL</strong> (con menos de 2 años en los EE. UU.) pueden usar las evaluaciones de clase para el requisito de lectura si cumplen con todas las demás reglas de graduación.</p>`,
+                pt: `<p class="text-slate-600"><strong>Alunos ESOL</strong> (com menos de 2 anos nos EUA) podem usar avaliações de aula para o requisito de leitura se cumprirem todas as outras regras de graduação.</p>`,
+                fr: `<p class="text-slate-600">Les <strong>étudiants ESOL</strong> (moins de 2 ans aux États-Unis) peuvent utiliser les évaluations en classe pour l'exigence de lecture s'ils remplissent toutes les autres règles de diplomation.</p>`,
+                ht: `<p class="text-slate-600"><strong>Elèv ESOL</strong> (ki gen mwens pase 2 zan Ozetazini) ka itilize evalyasyon klas pou egzijans lekti a si yo satisfè tout lòt règleman gradyasyon yo.</p>`,
+            },
+            gradReqMin: {},
+            gradReqBreakdown: {},
+            gradFlyerLink: { en: 'State Graduation Flyer', es: 'Folleto de Graduación Estatal', pt: 'Folheto de Formatura do Estado', fr: 'Brochure de remise des diplômes', ht: 'Bwochi Gradyasyon Eta a' },
+            attendanceTitle: { en: 'Attendance, GPA, & Support', es: 'Asistencia, GPA y Apoyo', pt: 'Frequência, GPA e Suporte', fr: 'Présence, GPA et Soutien', ht: 'Prezans, GPA ak Sipò' },
+            attendanceContent: {
+                 en: `<h5 class="font-semibold text-slate-800">Attendance and Credit Loss Policy</h5><p class="text-slate-600">Regular attendance is essential. Under Florida law, missing too much school can result in loss of credit—even if a student is passing academically.</p><h5 class="font-semibold text-slate-800 mt-4">Support from School Social Workers</h5><p class="text-slate-600">They can help with attendance support, school supplies, and clothing needs. Asking for help early can prevent credit loss.</p><h5 class="font-semibold text-slate-800 mt-4">GPA Requirements and Reminders</h5><p class="text-slate-600">GPA is recalculated every semester. Report missing credits or errors to your school counselor immediately.</p><ul class="list-disc list-inside text-slate-600 space-y-1 mt-2"><li><strong class="text-blue-600">2.0+ GPA</strong> – required for athletics</li><li><strong class="text-blue-600">3.0+ GPA</strong> – required for Dual Enrollment</li></ul>`,
+                es: `<h5 class="font-semibold text-slate-800">Política de Asistencia y Pérdida de Crédito</h5><p class="text-slate-600">La asistencia regular es esencial. Faltar demasiado a la escuela puede resultar en la pérdida de crédito.</p><h5 class="font-semibold text-slate-800 mt-4">Apoyo de los Trabajadores Sociales</h5><p class="text-slate-600">Pueden ayudar con apoyo a la asistencia, útiles escolares y ropa. Pedir ayuda a tiempo puede prevenir la pérdida de créditos.</p><h5 class="font-semibold text-slate-800 mt-4">Requisitos y Recordatorios de GPA</h5><p class="text-slate-600">El GPA se recalcula cada semestre. Reporte cualquier error a su consejero inmediatamente.</p><ul class="list-disc list-inside text-slate-600 space-y-1 mt-2"><li><strong class="text-blue-600">GPA de 2.0+</strong> – requerido para deportes</li><li><strong class="text-blue-600">GPA de 3.0+</strong> – requerido para Inscripción Doble</li></ul>`,
+                pt: `<h5 class="font-semibold text-slate-800">Política de Frequência e Perda de Crédito</h5><p class="text-slate-600">A frequência regular é essencial. Faltar muito à escola pode resultar na perda de crédito.</p><h5 class="font-semibold text-slate-800 mt-4">Apoio dos Assistentes Sociais</h5><p class="text-slate-600">Eles podem ajudar com apoio à frequência, material escolar e roupas. Pedir ajuda cedo pode evitar a perda de crédito.</p><h5 class="font-semibold text-slate-800 mt-4">Requisitos de GPA</h5><p class="text-slate-600">O GPA é recalculado a cada semestre. Relate erros ao seu conselheiro imediatamente.</p><ul class="list-disc list-inside text-slate-600 space-y-1 mt-2"><li><strong class="text-blue-600">GPA 2.0+</strong> – exigido para atletismo</li><li><strong class="text-blue-600">GPA 3.0+</strong> – exigido para Matrícula Dupla</li></ul>`,
+                fr: `<h5 class="font-semibold text-slate-800">Politique de présence et de perte de crédit</h5><p class="text-slate-600">Une présence régulière est essentielle. Une absence trop importante peut entraîner une perte de crédit.</p><h5 class="font-semibold text-slate-800 mt-4">Soutien des travailleurs sociaux</h5><p class="text-slate-600">Ils peuvent aider avec le soutien à la présence, les fournitures scolaires et les vêtements. Demander de l'aide tôt peut éviter la perte de crédit.</p><h5 class="font-semibold text-slate-800 mt-4">Exigences GPA</h5><p class="text-slate-600">La GPA est recalculée chaque semestre. Signalez les erreurs à votre conseiller immédiatement.</p><ul class="list-disc list-inside text-slate-600 space-y-1 mt-2"><li><strong class="text-blue-600">GPA 2.0+</strong> – requis pour les sports</li><li><strong class="text-blue-600">GPA 3.0+</strong> – requis pour la double inscription</li></ul>`,
+                ht: `<h5 class="font-semibold text-slate-800">Règleman sou Prezans ak Pèt Kredi</h5><p class="text-slate-600">Prezans regilye esansyèl. Si w manke lekòl twòp, sa ka lakòz ou pèdi kredi.</p><h5 class="font-semibold text-slate-800 mt-4">Sipò nan men Asistan Sosyal</h5><p class="text-slate-600">Yo ka ede ak sipò pou prezans, founiti lekòl, ak rad. Mande èd bonè ka anpeche pèt kredi.</p><h5 class="font-semibold text-slate-800 mt-4">Kondisyon GPA</h5><p class="text-slate-600">GPA rekalkile chak semès. Rapòte erè bay konseye w la imedyatman.</p><ul class="list-disc list-inside text-slate-600 space-y-1 mt-2"><li><strong class="text-blue-600">GPA 2.0+</strong> – obligatwa pou espò</li><li><strong class="text-blue-600">GPA 3.0+</strong> – obligatwa pou Enskripsyon Doub</li></ul>`
+            },
+            bfTitle: { en: 'Florida Bright Futures Scholarships', es: 'Becas Florida Bright Futures', pt: 'Bolsas de Estudo Florida Bright Futures', fr: 'Bourses d\'études Florida Bright Futures', ht: 'Bousdetid Florida Bright Futures' },
+            bfDesc: { en: 'This program rewards students for academic performance, test scores, and service/work experience.', es: 'Este programa premia a los estudiantes por su rendimiento académico, resultados de exámenes y experiencia de servicio/trabajo.', pt: 'Este programa recompensa os alunos pelo desempenho acadêmico, resultados de testes e experiência de serviço/trabalho.', fr: 'Ce programme récompense les étudiants pour leurs performances académiques et leur expérience.', ht: 'Pwogram sa a rekonpanse elèv yo pou pèfòmans akademik, nòt egzamen, ak eksperyans sèvis/travay.' },
+            bfFAS: {
+                en: `<h5 class="font-bold text-blue-600">🎓 Florida Academic Scholars (FAS)</h5><p class="text-sm text-slate-600 mt-1 mb-2">Covers 100% tuition at public FL colleges.</p><ul class="list-disc list-inside text-sm text-slate-600 space-y-1"><li>3.5 weighted GPA</li><li>100+ service/work hours</li><li>Required SAT/ACT scores</li><li>2 credits of same foreign language</li></ul>`,
+                es: `<h5 class="font-bold text-blue-600">🎓 Becarios Académicos de Florida (FAS)</h5><p class="text-sm text-slate-600 mt-1 mb-2">Cubre el 100% de la matrícula.</p><ul class="list-disc list-inside text-sm text-slate-600 space-y-1"><li>GPA ponderado de 3.5</li><li>100+ horas de servicio/trabajo</li><li>Puntajes SAT/ACT requeridos</li><li>2 créditos de idioma extranjero</li></ul>`,
+                pt: `<h5 class="font-bold text-blue-600">🎓 Bolsistas Acadêmicos da Flórida (FAS)</h5><p class="text-sm text-slate-600 mt-1 mb-2">Cobre 100% da mensalidade.</p><ul class="list-disc list-inside text-sm text-slate-600 space-y-1"><li>GPA ponderado de 3,5</li><li>100+ horas de serviço/trabalho</li><li>Pontuações SAT/ACT</li><li>2 créditos de língua estrangeira</li></ul>`,
+                fr: `<h5 class="font-bold text-blue-600">🎓 Boursiers académiques (FAS)</h5><p class="text-sm text-slate-600 mt-1 mb-2">Couvre 100 % des frais de scolarité.</p><ul class="list-disc list-inside text-sm text-slate-600 space-y-1"><li>GPA pondéré de 3.5</li><li>100+ heures de service</li><li>Scores SAT/ACT requis</li><li>2 crédits de langue étrangère</li></ul>`,
+                ht: `<h5 class="font-bold text-blue-600">🎓 Bousye Akademik (FAS)</h5><p class="text-sm text-slate-600 mt-1 mb-2">Kouvri 100% frè ekolaj.</p><ul class="list-disc list-inside text-sm text-slate-600 space-y-1"><li>GPA pondéré 3.5</li><li>100+ èdtan sèvis</li><li>Nòt SAT/ACT obligatwa</li><li>2 kredi lang etranje</li></ul>`
+            },
+            bfFMS: {
+                en: `<h5 class="font-bold text-purple-600">🎓 Florida Medallion Scholars (FMS)</h5><p class="text-sm text-slate-600 mt-1 mb-2">Covers 75% tuition at public FL colleges.</p><ul class="list-disc list-inside text-sm text-slate-600 space-y-1"><li>3.0 weighted GPA</li><li>75+ service/work hours</li><li>Required SAT/ACT scores</li><li>2 credits of same foreign language</li></ul>`,
+                es: `<h5 class="font-bold text-purple-600">🎓 Becarios Medallion de Florida (FMS)</h5><p class="text-sm text-slate-600 mt-1 mb-2">Cubre el 75% de la matrícula.</p><ul class="list-disc list-inside text-sm text-slate-600 space-y-1"><li>GPA ponderado de 3.0</li><li>75+ horas de servicio/trabajo</li><li>Puntajes SAT/ACT requeridos</li><li>2 créditos de idioma extranjero</li></ul>`,
+                pt: `<h5 class="font-bold text-purple-600">🎓 Bolsistas Medallion da Flórida (FMS)</h5><p class="text-sm text-slate-600 mt-1 mb-2">Cobre 75% da mensalidade.</p><ul class="list-disc list-inside text-sm text-slate-600 space-y-1"><li>GPA ponderado de 3,0</li><li>75+ horas de serviço/trabalho</li><li>Pontuações SAT/ACT</li><li>2 créditos de língua estrangeira</li></ul>`,
+                fr: `<h5 class="font-bold text-purple-600">🎓 Boursiers Medallion (FMS)</h5><p class="text-sm text-slate-600 mt-1 mb-2">Couvre 75 % des frais de scolarité.</p><ul class="list-disc list-inside text-sm text-slate-600 space-y-1"><li>GPA pondéré de 3.0</li><li>75+ heures de service</li><li>Scores SAT/ACT requis</li><li>2 crédits de langue étrangère</li></ul>`,
+                ht: `<h5 class="font-bold text-purple-600">🎓 Bousye Meday (FMS)</h5><p class="text-sm text-slate-600 mt-1 mb-2">Kouvri 75% frè ekolaj.</p><ul class="list-disc list-inside text-sm text-slate-600 space-y-1"><li>GPA pondéré 3.0</li><li>75+ èdtan sèvis</li><li>Nòt SAT/ACT obligatwa</li><li>2 kredi lang etranje</li></ul>`
+            },
+            bfNotes: { en: 'Note: Hours must be logged and approved. FFAA application required senior year.', es: 'Nota: Las horas deben ser registradas y aprobadas. Se requiere la aplicación FFAA en el último año.', pt: 'Nota: As horas devem ser registradas e aprovadas. Inscrição FFAA necessária no último ano.', fr: 'Note : Les heures doivent être enregistrées et approuvées. Demande FFAA requise en terminale.', ht: 'Nòt: Lè yo dwe anrejistre epi apwouve. Aplikasyon FFAA obligatwa nan dènye ane a.' },
+            bfLink: { en: 'More Information', es: 'Más Información', pt: 'Mais Informações', fr: 'Plus d\'informations', ht: 'Plis Enfòmasyon' },
+            supportTitle: { en: 'Counseling and Student Support Team', es: 'Equipo de Consejería y Apoyo Estudiantil', pt: 'Equipe de Aconselhamento e Apoio ao Aluno', fr: 'Équipe de conseil et de soutien', ht: 'Ekip Konsèy ak Sipò pou Elèv yo' },
+            counselorHowe: { en: '9th Grade Counselor', es: 'Consejero de 9º Grado', pt: 'Conselheiro do 9º Ano', fr: 'Conseiller de 9e', ht: 'Konseye 9yèm Ane' },
+            counselorCocchieri: { en: '10th Grade & Dual Enrollment', es: '10º Grado e Inscripción Doble', pt: '10º Ano e Matrícula Dupla', fr: '10e et Double Inscription', ht: '10yèm Ane ak Enskripsyon Doub' },
+            counselorLeiderman: { en: '11th Grade & Beyond School Walls', es: '11º Grado y Beyond School Walls', pt: '11º Ano e Beyond School Walls', fr: '11e et Beyond School Walls', ht: '11yèm Ane ak Beyond School Walls' },
+            counselorAbrahams: { en: '12th Grade Counselor', es: 'Consejera de 12º Grado', pt: 'Conselheira do 12º Ano', fr: 'Conseillère de 12e', ht: 'Konseye 12yèm Ane' },
+            counselorJackson: { en: 'College & Career Specialist', es: 'Especialista en Universidad y Carrera', pt: 'Especialista em Faculdade e Carreira', fr: 'Spécialiste Collège et Carrière', ht: 'Espesyalis Kolèj ak Karyè' },
+            counselorLepore: { en: 'AICE Cambridge Coordinator', es: 'Coordinadora de AICE Cambridge', pt: 'Coordenadora AICE Cambridge', fr: 'Coordonnatrice AICE Cambridge', ht: 'Kowòdonatè AICE Cambridge' },
+            keysTitle: { en: 'Keys to Success', es: 'Claves para el Éxito', pt: 'Chaves para o Sucesso', fr: 'Clés du Succès', ht: 'Kle Siksè' },
+            keysPlan: { en: `<div class="text-5xl mb-4">🔑</div><h5 class="font-bold text-slate-800 mt-2">Build Your Plan</h5><ul class="list-disc list-inside text-sm text-slate-600 mt-2 space-y-1"><li>Create a study schedule</li><li>Use a planner for deadlines</li><li>Join study groups or seek tutoring</li><li>Take practice tests</li></ul>`, es: `<div class="text-5xl mb-4">🔑</div><h5 class="font-bold text-slate-800 mt-2">Crea tu Plan</h5><ul class="list-disc list-inside text-sm text-slate-600 mt-2 space-y-1"><li>Crea un horario de estudio</li><li>Usa una agenda</li><li>Únete a grupos de estudio</li><li>Haz exámenes de práctica</li></ul>`, pt: `<div class="text-5xl mb-4">🔑</div><h5 class="font-bold text-slate-800 mt-2">Construa seu Plano</h5><ul class="list-disc list-inside text-sm text-slate-600 mt-2 space-y-1"><li>Crie um cronograma de estudos</li><li>Use um planejador</li><li>Participe de grupos de estudo</li><li>Faça testes práticos</li></ul>`, fr: `<div class="text-5xl mb-4">🔑</div><h5 class="font-bold text-slate-800 mt-2">Élaborez votre Plan</h5><ul class="list-disc list-inside text-sm text-slate-600 mt-2 space-y-1"><li>Créez un horaire d'étude</li><li>Utilisez un agenda</li><li>Rejoignez des groupes d'étude</li><li>Faites des tests pratiques</li></ul>`, ht: `<div class="text-5xl mb-4">🔑</div><h5 class="font-bold text-slate-800 mt-2">Bati Plan Ou</h5><ul class="list-disc list-inside text-sm text-slate-600 mt-2 space-y-1"><li>Kreye yon orè etid</li><li>Sèvi ak yon planifikatè</li><li>Antre nan gwoup etid</li><li>Fè tès pratik</li></ul>` },
+            keysInvolved: { en: `<div class="text-5xl mb-4">🚀</div><h5 class="font-bold text-slate-800 mt-2">Get Involved</h5><ul class="list-disc list-inside text-sm text-slate-600 mt-2 space-y-1"><li>Participate in extracurriculars</li><li>Develop leadership skills</li><li>Complete community service</li><li>Build a college/career portfolio</li></ul>`, es: `<div class="text-5xl mb-4">🚀</div><h5 class="font-bold text-slate-800 mt-2">Involúcrate</h5><ul class="list-disc list-inside text-sm text-slate-600 mt-2 space-y-1"><li>Participa en extracurriculares</li><li>Desarrolla liderazgo</li><li>Completa servicio comunitario</li><li>Crea un portafolio</li></ul>`, pt: `<div class="text-5xl mb-4">🚀</div><h5 class="font-bold text-slate-800 mt-2">Envolva-se</h5><ul class="list-disc list-inside text-sm text-slate-600 mt-2 space-y-1"><li>Participe de atividades</li><li>Desenvolva liderança</li><li>Faça serviço comunitário</li><li>Construa um portfólio</li></ul>`, fr: `<div class="text-5xl mb-4">🚀</div><h5 class="font-bold text-slate-800 mt-2">Impliquez-vous</h5><ul class="list-disc list-inside text-sm text-slate-600 mt-2 space-y-1"><li>Participez à des activités</li><li>Développez le leadership</li><li>Faites du service communautaire</li><li>Créez un portfolio</li></ul>`, ht: `<div class="text-5xl mb-4">🚀</div><h5 class="font-bold text-slate-800 mt-2">Patisipe</h5><ul class="list-disc list-inside text-sm text-slate-600 mt-2 space-y-1"><li>Patisipe nan aktivite</li><li>Devlope lidèchip</li><li>Fè sèvis kominotè</li><li>Bati yon pòtfolyo</li></ul>` },
+            keysBalanced: { en: `<div class="text-5xl mb-4">❤️</div><h5 class="font-bold text-slate-800 mt-2">Stay Balanced</h5><ul class="list-disc list-inside text-sm text-slate-600 mt-2 space-y-1"><li>Maintain strong attendance</li><li>Practice time management</li><li>Build relationships with teachers</li><li>Balance academics and well-being</li></ul>`, es: `<div class="text-5xl mb-4">❤️</div><h5 class="font-bold text-slate-800 mt-2">Mantén el Equilibrio</h5><ul class="list-disc list-inside text-sm text-slate-600 mt-2 space-y-1"><li>Mantén buena asistencia</li><li>Gestiona tu tiempo</li><li>Habla con tus maestros</li><li>Equilibra lo académico y personal</li></ul>`, pt: `<div class="text-5xl mb-4">❤️</div><h5 class="font-bold text-slate-800 mt-2">Mantenha o Equilíbrio</h5><ul class="list-disc list-inside text-sm text-slate-600 mt-2 space-y-1"><li>Mantenha boa frequência</li><li>Gerencie seu tempo</li><li>Converse com professores</li><li>Equilibre o bem-estar</li></ul>`, fr: `<div class="text-5xl mb-4">❤️</div><h5 class="font-bold text-slate-800 mt-2">Restez Équilibré</h5><ul class="list-disc list-inside text-sm text-slate-600 mt-2 space-y-1"><li>Maintenez une bonne présence</li><li>Gérez votre temps</li><li>Parlez aux enseignants</li><li>Équilibrez études et bien-être</li></ul>`, ht: `<div class="text-5xl mb-4">❤️</div><h5 class="font-bold text-slate-800 mt-2">Rete Balanse</h5><ul class="list-disc list-inside text-sm text-slate-600 mt-2 space-y-1"><li>Kenbe bon prezans</li><li>Jere tan ou</li><li>Bati relasyon ak pwofesè</li><li>Balanse lekòl ak byennèt</li></ul>` },
+            contactInfo: { en: `<p class="text-slate-600"><strong>Contact:</strong> Student Services, Room 1032</p>`, es: `<p class="text-slate-600"><strong>Contacto:</strong> Servicios Estudiantiles, Salón 1032</p>`, pt: `<p class="text-slate-600"><strong>Contato:</strong> Serviços ao Estudante, Sala 1032</p>`, fr: `<p class="text-slate-600"><strong>Contact :</strong> Services aux étudiants, Salle 1032</p>`, ht: `<p class="text-slate-600"><strong>Kontak:</strong> Sèvis Elèv, Sal 1032</p>` },
+            footer: { en: 'Website prepared by Miljus', es: 'Sitio web preparado por Miljus', pt: 'Site preparado por Miljus', fr: 'Site préparé par Miljus', ht: 'Sit wèb prepare pa Miljus' }
+        };
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const langSwitcher = document.getElementById('language-switcher');
+            const stepperNav = document.getElementById('stepper-nav');
+            const sections = document.querySelectorAll('.content-section');
+            const contentContainer = document.getElementById('content-container');
+            
+            let currentLang = 'en';
+            let currentStep = 0;
+
+            function showStep(stepIndex) {
+                currentStep = stepIndex;
+                sections.forEach((section, index) => {
+                    section.classList.toggle('active', index === stepIndex);
+                });
+                stepperNav.querySelectorAll('.stepper-btn').forEach((btn, index) => {
+                    btn.classList.toggle('active', index === stepIndex);
+                });
+                 window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+            
+            function updateContent(lang) {
+                currentLang = lang;
+                document.querySelectorAll('[data-key]').forEach(el => {
+                    const key = el.dataset.key;
+                    if (translations[key] && translations[key][lang]) {
+                        el.innerHTML = translations[key][lang];
+                    }
+                });
+                 langSwitcher.querySelectorAll('.lang-btn').forEach(btn => {
+                    btn.classList.toggle('active', btn.dataset.lang === lang);
+                });
+            }
+
+            langSwitcher.addEventListener('click', (e) => {
+                if (e.target.matches('.lang-btn')) {
+                    const lang = e.target.dataset.lang;
+                    updateContent(lang);
+                }
+            });
+
+            stepperNav.addEventListener('click', (e) => {
+                if (e.target.matches('.stepper-btn')) {
+                    const step = parseInt(e.target.dataset.step, 10);
+                    showStep(step);
+                }
+            });
+
+            contentContainer.addEventListener('click', (e) => {
+                const header = e.target.closest('.accordion-header');
+                if (!header) return;
+
+                const item = header.parentElement;
+                const wasActive = item.classList.contains('active');
+                
+                // Optional: Close all others for a true accordion experience
+                item.parentElement.querySelectorAll('.accordion-item').forEach(el => el.classList.remove('active'));
+
+                if (!wasActive) {
+                    item.classList.add('active');
+                }
+            });
+
+            // Initial load
+            showStep(0);
+            updateContent('en');
+        });
+    </script>
+</body>
+</html>
+
