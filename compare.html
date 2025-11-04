@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>U.S. Foreign Policy Comparison</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Inter font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* Use Inter as the default font */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Custom class for the active button */
+        .btn-active {
+            background-color: #1d4ed8; /* blue-700 */
+            color: white;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        }
+        .btn-inactive {
+            background-color: white;
+            color: #374151; /* gray-700 */
+        }
+        .btn-inactive:hover {
+            background-color: #f3f4f6; /* gray-100 */
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800 min-h-screen antialiased">
+
+    <div class="container max-w-7xl mx-auto p-6 md:p-12">
+        
+        <!-- Header: Title and Language Switcher -->
+        <header class="flex flex-col sm:flex-row justify-between sm:items-center mb-10">
+            <!-- Title -->
+            <div id="title-container">
+                <h1 class="text-3xl md:text-4xl font-extrabold text-red-800" data-lang-key="title_en">How did Roosevelt, Taft, and Wilson's foreign policies compare?</h1>
+                <h1 class="text-3xl md:text-4xl font-extrabold text-red-800" style="display:none;" data-lang-key="title_es">¿Cómo se comparan las políticas exteriores de Roosevelt, Taft y Wilson?</h1>
+                <h1 class="text-3xl md:text-4xl font-extrabold text-red-800" style="display:none;" data-lang-key="title_fr">Comment les politiques étrangères de Roosevelt, Taft et Wilson se comparent-elles ?</h1>
+            </div>
+            
+            <!-- Language Switcher -->
+            <div class="flex space-x-2 mt-4 sm:mt-0">
+                <button id="btn-en" onclick="switchLanguage('en')" class="py-2 px-5 rounded-full text-sm font-semibold transition-all duration-200">🇺🇸 EN</button>
+                <button id="btn-es" onclick="switchLanguage('es')" class="py-2 px-5 rounded-full text-sm font-semibold transition-all duration-200">🇪🇸 ES</button>
+                <button id="btn-fr" onclick="switchLanguage('fr')" class="py-2 px-5 rounded-full text-sm font-semibold transition-all duration-200">🇫🇷 FR</button>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main>
+            <!-- English Content -->
+            <div id="lang-en" class="lang-content">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Roosevelt Card -->
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col">
+                        <div class="p-6 bg-blue-50">
+                            <h2 class="text-3xl font-bold text-blue-900">Roosevelt</h2>
+                            <h3 class="text-2xl font-semibold text-blue-700 mt-1">“Big Stick Diplomacy”</h3>
+                        </div>
+                        <div class="p-6 flex-grow">
+                            <h4 class="text-lg font-semibold text-gray-900 mb-2">Idea:</h4>
+                            <p class="text-gray-700 mb-4">Use diplomacy first, but be ready to use military force if necessary.</p>
+                            <p class="italic text-gray-600 mb-4">"Speak softly and carry a big stick."</p>
+
+                            <h4 class="text-lg font-semibold text-gray-900 mb-2 mt-6">What he did:</h4>
+                            <ul class="list-disc list-inside space-y-2 text-gray-700">
+                                <li>Used the <strong>Roosevelt Corollary</strong> to the Monroe Doctrine to justify U.S. intervention in Latin America.</li>
+                                <li>Sent U.S. troops often to Caribbean and Central America.</li>
+                                <li>Region became known as <strong>“America’s Lake”</strong>.</li>
+                                <li>Countries like Haiti, Nicaragua, Honduras, and the Dominican Republic became <strong>U.S. protectorates</strong>.</li>
+                            </ul>
+
+                            <h4 class="text-lg font-semibold text-gray-900 mb-2 mt-6">Goal:</h4>
+                            <p class="text-gray-700">Protect American interests and keep Europe out of the Western Hemisphere.</p>
+                        </div>
+                    </div>
+
+                    <!-- Taft Card -->
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col">
+                        <div class="p-6 bg-green-50">
+                            <h2 class="text-3xl font-bold text-green-900">Taft</h2>
+                            <h3 class="text-2xl font-semibold text-green-700 mt-1">“Dollar Diplomacy”</h3>
+                        </div>
+                        <div class="p-6 flex-grow">
+                            <h4 class="text-lg font-semibold text-gray-900 mb-2">Idea:</h4>
+                            <p class="text-gray-700 mb-4">Use <strong>money and investments</strong>, not war, to influence other nations. Encouraged U.S. banks and businesses to invest in Latin America.</p>
+
+                            <h4 class="text-lg font-semibold text-gray-900 mb-2 mt-6">What he did:</h4>
+                            <ul class="list-disc list-inside space-y-2 text-gray-700">
+                                <li>Lent money to Caribbean nations.</li>
+                                <li>When they <strong>couldn’t repay</strong>, the U.S. sent troops to protect investments.</li>
+                                <li>Example: U.S. intervention in <strong>Nicaragua</strong>.</li>
+                            </ul>
+
+                            <h4 class="text-lg font-semibold text-gray-900 mb-2 mt-6">Goal:</h4>
+                            <p class="text-gray-700">Expand American power through <strong>economic influence</strong> rather than force.</p>
+                        </div>
+                    </div>
+
+                    <!-- Wilson Card -->
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col">
+                        <div class="p-6 bg-red-50">
+                            <h2 class="text-3xl font-bold text-red-900">Wilson</h2>
+                            <h3 class="text-2xl font-semibold text-red-700 mt-1">“Moral Diplomacy”</h3>
+                        </div>
+                        <div class="p-6 flex-grow">
+                            <h4 class="text-lg font-semibold text-gray-900 mb-2">Idea:</h4>
+                            <p class="text-gray-700 mb-4">Support <strong>democracy and moral decisions</strong>, not imperialism. Wanted to promote “right” governments.</p>
+
+                            <h4 class="text-lg font-semibold text-gray-900 mb-2 mt-6">But in reality he:</h4>
+                            <ul class="list-disc list-inside space-y-2 text-gray-700">
+                                <li>Opposed imperialism at first.</li>
+                                <li>Still sent troops to <strong>Haiti, Nicaragua, Dominican Republic</strong>.</li>
+                                <li>Bought the Virgin Islands from Denmark.</li>
+                            </ul>
+                            
+                            <h4 class="text-lg font-semibold text-gray-900 mb-2 mt-6">Major Issue: Mexico</h4>
+                             <ul class="list-disc list-inside space-y-2 text-gray-700">
+                                <li>Refused to recognize Mexico’s military dictator.</li>
+                                <li>1914: Sent troops to <strong>Veracruz</strong> to stop German weapons.</li>
+                                <li>Supported a new Mexican government → angered rebel <strong>Pancho Villa</strong>.</li>
+                                <li>Pancho Villa attacked Americans in Mexico and the U.S.</li>
+                                <li>Wilson sent troops into Mexico to capture Villa (unsuccessful).</li>
+                                <li>With <strong>WWI approaching</strong>, U.S. troops withdrew.</li>
+                            </ul>
+
+                            <h4 class="text-lg font-semibold text-gray-900 mb-2 mt-6">Goal:</h4>
+                            <p class="text-gray-700">Spread democracy — but used force when he felt it was necessary.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Spanish Content -->
+            <div id="lang-es" class="lang-content" style="display:none;">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Roosevelt Card (ES) -->
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col">
+                        <div class="p-6 bg-blue-50">
+                            <h2 class="text-3xl font-bold text-blue-900">Roosevelt</h2>
+                            <h3 class="text-2xl font-semibold text-blue-700 mt-1">“Diplomacia del Gran Garrote”</h3>
+                        </div>
+                        <div class="p-6 flex-grow">
+                            <h4 class="text-lg font-semibold text-gray-900 mb-2">Idea:</h4>
+                            <p class="text-gray-700 mb-4">Usar la diplomacia primero, pero estar listo para usar la fuerza militar si es necesario.</p>
+                            <p class="italic text-gray-600 mb-4">"Habla suavemente y lleva un gran garrote."</p>
+
+                            <h4 class="text-lg font-semibold text-gray-900 mb-2 mt-6">Lo que hizo:</h4>
+                            <ul class="list-disc list-inside space-y-2 text-gray-700">
+                                <li>Usó el <strong>Corolario Roosevelt</strong> a la Doctrina Monroe para justificar la intervención de EE.UU. en América Latina.</li>
+                                <li>Envió tropas estadounidenses a menudo al Caribe y América Central.</li>
+                                <li>La región se conoció como <strong>“El Lago de América”</strong>.</li>
+                                <li>Países como Haití, Nicaragua, Honduras y la República Dominicana se convirtieron en <strong>protectorados de EE.UU.</strong></li>
+                            </ul>
+
+                            <h4 class="text-lg font-semibold text-gray-900 mb-2 mt-6">Objetivo:</h4>
+                            <p class="text-gray-700">Proteger los intereses estadounidenses y mantener a Europa fuera del Hemisferio Occidental.</p>
+                        </div>
+                    </div>
+
+                    <!-- Taft Card (ES) -->
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col">
+                        <div class="p-6 bg-green-50">
+                            <h2 class="text-3xl font-bold text-green-900">Taft</h2>
+                            <h3 class="text-2xl font-semibold text-green-700 mt-1">“Diplomacia del Dólar”</h3>
+                        </div>
+                        <div class="p-6 flex-grow">
+                            <h4 class="text-lg font-semibold text-gray-900 mb-2">Idea:</h4>
+                            <p class="text-gray-700 mb-4">Usar <strong>dinero e inversiones</strong>, no la guerra, para influir en otras naciones. Alentó a bancos y empresas de EE.UU. a invertir en América Latina.</p>
+
+                            <h4 class="text-lg font-semibold text-gray-900 mb-2 mt-6">Lo que hizo:</h4>
+                            <ul class="list-disc list-inside space-y-2 text-gray-700">
+                                <li>Prestó dinero a naciones caribeñas.</li>
+                                <li>Cuando <strong>no podían pagar</strong>, EE.UU. enviaba tropas para proteger las inversiones.</li>
+                                <li>Ejemplo: Intervención de EE.UU. en <strong>Nicaragua</strong>.</li>
+                            </ul>
+
+                            <h4 class="text-lg font-semibold text-gray-900 mb-2 mt-6">Objetivo:</h4>
+                            <p class="text-gray-700">Expandir el poder estadounidense a través de la <strong>influencia económica</strong> en lugar de la fuerza.</p>
+                        </div>
+                    </div>
+
+                    <!-- Wilson Card (ES) -->
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col">
+                        <div class="p-6 bg-red-50">
+                            <h2 class="text-3xl font-bold text-red-900">Wilson</h2>
+                            <h3 class="text-2xl font-semibold text-red-700 mt-1">“Diplomacia Moral”</h3>
+                        </div>
+                        <div class="p-6 flex-grow">
+                            <h4 class="text-lg font-semibold text-gray-900 mb-2">Idea:</h4>
+                            <p class="text-gray-700 mb-4">Apoyar la <strong>democracia y las decisiones morales</strong>, no el imperialismo. Quería promover gobiernos “correctos”.</p>
+
+                            <h4 class="text-lg font-semibold text-gray-900 mb-2 mt-6">Pero en realidad él:</h4>
+                            <ul class="list-disc list-inside space-y-2 text-gray-700">
+                                <li>Se opuso al imperialismo al principio.</li>
+                                <li>Aun así envió tropas a <strong>Haití, Nicaragua, República Dominicana</strong>.</li>
+                                <li>Compró las Islas Vírgenes a Dinamarca.</li>
+                            </ul>
+                            
+                            <h4 class="text-lg font-semibold text-gray-900 mb-2 mt-6">Problema Principal: México</h4>
+                             <ul class="list-disc list-inside space-y-2 text-gray-700">
+                                <li>Se negó a reconocer al dictador militar de México.</li>
+                                <li>1914: Envió tropas a <strong>Veracruz</strong> para detener armas alemanas.</li>
+                                <li>Apoyó a un nuevo gobierno mexicano → enfureció al rebelde <strong>Pancho Villa</strong>.</li>
+                                <li>Pancho Villa atacó a estadounidenses en México y EE.UU.</li>
+                                <li>Wilson envió tropas a México para capturar a Villa (sin éxito).</li>
+                                <li>Con la <strong>Primera Guerra Mundial acercándose</strong>, las tropas de EE.UU. se retiraron.</li>
+                            </ul>
+
+                            <h4 class="text-lg font-semibold text-gray-900 mb-2 mt-6">Objetivo:</h4>
+                            <p class="text-gray-700">Difundir la democracia, pero usó la fuerza cuando sintió que era necesario.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- French Content -->
+            <div id="lang-fr" class="lang-content" style="display:none;">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Roosevelt Card (FR) -->
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col">
+                        <div class="p-6 bg-blue-50">
+                            <h2 class="text-3xl font-bold text-blue-900">Roosevelt</h2>
+                            <h3 class="text-2xl font-semibold text-blue-700 mt-1">“Diplomatie du Gros Bâton”</h3>
+                        </div>
+                        <div class="p-6 flex-grow">
+                            <h4 class="text-lg font-semibold text-gray-900 mb-2">Idée :</h4>
+                            <p class="text-gray-700 mb-4">Utiliser la diplomatie d'abord, mais être prêt à utiliser la force militaire si nécessaire.</p>
+                            <p class="italic text-gray-600 mb-4">"Parlez doucement et portez un gros bâton."</p>
+
+                            <h4 class="text-lg font-semibold text-gray-900 mb-2 mt-6">Ce qu'il a fait :</h4>
+                            <ul class="list-disc list-inside space-y-2 text-gray-700">
+                                <li>A utilisé le <strong>Corollaire Roosevelt</strong> à la Doctrine Monroe pour justifier l'intervention américaine en Amérique latine.</li>
+                                <li>A souvent envoyé des troupes américaines dans les Caraïbes et en Amérique centrale.</li>
+                                <li>La région est devenue connue sous le nom de <strong>“Lac de l'Amérique”</strong>.</li>
+                                <li>Des pays comme Haïti, le Nicaragua, le Honduras et la République dominicaine sont devenus des <strong>protectorats américains</strong>.</li>
+                            </ul>
+
+                            <h4 class="text-lg font-semibold text-gray-900 mb-2 mt-6">Objectif :</h4>
+                            <p class="text-gray-700">Protéger les intérêts américains et maintenir l'Europe hors de l'hémisphère occidental.</p>
+                        </div>
+                    </div>
+
+                    <!-- Taft Card (FR) -->
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col">
+                        <div class="p-6 bg-green-50">
+                            <h2 class="text-3xl font-bold text-green-900">Taft</h2>
+                            <h3 class="text-2xl font-semibold text-green-700 mt-1">“Diplomatie du Dollar”</h3>
+                        </div>
+                        <div class="p-6 flex-grow">
+                            <h4 class="text-lg font-semibold text-gray-900 mb-2">Idée :</h4>
+                            <p class="text-gray-700 mb-4">Utiliser <strong>l'argent et les investissements</strong>, et non la guerre, pour influencer d'autres nations. A encouragé les banques et les entreprises américaines à investir en Amérique latine.</p>
+
+                            <h4 class="text-lg font-semibold text-gray-900 mb-2 mt-6">Ce qu'il a fait :</h4>
+                            <ul class="list-disc list-inside space-y-2 text-gray-700">
+                                <li>A prêté de l'argent aux nations des Caraïbes.</li>
+                                <li>Lorsqu'elles <strong>ne pouvaient pas rembourser</strong>, les États-Unis ont envoyé des troupes pour protéger les investissements.</li>
+                                <li>Exemple : Intervention américaine au <strong>Nicaragua</strong>.</li>
+                            </ul>
+
+                            <h4 class="text-lg font-semibold text-gray-900 mb-2 mt-6">Objectif :</h4>
+                            <p class="text-gray-700">Étendre la puissance américaine par S'<strong>influence économique</strong> plutôt que par la force.</p>
+                        </div>
+                    </div>
+
+                    <!-- Wilson Card (FR) -->
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col">
+                        <div class="p-6 bg-red-50">
+                            <h2 class="text-3xl font-bold text-red-900">Wilson</h2>
+                            <h3 class="text-2xl font-semibold text-red-700 mt-1">“Diplomatie Morale”</h3>
+                        </div>
+                        <div class="p-6 flex-grow">
+                            <h4 class="text-lg font-semibold text-gray-900 mb-2">Idée :</h4>
+                            <p class="text-gray-700 mb-4">Soutenir la <strong>démocratie et les décisions morales</strong>, pas l'impérialisme. Voulait promouvoir les “bons” gouvernements.</p>
+
+                            <h4 class="text-lg font-semibold text-gray-900 mb-2 mt-6">Mais en réalité, il :</h4>
+                            <ul class="list-disc list-inside space-y-2 text-gray-700">
+                                <li>S'est d'abord opposé à l'impérialisme.</li>
+                                <li>A quand même envoyé des troupes à <strong>Haïti, au Nicaragua, en République dominicaine</strong>.</li>
+                                <li>A acheté les îles Vierges au Danemark.</li>
+                            </ul>
+                            
+                            <h4 class="text-lg font-semibold text-gray-900 mb-2 mt-6">Problème Majeur : Mexique</h4>
+                             <ul class="list-disc list-inside space-y-2 text-gray-700">
+                                <li>A refusé de reconnaître le dictateur militaire du Mexique.</li>
+                                <li>1914 : A envoyé des troupes à <strong>Veracruz</strong> pour arrêter des armes allemandes.</li>
+                                <li>A soutenu un nouveau gouvernement mexicain → a mis en colère le rebelle <strong>Pancho Villa</strong>.</li>
+                                <li>Pancho Villa a attaqué des Américains au Mexique et aux États-Unis.</li>
+                                <li>Wilson a envoyé des troupes au Mexique pour capturer Villa (sans succès).</li>
+                                <li>Avec <strong>l'approche de la Première Guerre mondiale</strong>, les troupes américaines se sont retirées.</li>
+                            </ul>
+
+                            <h4 class="text-lg font-semibold text-gray-900 mb-2 mt-6">Objectif :</h4>
+                            <p class="text-gray-700">Répandre la démocratie — mais a utilisé la force quand il l'estimait nécessaire.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+        
+        <!-- Footer -->
+        <footer class="text-center text-gray-500 mt-12 text-sm">
+            A comparative overview of U.S. foreign policy in the early 20th century for Mr. Miljus' Class
+        </footer>
+
+    </div>
+
+    <script>
+        // Get all buttons and content divs
+        const langButtons = {
+            en: document.getElementById('btn-en'),
+            es: document.getElementById('btn-es'),
+            fr: document.getElementById('btn-fr')
+        };
+        const langContents = {
+            en: document.getElementById('lang-en'),
+            es: document.getElementById('lang-es'),
+            fr: document.getElementById('lang-fr')
+        };
+        const titleContainer = document.getElementById('title-container');
+        const allTitles = titleContainer.querySelectorAll('h1');
+
+        function switchLanguage(lang) {
+            // List of all languages
+            const allLangs = ['en', 'es', 'fr'];
+
+            allLangs.forEach(l => {
+                const button = langButtons[l];
+                const content = langContents[l];
+                const title = titleContainer.querySelector(`[data-lang-key="title_${l}"]`);
+
+                if (l === lang) {
+                    // Activate selected language
+                    button.classList.add('btn-active');
+                    button.classList.remove('btn-inactive');
+                    content.style.display = 'block';
+                    title.style.display = 'block';
+                } else {
+                    // Deactivate other languages
+                    button.classList.add('btn-inactive');
+                    button.classList.remove('btn-active');
+                    content.style.display = 'none';
+                    title.style.display = 'none';
+                }
+            });
+        }
+
+        // Set initial language to English on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            switchLanguage('en');
+        });
+    </script>
+
+</body>
+</html>
