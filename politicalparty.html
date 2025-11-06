@@ -1,953 +1,455 @@
-// --- SPANISH (ES) ---
-content['es'] = {
-  title: "Partidos Políticos: El Juego 🎮",
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Political Parties: US Government</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Inter font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-primary: #1e3a8a; /* Dark Blue */
+            --color-secondary: #dc2626; /* Red */
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f9fb;
+        }
+        .section-heading {
+            border-left: 6px solid var(--color-secondary);
+        }
+        .card-shadow {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        /* Fix for dynamic hover effect on mobile/desktop by using inline styles via JS */
+    </style>
+</head>
+<body class="text-gray-800">
 
-  home_title: "¡Comienza Aquí!",
-  home_desc: "Tu viaje empieza",
-  home_content: `
-    <h2>¡Bienvenido a la Arena Política! 🎮</h2>
-
-    <div class="fun-fact">
-      <strong>DATO IMPACTANTE:</strong> ¡La peor pesadilla de George Washington se cumplió! En su discurso de despedida advirtió contra los partidos políticos, llamándolos el “peor enemigo” de la república. ¡Y hoy tenemos un sistema de dos partidos! 😅
-    </div>
-
-    <p style="font-size: 1.2rem; line-height: 1.8;">
-      ¡Prepárate para descubrir los secretos de la política de EE. UU.! Verás 230 años de drama, estrategias de poder y decisiones que moldean TU futuro.
-    </p>
-
-    <h3>🎯 Tu misión</h3>
-    <p>Recorre 7 módulos para convertirte en Maestro Político. Cada uno revela cómo funciona de verdad la democracia.</p>
-
-    <div class="quiz-container">
-      <h3>⚡ Vocabulario turbo</h3>
-      <div class="quiz-question">Relaciona los términos con su idea básica:</div>
-      <div class="quiz-option" onclick="checkAnswer(this, true)">
-        <strong>Partido político</strong> = Equipo que compite para GANAR elecciones 🏆
-      </div>
-      <div class="quiz-option" onclick="checkAnswer(this, true)">
-        <strong>Ideología</strong> = Tu “personalidad política” (¿liberal? ¿conservador?) 🧠
-      </div>
-      <div class="quiz-option" onclick="checkAnswer(this, true)">
-        <strong>Política pública</strong> = Reglas/leyes que afectan tu vida 📜
-      </div>
-    </div>
-
-    <button class="quiz-btn" onclick="startAdventure()">🚀 ¡Empieza tu viaje político!</button>
-  `,
-
-  history_title: "Evolución Partidaria",
-  history_desc: "¡230 años de drama!",
-  history_content: `
-    <h2>La saga épica de los partidos en EE. UU. 📜</h2>
-
-    <div class="fun-fact">
-      <strong>GIRO HISTÓRICO:</strong> A los Fundadores no les gustaban los partidos. Madison los llamó “facciones” peligrosas… ¡y aun así aparecieron de inmediato! 🤦‍♂️
-    </div>
-
-    <h3>🎬 Haz clic en cada era para explorar</h3>
-
-    <div class="timeline-era" onclick="toggleEra('era1')">
-      <h4>🎩 1790–1820s: El primer sistema</h4>
-      <p><strong>Federalistas vs. Demócrata-Republicanos</strong></p>
-      <div id="era1" class="era-content">
-        <p style="margin-top: 15px;"><strong>Protagonistas:</strong></p>
-        <ul>
-          <li>🎭 FEDERALISTAS (Hamilton): Gobierno federal fuerte, bancos, cercanía con Gran Bretaña</li>
-          <li>🌾 DEMÓCRATA-REPUBLICANOS (Jefferson): Derechos de los estados, agricultores, simpatía por Francia</li>
-        </ul>
-        <p><strong>Final:</strong> Los federalistas desaparecen tras 1812. Llega la “Era de los Buenos Sentimientos”.</p>
-      </div>
-    </div>
-
-    <div class="timeline-era" onclick="toggleEra('era2')">
-      <h4>🎪 1820s–1850s: La era de Jackson</h4>
-      <p><strong>Demócratas vs. Whigs</strong></p>
-      <div id="era2" class="era-content">
-        <ul style="margin-top:15px;">
-          <li>🔥 DEMÓCRATAS (Jackson): “Hombre común”, expansión, contra el banco nacional</li>
-          <li>🏛️ WHIGS: Infraestructura, educación; coalición anti-Jackson</li>
-        </ul>
-        <p><strong>Cambio clave:</strong> Aumenta la participación (varones blancos). La esclavitud divide a los partidos.</p>
-      </div>
-    </div>
-
-    <div class="timeline-era" onclick="toggleEra('era3')">
-      <h4>⚔️ 1850s–1890s: Guerra Civil y reordenamiento</h4>
-      <p><strong>Nacen los Republicanos; los Demócratas se dividen</strong></p>
-      <div id="era3" class="era-content">
-        <p><strong>Hito:</strong> 1854 nacen los republicanos para oponerse a la expansión de la esclavitud.</p>
-        <ul>
-          <li>🎩 REPUBLICANOS (Lincoln): Unión, industria, fin de la esclavitud</li>
-          <li>💔 DEMÓCRATAS: Norte vs. Sur</li>
-        </ul>
-        <p><strong>Después:</strong> Edad Dorada: influencia de grandes negocios y corrupción.</p>
-      </div>
-    </div>
-
-    <div class="timeline-era" onclick="toggleEra('era4')">
-      <h4>🏭 1890s–1930s: Progresismo y la Depresión</h4>
-      <p><strong>El campo de batalla económico</strong></p>
-      <div id="era4" class="era-content">
-        <ul style="margin-top:15px;">
-          <li>📈 REPUBLICANOS: Pro-empresa, laissez-faire</li>
-          <li>👷 DEMÓCRATAS: Se acercan a trabajadores y sindicatos</li>
-        </ul>
-        <p><strong>Choque:</strong> La crisis de 1929 lo cambia todo.</p>
-      </div>
-    </div>
-
-    <div class="timeline-era" onclick="toggleEra('era5')">
-      <h4>📺 1930s–1960s: La revolución del New Deal</h4>
-      <p><strong>FDR cambia el juego</strong></p>
-      <div id="era5" class="era-content">
-        <ul style="margin-top:15px;">
-          <li>🔵 DEMÓCRATAS: Obreros + minorías + Sur blanco</li>
-          <li>🔴 REPUBLICANOS: Negocios + conservadores + anticomunistas</li>
-        </ul>
-        <p><strong>Fractura:</strong> Los Derechos Civiles rompen la vieja coalición demócrata.</p>
-      </div>
-    </div>
-
-    <div class="timeline-era" onclick="toggleEra('era6')">
-      <h4>🚀 1960s–hoy: Escenario moderno</h4>
-      <p><strong>Guerras culturales y polarización</strong></p>
-      <div id="era6" class="era-content">
-        <p><strong>El “cambio”:</strong> El Sur se vuelve republicano tras los Derechos Civiles.</p>
-        <ul>
-          <li>🔵 DEMÓCRATAS: Justicia social, medioambiente, programas públicos</li>
-          <li>🔴 REPUBLICANOS: Valores tradicionales, libre mercado, defensa fuerte</li>
-        </ul>
-        <p>Redes sociales = política 24/7. Terceros partidos aparecen, pero no rompen el duopolio.</p>
-      </div>
-    </div>
-
-    <button class="quiz-btn" onclick="playTimelineGame()">🎮 Jugar: ¡Evolución de los Partidos!</button>
-    <div id="timeline-game" style="display:none; background:#f0f0f0; padding:20px; border-radius:10px; margin-top:20px;">
-      <h4>Relaciona era y sistema de partidos</h4>
-      <!-- (mantén los mismos IDs para que funcione el juego) -->
-      <div style="display:flex; justify-content:space-around;">
-        <div id="eras" style="width:45%;">
-          <p draggable="true" ondragstart="drag(event)" id="drag1">1790s–1820s</p>
-          <p draggable="true" ondragstart="drag(event)" id="drag2">1820s–1850s</p>
-          <p draggable="true" ondragstart="drag(event)" id="drag3">1850s–1890s</p>
+    <!-- Header and Language Switch -->
+    <header class="sticky top-0 bg-white shadow-lg z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <h1 id="main-title" class="text-3xl font-extrabold text-gray-900 tracking-tight"></h1>
+            <button id="lang-switch-btn" onclick="toggleLanguage()" 
+                    class="px-4 py-2 bg-gray-200 text-gray-700 font-semibold rounded-full hover:bg-gray-300 transition duration-150 ease-in-out text-sm sm:text-base">
+                Switch to Spanish
+            </button>
         </div>
-        <div id="parties" style="width:45%;">
-          <div ondrop="drop(event)" ondragover="allowDrop(event)" id="drop1">Federalistas vs. Demócrata-Republicanos</div>
-          <div ondrop="drop(event)" ondragover="allowDrop(event)" id="drop2">Demócratas vs. Whigs</div>
-          <div ondrop="drop(event)" ondragover="allowDrop(event)" id="drop3">Nacen los Republicanos</div>
+    </header>
+
+    <!-- Main Content Grid -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        
+        <!-- Foundational Definitions -->
+        <section class="mb-12">
+            <h2 id="defs-title" class="section-heading text-2xl sm:text-3xl font-bold pl-4 mb-6"></h2>
+            <div id="defs-content" class="grid md:grid-cols-2 gap-6 lg:gap-8">
+                <!-- Content injected here -->
+            </div>
+        </section>
+
+        <!-- Why Political Parties Exist -->
+        <section class="mb-12">
+            <h2 id="why-title" class="section-heading text-2xl sm:text-3xl font-bold pl-4 mb-6"></h2>
+            <div id="why-content" class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Content injected here -->
+            </div>
+        </section>
+
+        <!-- Origins and Fear of Factions -->
+        <section class="mb-12">
+            <h2 id="origins-title" class="section-heading text-2xl sm:text-3xl font-bold pl-4 mb-6"></h2>
+            <div id="origins-content" class="bg-white p-6 rounded-xl card-shadow grid lg:grid-cols-3 gap-6">
+                <!-- Content injected here -->
+            </div>
+        </section>
+
+        <!-- Timeline -->
+        <section class="mb-12">
+            <h2 id="timeline-title" class="section-heading text-2xl sm:text-3xl font-bold pl-4 mb-6"></h2>
+            <div id="timeline-content" class="space-y-8">
+                <!-- Content injected here -->
+            </div>
+        </section>
+
+        <!-- Key Vocabulary -->
+        <section class="mb-12">
+            <h2 id="vocab-title" class="section-heading text-2xl sm:text-3xl font-bold pl-4 mb-6"></h2>
+            <div id="vocab-content" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                <!-- Content injected here -->
+            </div>
+        </section>
+
+        <!-- Concept Summary -->
+        <section class="mb-12">
+            <h2 id="summary-title" class="section-heading text-2xl sm:text-3xl font-bold pl-4 mb-6"></h2>
+            <ul id="summary-content" class="bg-white p-6 rounded-xl card-shadow space-y-3 list-disc pl-5">
+                <!-- Content injected here -->
+            </ul>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-4 mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm font-light">
+            <p>For Mr. Miljus’ US government class.</p>
         </div>
-      </div>
-      <button onclick="checkTimelineMatch()">Comprobar</button>
-      <p id="timeline-result"></p>
-    </div>
-  `,
+    </footer>
+
+    <script>
+        let currentLang = 'en';
+        
+        // Define a map for converting Tailwind classes to Hex codes for reliable inline styles
+        const colorMap = {
+            'text-red-500': '#ef4444',
+            'text-blue-500': '#3b82f6',
+            'text-yellow-600': '#d97706',
+            'text-green-500': '#22c55e',
+            'text-purple-600': '#7c3aed',
+            'text-indigo-600': '#4f46e5',
+            'text-teal-600': '#0d9488',
+            'text-pink-600': '#db2777',
+            // Specific colors for timeline dots / borders
+            'bg-blue-600': '#2563eb',
+            'bg-red-600': '#dc2626',
+            // Default border color (gray-100) for hover mouseout
+            'border-gray-100': '#f3f4f6' 
+        };
+
+        function getColorHex(textColorClass) {
+            return colorMap[textColorClass] || '#cbd5e1';
+        }
+
+        // Helper function to create SVG icons (using simplified paths for visual interest)
+        function createIcon(dPath, colorClass) {
+            return `
+                <svg class="w-8 h-8 ${colorClass} shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="${dPath}"></path>
+                </svg>
+            `;
+        }
+
+        // --- CONTENT DATA (English and Spanish) ---
+        // (Content is preserved from the original request)
+        const content = {
+            en: {
+                title: "The Evolution of U.S. Political Parties",
+                switchBtn: "Cambiar a Español",
+                defsTitle: "✅ Foundational Definitions (Clear & Precise)",
+                defs: [
+                    { 
+                        term: "Political Ideology", 
+                        icon: "M13 10V3L4 14h7v7l9-11h-7z", // Lightning/Idea
+                        def: "A set of beliefs and values about how government should work. Political ideologies answer questions like: What should the government do? How big or active should it be? How should rights, freedoms, and responsibilities be balanced?",
+                        color: "text-red-500"
+                    },
+                    { 
+                        term: "Political Party", 
+                        icon: "M17 20h2a2 2 0 002-2V5a2 2 0 00-2-2h-2.5a.5.5 0 01-.5-.5V1.5", // Flag/Organization
+                        def: "An organized group of people who share a political ideology and work together to: win elections, pass laws, and influence government.",
+                        color: "text-blue-500"
+                    },
+                    { 
+                        term: "Factions", 
+                        icon: "M8 9l3 3 2-2 3 3m-3-3V4M3 7h1.5a.5.5 0 01.5.5v13a.5.5 0 01-.5.5H3", // Grouping/Division
+                        def: "A subset of people inside a society (or party) who share a particular interest or passion. James Madison warned in *Federalist No. 10* that factions were dangerous because they could pursue their own interest over the public good. He also said factions were unavoidable—people naturally disagree.",
+                        color: "text-yellow-600"
+                    },
+                    { 
+                        term: "Party System / Realignment / ID", 
+                        icon: "M3 10h18M3 14h18m-9-4v8", // Timeline/Change
+                        def: "Three related concepts: **Party System** (a period defined by competing parties); **Party Realignment** (a major, long-term shift in which groups support which political party); **Party Identification** (the party a person feels closest to or usually supports).",
+                        color: "text-green-500"
+                    }
+                ],
+                whyTitle: "✅ Why Political Parties Exist (Clear, Not Simplified or Childish)",
+                why: [
+                    { title: "1. Organize Beliefs", def: "Parties take broad ideological tendencies (liberal, conservative, etc.) and turn them into coherent platforms.", icon: "M11 19l-9-9 9-9", color: "text-purple-600" },
+                    { title: "2. Structure Elections", def: "Parties recruit candidates, raise money, and help voters choose between competing visions.", icon: "M14 10l-2-7-2 7m4 0l-2 7-2-7", color: "text-indigo-600" },
+                    { title: "3. Coordinate Government", def: "In Congress and state legislatures, parties help organize coalitions that make it possible to pass laws.", icon: "M12 2v20M2 12h20", color: "text-teal-600" },
+                    { title: "4. Provide Identity", def: "Most voters rely on party labels as a shortcut for choosing candidates that align with their beliefs.", icon: "M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14c-4.418 0-8 3.582-8 8v2h16v-2c0-4.418-3.582-8-8-8z", color: "text-pink-600" }
+                ],
+                originsTitle: "✅ Origins: Federalists, Anti-Federalists, and the Fear of Factions",
+                origins: [
+                    { 
+                        title: "Before the Constitution", 
+                        content: `Americans divided into two camps over whether to replace the Articles of Confederation:
+                            <ul class="list-disc pl-5 mt-2 space-y-1">
+                                <li>**Federalists:** Wanted a strong national government (Hamilton, Madison, Jay).</li>
+                                <li>**Anti-Federalists:** Feared concentrated power; demanded a Bill of Rights (Jefferson, Henry, Mason).</li>
+                            </ul>` 
+                    },
+                    { 
+                        title: "The Founders’ Fear", 
+                        content: `Madison argued that factions were inevitable but must be controlled through:
+                            <ul class="list-disc pl-5 mt-2 space-y-1">
+                                <li>A large republic.</li>
+                                <li>Numerous competing interests.</li>
+                                <li>A system that prevents any one group from dominating.</li>
+                            </ul>` 
+                    },
+                    { 
+                        title: "How Factions Became Parties", 
+                        content: `After the Constitution was adopted, Hamilton and Jefferson clashed over:
+                            <ul class="list-disc pl-5 mt-2 space-y-1">
+                                <li>Banking & taxes.</li>
+                                <li>Foreign alliances.</li>
+                                <li>Scope of federal authority.</li>
+                            </ul>
+                            These disagreements solidified into the first political parties.` 
+                    }
+                ],
+                timelineTitle: "✅ Timeline of U.S. Political Party Evolution",
+                timeline: [
+                    { era: "I. First Party System (1790s–1820s)", parties: "Federalists vs. Democratic-Republicans", details: "Federalists (strong national govt, bank, commerce) weakened after the War of 1812, leading to the 'Era of Good Feelings' dominated by D-Rs (states’ rights, agriculture)." },
+                    { era: "II. Second Party System (1820s–1850s)", parties: "Democrats vs. Whigs", details: "Democrats (Jackson) focused on expansion and limited federal economy. Whigs supported modernization and a strong Congress. Era saw the rise of mass participation, with increasing tensions over slavery." },
+                    { era: "III. Third Party System (1850s–1890s)", parties: "Democrats vs. Republicans", details: "Republican Party founded (1854) to stop slavery's spread. Civil War and Reconstruction solidified regional divides (Democrats in South, Republicans in North)."},
+                    { era: "IV. Fourth Party System (1890s–1930s)", parties: "Progressivism & Industrial America", details: "Issues included big business regulation, labor rights, and women’s suffrage. Republicans were pro-business; Democrats were influenced by populist and reform movements."},
+                    { era: "V. Fifth Party System (1930s–1960s)", parties: "New Deal Coalition", details: "FDR’s New Deal united Democrats (union workers, minorities, urban voters). Republicans focused on limited government and business interests. Parties gradually shift positions on race and rights."},
+                    { era: "VI. Sixth Party System (1960s–Present)", parties: "Civil Rights Era to Modern Polarization", details: "Democrats' support for Civil Rights drove Southern whites to the Republican Party. This realignment led to the highly polarized, ideologically sorted landscape of today."}
+                ],
+                vocabTitle: "✅ Key Vocabulary (Clear Definitions, No Pandering)",
+                vocab: [
+                    { term: "Political Spectrum", def: "A range of ideological positions—typically from left (liberal) to right (conservative)."},
+                    { term: "Liberalism", def: "Belief in active government to address social inequality and protect rights."},
+                    { term: "Conservatism", def: "Belief in limited government, traditional values, free markets, and individual responsibility."},
+                    { term: "Populism", def: "Appeals to the common citizen, often against elites or established institutions."},
+                    { term: "Libertarianism", def: "Belief in individual freedom and minimal government involvement in both economic and personal life."},
+                    { term: "Nationalism", def: "Emphasis on national identity, sovereignty, and protection of domestic interests."},
+                    { term: "Platform", def: "A party’s formal statement of principles and policy positions."},
+                    { term: "Coalition", def: "A collection of voting groups that support a political party or candidate."},
+                    { term: "Dealignment", def: "When voters drift away from both major parties and identify as Independent."}
+                ],
+                summaryTitle: "✅ Concept Summary (Clear, Concise, High-Level)",
+                summary: [
+                    "The U.S. didn’t start with political parties—it started with factions, especially Federalists and Anti-Federalists.",
+                    "Parties formed because major disagreements over banking, power, foreign policy, and the Constitution required organized teams.",
+                    "Over time, U.S. parties changed dramatically due to slavery, industrialization, immigration, civil rights, and cultural shifts.",
+                    "Modern Democrats and Republicans are the result of multiple realignments, not a simple continuation of the founding parties.",
+                    "Political parties exist to organize ideology, win elections, and coordinate government, making them essential to how the U.S. political system functions."
+                ]
+            },
+            es: {
+                title: "La Evolución de los Partidos Políticos en EE. UU.",
+                switchBtn: "Switch to English",
+                defsTitle: "✅ Definiciones Fundamentales (Claras y Precisas)",
+                defs: [
+                    { 
+                        term: "Ideología Política", 
+                        icon: "M13 10V3L4 14h7v7l9-11h-7z",
+                        def: "Un conjunto de creencias y valores sobre cómo debe funcionar el gobierno. Las ideologías políticas responden a preguntas como: ¿Qué debería hacer el gobierno? ¿Qué tan grande o activo debe ser? ¿Cómo deben equilibrarse los derechos, las libertades y las responsabilidades?",
+                        color: "text-red-500"
+                    },
+                    { 
+                        term: "Partido Político", 
+                        icon: "M17 20h2a2 2 0 002-2V5a2 2 0 00-2-2h-2.5a.5.5 0 01-.5-.5V1.5",
+                        def: "Un grupo organizado de personas que comparten una ideología política y trabajan conjuntamente para: ganar elecciones, aprobar leyes e influir en el gobierno.",
+                        color: "text-blue-500"
+                    },
+                    { 
+                        term: "Facciones", 
+                        icon: "M8 9l3 3 2-2 3 3m-3-3V4M3 7h1.5a.5.5 0 01.5.5v13a.5.5 0 01-.5.5H3",
+                        def: "Un subconjunto de personas dentro de una sociedad (o partido) que comparten un interés o pasión particular. Madison en *El Federalista N.º 10* advirtió que las facciones eran peligrosas porque podían perseguir su propio interés por encima del bien público. También dijo que eran inevitables, ya que las personas naturalmente discrepan.",
+                        color: "text-yellow-600"
+                    },
+                    { 
+                        term: "Sistema / Realineamiento / Identificación de Partido", 
+                        icon: "M3 10h18M3 14h18m-9-4v8",
+                        def: "Tres conceptos relacionados: **Sistema de Partidos** (un período definido por partidos en competencia); **Realineamiento de Partidos** (un cambio importante y a largo plazo en qué grupos apoyan a qué partido); **Identificación de Partido** (el partido al que una persona se siente más cercana o que generalmente apoya).",
+                        color: "text-green-500"
+                    }
+                ],
+                whyTitle: "✅ Por Qué Existen los Partidos Políticos (Claro, No Simplificado)",
+                why: [
+                    { title: "1. Organizar Creencias", def: "Los partidos toman amplias tendencias ideológicas (liberal, conservador, etc.) y las convierten en plataformas coherentes.", icon: "M11 19l-9-9 9-9", color: "text-purple-600" },
+                    { title: "2. Estructurar Elecciones", def: "Los partidos reclutan candidatos, recaudan dinero y ayudan a los votantes a elegir entre visiones contrapuestas.", icon: "M14 10l-2-7-2 7m4 0l-2 7-2-7", color: "text-indigo-600" },
+                    { title: "3. Coordinar el Gobierno", def: "En el Congreso y las legislaturas, los partidos ayudan a organizar coaliciones que hacen posible la aprobación de leyes.", icon: "M12 2v20M2 12h20", color: "text-teal-600" },
+                    { title: "4. Proporcionar Identidad", def: "La mayoría de los votantes confían en las etiquetas partidistas como un atajo para elegir candidatos que se alineen con sus creencias.", icon: "M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14c-4.418 0-8 3.582-8 8v2h16v-2c0-4.418-3.582-8-8-8z", color: "text-pink-600" }
+                ],
+                originsTitle: "✅ Orígenes: Federalistas, Antifederalistas y el Miedo a las Facciones",
+                origins: [
+                    { 
+                        title: "Antes de la Constitución", 
+                        content: `Los estadounidenses se dividieron en dos bandos sobre si reemplazar los Artículos de la Confederación:
+                            <ul class="list-disc pl-5 mt-2 space-y-1">
+                                <li>**Federalistas:** Querían un gobierno nacional fuerte (Hamilton, Madison, Jay).</li>
+                                <li>**Antifederalistas:** Temían el poder concentrado; exigieron una Declaración de Derechos (Jefferson, Henry, Mason).</li>
+                            </ul>` 
+                    },
+                    { 
+                        title: "El Miedo de los Fundadores", 
+                        content: `Madison argumentó que las facciones eran inevitables pero debían controlarse mediante:
+                            <ul class="list-disc pl-5 mt-2 space-y-1">
+                                <li>Una república grande.</li>
+                                <li>Numerosos intereses en competencia.</li>
+                                <li>Un sistema que impida que un solo grupo domine.</li>
+                            </ul>` 
+                    },
+                    { 
+                        title: "Cómo las Facciones se Convirtieron en Partidos", 
+                        content: `Una vez adoptada la Constitución, Hamilton y Jefferson se enfrentaron por:
+                            <ul class="list-disc pl-5 mt-2 space-y-1">
+                                <li>Banca e impuestos.</li>
+                                <li>Alianzas extranjeras.</li>
+                                <li>Alcance de la autoridad federal.</li>
+                            </ul>
+                            Estos desacuerdos se solidificaron en los primeros partidos políticos.` 
+                    }
+                ],
+                timelineTitle: "✅ Cronología de la Evolución de los Partidos Políticos de EE. UU.",
+                timeline: [
+                    { era: "I. Primer Sistema de Partidos (1790s–1820s)", parties: "Federalistas vs. Demócratas-Republicanos", details: "Los Federalistas (gobierno nacional fuerte, banca, comercio) se debilitaron después de la Guerra de 1812, dando paso a la 'Era de los Buenos Sentimientos' dominada por los D-R (derechos de los estados, agricultura)."},
+                    { era: "II. Segundo Sistema de Partidos (1820s–1850s)", parties: "Demócratas vs. Whigs", details: "Los Demócratas (Jackson) se centraron en la expansión y el gobierno federal económico limitado. Los Whigs apoyaron la modernización y un Congreso fuerte. Época de creciente participación masiva y tensiones por la esclavitud."},
+                    { era: "III. Tercer Sistema de Partidos (1850s–1890s)", parties: "Demócratas vs. Republicanos", details: "El Partido Republicano se fundó (1854) para detener la propagación de la esclavitud. La Guerra Civil y la Reconstrucción solidificaron las divisiones regionales (Demócratas en el Sur, Republicanos en el Norte)."},
+                    { era: "IV. Cuarto Sistema de Partidos (1890s–1930s)", parties: "Progresismo y América Industrial", details: "Los temas incluyeron la regulación de grandes empresas, los derechos laborales y el sufragio femenino. Los Republicanos eran pro-negocios; los Demócratas fueron influenciados por movimientos populistas y de reforma."},
+                    { era: "V. Quinto Sistema de Partidos (1930s–1960s)", parties: "Coalición del New Deal", details: "El New Deal de FDR unió a los Demócratas (sindicalistas, minorías, votantes urbanos). Los Republicanos se centraron en el gobierno limitado y los intereses empresariales. Los partidos cambian gradualmente de posición sobre la raza y los derechos."},
+                    { era: "VI. Sexto Sistema de Partidos (1960s–Presente)", parties: "Era de los Derechos Civiles a la Polarización Moderna", details: "El apoyo de los Demócratas a los Derechos Civiles impulsó a los blancos del Sur al Partido Republicano. Este realineamiento condujo al panorama altamente polarizado e ideológicamente clasificado de hoy."}
+                ],
+                vocabTitle: "✅ Vocabulario Clave (Definiciones Claras)",
+                vocab: [
+                    { term: "Espectro Político", def: "Un rango de posiciones ideológicas, típicamente de izquierda (liberal) a derecha (conservadora)."},
+                    { term: "Liberalismo", def: "Creencia en un gobierno activo para abordar la desigualdad social y proteger los derechos."},
+                    { term: "Conservadurismo", def: "Creencia en el gobierno limitado, los valores tradicionales, los mercados libres y la responsabilidad individual."},
+                    { term: "Populismo", def: "Apela al ciudadano común, a menudo contra las élites o las instituciones establecidas."},
+                    { term: "Libertarismo", def: "Creencia en la libertad individual y la mínima participación del gobierno tanto en la vida económica como personal."},
+                    { term: "Nacionalismo", def: "Énfasis en la identidad nacional, la soberanía y la protección de los intereses internos."},
+                    { term: "Plataforma", def: "Declaración formal de principios y posiciones políticas de un partido."},
+                    { term: "Coalición", def: "Una colección de grupos votantes que apoyan a un partido político o candidato."},
+                    { term: "Desalineamiento", def: "Cuando los votantes se alejan de ambos partidos principales y se identifican como Independientes."}
+                ],
+                summaryTitle: "✅ Resumen del Concepto (Claro, Conciso, Alto Nivel)",
+                summary: [
+                    "EE. UU. no comenzó con partidos políticos, sino con facciones, especialmente Federalistas y Antifederalistas.",
+                    "Los partidos se formaron porque los principales desacuerdos sobre la banca, el poder, la política exterior y la Constitución requerían equipos organizados.",
+                    "Con el tiempo, los partidos de EE. UU. cambiaron drásticamente debido a la esclavitud, la industrialización, la inmigración, los derechos civiles y los cambios culturales.",
+                    "Los Demócratas y Republicanos modernos son el resultado de múltiples realineamientos, no una simple continuación de los partidos fundacionales.",
+                    "Los partidos políticos existen para organizar la ideología, ganar elecciones y coordinar el gobierno, haciéndolos esenciales para el funcionamiento del sistema político de EE. UU."
+                ]
+            }
+        };
+
+        // --- DYNAMIC RENDERING FUNCTIONS ---
+
+        function renderDefinitions(data) {
+            const container = document.getElementById('defs-content');
+            container.innerHTML = data.map(item => `
+                <div style="border-color: ${getColorHex(item.color)};" class="bg-white p-6 rounded-xl border-t-4 border-b-2 border-l-4 border-r-2 card-shadow transition hover:scale-[1.01] duration-300 ease-in-out">
+                    <div class="flex items-center mb-3">
+                        ${createIcon(item.icon, item.color)}
+                        <h3 class="ml-4 text-xl font-bold">${item.term}</h3>
+                    </div>
+                    <p class="text-sm sm:text-base text-gray-600">${item.def}</p>
+                </div>
+            `).join('');
+        }
+
+        function renderWhyParties(data) {
+            const container = document.getElementById('why-content');
+            // Using inline styles for hover effect to ensure color classes are applied
+            const defaultBorderColor = getColorHex('border-gray-100');
+
+            container.innerHTML = data.map(item => `
+                <div class="bg-white p-5 rounded-xl border-t-2 border-b-4 border-l-2 border-r-4 border-gray-100 shadow-md flex flex-col items-start transition duration-300" 
+                     onmouseover="this.style.borderBottomColor = '${getColorHex(item.color)}'" 
+                     onmouseout="this.style.borderBottomColor = '${defaultBorderColor}'" 
+                     style="border-bottom-color: ${defaultBorderColor};">
+                    <div class="mb-3">${createIcon(item.icon, item.color)}</div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">${item.title}</h3>
+                    <p class="text-sm text-gray-600">${item.def}</p>
+                </div>
+            `).join('');
+        }
+
+        function renderOrigins(data) {
+            const container = document.getElementById('origins-content');
+            container.innerHTML = data.map(item => `
+                <div class="p-4 border-l-4 border-gray-200 lg:border-l-0 lg:border-t-4 lg:pt-0 lg:mt-4">
+                    <h3 class="text-xl font-bold mb-2 text-gray-900">${item.title}</h3>
+                    <p class="text-gray-600 text-sm">${item.content}</p>
+                </div>
+            `).join('');
+        }
+
+        function renderTimeline(data) {
+            const container = document.getElementById('timeline-content');
+            container.innerHTML = data.map((item, index) => {
+                // Using hex codes for dot background and border color to fix dynamic class issue
+                const dotColor = index % 2 === 0 ? getColorHex('bg-blue-600') : getColorHex('bg-red-600');
+                const borderColor = dotColor;
+
+                return `
+                    <div class="relative pl-8 sm:pl-12">
+                        <!-- Vertical Line and Dot -->
+                        <div class="absolute w-1 h-full bg-gray-300 left-0 sm:left-4"></div>
+                        <div style="background-color: ${dotColor};" class="absolute w-4 h-4 rounded-full left-[-8px] sm:left-[12px] top-1 shadow-md"></div>
+                        
+                        <div style="border-left-color: ${borderColor};" class="bg-white p-5 rounded-xl card-shadow ml-4 sm:ml-8 border-l-4">
+                            <h3 class="text-lg sm:text-xl font-bold mb-1">${item.era}</h3>
+                            <p class="text-sm font-semibold text-gray-700 mb-2">${item.parties}</p>
+                            <p class="text-sm text-gray-600">${item.details}</p>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function renderVocabulary(data) {
+            const container = document.getElementById('vocab-content');
+            container.innerHTML = data.map(item => `
+                <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-100 hover:border-gray-300 transition duration-300">
+                    <h3 class="text-base font-bold text-gray-800 mb-1">${item.term}</h3>
+                    <p class="text-sm text-gray-500">${item.def}</p>
+                </div>
+            `).join('');
+        }
+
+        function renderSummary(data) {
+            const container = document.getElementById('summary-content');
+            container.innerHTML = data.map(item => `<li class="text-base">${item}</li>`).join('');
+        }
+
+
+        // --- MAIN APPLICATION LOGIC ---
+
+        function updateContent() {
+            const data = content[currentLang];
+
+            // Update main titles and button
+            document.getElementById('main-title').textContent = data.title;
+            document.getElementById('lang-switch-btn').textContent = data.switchBtn;
+            document.documentElement.lang = currentLang;
+
+            // Render Sections
+            document.getElementById('defs-title').textContent = data.defsTitle;
+            renderDefinitions(data.defs);
+
+            document.getElementById('why-title').textContent = data.whyTitle;
+            renderWhyParties(data.why);
+
+            document.getElementById('origins-title').textContent = data.originsTitle;
+            renderOrigins(data.origins);
+
+            document.getElementById('timeline-title').textContent = data.timelineTitle;
+            renderTimeline(data.timeline);
+
+            document.getElementById('vocab-title').textContent = data.vocabTitle;
+            renderVocabulary(data.vocab);
+
+            document.getElementById('summary-title').textContent = data.summaryTitle;
+            renderSummary(data.summary);
+        }
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'en' ? 'es' : 'en';
+            updateContent();
+        }
+
+        // Initial load
+        window.onload = updateContent;
+    </script>
+</body>
+</html>
 
-  today_title: "Cómo Funciona",
-  today_desc: "El juego hoy",
-  today_content: `
-    <h2>Cómo funcionan hoy los partidos ⚡</h2>
-
-    <div class="fun-fact">
-      <strong>REALIDAD:</strong> ¡La Constitución no menciona partidos! Son organizaciones privadas que aprendieron a dominar el proceso electoral. 🎪
-    </div>
-
-    <h3>🎯 Tres trabajos principales de un partido</h3>
-
-    <div class="timeline">
-      <div class="timeline-item">
-        <h4 style="color:#667eea;">1. NOMINAR CANDIDATOS 🎭</h4>
-        <ul style="list-style:none;">
-          <li>📍 LOCAL: Primarias/caucus (la gente elige “el equipo”)</li>
-          <li>🎪 NACIONAL: Convenciones con discursos y plataforma</li>
-          <li>📜 PLATAFORMA: Lista oficial de promesas</li>
-        </ul>
-      </div>
-
-      <div class="timeline-item">
-        <h4 style="color:#764ba2;">2. ORGANIZAR ELECCIONES 🗳️</h4>
-        <ul style="list-style:none;">
-          <li>📱 Registro de votantes</li>
-          <li>💰 Recaudar millones para anuncios</li>
-          <li>🚌 GOTV (llevar gente a votar)</li>
-          <li>🤝 Construir coaliciones</li>
-        </ul>
-      </div>
-
-      <div class="timeline-item">
-        <h4 style="color:#f093fb;">3. GOBERNAR 🏛️</h4>
-        <ul style="list-style:none;">
-          <li>👔 Elegir líderes (Speaker, comités)</li>
-          <li>📊 “Whips” para alinear votos</li>
-          <li>🤝 Coordinar con la presidencia</li>
-          <li>🏫 Influencia desde el Congreso hasta juntas escolares</li>
-        </ul>
-      </div>
-    </div>
-
-    <h3>🏗️ Estructura del partido</h3>
-    <div class="interactive-map">
-      <h4>Haz clic para ver cada nivel</h4>
-      <div class="map-state purple" onclick="showPartyLevel('national')">🏛️ NACIONAL (DNC/RNC)</div>
-      <div class="map-state blue" onclick="showPartyLevel('state')">🗺️ ESTATAL</div>
-      <div class="map-state red" onclick="showPartyLevel('local')">📍 LOCAL</div>
-      <div id="party-level-info" style="margin-top:20px; padding:20px; background:white; border-radius:15px; display:none;"></div>
-    </div>
-
-    <h3>💰 Sigue el dinero</h3>
-    <div class="quiz-container">
-      <div class="quiz-question">¿De dónde sale el poder real?</div>
-      <div class="quiz-option" onclick="revealMoney(this)">
-        <strong>Super PACs:</strong> Dinero ilimitado de corporaciones 💸
-      </div>
-      <div class="quiz-option" onclick="revealMoney(this)">
-        <strong>Dinero oscuro:</strong> Donaciones anónimas 👻
-      </div>
-      <div class="quiz-option" onclick="revealMoney(this)">
-        <strong>Pequeños donantes:</strong> ¡Tus $5 cuentan! 🪙
-      </div>
-    </div>
-
-    <button class="quiz-btn" onclick="simulateElection()">🎮 ¡Dirige tu campaña!</button>
-    <div id="election-sim" style="display:none; background:#f0f0f0; padding:20px; border-radius:10px; margin-top:20px;">
-      <h4>Simulador de campaña</h4>
-      <p>Elige estrategia:</p>
-      <button onclick="runCampaign('attack')">Anuncios de ataque</button>
-      <button onclick="runCampaign('policy')">Enfoque en propuestas</button>
-      <p id="campaign-result">Aprobación: 50%</p>
-    </div>
-  `,
-
-  module1_title: "Red de Influencia",
-  module1_desc: "¿Quién tiene el poder?",
-  module1_content: `
-    <h2>Módulo 1: Los jugadores del poder 🕸️</h2>
-
-    <div class="fun-fact">
-      <strong>DATO:</strong> En 2020 el gasto político superó los $14 mil millones. ¡Más que el presupuesto de la NASA! 🚀💰
-    </div>
-
-    <h3>🥊 Partidos vs. Grupos de interés</h3>
-    <div class="timeline">
-      <div class="timeline-item">
-        <h4 style="color:#667eea; font-weight:800;">PARTIDOS 🐘🫏</h4>
-        <p><strong>Meta:</strong> Ganar elecciones</p>
-        <p><strong>Estrategia:</strong> “Gran carpa” (mensaje amplio)</p>
-        <p><strong>Poder:</strong> Control de cargos y agenda</p>
-        <p><strong>Debilidad:</strong> No pueden ser demasiado extremos</p>
-      </div>
-      <div class="timeline-item">
-        <h4 style="color:#764ba2; font-weight:800;">GRUPOS DE INTERÉS 💼</h4>
-        <p><strong>Meta:</strong> Influir políticas específicas</p>
-        <p><strong>Estrategia:</strong> Enfoque de un solo tema</p>
-        <p><strong>Poder:</strong> Presión a quien gobierna</p>
-        <p><strong>Ventaja:</strong> Pueden ser más extremos</p>
-      </div>
-    </div>
-
-    <h3>🔧 Herramientas de influencia</h3>
-    <div class="quiz-container">
-      <h4>Relaciona táctica y ejemplo</h4>
-      <div class="quiz-option" onclick="matchTactic(this, 'lobby')"><strong>💰 Lobbying:</strong> Ex-políticos pagados por asesorar al Congreso</div>
-      <div class="quiz-option" onclick="matchTactic(this, 'pac')"><strong>💵 PACs:</strong> Grandes donaciones electorales</div>
-      <div class="quiz-option" onclick="matchTactic(this, 'grass')"><strong>📢 Base social:</strong> Protestas y organización local</div>
-      <div class="quiz-option" onclick="matchTactic(this, 'court')"><strong>⚖️ Litigio:</strong> Demandas para cambiar políticas</div>
-    </div>
-
-    <h3>🎮 Medios: multiplicador de poder</h3>
-    <p>Los medios (TV/redes) moldean qué temas importan y cómo los vemos.</p>
-
-    <button class="quiz-btn" onclick="showInfluenceWeb()">🕸️ Ver la red completa</button>
-    <div id="influence-web" style="display:none; background:#f0f0f0; padding:20px; border-radius:10px; margin-top:20px;">
-      <h4>Red de influencia</h4>
-      <p>Partidos → Grupos → Medios → Votantes</p>
-      <p>Arrastra para conectar</p>
-      <p draggable="true" ondragstart="drag(event)" id="web-drag">Partidos</p>
-      <div ondrop="drop(event)" ondragover="allowDrop(event)" id="web-drop">Suelta aquí para conectar con Votantes</div>
-      <p id="web-result"></p>
-    </div>
-  `,
-
-  module2_title: "Batalla Bipartidista",
-  module2_desc: "¿Por qué solo 2?",
-  module2_content: `
-    <h2>Módulo 2: El duopolio de dos partidos ⚔️</h2>
-
-    <div class="fun-fact">
-      <strong>HECHO:</strong> En 1992 Ross Perot obtuvo ~19 millones de votos… y 0 votos electorales. 🤯
-    </div>
-
-    <h3>🎲 Por qué se quedan dos</h3>
-    <div style="background:linear-gradient(135deg,#ff6b6b,#ee5a24); color:white; padding:30px; border-radius:20px; margin:20px 0;">
-      <h4 style="font-size:1.8rem;">SISTEMA “EL GANADOR SE LLEVA TODO” 🪤</h4>
-      <p>1.º lugar = todo ✅ | 2.º = nada ❌ | 3.º = casi invisible 💀</p>
-    </div>
-
-    <h3>🧠 Psicología del “voto perdido”</h3>
-    <div class="interactive-map">
-      <h4>¿Qué eliges?</h4>
-      <div class="map-state blue" onclick="voteSimulation('democrat')">Votar Demócrata 🫏</div>
-      <div class="map-state red" onclick="voteSimulation('republican')">Votar Republicano 🐘</div>
-      <div class="map-state purple" onclick="voteSimulation('third')">Tercer partido 🦄</div>
-      <div id="vote-result" style="margin-top:20px; padding:20px; background:white; border-radius:15px; display:none;"></div>
-    </div>
-
-    <h3>🎪 Terceros partidos</h3>
-    <div class="timeline">
-      <div class="timeline-item">
-        <h4>😈 Efecto “spoiler”</h4>
-        <p><strong>2000, Florida:</strong> Diferencia de 537 votos decide la presidencia.</p>
-      </div>
-      <div class="timeline-item">
-        <h4>💡 Ladrones de ideas</h4>
-        <p>Muchas ideas (40 h/semana, sufragio femenino, Seguridad Social, elección directa de senadores) nacieron en terceros partidos y luego las adoptaron los grandes.</p>
-      </div>
-    </div>
-
-    <h3>⚡ Colegio Electoral</h3>
-    <div class="quiz-container">
-      <div class="quiz-question">Si ganas Florida por 1 voto, ¿qué obtienes?</div>
-      <div class="quiz-option" onclick="checkEC(this, 'all')">¡TODOS los 30 votos electorales! 🎉</div>
-      <div class="quiz-option" onclick="checkEC(this, 'one')">Solo 1 voto 😐</div>
-      <div class="quiz-option" onclick="checkEC(this, 'half')">La mitad 🤔</div>
-    </div>
-
-    <button class="quiz-btn" onclick="playElectoralCollege()">🎮 Jugar: ¡Rompe el duopolio!</button>
-    <div id="ec-game" style="display:none; background:#f0f0f0; padding:20px; border-radius:10px; margin-top:20px;">
-      <h4>Juego del Colegio Electoral</h4>
-      <p>Asigna votos a los estados para ganar</p>
-      <button onclick="assignVotes('blue',30)">Dar Florida a Azul</button>
-      <button onclick="assignVotes('red',30)">Dar Florida a Rojo</button>
-      <p id="ec-result">Azul: 0 | Rojo: 0</p>
-    </div>
-  `,
-
-  module3_title: "Caos Primario",
-  module3_desc: "Juegos extremos",
-  module3_content: `
-    <h2>Módulo 3: Primarias = ¿fábrica de extremos? 🔥</h2>
-
-    <div class="fun-fact">
-      <strong>FLORIDA 2020:</strong> El 57% votó por cambiar a “top-two”, pero se necesitaba 60%. Fracasó.
-    </div>
-
-    <h3>🎭 Elige el tipo de primaria</h3>
-    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:20px; margin:20px 0;">
-      <div style="background:linear-gradient(135deg,#eb3b5a,#fc5c65); color:white; padding:25px; border-radius:15px; cursor:pointer;" onclick="showPrimaryType('closed')">
-        <h4 style="font-size:1.5rem;">🔒 PRIMARIA CERRADA</h4>
-        <p>Solo miembros del partido.</p>
-        <p><strong>Independientes: fuera.</strong></p>
-      </div>
-      <div style="background:linear-gradient(135deg,#00d2d3,#01a3a4); color:white; padding:25px; border-radius:15px; cursor:pointer;" onclick="showPrimaryType('open')">
-        <h4 style="font-size:1.5rem;">🔓 PRIMARIA ABIERTA</h4>
-        <p>Cualquiera puede votar en cualquier primaria.</p>
-      </div>
-      <div style="background:linear-gradient(135deg,#6c5ce7,#a55eea); color:white; padding:25px; border-radius:15px; cursor:pointer;" onclick="showPrimaryType('jungle')">
-        <h4 style="font-size:1.5rem;">🌴 “JUNGLE”</h4>
-        <p>Todos contra todos; pasan los dos primeros.</p>
-      </div>
-    </div>
-    <div id="primary-type-info" style="margin-top:20px; padding:20px; background:#f0f0f0; border-radius:15px; display:none;"></div>
-
-    <h3>💥 ¿Por qué surgen extremos?</h3>
-    <div class="timeline-era" style="background:linear-gradient(135deg,#ff6348,#ff4757);">
-      <h4 style="color:white;">Espiral hacia el extremismo</h4>
-      <ol style="color:white; font-size:1.1rem; line-height:2;">
-        <li>📊 Solo 10–20% vota en primarias</li>
-        <li>🔥 Ese electorado es el más partidista</li>
-        <li>🎯 Los candidatos se mueven hacia los extremos</li>
-        <li>😱 Los moderados pierden</li>
-        <li>🏛️ El Congreso se vuelve menos dispuesto a comprometerse</li>
-      </ol>
-    </div>
-
-    <button class="quiz-btn" onclick="primarySimulator()">🎮 Simulador de primaria</button>
-    <div id="primary-sim" style="display:none; background:#f0f0f0; padding:20px; border-radius:10px; margin-top:20px;">
-      <h4>Elige tipo de candidato: Moderado/Extremo</h4>
-      <button onclick="simulatePrimary('moderate')">Moderado</button>
-      <button onclick="simulatePrimary('extreme')">Extremo</button>
-      <p id="primary-result">Participación: baja</p>
-    </div>
-  `,
-
-  module4_title: "Hackeo de Mapas",
-  module4_desc: "Gerrymandering expuesto",
-  module4_content: `
-    <h2>Módulo 4: Gerrymandering — “hackear” mapas 🗺️</h2>
-
-    <div class="fun-fact">
-      <strong>LOCURA:</strong> Algunos distritos parecen arte abstracto. ¡No es casualidad!
-    </div>
-
-    <h3>🎮 Dos trucos principales</h3>
-    <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px; margin:20px 0;">
-      <div style="background:linear-gradient(135deg,#ff6b6b,#ff8787); color:white; padding:30px; border-radius:20px;">
-        <h4 style="font-size:1.8rem;">🎯 PACKING</h4>
-        <p>Amontonar opositores en un solo distrito (ganan 90–10) y pierden en el resto.</p>
-      </div>
-      <div style="background:linear-gradient(135deg,#4834d4,#686de0); color:white; padding:30px; border-radius:20px;">
-        <h4 style="font-size:1.8rem;">💔 CRACKING</h4>
-        <p>Dividir opositores en muchos distritos (siempre 49%).</p>
-      </div>
-    </div>
-
-    <h3>🎮 ¡Inténtalo!</h3>
-    <div class="interactive-map" style="background:#f8f9fa; padding:30px;">
-      <h4>Juego de gerrymandering</h4>
-      <p>Tienes 50 votantes: 30 azules, 20 rojos. Dibuja 5 distritos.</p>
-      <div style="display:grid; grid-template-columns:repeat(5,1fr); gap:10px; margin:20px 0;">
-        <div class="map-state blue" onclick="drawDistrict(1)">Distrito 1</div>
-        <div class="map-state blue" onclick="drawDistrict(2)">Distrito 2</div>
-        <div class="map-state red" onclick="drawDistrict(3)">Distrito 3</div>
-        <div class="map-state red" onclick="drawDistrict(4)">Distrito 4</div>
-        <div class="map-state purple" onclick="drawDistrict(5)">Distrito 5</div>
-      </div>
-      <p><strong>¿Puedes hacer que Rojo gane 3/5?</strong></p>
-      <button class="quiz-btn" onclick="showGerrymanderSolution()">¡Muéstrame cómo!</button>
-      <p id="gerry-result"></p>
-    </div>
-
-    <h3>🌴 Florida y “Fair Districts”</h3>
-    <p style="font-size:1.2rem;"><strong>2010:</strong> Votantes contra el gerrymandering → sigue la pelea años después.</p>
-
-    <button class="quiz-btn" onclick="seeYourDistrict()">📍 Ver tu distrito</button>
-    <div id="district-info" style="display:none; background:#f0f0f0; padding:20px; border-radius:10px; margin-top:20px;">
-      <h4>Tu distrito</h4>
-      <p>ZIP: <input id="zip-input" type="text"></p>
-      <button onclick="fetchDistrict()">Buscar</button>
-      <p id="district-result"></p>
-    </div>
-  `,
-
-  module5_title: "Enfoque Florida",
-  module5_desc: "Tu estado, tu lucha",
-  module5_content: `
-    <h2>Módulo 5: Florida — estado decisivo 🌴</h2>
-
-    <div class="fun-fact">
-      <strong>DATO:</strong> 537 votos (2000) decidieron la presidencia. Tu voto importa. 🗳️
-    </div>
-
-    <h3>🔥 Enmiendas 2024</h3>
-    <div style="background:linear-gradient(135deg,#00b894,#00cec9); padding:30px; border-radius:20px; margin:20px 0;">
-      <h4 style="color:white; font-size:2rem;">🌿 Enmienda 3: Uso recreativo de cannabis</h4>
-      <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-top:20px;">
-        <div style="background:rgba(255,255,255,0.9); padding:15px; border-radius:10px;">
-          <strong style="color:#0984e3;">Demócratas</strong>
-          <p>Libertad personal; ingresos fiscales; reforma penal.</p>
-        </div>
-        <div style="background:rgba(255,255,255,0.9); padding:15px; border-radius:10px;">
-          <strong style="color:#d63031;">Republicanos</strong>
-          <p>Riesgos para la salud y el orden público.</p>
-        </div>
-      </div>
-      <div style="background:white; color:#00b894; padding:15px; border-radius:10px; margin-top:20px; text-align:center;">
-        <strong style="font-size:1.3rem;">Resultado: 57% SÍ… pero falló (se requiere 60%).</strong>
-      </div>
-    </div>
-
-    <div style="background:linear-gradient(135deg,#e84393,#fd79a8); padding:30px; border-radius:20px; margin:20px 0;">
-      <h4 style="color:white; font-size:2rem;">⚡ Enmienda 4: Derechos reproductivos</h4>
-      <p style="background:white; padding:12px; border-radius:10px; color:#333; margin-top:12px;">
-        Debate polarizado entre libertad/atención médica y protección de la vida prenatal.
-      </p>
-    </div>
-
-    <h3>📚 Estándar (SS.912.CG.3.1)</h3>
-    <div class="quiz-container">
-      <h4>Debe comprenderse:</h4>
-      <div class="quiz-option">Democracia vs. dictadura</div>
-      <div class="quiz-option">Conflictos con comunismo/totalitarismo</div>
-      <div class="quiz-option">Debates sobre “excepcionalismo estadounidense”</div>
-    </div>
-
-    <h3>🎯 Tu generación importa</h3>
-    <ul>
-      <li>Umbral del 60% para enmiendas</li>
-      <li>Participación juvenil: alta, pero mejorable</li>
-      <li>Temas: clima, deuda estudiantil, vivienda</li>
-    </ul>
-
-    <button class="quiz-btn" onclick="checkRegistration()">📝 Verifica tu registro</button>
-    <button class="quiz-btn" onclick="findPollingPlace()">📍 Busca tu lugar de votación</button>
-    <div id="polling-info" style="display:none; background:#f0f0f0; padding:20px; border-radius:10px; margin-top:20px;">
-      <h4>Buscador</h4>
-      <p>Dirección: <input id="address-input" type="text"></p>
-      <button onclick="fetchPolling()">Buscar</button>
-      <p id="polling-result"></p>
-    </div>
-  `,
-
-  module1_desc: "¿Quién tiene el poder?",
-  module2_desc: "¿Por qué solo 2?",
-  module3_desc: "Juegos extremos",
-  module4_desc: "Gerrymandering expuesto",
-  module5_desc: "Tu estado, tu lucha"
-};
-
-// --- FRENCH (FR) ---
-content['fr'] = {
-  title: "Partis Politiques : Le Jeu 🎮",
-
-  home_title: "Commence ici !",
-  home_desc: "Votre parcours commence",
-  home_content: `
-    <h2>Bienvenue dans l’arène politique ! 🎮</h2>
-
-    <div class="fun-fact">
-      <strong>FAIT MARQUANT :</strong> Washington a mis en garde contre les partis, les qualifiant de menace pour la république… et pourtant le système à deux partis domine aujourd’hui. 😅
-    </div>
-
-    <p style="font-size:1.2rem; line-height:1.8;">
-      Découvre 230 ans de stratégies et de conflits qui façonnent TON avenir civique.
-    </p>
-
-    <h3>🎯 Ta mission</h3>
-    <p>Parcours 7 modules pour devenir “Maître politique”. Chaque module explique comment la démocratie fonctionne vraiment.</p>
-
-    <div class="quiz-container">
-      <h3>⚡ Vocabulaire express</h3>
-      <div class="quiz-question">Associe le terme à l’idée clé :</div>
-      <div class="quiz-option" onclick="checkAnswer(this, true)">
-        <strong>Parti politique</strong> = Équipe qui veut GAGNER les élections 🏆
-      </div>
-      <div class="quiz-option" onclick="checkAnswer(this, true)">
-        <strong>Idéologie</strong> = “Personnalité politique” (libéral ? conservateur ?) 🧠
-      </div>
-      <div class="quiz-option" onclick="checkAnswer(this, true)">
-        <strong>Politique publique</strong> = Règles/lois qui impactent ta vie 📜
-      </div>
-    </div>
-
-    <button class="quiz-btn" onclick="startAdventure()">🚀 Commencer le parcours !</button>
-  `,
-
-  history_title: "Évolution des Partis",
-  history_desc: "230 ans de drame !",
-  history_content: `
-    <h2>Saga des partis américains 📜</h2>
-
-    <div class="fun-fact">
-      <strong>IRONIE :</strong> Les Pères fondateurs redoutaient les “factions”… qui ont pourtant émergé aussitôt. 🤦‍♂️
-    </div>
-
-    <h3>🎬 Clique sur chaque période</h3>
-
-    <div class="timeline-era" onclick="toggleEra('era1')">
-      <h4>🎩 1790–1820s : Premier système partisan</h4>
-      <p><strong>Fédéralistes vs. Démocrates-Républicains</strong></p>
-      <div id="era1" class="era-content">
-        <ul style="margin-top:15px;">
-          <li>🎭 FÉDÉRALISTES (Hamilton) : État fédéral fort, banques, rapprochement britannique</li>
-          <li>🌾 DÉMOCRATES-RÉPUBLICAINS (Jefferson) : Droits des États, monde agricole, sympathie française</li>
-        </ul>
-        <p><strong>Fin :</strong> Déclin des fédéralistes après 1812 ; “Ère des bons sentiments”.</p>
-      </div>
-    </div>
-
-    <div class="timeline-era" onclick="toggleEra('era2')">
-      <h4>🎪 1820s–1850s : L’ère Jacksonienne</h4>
-      <p><strong>Démocrates vs. Whigs</strong></p>
-      <div id="era2" class="era-content">
-        <ul style="margin-top:15px;">
-          <li>🔥 DÉMOCRATES (Jackson) : “Homme ordinaire”, expansion, contre le “banque nationale”</li>
-          <li>🏛️ WHIGS : Infrastructures, éducation ; coalition anti-Jackson</li>
-        </ul>
-        <p><strong>Tournant :</strong> Participation élargie ; la question de l’esclavage fracture les partis.</p>
-      </div>
-    </div>
-
-    <div class="timeline-era" onclick="toggleEra('era3')">
-      <h4>⚔️ 1850s–1890s : Guerre de Sécession et réalignement</h4>
-      <p><strong>Naissance des Républicains ; scission démocrate</strong></p>
-      <div id="era3" class="era-content">
-        <p><strong>Clé :</strong> 1854 : les républicains naissent pour contrer l’expansion de l’esclavage.</p>
-        <ul>
-          <li>🎩 RÉPUBLICAINS (Lincoln) : Union, industrie, fin de l’esclavage</li>
-          <li>💔 DÉMOCRATES : Nord vs. Sud</li>
-        </ul>
-        <p><strong>Après :</strong> “Gilded Age” : influence des grandes entreprises et corruption.</p>
-      </div>
-    </div>
-
-    <div class="timeline-era" onclick="toggleEra('era4')">
-      <h4>🏭 1890s–1930s : Progressisme → Dépression</h4>
-      <p><strong>Terrain économique</strong></p>
-      <div id="era4" class="era-content">
-        <ul style="margin-top:15px;">
-          <li>📈 RÉPUBLICAINS : Pro-entreprises, laissez-faire</li>
-          <li>👷 DÉMOCRATES : Vers les travailleurs et syndicats</li>
-        </ul>
-        <p><strong>Choc :</strong> Krach de 1929.</p>
-      </div>
-    </div>
-
-    <div class="timeline-era" onclick="toggleEra('era5')">
-      <h4>📺 1930s–1960s : Révolution du New Deal</h4>
-      <p><strong>FDR change la donne</strong></p>
-      <div id="era5" class="era-content">
-        <ul style="margin-top:15px;">
-          <li>🔵 DÉMOCRATES : Ouvriers + minorités + Sud blanc</li>
-          <li>🔴 RÉPUBLICAINS : Entreprises + conservateurs + anticommunistes</li>
-        </ul>
-        <p><strong>Fissure :</strong> Les droits civiques fracturent la coalition démocrate.</p>
-      </div>
-    </div>
-
-    <div class="timeline-era" onclick="toggleEra('era6')">
-      <h4>🚀 Années 1960–aujourd’hui : Champ moderne</h4>
-      <p><strong>Guerres culturelles et polarisation</strong></p>
-      <div id="era6" class="era-content">
-        <p><strong>Réalignement :</strong> Le Sud devient républicain après les lois sur les droits civiques.</p>
-        <ul>
-          <li>🔵 DÉMOCRATES : Justice sociale, environnement, programmes publics</li>
-          <li>🔴 RÉPUBLICAINS : Valeurs traditionnelles, marché libre, défense</li>
-        </ul>
-        <p>Réseaux sociaux = politique 24/7 ; les tiers partis n’arrivent pas à percer.</p>
-      </div>
-    </div>
-
-    <button class="quiz-btn" onclick="playTimelineGame()">🎮 Jouer : Évolution des partis</button>
-    <div id="timeline-game" style="display:none; background:#f0f0f0; padding:20px; border-radius:10px; margin-top:20px;">
-      <h4>Associer période et système partisan</h4>
-      <!-- Garde les mêmes IDs pour le jeu -->
-      <div style="display:flex; justify-content:space-around;">
-        <div id="eras" style="width:45%;">
-          <p draggable="true" ondragstart="drag(event)" id="drag1">1790s–1820s</p>
-          <p draggable="true" ondragstart="drag(event)" id="drag2">1820s–1850s</p>
-          <p draggable="true" ondragstart="drag(event)" id="drag3">1850s–1890s</p>
-        </div>
-        <div id="parties" style="width:45%;">
-          <div ondrop="drop(event)" ondragover="allowDrop(event)" id="drop1">Fédéralistes vs. Démocrates-Républicains</div>
-          <div ondrop="drop(event)" ondragover="allowDrop(event)" id="drop2">Démocrates vs. Whigs</div>
-          <div ondrop="drop(event)" ondragover="allowDrop(event)" id="drop3">Naissance des Républicains</div>
-        </div>
-      </div>
-      <button onclick="checkTimelineMatch()">Vérifier</button>
-      <p id="timeline-result"></p>
-    </div>
-  `,
-
-  today_title: "Comment ça marche",
-  today_desc: "Le jeu aujourd’hui",
-  today_content: `
-    <h2>Comment les partis fonctionnent aujourd’hui ⚡</h2>
-
-    <div class="fun-fact">
-      <strong>RÉALITÉ :</strong> Les partis ne figurent pas dans la Constitution ; ce sont des organisations privées très influentes. 🎪
-    </div>
-
-    <h3>🎯 Trois missions majeures</h3>
-    <div class="timeline">
-      <div class="timeline-item">
-        <h4 style="color:#667eea;">1. NOMMER DES CANDIDATS 🎭</h4>
-        <ul style="list-style:none;">
-          <li>📍 LOCAL : Primaires/caucus</li>
-          <li>🎪 NATIONAL : Conventions et plateforme</li>
-          <li>📜 Promesses officielles (plateforme)</li>
-        </ul>
-      </div>
-      <div class="timeline-item">
-        <h4 style="color:#764ba2;">2. ORGANISER LES ÉLECTIONS 🗳️</h4>
-        <ul style="list-style:none;">
-          <li>📱 Inscrire des électeurs</li>
-          <li>💰 Lever des fonds</li>
-          <li>🚌 GOTV (mobiliser les électeurs)</li>
-          <li>🤝 Bâtir des coalitions</li>
-        </ul>
-      </div>
-      <div class="timeline-item">
-        <h4 style="color:#f093fb;">3. GOUVERNER 🏛️</h4>
-        <ul style="list-style:none;">
-          <li>👔 Choisir les dirigeants (Présidence de la Chambre, comités)</li>
-          <li>📊 Discipliner les votes (“whip”)</li>
-          <li>🤝 Coordonner avec la présidence</li>
-          <li>🏫 Influencer du Congrès aux conseils scolaires</li>
-        </ul>
-      </div>
-    </div>
-
-    <h3>🏗️ Structure du parti</h3>
-    <div class="interactive-map">
-      <h4>Clique pour explorer chaque niveau</h4>
-      <div class="map-state purple" onclick="showPartyLevel('national')">🏛️ NATIONAL (DNC/RNC)</div>
-      <div class="map-state blue" onclick="showPartyLevel('state')">🗺️ ÉTAT</div>
-      <div class="map-state red" onclick="showPartyLevel('local')">📍 LOCAL</div>
-      <div id="party-level-info" style="margin-top:20px; padding:20px; background:white; border-radius:15px; display:none;"></div>
-    </div>
-
-    <h3>💰 Suivre l’argent</h3>
-    <div class="quiz-container">
-      <div class="quiz-question">D’où vient le pouvoir réel ?</div>
-      <div class="quiz-option" onclick="revealMoney(this)"><strong>Super PACs :</strong> Argent illimité 💸</div>
-      <div class="quiz-option" onclick="revealMoney(this)"><strong>Argent obscur :</strong> Dons anonymes 👻</div>
-      <div class="quiz-option" onclick="revealMoney(this)"><strong>Petits donateurs :</strong> Tes 5 € comptent ! 🪙</div>
-    </div>
-
-    <button class="quiz-btn" onclick="simulateElection()">🎮 Lancer ta campagne</button>
-    <div id="election-sim" style="display:none; background:#f0f0f0; padding:20px; border-radius:10px; margin-top:20px;">
-      <h4>Simulateur de campagne</h4>
-      <p>Choisis une stratégie :</p>
-      <button onclick="runCampaign('attack')">Attaques</button>
-      <button onclick="runCampaign('policy')">Programme</button>
-      <p id="campaign-result">Popularité : 50%</p>
-    </div>
-  `,
-
-  module1_title: "Réseau d’Influence",
-  module1_desc: "Qui détient le pouvoir ?",
-  module1_content: `
-    <h2>Module 1 : Les acteurs du pouvoir 🕸️</h2>
-
-    <div class="fun-fact">
-      <strong>CHIFFRE :</strong> Dépenses politiques 2020 ≈ 14 milliards $. 🚀💰
-    </div>
-
-    <h3>🥊 Partis vs. groupements d’intérêt</h3>
-    <div class="timeline">
-      <div class="timeline-item">
-        <h4 style="color:#667eea; font-weight:800;">PARTIS 🐘🫏</h4>
-        <p><strong>But :</strong> Gagner des élections</p>
-        <p><strong>Stratégie :</strong> Message large (“big tent”)</p>
-        <p><strong>Atout :</strong> Contrôle institutionnel</p>
-        <p><strong>Faiblesse :</strong> Modération requise</p>
-      </div>
-      <div class="timeline-item">
-        <h4 style="color:#764ba2; font-weight:800;">GROUPES D’INTÉRÊT 💼</h4>
-        <p><strong>But :</strong> Influer sur des politiques précises</p>
-        <p><strong>Stratégie :</strong> Un seul thème</p>
-        <p><strong>Atout :</strong> Plus d’“intensité”</p>
-      </div>
-    </div>
-
-    <h3>🔧 Boîte à outils d’influence</h3>
-    <div class="quiz-container">
-      <h4>Associe tactique et exemple</h4>
-      <div class="quiz-option" onclick="matchTactic(this,'lobby')"><strong>💰 Lobbying :</strong> Anciens élus qui conseillent le Congrès</div>
-      <div class="quiz-option" onclick="matchTactic(this,'pac')"><strong>💵 PACs :</strong> Gros financements de campagne</div>
-      <div class="quiz-option" onclick="matchTactic(this,'grass')"><strong>📢 Mobilisation :</strong> Actions de terrain</div>
-      <div class="quiz-option" onclick="matchTactic(this,'court')"><strong>⚖️ Contentieux :</strong> Procès pour changer la loi</div>
-    </div>
-
-    <h3>🎮 Médias : multiplicateur de pouvoir</h3>
-    <p>Médias et réseaux sociaux fixent l’agenda et l’attention du public.</p>
-
-    <button class="quiz-btn" onclick="showInfluenceWeb()">🕸️ Voir le réseau</button>
-    <div id="influence-web" style="display:none; background:#f0f0f0; padding:20px; border-radius:10px; margin-top:20px;">
-      <h4>Réseau d’influence</h4>
-      <p>Partis → Groupes → Médias → Électeurs</p>
-      <p>Glisser-déposer pour connecter</p>
-      <p draggable="true" ondragstart="drag(event)" id="web-drag">Partis</p>
-      <div ondrop="drop(event)" ondragover="allowDrop(event)" id="web-drop">Déposer ici pour relier aux Électeurs</div>
-      <p id="web-result"></p>
-    </div>
-  `,
-
-  module2_title: "Duel Bipartite",
-  module2_desc: "Pourquoi seulement 2 ?",
-  module2_content: `
-    <h2>Module 2 : Le duopole à deux partis ⚔️</h2>
-
-    <div class="fun-fact">
-      <strong>EXEMPLE :</strong> 1992 : Ross Perot ~19 M de voix… 0 grands électeurs. 🤯
-    </div>
-
-    <h3>🎲 Pourquoi deux partis dominent</h3>
-    <div style="background:linear-gradient(135deg,#ff6b6b,#ee5a24); color:white; padding:30px; border-radius:20px; margin:20px 0;">
-      <h4 style="font-size:1.8rem;">“LE VAINQUEUR PREND TOUT” 🪤</h4>
-      <p>1er = tout ✅ | 2e = rien ❌ | 3e = ignoré 💀</p>
-    </div>
-
-    <h3>🧠 Le “vote gaspillé”</h3>
-    <div class="interactive-map">
-      <h4>Que choisis-tu ?</h4>
-      <div class="map-state blue" onclick="voteSimulation('democrat')">Voter Démocrate 🫏</div>
-      <div class="map-state red" onclick="voteSimulation('republican')">Voter Républicain 🐘</div>
-      <div class="map-state purple" onclick="voteSimulation('third')">Tiers parti 🦄</div>
-      <div id="vote-result" style="margin-top:20px; padding:20px; background:white; border-radius:15px; display:none;"></div>
-    </div>
-
-    <h3>🎪 Rôle des tiers partis</h3>
-    <div class="timeline">
-      <div class="timeline-item">
-        <h4>😈 Effet “spoiler”</h4>
-        <p>Des marges très faibles peuvent tout décider (ex. Floride 2000).</p>
-      </div>
-      <div class="timeline-item">
-        <h4>💡 Voleurs d’idées</h4>
-        <p>De nombreuses réformes ont d’abord été défendues par des tiers partis avant d’être adoptées.</p>
-      </div>
-    </div>
-
-    <h3>⚡ Collège électoral</h3>
-    <div class="quiz-container">
-      <div class="quiz-question">Gagner la Floride d’une voix donne…</div>
-      <div class="quiz-option" onclick="checkEC(this,'all')">TOUS les grands électeurs de l’État 🎉</div>
-      <div class="quiz-option" onclick="checkEC(this,'one')">Un seul grand électeur 😐</div>
-      <div class="quiz-option" onclick="checkEC(this,'half')">La moitié 🤔</div>
-    </div>
-
-    <button class="quiz-btn" onclick="playElectoralCollege()">🎮 Jouer : Briser le duopole</button>
-    <div id="ec-game" style="display:none; background:#f0f0f0; padding:20px; border-radius:10px; margin-top:20px;">
-      <h4>Jeu du Collège électoral</h4>
-      <p>Attribue des voix pour gagner</p>
-      <button onclick="assignVotes('blue',30)">Donner la Floride aux Bleus</button>
-      <button onclick="assignVotes('red',30)">Donner la Floride aux Rouges</button>
-      <p id="ec-result">Bleu : 0 | Rouge : 0</p>
-    </div>
-  `,
-
-  module3_title: "Chaos des Primaires",
-  module3_desc: "Jeux extrêmes",
-  module3_content: `
-    <h2>Module 3 : Primaires = fabrique d’extrêmes ? 🔥</h2>
-
-    <div class="fun-fact">
-      <strong>FLORIDE 2020 :</strong> 57% pour la primaire “top-two”, échec (seuil 60%).
-    </div>
-
-    <h3>🎭 Choisis le type de primaire</h3>
-    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:20px; margin:20px 0;">
-      <div style="background:linear-gradient(135deg,#eb3b5a,#fc5c65); color:white; padding:25px; border-radius:15px; cursor:pointer;" onclick="showPrimaryType('closed')">
-        <h4 style="font-size:1.5rem;">🔒 FERMÉE</h4>
-        <p>Membres du parti uniquement. Indépendants exclus.</p>
-      </div>
-      <div style="background:linear-gradient(135deg,#00d2d3,#01a3a4); color:white; padding:25px; border-radius:15px; cursor:pointer;" onclick="showPrimaryType('open')">
-        <h4 style="font-size:1.5rem;">🔓 OUVERTE</h4>
-        <p>Tout électeur peut choisir une primaire.</p>
-      </div>
-      <div style="background:linear-gradient(135deg,#6c5ce7,#a55eea); color:white; padding:25px; border-radius:15px; cursor:pointer;" onclick="showPrimaryType('jungle')">
-        <h4 style="font-size:1.5rem;">🌴 “JUNGLE”</h4>
-        <p>Tous les candidats ensemble ; les deux premiers avancent.</p>
-      </div>
-    </div>
-    <div id="primary-type-info" style="margin-top:20px; padding:20px; background:#f0f0f0; border-radius:15px; display:none;"></div>
-
-    <h3>💥 Pourquoi ça pousse aux extrêmes</h3>
-    <div class="timeline-era" style="background:linear-gradient(135deg,#ff6348,#ff4757);">
-      <h4 style="color:white;">Spirale vers les positions dures</h4>
-      <ol style="color:white; font-size:1.1rem; line-height:2;">
-        <li>📊 10–20% de participation</li>
-        <li>🔥 Électeurs les plus partisans</li>
-        <li>🎯 Incitation à se radicaliser pour gagner</li>
-        <li>😱 Modérés pénalisés</li>
-        <li>🏛️ Moins de compromis au Parlement</li>
-      </ol>
-    </div>
-
-    <button class="quiz-btn" onclick="primarySimulator()">🎮 Simulateur de primaire</button>
-    <div id="primary-sim" style="display:none; background:#f0f0f0; padding:20px; border-radius:10px; margin-top:20px;">
-      <h4>Type de candidat : Modéré/Extrême</h4>
-      <button onclick="simulatePrimary('moderate')">Modéré</button>
-      <button onclick="simulatePrimary('extreme')">Extrême</button>
-      <p id="primary-result">Participation : faible</p>
-    </div>
-  `,
-
-  module4_title: "Piratage de Cartes",
-  module4_desc: "Gerrymandering exposé",
-  module4_content: `
-    <h2>Module 4 : Gerrymandering — “pirater” les cartes 🗺️</h2>
-
-    <div class="fun-fact">
-      <strong>ÉTONNANT :</strong> Certains districts ressemblent à de l’art abstrait… ce n’est pas un hasard.
-    </div>
-
-    <h3>🎮 Deux techniques</h3>
-    <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px; margin:20px 0;">
-      <div style="background:linear-gradient(135deg,#ff6b6b,#ff8787); color:white; padding:30px; border-radius:20px;">
-        <h4 style="font-size:1.8rem;">🎯 PACKING</h4>
-        <p>Concentrer l’opposition dans un seul district (gagner 90–10) et perdre ailleurs.</p>
-      </div>
-      <div style="background:linear-gradient(135deg,#4834d4,#686de0); color:white; padding:30px; border-radius:20px;">
-        <h4 style="font-size:1.8rem;">💔 CRACKING</h4>
-        <p>Disperser l’opposition dans plusieurs districts (toujours ~49%).</p>
-      </div>
-    </div>
-
-    <h3>🎮 Essaie toi-même</h3>
-    <div class="interactive-map" style="background:#f8f9fa; padding:30px;">
-      <h4>Jeu de gerrymandering</h4>
-      <p>50 électeurs : 30 Bleus, 20 Rouges. Trace 5 districts.</p>
-      <div style="display:grid; grid-template-columns:repeat(5,1fr); gap:10px; margin:20px 0;">
-        <div class="map-state blue" onclick="drawDistrict(1)">District 1</div>
-        <div class="map-state blue" onclick="drawDistrict(2)">District 2</div>
-        <div class="map-state red" onclick="drawDistrict(3)">District 3</div>
-        <div class="map-state red" onclick="drawDistrict(4)">District 4</div>
-        <div class="map-state purple" onclick="drawDistrict(5)">District 5</div>
-      </div>
-      <p><strong>Peux-tu faire gagner Rouge 3/5 ?</strong></p>
-      <button class="quiz-btn" onclick="showGerrymanderSolution()">Montre-moi !</button>
-      <p id="gerry-result"></p>
-    </div>
-
-    <h3>🌴 Floride et “Fair Districts”</h3>
-    <p style="font-size:1.2rem;"><strong>2010 :</strong> Les électeurs disent non au gerrymandering ; le débat continue des années plus tard.</p>
-
-    <button class="quiz-btn" onclick="seeYourDistrict()">📍 Voir ton district</button>
-    <div id="district-info" style="display:none; background:#f0f0f0; padding:20px; border-radius:10px; margin-top:20px;">
-      <h4>Ton district</h4>
-      <p>Code postal : <input id="zip-input" type="text"></p>
-      <button onclick="fetchDistrict()">Rechercher</button>
-      <p id="district-result"></p>
-    </div>
-  `,
-
-  module5_title: "Focus Floride",
-  module5_desc: "Ton État, ton combat",
-  module5_content: `
-    <h2>Module 5 : Floride — État pivot 🌴</h2>
-
-    <div class="fun-fact">
-      <strong>FAIT :</strong> 537 voix (2000) ont décidé la présidence. Ton vote compte. 🗳️
-    </div>
-
-    <h3>🔥 Amendements 2024</h3>
-    <div style="background:linear-gradient(135deg,#00b894,#00cec9); padding:30px; border-radius:20px; margin:20px 0;">
-      <h4 style="color:white; font-size:2rem;">🌿 Amendement 3 : Cannabis récréatif</h4>
-      <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-top:20px;">
-        <div style="background:rgba(255,255,255,0.9); padding:15px; border-radius:10px;">
-          <strong style="color:#0984e3;">Démocrates</strong>
-          <p>Libertés individuelles ; recettes fiscales ; justice pénale.</p>
-        </div>
-        <div style="background:rgba(255,255,255,0.9); padding:15px; border-radius:10px;">
-          <strong style="color:#d63031;">Républicains</strong>
-          <p>Risques sanitaires et d’ordre public.</p>
-        </div>
-      </div>
-      <div style="background:white; color:#00b894; padding:15px; border-radius:10px; margin-top:20px; text-align:center;">
-        <strong style="font-size:1.3rem;">Résultat : 57% OUI… mais échec (seuil 60%).</strong>
-      </div>
-    </div>
-
-    <div style="background:linear-gradient(135deg,#e84393,#fd79a8); padding:30px; border-radius:20px; margin:20px 0;">
-      <h4 style="color:white; font-size:2rem;">⚡ Amendement 4 : Droits reproductifs</h4>
-      <p style="background:white; padding:12px; border-radius:10px; color:#333; margin-top:12px;">
-        Débat très polarisé entre libertés/soins de santé et protection de la vie prénatale.
-      </p>
-    </div>
-
-    <h3>📚 Standard (SS.912.CG.3.1)</h3>
-    <div class="quiz-container">
-      <h4>À comprendre :</h4>
-      <div class="quiz-option">Démocratie vs. dictature</div>
-      <div class="quiz-option">Conflits avec communisme/totalitarisme</div>
-      <div class="quiz-option">Débats sur “l’exceptionnalisme américain”</div>
-    </div>
-
-    <h3>🎯 Ta génération compte</h3>
-    <ul>
-      <li>Seuil de 60% pour amender la Constitution de l’État</li>
-      <li>Participation des jeunes en hausse mais perfectible</li>
-      <li>Enjeux : climat, dette étudiante, logement</li>
-    </ul>
-
-    <button class="quiz-btn" onclick="checkRegistration()">📝 Vérifie ton inscription</button>
-    <button class="quiz-btn" onclick="findPollingPlace()">📍 Trouve ton bureau de vote</button>
-    <div id="polling-info" style="display:none; background:#f0f0f0; padding:20px; border-radius:10px; margin-top:20px;">
-      <h4>Recherche</h4>
-      <p>Adresse : <input id="address-input" type="text"></p>
-      <button onclick="fetchPolling()">Rechercher</button>
-      <p id="polling-result"></p>
-    </div>
-  `
-};
