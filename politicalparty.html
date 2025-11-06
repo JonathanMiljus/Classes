@@ -112,10 +112,8 @@
             'text-indigo-600': '#4f46e5',
             'text-teal-600': '#0d9488',
             'text-pink-600': '#db2777',
-            // Specific colors for timeline dots / borders
             'bg-blue-600': '#2563eb',
             'bg-red-600': '#dc2626',
-            // Default border color (gray-100) for hover mouseout
             'border-gray-100': '#f3f4f6' 
         };
 
@@ -133,7 +131,6 @@
         }
 
         // --- CONTENT DATA (English and Spanish) ---
-        // (Content is preserved from the original request)
         const content = {
             en: {
                 title: "The Evolution of U.S. Political Parties",
@@ -155,13 +152,13 @@
                     { 
                         term: "Factions", 
                         icon: "M8 9l3 3 2-2 3 3m-3-3V4M3 7h1.5a.5.5 0 01.5.5v13a.5.5 0 01-.5.5H3", // Grouping/Division
-                        def: "A subset of people inside a society (or party) who share a particular interest or passion. James Madison warned in *Federalist No. 10* that factions were dangerous because they could pursue their own interest over the public good. He also said factions were unavoidable—people naturally disagree.",
+                        def: `A subset of people inside a society (or party) who share a particular interest or passion. James Madison warned in <em>Federalist No. 10</em> that factions were dangerous because they could pursue their own interest over the public good. He also said factions were unavoidable—people naturally disagree.`,
                         color: "text-yellow-600"
                     },
                     { 
                         term: "Party System / Realignment / ID", 
                         icon: "M3 10h18M3 14h18m-9-4v8", // Timeline/Change
-                        def: "Three related concepts: **Party System** (a period defined by competing parties); **Party Realignment** (a major, long-term shift in which groups support which political party); **Party Identification** (the party a person feels closest to or usually supports).",
+                        def: `Three related concepts: <strong>Party System</strong> (a period defined by competing parties); <strong>Party Realignment</strong> (a major, long-term shift in which groups support which political party); <strong>Party Identification</strong> (the party a person feels closest to or usually supports).`,
                         color: "text-green-500"
                     }
                 ],
@@ -178,8 +175,8 @@
                         title: "Before the Constitution", 
                         content: `Americans divided into two camps over whether to replace the Articles of Confederation:
                             <ul class="list-disc pl-5 mt-2 space-y-1">
-                                <li>**Federalists:** Wanted a strong national government (Hamilton, Madison, Jay).</li>
-                                <li>**Anti-Federalists:** Feared concentrated power; demanded a Bill of Rights (Jefferson, Henry, Mason).</li>
+                                <li><strong>Federalists:</strong> Wanted a strong national government (Hamilton, Madison, Jay).</li>
+                                <li><strong>Anti-Federalists:</strong> Feared concentrated power; demanded a Bill of Rights (Jefferson, Henry, Mason).</li>
                             </ul>` 
                     },
                     { 
@@ -252,13 +249,26 @@
                     { 
                         term: "Facciones", 
                         icon: "M8 9l3 3 2-2 3 3m-3-3V4M3 7h1.5a.5.5 0 01.5.5v13a.5.5 0 01-.5.5H3",
-                        def: "Un subconjunto de personas dentro de una sociedad (o partido) que comparten un interés o pasión particular. Madison en *El Federalista N.º 10* advirtió que las facciones eran peligrosas porque podían perseguir su propio interés por encima del bien público. También dijo que eran inevitables, ya que las personas naturalmente discrepan.",
+                        def: `Un subconjunto de personas dentro de una sociedad (o partido) que comparten un interés o pasión particular. Madison en <em>El Federalista N.º 10</em> advirtió que las facciones eran peligrosas porque podían perseguir su propio interés por encima del bien público. También dijo que eran inevitables, ya que las personas naturalmente discrepan.`,
                         color: "text-yellow-600"
                     },
+                    // FIX: SPLIT combined definition for clarity in Spanish
                     { 
-                        term: "Sistema / Realineamiento / Identificación de Partido", 
-                        icon: "M3 10h18M3 14h18m-9-4v8",
-                        def: "Tres conceptos relacionados: **Sistema de Partidos** (un período definido por partidos en competencia); **Realineamiento de Partidos** (un cambio importante y a largo plazo en qué grupos apoyan a qué partido); **Identificación de Partido** (el partido al que una persona se siente más cercana o que generalmente apoya).",
+                        term: "Sistema de Partidos", 
+                        icon: "M3 10h18M3 14h18m-9-4v8", 
+                        def: "Un período de la historia de EE. UU. definido por cuáles eran los principales partidos políticos existentes y cómo competían entre sí.", 
+                        color: "text-green-500"
+                    },
+                    { 
+                        term: "Realineamiento de Partidos", 
+                        icon: "M3 10h18M3 14h18m-9-4v8", 
+                        def: "Un cambio importante y a largo plazo en qué grupos demográficos o ideológicos comienzan a apoyar a un partido político diferente.",
+                        color: "text-green-500"
+                    },
+                    { 
+                        term: "Identificación de Partido (Party ID)", 
+                        icon: "M3 10h18M3 14h18m-9-4v8", 
+                        def: "El partido político con el que una persona se siente más identificada o al que suele apoyar habitualmente.",
                         color: "text-green-500"
                     }
                 ],
@@ -275,8 +285,8 @@
                         title: "Antes de la Constitución", 
                         content: `Los estadounidenses se dividieron en dos bandos sobre si reemplazar los Artículos de la Confederación:
                             <ul class="list-disc pl-5 mt-2 space-y-1">
-                                <li>**Federalistas:** Querían un gobierno nacional fuerte (Hamilton, Madison, Jay).</li>
-                                <li>**Antifederalistas:** Temían el poder concentrado; exigieron una Declaración de Derechos (Jefferson, Henry, Mason).</li>
+                                <li><strong>Federalistas:</strong> Querían un gobierno nacional fuerte (Hamilton, Madison, Jay).</li>
+                                <li><strong>Antifederalistas:</strong> Temían el poder concentrado; exigieron una Declaración de Derechos (Jefferson, Henry, Mason).</li>
                             </ul>` 
                     },
                     { 
@@ -348,7 +358,6 @@
 
         function renderWhyParties(data) {
             const container = document.getElementById('why-content');
-            // Using inline styles for hover effect to ensure color classes are applied
             const defaultBorderColor = getColorHex('border-gray-100');
 
             container.innerHTML = data.map(item => `
@@ -376,7 +385,6 @@
         function renderTimeline(data) {
             const container = document.getElementById('timeline-content');
             container.innerHTML = data.map((item, index) => {
-                // Using hex codes for dot background and border color to fix dynamic class issue
                 const dotColor = index % 2 === 0 ? getColorHex('bg-blue-600') : getColorHex('bg-red-600');
                 const borderColor = dotColor;
 
