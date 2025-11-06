@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1184,15 +1183,29 @@
                     <h2>¡Bienvenido a la Arena Política! 🎮</h2>
                     
                     <div class="fun-fact">
-                        <strong>DATO INCREÍBLE:</strong> ¡La peor pesadilla de George Washington se hizo realidad! Advirtió contra los partidos políticos, llamándolos el "peor enemigo" de la democracia. ¡Y aquí estamos! 😅
+                        <strong>HECHO ALUCINANTE:</strong> ¡La peor pesadilla de George Washington se hizo realidad! Advirtió contra los partidos políticos en su discurso de despedida, llamándolos el "peor enemigo" de la democracia. ¡Y aquí estamos con un sistema bipartidista que lo haría llorar! 😅
                     </div>
 
                     <p style="font-size: 1.2rem; line-height: 1.8;">
-                        ¡Prepárate para desbloquear los secretos de la política estadounidense! 230 años de drama político que moldea TU futuro.
+                        ¡Prepárate para desbloquear los secretos de la política estadounidense! Esta no es la clase de gobierno de tu abuelo – estamos sumergiéndonos en 230 años de drama político, juegos de poder y el mundo salvaje que forma TU futuro!
                     </p>
 
                     <h3>🎯 Tu Misión</h3>
-                    <p>¡Navega por 7 módulos para convertirte en un Maestro Político!</p>
+                    <p>Navega a través de 7 módulos llenos de poder para convertirte en un Maestro Político! Cada uno desbloquea nuevo conocimiento sobre cómo funciona REALMENTE la democracia.</p>
+
+                    <div class="quiz-container">
+                        <h3>⚡ Vocabulario Rápido de Power-Up</h3>
+                        <div class="quiz-question">Empareja estos términos para dominar lo básico:</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, true)">
+                            <strong>Partido Político</strong> = Equipos luchando para GANAR elecciones 🏆
+                        </div>
+                        <div class="quiz-option" onclick="checkAnswer(this, true)">
+                            <strong>Ideología</strong> = Tu personalidad política (¿Liberal? ¿Conservador?) 🧠
+                        </div>
+                        <div class="quiz-option" onclick="checkAnswer(this, true)">
+                            <strong>Política Pública</strong> = Las reglas que realmente afectan TU vida 📜
+                        </div>
+                    </div>
 
                     <button class="quiz-btn" onclick="startAdventure()">🚀 ¡Comienza Tu Viaje Político!</button>
                 `,
@@ -1200,343 +1213,251 @@
                 history_title: "Evolución Partidaria",
                 history_desc: "¡230 años de drama!",
                 history_content: `
-                    <h2>La Saga Épica de los Partidos Políticos 📜</h2>
+                    <h2>La Saga Épica de los Partidos Políticos Americanos 📜</h2>
                     
                     <div class="fun-fact">
-                        <strong>GIRO ARGUMENTAL:</strong> ¡Los Padres Fundadores ODIABAN los partidos! Madison los llamó "facciones" destructivas. ¡Se formaron de inmediato! 🤦‍♂️
+                        <strong>GIRO ARGUMENTAL:</strong> ¡Los Padres Fundadores ODIABAN la idea de los partidos! James Madison los llamó "facciones" que destruirían la democracia. ¡Alerta de spoiler: Se formaron de todos modos... inmediatamente! 🤦‍♂️
                     </div>
 
-                    <h3>🎬 ¡Haz Clic en Cada Era!</h3>
-                    <!-- Spanish content continues... -->
+                    <h3>🎬 Haz clic en cada Era para Explorar el Drama!</h3>
+
+                    <div class="timeline-era" onclick="toggleEra('era1')">
+                        <h4>🎩 1790s-1820s: El Sistema de Partidos OG</h4>
+                        <p><strong>Federalistas vs. Demócratas-Republicanos</strong></p>
+                        <div id="era1" class="era-content">
+                            <p style="margin-top: 15px;"><strong>Los Jugadores:</strong></p>
+                            <ul>
+                                <li>🎭 FEDERALISTAS (Equipo Hamilton): Querían poder federal fuerte, bancos y vibes británicas</li>
+                                <li>🌾 DEMÓCRATAS-REPUBLICANOS (Equipo Jefferson): Derechos de los estados, agricultores y energía de la revolución francesa</li>
+                            </ul>
+                            <p><strong>El Drama:</strong> ¡Estos chicos literalmente se batieron en duelo! ¡Hamilton murió en un duelo con el VP Aaron Burr!</p>
+                            <p><strong>El Fin:</strong> Los federalistas desaparecieron después de la Guerra de 1812. Gobierno de un partido = "Era de los Buenos Sentimientos" (¡aburrido!)</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-era" onclick="toggleEra('era2')">
+                        <h4>🎪 1820s-1850s: El Paseo Salvaje de Jackson</h4>
+                        <p><strong>Demócratas vs. Whigs</strong></p>
+                        <div id="era2" class="era-content">
+                            <p style="margin-top: 15px;"><strong>Los Jugadores:</strong></p>
+                            <ul>
+                                <li>🔥 DEMÓCRATAS (Equipo de Andrew Jackson): ¡Hombre común! ¡Expansión! ¡Luchando contra bancos!</li>
+                                <li>🏛️ WHIGS (Alianza anti-Jackson): ¡Infraestructura! ¡Educación! ¡Vibes anti-esclavitud!</li>
+                            </ul>
+                            <p><strong>Qué Cambió:</strong> ¡TODOS podían votar ahora (bueno, hombres blancos)! ¡Primera democracia de masas!</p>
+                            <p><strong>El Fin:</strong> El debate sobre la esclavitud literalmente desgarró a los Whigs. RIP Partido Whig.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-era" onclick="toggleEra('era3')">
+                        <h4>⚔️ 1850s-1890s: Sacudida de la Guerra Civil</h4>
+                        <p><strong>Republicanos Nacidos, Demócratas Divididos</strong></p>
+                        <div id="era3" class="era-content">
+                            <p style="margin-top: 15px;"><strong>CAMBIO DE JUEGO:</strong> ¡Los Republicanos se formaron en 1854 específicamente para luchar contra la esclavitud!</p>
+                            <ul>
+                                <li>🎩 REPUBLICANOS (Nuevo partido de Lincoln): ¡Fin a la esclavitud! ¡Salvar la Unión! ¡Poder industrial!</li>
+                                <li>💔 DEMÓCRATAS: Literalmente divididos en dos - Norte vs. Sur</li>
+                            </ul>
+                            <p><strong>Post-Guerra:</strong> Republicanos dominaron con respaldo de grandes negocios. ¡Corrupción por todas partes en la "Edad Dorada"!</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-era" onclick="toggleEra('era4')">
+                        <h4>🏭 1890s-1930s: Era Progresista a Depresión</h4>
+                        <p><strong>El Campo de Batalla Económico</strong></p>
+                        <div id="era4" class="era-content">
+                            <p style="margin-top: 15px;"><strong>Los Temas:</strong></p>
+                            <ul>
+                                <li>📈 REPUBLICANOS: Pro-negocios, laissez-faire, "prosperidad"</li>
+                                <li>👷 DEMÓCRATAS: Empezando a ponerse del lado de trabajadores y sindicatos</li>
+                            </ul>
+                            <p><strong>BOOM:</strong> ¡El crash de la bolsa de 1929 cambia TODO!</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-era" onclick="toggleEra('era5')">
+                        <h4>📺 1930s-1960s: Revolución del New Deal</h4>
+                        <p><strong>FDR Cambia el Juego Para Siempre</strong></p>
+                        <div id="era5" class="era-content">
+                            <p style="margin-top: 15px;"><strong>La Nueva Coalición:</strong></p>
+                            <ul>
+                                <li>🔵 DEMÓCRATAS: Trabajadores + Minorías + Blancos del Sur (¡combo extraño!)</li>
+                                <li>🔴 REPUBLICANOS: Negocios + Conservadores + Anti-comunistas</li>
+                            </ul>
+                            <p><strong>La Grieta:</strong> El movimiento de Derechos Civiles empieza a romper la coalición Demócrata...</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-era" onclick="toggleEra('era6')">
+                        <h4>🚀 1960s-Presente: El Campo de Batalla Moderno</h4>
+                        <p><strong>Guerras Culturales & Polarización</strong></p>
+                        <div id="era6" class="era-content">
+                            <p style="margin-top: 15px;"><strong>El Cambio:</strong> ¡Demócratas del Sur se convierten en Republicanos por derechos civiles!</p>
+                            <ul>
+                                <li>🔵 DEMÓCRATAS: Justicia social, medio ambiente, programas gubernamentales</li>
+                                <li>🔴 REPUBLICANOS: Valores tradicionales, mercado libre, defensa fuerte</li>
+                            </ul>
+                            <p><strong>Siglo 21:</strong> ¡Redes sociales convierten la política en guerra 24/7!</p>
+                            <p><strong>Terceros Partidos:</strong> Verdes, Libertarios surgen pero no pueden romper el duopolio!</p>
+                        </div>
+                    </div>
+
+                    <button class="quiz-btn" onclick="playTimelineGame()">🎮 Jugar: ¡Juego de Evolución de Partidos!</button>
+                    <div id="timeline-game" style="display: none; background: #f0f0f0; padding: 20px; border-radius: 10px; margin-top: 20px;">
+                        <h4>Empareja Era con Sistema de Partidos</h4>
+                        <div style="display: flex; justify-content: space-around;">
+                            <div id="eras" style="width: 45%;">
+                                <p draggable="true" ondragstart="drag(event)" id="drag1">1790s-1820s</p>
+                                <p draggable="true" ondragstart="drag(event)" id="drag2">1820s-1850s</p>
+                                <p draggable="true" ondragstart="drag(event)" id="drag3">1850s-1890s</p>
+                            </div>
+                            <div id="parties" style="width: 45%;">
+                                <div ondrop="drop(event)" ondragover="allowDrop(event)" id="drop1">Federalistas vs. Demócratas-Republicanos</div>
+                                <div ondrop="drop(event)" ondragover="allowDrop(event)" id="drop2">Demócratas vs. Whigs</div>
+                                <div ondrop="drop(event)" ondragover="allowDrop(event)" id="drop3">Republicanos Nacidos</div>
+                            </div>
+                        </div>
+                        <button onclick="checkTimelineMatch()">Verificar Respuestas</button>
+                        <p id="timeline-result"></p>
+                    </div>
                 `,
 
                 today_title: "Cómo Funciona",
                 today_desc: "El juego hoy",
-                module1_title: "Red de Influencia",
-                module1_desc: "¿Quién tiene el poder?",
-                module2_title: "Batalla Bipartidista",
-                module2_desc: "¿Por qué solo 2?",
-                module3_title: "Caos Primario",
-                module3_desc: "Los juegos extremos",
-                module4_title: "Hackeo de Mapas",
-                module4_desc: "Gerrymandering expuesto",
-                module5_title: "Enfoque Florida",
-                module5_desc: "Tu estado, tu lucha"
-            },
-            'fr': {
-                title: "Partis Politiques: Le Jeu 🎮",
-                
-                home_title: "Commencez Ici!",
-                home_desc: "Votre voyage commence",
-                home_content: `
-                    <h2>Bienvenue dans l'Arène Politique! 🎮</h2>
+                today_content: `
+                    <h2>Cómo Funcionan Realmente los Partidos Políticos Hoy ⚡</h2>
                     
                     <div class="fun-fact">
-                        <strong>FAIT INCROYABLE:</strong> Le pire cauchemar de George Washington s'est réalisé! Il a mis en garde contre les partis politiques. Et nous voici! 😅
+                        <strong>VERIFICACIÓN DE REALIDAD:</strong> ¡Los partidos no están en la Constitución! Básicamente son organizaciones gigantes de voluntarios que secuestraron nuestra democracia (de manera mayormente legal)! 🎪
                     </div>
 
-                    <button class="quiz-btn" onclick="startAdventure()">🚀 Commencez Votre Voyage!</button>
+                    <h3>🎯 Los Tres Trabajos Principales de los Partidos Políticos</h3>
+
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <h4 style="color: #667eea;">1. NOMINAR CANDIDATOS 🎭</h4>
+                            <p><strong>Cómo funciona:</strong></p>
+                            <ul style="list-style: none;">
+                                <li>📍 LOCAL: Primarias/caucuses del partido (tú votas por los jugadores de tu equipo)</li>
+                                <li>🎪 NACIONAL: Convenciones épicas con globos y discursos</li>
+                                <li>📜 PLATAFORMA: Lista oficial de promesas que probablemente romperán</li>
+                            </ul>
+                        </div>
+
+                        <div class="timeline-item">
+                            <h4 style="color: #764ba2;">2. ORGANIZAR ELECCIONES 🗳️</h4>
+                            <p><strong>El Juego en Tierra:</strong></p>
+                            <ul style="list-style: none;">
+                                <li>📱 Registrar votantes (especialmente jóvenes como TÚ)</li>
+                                <li>💰 Recaudar MILLONES para anuncios de ataque</li>
+                                <li>🚌 GOTV (Get Out The Vote) - literalmente llevar gente en bus a las urnas</li>
+                                <li>🤝 Construir coaliciones (sindicatos para Dems, evangélicos para GOP)</li>
+                            </ul>
+                        </div>
+
+                        <div class="timeline-item">
+                            <h4 style="color: #f093fb;">3. DIRIGIR EL GOBIERNO 🏛️</h4>
+                            <p><strong>Cuando Ganan:</strong></p>
+                            <ul style="list-style: none;">
+                                <li>👔 Elegir líderes (Speaker, presidentes de comités)</li>
+                                <li>📊 "Whip" miembros para votar juntos (¡o si no!)</li>
+                                <li>🤝 Presidente trabaja con su partido para pasar leyes</li>
+                                <li>🏫 Controlar todo desde el Congreso hasta juntas escolares</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <h3>🏗️ El Modelo de Máquina del Partido</h3>
+                    
+                    <div class="interactive-map">
+                        <h4>¡Haz clic para Explorar Cada Nivel!</h4>
+                        <div class="map-state purple" onclick="showPartyLevel('national')">🏛️ NACIONAL (DNC/RNC)</div>
+                        <div class="map-state blue" onclick="showPartyLevel('state')">🗺️ COMITÉS ESTATALES</div>
+                        <div class="map-state red" onclick="showPartyLevel('local')">📍 CAPÍTULOS LOCALES</div>
+                        <div id="party-level-info" style="margin-top: 20px; padding: 20px; background: white; border-radius: 15px; display: none;">
+                            <!-- Info appears here -->
+                        </div>
+                    </div>
+
+                    <h3>💰 ¡Sigue el Dinero!</h3>
+                    <div class="quiz-container">
+                        <div class="quiz-question">¿Cómo obtienen realmente poder los partidos?</div>
+                        <div class="quiz-option" onclick="revealMoney(this)">
+                            <strong>Super PACs:</strong> ¡Dinero ilimitado de corporaciones! 💸
+                        </div>
+                        <div class="quiz-option" onclick="revealMoney(this)">
+                            <strong>Dinero Oscuro:</strong> Donaciones anónimas (¡espeluznante!) 👻
+                        </div>
+                        <div class="quiz-option" onclick="revealMoney(this)">
+                            <strong>Pequeños Donantes:</strong> ¡Tu $5 realmente importa! 🪙
+                        </div>
+                    </div>
+
+                    <button class="quiz-btn" onclick="simulateElection()">🎮 ¡Dirige Tu Propia Campaña!</button>
+                    <div id="election-sim" style="display: none; background: #f0f0f0; padding: 20px; border-radius: 10px; margin-top: 20px;">
+                        <h4>Simulador de Campaña</h4>
+                        <p>Elige estrategia:</p>
+                        <button onclick="runCampaign('attack')">Anuncios de Ataque (-10% oponente)</button>
+                        <button onclick="runCampaign('policy')">Enfoque en Políticas (+5% votantes)</button>
+                        <p id="campaign-result">Tu aprobación: 50%</p>
+                    </div>
                 `,
 
-                history_title: "Évolution des Partis",
-                history_desc: "230 ans de drame!",
-                today_title: "Comment Ça Marche",
-                today_desc: "Le jeu aujourd'hui",
-                module1_title: "Réseau d'Influence",
-                module1_desc: "Qui a le pouvoir?",
-                module2_title: "Bataille Bipartite",
-                module2_desc: "Pourquoi seulement 2?",
-                module3_title: "Chaos Primaire",
-                module3_desc: "Les jeux extrêmes",
-                module4_title: "Piratage de Cartes",
-                module4_desc: "Gerrymandering exposé",
-                module5_title: "Focus Floride",
-                module5_desc: "Votre état, votre combat"
-            }
-        };
+                module1_title: "Red de Influencia",
+                module1_desc: "¿Quién tiene el poder?",
+                module1_content: `
+                    <h2>Módulo 1: Los Jugadores de Poder 🕸️</h2>
+                    
+                    <div class="fun-fact">
+                        <strong>MENTE = EXPLOTADA:</strong> ¡En 2020, el gasto político alcanzó los $14 MIL MILLONES! ¡Eso es más que el presupuesto de la NASA! ¡Literalmente gastamos más en anuncios de ataque que en exploración espacial! 🚀💰
+                    </div>
 
-        // State management
-        let currentLang = 'en';
-        let currentModule = 'home';
-        let modulesVisited = new Set(['home']);
+                    <h3>🥊 El Enfrentamiento Definitivo: Partidos vs. Grupos de Interés</h3>
+                    
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <h4 style="color: #667eea; font-weight: 800;">PARTIDOS POLÍTICOS 🐘🫏</h4>
+                            <p><strong>Objetivo:</strong> ¡GANAR ELECCIONES A TODA COSTA!</p>
+                            <p><strong>Estrategia:</strong> "Gran Carpa" - ser lo suficientemente vago para atraer a todos</p>
+                            <p><strong>Movimiento de Poder:</strong> Controlar ramas enteras del gobierno</p>
+                            <p><strong>Debilidad:</strong> Deben apelar a moderados = no pueden ser demasiado extremos</p>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <h4 style="color: #764ba2; font-weight: 800;">GRUPOS DE INTERÉS 💼</h4>
+                            <p><strong>Objetivo:</strong> ¡INFLUIR EN POLÍTICAS ESPECÍFICAS!</p>
+                            <p><strong>Estrategia:</strong> Enfoque láser en UN tema (armas, medio ambiente, etc.)</p>
+                            <p><strong>Movimiento de Poder:</strong> Presionar a quien esté en el poder</p>
+                            <p><strong>Superpoder:</strong> Pueden ser EXTREMOS porque no necesitan apelar ampliamente</p>
+                        </div>
+                    </div>
 
-        // Initialize
-        document.addEventListener('DOMContentLoaded', () => {
-            updateUI();
-        });
+                    <h3>🔧 El Kit de Influencia (Cómo Controlan Tu Vida)</h3>
+                    
+                    <div class="quiz-container">
+                        <h4>¡Empareja la Táctica con el Ejemplo!</h4>
+                        <div class="quiz-option" onclick="matchTactic(this, 'lobby')">
+                            <strong>💰 Lobbying:</strong> Ex-políticos recibiendo $500K para susurrar en el oído del Congreso
+                        </div>
+                        <div class="quiz-option" onclick="matchTactic(this, 'pac')">
+                            <strong>💵 PACs:</strong> NRA donando $30 millones a la campaña de Trump en 2016
+                        </div>
+                        <div class="quiz-option" onclick="matchTactic(this, 'grass')">
+                            <strong>📢 Grassroots:</strong> Activistas climáticos cerrando autopistas
+                        </div>
+                        <div class="quiz-option" onclick="matchTactic(this, 'court')">
+                            <strong>⚖️ Litigación:</strong> ACLU demandando por prohibiciones al aborto
+                        </div>
+                    </div>
 
-        // Language change
-        function changeLanguage(lang) {
-            currentLang = lang;
-            document.querySelectorAll('.lang-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            event.target.classList.add('active');
-            updateUI();
-            showAchievement('Language Explorer', `Now learning in ${lang.toUpperCase()}!`);
-        }
+                    <h3>🎮 Los Medios: El Multiplicador de Poder Definitivo</h3>
+                    <p>Giro de trama: ¡Las compañías de medios son básicamente grupos de interés también! ¡Fox News, CNN, incluso TikTok moldean lo que piensas sobre política!</p>
 
-        // Module change
-        function changeModule(module) {
-            currentModule = module;
-            modulesVisited.add(module);
-            
-            document.querySelectorAll('.module-card').forEach(card => {
-                card.classList.remove('active');
-            });
-            document.getElementById(`card-${module}`).classList.add('active');
-            
-            const contentBox = document.getElementById('content-box');
-            contentBox.style.animation = 'none';
-            setTimeout(() => {
-                contentBox.style.animation = 'slideUp 0.5s ease-out';
-            }, 10);
-            
-            updateUI();
-            
-            if (modulesVisited.size === 8) {
-                showAchievement('Political Master!', 'You\'ve explored everything!');
-                launchConfetti();
-            }
-        }
-
-        // Update UI
-        function updateUI() {
-            const data = content[currentLang];
-            document.getElementById('main-title').textContent = data.title;
-            
-            ['home', 'history', 'today', 'module1', 'module2', 'module3', 'module4', 'module5'].forEach(module => {
-                const titleEl = document.getElementById(`${module}-title`);
-                const descEl = document.getElementById(`${module}-desc`);
-                if (titleEl) titleEl.textContent = data[`${module}_title`];
-                if (descEl) descEl.textContent = data[`${module}_desc`];
-            });
-            
-            document.getElementById('content-display').innerHTML = data[`${currentModule}_content`] || '<h2>Content coming soon!</h2>';
-        }
-
-        // Interactive Functions
-        function toggleEra(eraId) {
-            const era = document.getElementById(eraId);
-            era.classList.toggle('expanded');
-            showAchievement('History Explorer', 'Discovering the past!');
-        }
-
-        function showPartyLevel(level) {
-            const info = document.getElementById('party-level-info');
-            const content = {
-                national: '<strong>NATIONAL LEVEL:</strong> DNC and RNC raise billions, pick presidential candidates, set national strategy!',
-                state: '<strong>STATE LEVEL:</strong> Adapt to local issues, pick governors and senators, control redistricting!',
-                local: '<strong>LOCAL LEVEL:</strong> School boards, mayors, city councils - where politics actually affects your daily life!'
-            };
-            info.innerHTML = content[level];
-            info.style.display = 'block';
-        }
-
-        function checkAnswer(element, correct) {
-            element.style.background = correct ? 'linear-gradient(135deg, #00b894, #00cec9)' : 'linear-gradient(135deg, #d63031, #e17055)';
-            element.style.color = 'white';
-        }
-
-        function voteSimulation(party) {
-            const result = document.getElementById('vote-result');
-            const outcomes = {
-                democrat: 'You voted Democrat! In a safe blue state, you helped run up the popular vote!',
-                republican: 'You voted Republican! In a safe red state, you maintained the majority!',
-                third: 'You voted Third Party! You made a statement but... did it matter? The two-party system laughs! 😈'
-            };
-            result.innerHTML = `<strong>Result:</strong> ${outcomes[party]}`;
-            result.style.display = 'block';
-        }
-
-        function showAchievement(title, text) {
-            const achievementEl = document.getElementById('achievement');
-            const achievementText = document.getElementById('achievement-text');
-            achievementText.textContent = text || title;
-            achievementEl.classList.add('show');
-            setTimeout(() => {
-                achievementEl.classList.remove('show');
-            }, 3000);
-        }
-
-        function launchConfetti() {
-            for (let i = 0; i < 50; i++) {
-                const confetti = document.createElement('div');
-                confetti.style.position = 'fixed';
-                confetti.style.left = Math.random() * 100 + '%';
-                confetti.style.top = '-10px';
-                confetti.style.width = '10px';
-                confetti.style.height = '10px';
-                confetti.style.background = ['#667eea', '#764ba2', '#f093fb', '#4facfe'][Math.floor(Math.random() * 4)];
-                confetti.style.borderRadius = '50%';
-                confetti.style.zIndex = '9999';
-                document.body.appendChild(confetti);
-                
-                const animation = confetti.animate([
-                    { transform: 'translateY(0) rotate(0deg)', opacity: 1 },
-                    { transform: `translateY(${window.innerHeight}px) rotate(${Math.random() * 360}deg)`, opacity: 0 }
-                ], {
-                    duration: Math.random() * 3000 + 2000,
-                    easing: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'
-                });
-                
-                animation.onfinish = () => confetti.remove();
-            }
-        }
-
-        // Game Functions
-        function startAdventure() {
-            changeModule('history');
-        }
-
-        function playTimelineGame() {
-            document.getElementById('timeline-game').style.display = 'block';
-            showAchievement('Time Traveler', 'Ready to explore history!');
-        }
-
-        function checkTimelineMatch() {
-            // Simple check for demo - assume correct if dropped
-            document.getElementById('timeline-result').textContent = 'Great match! You know your history!';
-        }
-
-        function simulateElection() {
-            document.getElementById('election-sim').style.display = 'block';
-        }
-
-        function runCampaign(strategy) {
-            let result = strategy === 'attack' ? 'Opponent down, but voters angry! Approval: 40%' : 'Voters love it! Approval: 60%';
-            document.getElementById('campaign-result').textContent = result;
-        }
-
-        function showInfluenceWeb() {
-            document.getElementById('influence-web').style.display = 'block';
-        }
-
-        function matchTactic(element, tactic) {
-            element.style.background = 'linear-gradient(135deg, #00b894, #00cec9)';
-            element.style.color = 'white';
-            showAchievement('Tactic Master', 'You matched a tactic!');
-        }
-
-        function playElectoralCollege() {
-            document.getElementById('ec-game').style.display = 'block';
-        }
-
-        function assignVotes(color, votes) {
-            let resultEl = document.getElementById('ec-result');
-            let [blue, red] = resultEl.textContent.match(/\d+/g).map(Number);
-            if (color === 'blue') blue += votes;
-            if (color === 'red') red += votes;
-            resultEl.textContent = `Blue: ${blue} | Red: ${red}`;
-            if (blue > 270 || red > 270) showAchievement('Electoral Winner', 'You won the college!');
-        }
-
-        function showPrimaryType(type) {
-            const info = document.getElementById('primary-type-info');
-            const contents = {
-                closed: 'Closed: Only party members vote. Strict but pure!',
-                open: 'Open: Anyone votes! More democratic but risky!',
-                jungle: 'Jungle: All in one primary. Top 2 advance!'
-            };
-            info.innerHTML = contents[type];
-            info.style.display = 'block';
-        }
-
-        function testExtremism() {
-            document.getElementById('extremism-test').style.display = 'block';
-        }
-
-        function answerExtremism(answer) {
-            let result = answer === 'yes' ? 'You lean left!' : 'You lean right!';
-            document.getElementById('extremism-result').textContent = result;
-        }
-
-        function primarySimulator() {
-            document.getElementById('primary-sim').style.display = 'block';
-        }
-
-        function simulatePrimary(type) {
-            let result = type === 'moderate' ? 'You lost to extremist! Only 30% support.' : 'You won! Extremists love you, 70% support.';
-            document.getElementById('primary-result').textContent = result;
-        }
-
-        function drawDistrict(num) {
-            document.querySelectorAll('.map-state')[num-1].style.background = '#a29bfe';
-            document.getElementById('gerry-result').textContent = `District ${num} redrawn!`;
-        }
-
-        function showGerrymanderSolution() {
-            alert('🤯 Pack 30 blues into 2 districts (15 each), spread 20 reds across 3 districts with 4 blues each. Red wins 3-2 despite having fewer voters!');
-            showAchievement('Map Master', 'You understand gerrymandering!');
-        }
-
-        function seeYourDistrict() {
-            document.getElementById('district-info').style.display = 'block';
-        }
-
-        function fetchDistrict() {
-            let zip = document.getElementById('zip-input').value;
-            document.getElementById('district-result').textContent = `District for ZIP ${zip}: Example District 1 (Simulated)`;
-        }
-
-        function checkRegistration() {
-            window.open('https://registertovoteflorida.gov/', '_blank');
-            showAchievement('Civic Duty!', 'Taking action!');
-        }
-
-        function findPollingPlace() {
-            document.getElementById('polling-info').style.display = 'block';
-        }
-
-        function fetchPolling() {
-            let address = document.getElementById('address-input').value;
-            document.getElementById('polling-result').textContent = `Polling place for ${address}: Example Location (Simulated)`;
-        }
-
-        function revealMoney(element) {
-            element.style.background = 'linear-gradient(135deg, #f39c12, #f1c40f)';
-            element.style.color = 'white';
-        }
-
-        function checkEC(element, answer) {
-            if (answer === 'all') {
-                element.style.background = 'linear-gradient(135deg, #00b894, #00cec9)';
-                showAchievement('Electoral Expert!', 'You understand winner-take-all!');
-            } else {
-                element.style.background = 'linear-gradient(135deg, #d63031, #e17055)';
-            }
-            element.style.color = 'white';
-        }
-
-        // Drag and Drop Helpers
-        function allowDrop(ev) {
-            ev.preventDefault();
-        }
-
-        function drag(ev) {
-            ev.dataTransfer.setData("text", ev.target.id);
-        }
-
-        function drop(ev) {
-            ev.preventDefault();
-            var data = ev.dataTransfer.getData("text");
-            ev.target.appendChild(document.getElementById(data));
-            if (ev.target.id === 'web-drop') document.getElementById('web-result').textContent = 'Connected!';
-        }
-
-        // Keyboard shortcuts
-        document.addEventListener('keydown', (e) => {
-            if (e.key >= '1' && e.key <= '5') {
-                changeModule(`module${e.key}`);
-            } else if (e.key === 'h') {
-                changeModule('home');
-            } else if (e.key === 't') {
-                changeModule('today');
-            } else if (e.key === 'e') {
-                changeModule('history');
-            }
-        });
-    </script>
-</body>
-</html>
-```
+                    <button class="quiz-btn" onclick="showInfluenceWeb()">🕸️ ¡Ve la Red de Poder Completa!</button>
+                    <div id="influence-web" style="display: none; background: #f0f0f0; padding: 20px; border-radius: 10px; margin-top: 20px;">
+                        <h4>Red de Influencia</h4>
+                        <p>Partidos → Grupos de Interés → Medios → Votantes</p>
+                        <p>¡Arrastra para conectar!</p>
+                        <!-- Demo simple de drag-drop -->
+                        <p draggable="true" ondragstart="drag(event)" id="web-drag">Partidos</p>
+                        <div ondrop="drop(event)" ondragover="allowDrop(event)" id="web-drop">Suelta aquí para conectar
