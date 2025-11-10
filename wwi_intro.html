@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introduction to World War I</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts (Inter) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Apply the Inter font family */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        /* Basic dark mode support */
+        :root {
+            color-scheme: light dark;
+        }
+
+        /* Style for the active tab */
+        .active-tab {
+            border-color: #3b82f6; /* blue-500 */
+            color: #2563eb; /* blue-600 */
+        }
+        
+        .dark .active-tab {
+            color: #60a5fa; /* blue-400 */
+        }
+        
+        /* Style for the active language button */
+        .lang-btn-active {
+            color: #2563eb; /* blue-600 */
+            font-weight: 700;
+        }
+        
+        .dark .lang-btn-active {
+            color: #60a5fa; /* blue-400 */
+        }
+
+        /* Language-specific display rules */
+        /* By default, show English, hide others */
+        .es, .fr {
+            display: none;
+        }
+
+        /* Show Spanish when html[lang="es"] */
+        html[lang="es"] .es {
+            display: inline;
+        }
+        html[lang="es"] .en, html[lang="es"] .fr {
+            display: none;
+        }
+        
+        /* Show French when html[lang="fr"] */
+        html[lang="fr"] .fr {
+            display: inline;
+        }
+        html[lang="fr"] .en, html[lang="fr"] .es {
+            display: none;
+        }
+
+        /* Show English when html[lang="en"] */
+        html[lang="en"] .en {
+            display: inline;
+        }
+        html[lang="en"] .es, html[lang="en"] .fr {
+            display: none;
+        }
+    </style>
+
+    <script>
+        /**
+         * Shows the selected tab and hides others.
+         * @param {string} tabId - The ID of the tab content to show ('why', 'who', 'how').
+         */
+        function showTab(tabId) {
+            // Hide all tab-content elements
+            document.querySelectorAll('.tab-content').forEach(el => {
+                el.classList.add('hidden');
+            });
+            
+            // Show the target tab-content
+            const targetContent = document.getElementById(tabId);
+            if (targetContent) {
+                targetContent.classList.remove('hidden');
+            }
+
+            // Manage active button styles
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                if (btn.dataset.tab === tabId) {
+                    // Active state
+                    btn.classList.add('active-tab');
+                    btn.classList.remove('border-transparent', 'text-gray-500', 'dark:text-gray-400', 'hover:border-gray-300', 'hover:text-gray-700', 'dark:hover:border-gray-600', 'dark:hover:text-gray-300');
+                } else {
+                    // Inactive state
+                    btn.classList.remove('active-tab');
+                    btn.classList.add('border-transparent', 'text-gray-500', 'dark:text-gray-400', 'hover:border-gray-300', 'hover:text-gray-700', 'dark:hover:border-gray-600', 'dark:hover:text-gray-300');
+                }
+            });
+        }
+        
+        /**
+         * Changes the displayed language.
+         * @param {string} lang - The language code ('en', 'es', 'fr').
+         */
+        function changeLanguage(lang) {
+            // Set the lang attribute on the HTML element
+            document.documentElement.lang = lang;
+            
+            // Update active button styles
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                if (btn.dataset.lang === lang) {
+                    btn.classList.add('lang-btn-active');
+                    btn.classList.remove('text-gray-500', 'dark:text-gray-400', 'hover:text-gray-700', 'dark:hover:text-gray-300');
+                } else {
+                    btn.classList.remove('lang-btn-active');
+                    btn.classList.add('text-gray-500', 'dark:text-gray-400', 'hover:text-gray-700', 'dark:hover:text-gray-300');
+                }
+            });
+        }
+
+        // Set the default tab and language on page load
+        window.onload = () => {
+            showTab('why');
+            changeLanguage('en'); // Default to English
+        };
+    </script>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-300">
+
+    <!-- Language Switcher -->
+    <nav class="max-w-4xl mx-auto px-6 pt-6 flex justify-end">
+        <div class="flex space-x-2 rounded-full bg-gray-100 dark:bg-gray-800 p-1">
+            <button class="lang-btn text-sm font-medium px-4 py-1 rounded-full" data-lang="en" onclick="changeLanguage('en')">English</button>
+            <button class="lang-btn text-sm font-medium px-4 py-1 rounded-full" data-lang="es" onclick="changeLanguage('es')">Español</button>
+            <button class="lang-btn text-sm font-medium px-4 py-1 rounded-full" data-lang="fr" onclick="changeLanguage('fr')">Français</button>
+        </div>
+    </nav>
+
+    <!-- Main Content Container -->
+    <div class="max-w-4xl mx-auto p-6 sm:p-10 pt-4">
+        
+        <!-- Header Section -->
+        <header class="text-center mb-8">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-3">
+                <span class="en">🌍 Introduction to World War I (WWI)</span>
+                <span class="es">🌍 Introducción a la Primera Guerra Mundial (PGM)</span>
+                <span class="fr">🌍 Introduction à la Première Guerre mondiale (PGM)</span>
+            </h1>
+            <p class="text-lg md:text-xl text-blue-600 dark:text-blue-400 font-medium">
+                <span class="en">A Clear Guide to the Big Ideas</span>
+                <span class="es">Una guía clara de las grandes ideas</span>
+                <span class="fr">Un guide clair des grandes idées</span>
+            </p>
+        </header>
+
+        <!-- Introduction Text -->
+        <p class="text-base md:text-lg text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
+            <span class="en">Before we jump into the full story of World War I, it helps to understand the big picture. These 12 key terms fall into three groups: Why the war started, Who fought, and What the fighting was like. This creates a mental map for students so nothing feels random.</span>
+            <span class="es">Antes de sumergirnos en la historia completa de la Primera Guerra Mundial, es útil comprender el panorama general. Estos 12 términos clave se dividen en tres grupos: por qué comenzó la guerra, quién luchó y cómo fue la lucha. Esto crea un mapa mental para que los estudiantes no sientan que nada es aleatorio.</span>
+            <span class="fr">Avant de plonger dans l'histoire complète de la Première Guerre mondiale, il est utile de comprendre la situation dans son ensemble. Ces 12 termes clés se répartissent en trois groupes : Pourquoi la guerre a commencé, Qui a combattu et Comment se déroulaient les combats. Cela crée une carte mentale pour les étudiants afin que rien ne semble aléatoire.</span>
+        </p>
+
+        <!-- Tab Navigation -->
+        <nav class="border-b border-gray-200 dark:border-gray-700 mb-8">
+            <div class="flex flex-wrap -mb-px space-x-1 sm:space-x-4" aria-label="Tabs">
+                <!-- Tab Button 1: Why -->
+                <button class="tab-btn inline-block py-4 px-3 sm:px-6 text-xl font-bold text-center border-b-4" data-tab="why" onclick="showTab('why')">
+                    <span class="en">Why the War Happened</span>
+                    <span class="es">Por qué Sucedió</span>
+                    <span class="fr">Pourquoi la Guerre</span>
+                </button>
+                
+                <!-- Tab Button 2: Who -->
+                <button class="tab-btn inline-block py-4 px-3 sm:px-6 text-xl font-bold text-center border-b-4" data-tab="who" onclick="showTab('who')">
+                    <span class="en">Who Was Fighting</span>
+                    <span class="es">Quién Luchaba</span>
+                    <span class="fr">Qui Combattu</span>
+                </button>
+                
+                <!-- Tab Button 3: How -->
+                <button class="tab-btn inline-block py-4 px-3 sm:px-6 text-xl font-bold text-center border-b-4" data-tab="how" onclick="showTab('how')">
+                    <span class="en">How the War Was Fought</span>
+                    <span class="es">Cómo se Luchó</span>
+                    <span class="fr">Comment la Guerre</span>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Tab Content Area -->
+        <main>
+            <!-- Tab 1: WHY -->
+            <section id="why" class="tab-content">
+                <h2 class="text-3xl font-bold mb-4 text-red-800 dark:text-red-400">
+                    <span class="en">WHY THE WAR HAPPENED — “The Causes”</span>
+                    <span class="es">POR QUÉ SUCEDIÓ LA GUERRA — “Las Causas”</span>
+                    <span class="fr">POURQUOI LA GUERRE A EU LIEU — “Les Causes”</span>
+                </h2>
+                <p class="text-lg text-gray-700 dark:text-gray-300 mb-6">
+                    <span class="en">These are the long-term pressures in Europe that slowly built up over decades. You can remember them with the acronym <strong class="font-bold text-gray-900 dark:text-white">MAIN:</strong></span>
+                    <span class="es">Estas son las presiones a largo plazo en Europa que se acumularon lentamente durante décadas. Puedes recordarlas con el acrónimo <strong class="font-bold text-gray-900 dark:text-white">MAIN:</strong></span>
+                    <span class="fr">Ce sont les pressions à long terme en Europe qui se sont lentement accumulées au fil des décennies. Vous pouvez vous en souvenir avec l'acronyme <strong class="font-bold text-gray-900 dark:text-white">MAIN :</strong></span>
+                </p>
+
+                <!-- MAIN Acronym Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                    <!-- Militarism -->
+                    <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-200">
+                        <h3 class="text-2xl font-bold mb-2 flex items-center">
+                            <span class="text-4xl font-extrabold text-blue-600 dark:text-blue-400 mr-3">M</span>
+                            <span>
+                                <span class="en">ilitarism</span>
+                                <span class="es">ilitarismo</span>
+                                <span class="fr">ilitarisme</span>
+                            </span>
+                        </h3>
+                        <p class="text-gray-700 dark:text-gray-300">
+                            <span class="en">Countries built huge armies and weapons to look powerful and prepare for conflict.</span>
+                            <span class="es">Los países construyeron enormes ejércitos y armas para parecer poderosos y prepararse para el conflicto.</span>
+                            <span class="fr">Les pays ont construit d'énormes armées et armes pour paraître puissants et se préparer au conflit.</span>
+                        </p>
+                    </div>
+                    <!-- Alliances -->
+                    <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-200">
+                        <h3 class="text-2xl font-bold mb-2 flex items-center">
+                            <span class="text-4xl font-extrabold text-blue-600 dark:text-blue-400 mr-3">A</span>
+                            <span>
+                                <span class="en">lliances</span>
+                                <span class="es">lianzas</span>
+                                <span class="fr">lliances</span>
+                            </span>
+                        </h3>
+                        <p class="text-gray-700 dark:text-gray-300">
+                            <span class="en">Countries promised to defend each other if attacked, creating complex networks.</span>
+                            <span class="es">Los países prometieron defenderse mutuamente si eran atacados, creando redes complejas.</span>
+                            <span class="fr">Les pays ont promis de se défendre mutuellement en cas d'attaque, créant des réseaux complexes.</span>
+                        </p>
+                    </div>
+                    <!-- Imperialism -->
+                    <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-200">
+                        <h3 class="text-2xl font-bold mb-2 flex items-center">
+                            <span class="text-4xl font-extrabold text-blue-600 dark:text-blue-400 mr-3">I</span>
+                            <span>
+                                <span class="en">mperialism</span>
+                                <span class="es">mperialismo</span>
+                                <span class="fr">mpérialisme</span>
+                            </span>
+                        </h3>
+                        <p class="text-gray-700 dark:text-gray-300">
+                            <span class="en">European nations competed for colonies, resources, and global power.</span>
+                            <span class="es">Las naciones europeas competían por colonias, recursos y poder global.</span>
+                            <span class="fr">Les nations européennes se disputaient les colonies, les ressources et la puissance mondiale.</span>
+                        </p>
+                    </div>
+                    <!-- Nationalism -->
+                    <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-200">
+                        <h3 class="text-2xl font-bold mb-2 flex items-center">
+                            <span class="text-4xl font-extrabold text-blue-600 dark:text-blue-400 mr-3">N</span>
+                            <span>
+                                <span class="en">ationalism</span>
+                                <span class="es">acionalismo</span>
+                                <span class="fr">ationalisme</span>
+                            </span>
+                        </h3>
+                        <p class="text-gray-700 dark:text-gray-300">
+                            <span class="en">Extreme pride in one's nation led to intense competition and rivalry.</span>
+                            <span class="es">El orgullo extremo por la propia nación llevó a una intensa competencia y rivalidad.</span>
+                            <span class="fr">La fierté extrême envers sa nation a conduit à une compétition et une rivalité intenses.</span>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Assassination Section -->
+                <h3 class="text-2xl font-bold mb-3">
+                    <span class="en">Assassination – The “Spark.”</span>
+                    <span class="es">Asesinato – La “Chispa.”</span>
+                    <span class="fr">Assassinat – L'“Étincelle.”</span>
+                </h3>
+                <p class="text-lg text-gray-700 dark:text-gray-300 mb-6">
+                    <span class="en">The killing of <strong class="text-gray-900 dark:text-white">Archduke Franz Ferdinand</strong> of Austria-Hungary lit the fuse. This single event triggered the alliances and set off all the underlying tensions at once.</span>
+                    <span class="es">El asesinato del <strong class="text-gray-900 dark:text-white">Archiduque Francisco Fernando</strong> de Austria-Hungría encendió la mecha. Este único evento desencadenó las alianzas y desató todas las tensiones subyacentes a la vez.</span>
+                    <span class="fr">L'assassinat de <strong class="text-gray-900 dark:text-white">l'archiduc François-Ferdinand</strong> d'Autriche-Hongrie a mis le feu aux poudres. Cet événement unique a déclenché les alliances et libéré toutes les tensions sous-jacentes d'un seul coup.</span>
+                </p>
+
+                <!-- Powder Keg Analogy -->
+                <div class="bg-blue-50 dark:bg-gray-800 border-l-4 border-blue-500 p-5 rounded-r-lg shadow-sm">
+                    <p class="text-lg font-medium text-blue-800 dark:text-blue-200">
+                        <span class="en">Think of Europe as a <strong class="font-bold">powder keg</strong>: MAIN created the gunpowder, and the assassination lit the match.</span>
+                        <span class="es">Piensa en Europa como un <strong class="font-bold">barril de pólvora</strong>: MAIN creó la pólvora y el asesinato encendió la mecha.</span>
+                        <span class="fr">Pensez à l'Europe comme un <strong class="font-bold">baril de poudre</strong> : MAIN a créé la poudre et l'assassinat a allumé la mèche.</span>
+                    </p>
+                </div>
+            </section>
+
+            <!-- Tab 2: WHO -->
+            <section id="who" class="tab-content hidden">
+                <h2 class="text-3xl font-bold mb-4 text-red-800 dark:text-red-400">
+                    <span class="en">WHO WAS FIGHTING — “The Teams”</span>
+                    <span class="es">QUIÉN ESTABA LUCHANDO — “Los Equipos”</span>
+                    <span class="fr">QUI COMBATTAIT — “Les Équipes”</span>
+                </h2>
+                <p class="text-lg text-gray-700 dark:text-gray-300 mb-6">
+                    <span class="en">When the war began, alliances forced countries to choose sides.</span>
+                    <span class="es">Cuando comenzó la guerra, las alianzas obligaron a los países a elegir bando.</span>
+                    <span class="fr">Lorsque la guerre a commencé, les alliances ont forcé les pays à choisir leur camp.</span>
+                </p>
+
+                <!-- Teams Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-6">
+                    <!-- Central Powers -->
+                    <div>
+                        <h3 class="text-2xl font-bold text-red-700 dark:text-red-400 mb-3 border-b-2 border-red-300 dark:border-red-600 pb-2">
+                            <span class="en">Central Powers</span>
+                            <span class="es">Potencias Centrales</span>
+                            <span class="fr">Puissances Centrales</span>
+                        </h3>
+                        <ul class="list-disc list-inside space-y-2 text-lg text-gray-700 dark:text-gray-300">
+                            <li><span class="en">Germany</span><span class="es">Alemania</span><span class="fr">Allemagne</span></li>
+                            <li><span class="en">Austria-Hungary</span><span class="es">Austria-Hungría</span><span class="fr">Autriche-Hongrie</span></li>
+                            <li><span class="en">Ottoman Empire</span><span class="es">Imperio Otomano</span><span class="fr">Empire Ottoman</span></li>
+                        </ul>
+                    </div>
+                    <!-- Allied Powers -->
+                    <div>
+                        <h3 class="text-2xl font-bold text-blue-700 dark:text-blue-400 mb-3 border-b-2 border-blue-300 dark:border-blue-600 pb-2">
+                            <span class="en">Allied Powers</span>
+                            <span class="es">Potencias Aliadas</span>
+                            <span class="fr">Puissances Alliées</span>
+                        </h3>
+                        <ul class="list-disc list-inside space-y-2 text-lg text-gray-700 dark:text-gray-300">
+                            <li><span class="en">Britain</span><span class="es">Gran Bretaña</span><span class="fr">Grande-Bretagne</span></li>
+                            <li><span class="en">France</span><span class="es">Francia</span><span class="fr">France</span></li>
+                            <li><span class="en">Russia</span><span class="es">Rusia</span><span class="fr">Russie</span></li>
+                        </ul>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 mt-3">
+                            (<span class="en">Later joined by the <strong class="text-gray-700 dark:text-gray-200">United States</strong> and <strong class="text-gray-700 dark:text-gray-200">Italy</strong></span>
+                            <span class="es">Más tarde se unieron los <strong class="text-gray-700 dark:text-gray-200">Estados Unidos</strong> e <strong class="text-gray-700 dark:text-gray-200">Italia</strong></span>
+                            <span class="fr">Rejoints plus tard par les <strong class="text-gray-700 dark:text-gray-200">États-Unis</strong> et <strong class="text-gray-700 dark:text-gray-200">l'Italie</strong></span>)
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Map Section -->
+                <div class="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-md border border-gray-200 dark:border-gray-700 text-center mt-8">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/f/fe/Map_Europe_alliances_1914-fr.svg" 
+                         alt="Map of military alliances in Europe in 1914. Allies (Entente) in green, Central Powers in brown, neutral countries in yellow." 
+                         class="rounded-md w-full max-w-2xl mx-auto border dark:border-gray-700"
+                         onerror="this.src='https://placehold.co/800x450/e2e8f0/64748b?text=Map+Failed+to+Load'">
+                </div>
+            </section>
+
+            <!-- Tab 3: HOW -->
+            <section id="how" class="tab-content hidden">
+                <h2 class="text-3xl font-bold mb-4 text-red-800 dark:text-red-400">
+                    <span class="en">HOW THE WAR WAS FOUGHT — “The Experience”</span>
+                    <span class="es">CÓMO SE LUCHÓ LA GUERRA — “La Experiencia”</span>
+                    <span class="fr">COMMENT LA GUERRE A ÉTÉ MENÉE — “L'Expérience”</span>
+                </h2>
+                <p class="text-lg text-gray-700 dark:text-gray-300 mb-6">
+                    <span class="en">WWI was unlike any war the world had seen. New technology and strategies made the fighting extremely deadly.</span>
+                    <span class="es">La PGM fue diferente a cualquier guerra que el mundo hubiera visto. La nueva tecnología y estrategias hicieron que la lucha fuera extremadamente mortal.</span>
+                    <span class="fr">La PGM ne ressemblait à aucune guerre que le monde ait connue. Les nouvelles technologies et stratégies ont rendu les combats extrêmement meurtriers.</span>
+                </p>
+
+                <!-- Key Terms Definition List -->
+                <dl class="space-y-6 bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
+                    <!-- Mobilization -->
+                    <div>
+                        <dt class="text-xl font-bold text-gray-900 dark:text-white">
+                            <span class="en">Mobilization</span>
+                            <span class="es">Movilización</span>
+                            <span class="fr">Mobilisation</span>
+                        </dt>
+                        <dd class="text-gray-700 dark:text-gray-300 mt-1">
+                            <span class="en">Preparing and organizing vast armies and national resources for the war effort.</span>
+                            <span class="es">Preparar y organizar vastos ejércitos y recursos nacionales para el esfuerzo de guerra.</span>
+                            <span class="fr">Préparer et organiser de vastes armées et ressources nationales pour l'effort de guerre.</span>
+                        </dd>
+                    </div>
+                    
+                    <!-- Trench Warfare -->
+                    <div>
+                        <dt class="text-xl font-bold text-gray-900 dark:text-white">
+                            <span class="en">Trench Warfare</span>
+                            <span class="es">Guerra de Trincheras</span>
+                            <span class="fr">Guerre des Tranchées</span>
+                        </dt>
+                        <dd class="text-gray-700 dark:text-gray-300 mt-1">
+                            <span class="en">Soldiers fought, lived, and died from long, fortified trenches dug into the ground.</span>
+                            <span class="es">Los soldados luchaban, vivían y morían en largas trincheras fortificadas cavadas en el suelo.</span>
+                            <span class="fr">Les soldats combattaient, vivaient et mouraient dans de longues tranchées fortifiées creusées dans le sol.</span>
+                        </dd>
+                    </div>
+                    
+                    <!-- No Man’s Land -->
+                    <div>
+                        <dt class="text-xl font-bold text-gray-900 dark:text-white">
+                            <span class="en">No Man’s Land</span>
+                            <span class="es">Tierra de Nadie</span>
+                            <span class="fr">No Man's Land</span>
+                        </dt>
+                        <dd class="text-gray-700 dark:text-gray-300 mt-1">
+                            <span class="en">The dangerous, barren, and empty space between opposing enemy trenches.</span>
+                            <span class="es">El peligroso, estéril y vacío espacio entre las trincheras enemigas opuestas.</span>
+                            <span class="fr">L'espace dangereux, stérile et vide entre les tranchées ennemies opposées.</span>
+                        </dd>
+                    </div>
+                    
+                    <!-- U-Boat -->
+                    <div>
+                        <dt class="text-xl font-bold text-gray-900 dark:text-white">
+                            <span class="en">U-Boat</span>
+                            <span class="es">U-Boot</span>
+                            <span class="fr">U-Boot</span>
+                        </dt>
+                        <dd class="text-gray-700 dark:text-gray-300 mt-1">
+                            <span class="en">German submarines (Unterseeboot) used to attack Allied ships at sea, a key part of naval warfare.</span>
+                            <span class="es">Submarinos alemanes (Unterseeboot) utilizados para atacar barcos aliados en el mar, una parte clave de la guerra naval.</span>
+                            <span class="fr">Sous-marins allemands (Unterseeboot) utilisés pour attaquer les navires alliés en mer, un élément clé de la guerre navale.</span>
+                        </dd>
+                    </div>
+                    
+                    <!-- Propaganda -->
+                    <div>
+                        <dt class="text-xl font-bold text-gray-900 dark:text-white">
+                            <span class="en">Propaganda</span>
+                            <span class="es">Propaganda</span>
+                            <span class="fr">Propagande</span>
+                        </dt>
+                        <dd class="text-gray-700 dark:text-gray-300 mt-1">
+                            <span class="en">Government-controlled messages (posters, films, etc.) used to influence public opinion and maintain support for the war.</span>
+                            <span class="es">Mensajes controlados por el gobierno (carteles, películas, etc.) utilizados para influir en la opinión pública y mantener el apoyo a la guerra.</span>
+                            <span class="fr">Messages contrôlés par le gouvernement (affiches, films, etc.) utilisés pour influencer l'opinion publique et maintenir le soutien à la guerre.</span>
+                        </dd>
+                    </div>
+                </dl>
+
+                <p class="text-lg text-gray-700 dark:text-gray-300 mt-8 p-4 bg-gray-100 dark:bg-gray-800 rounded-lg">
+                    <span class="en">This section helps students understand what made WWI a <strong class="text-gray-900 dark:text-white">modern, industrial, and devastating</strong> conflict.</span>
+                    <span class="es">Esta sección ayuda a los estudiantes a comprender qué hizo de la PGM un conflicto <strong class="text-gray-900 dark:text-white">moderno, industrial y devastador</strong>.</span>
+                    <span class="fr">Cette section aide les étudiants à comprendre ce qui a fait de la PGM un conflit <strong class="text-gray-900 dark:text-white">moderne, industriel et dévastateur</strong>.</span>
+                </p>
+            </section>
+        </main>
+
+        <!-- "Putting It All Together" Section (Outside tabs) -->
+        <section class="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700">
+            <h2 class="text-3xl font-bold text-center mb-6">
+                <span class="en">Putting It All Together</span>
+                <span class="es">Resumiendo Todo</span>
+                <span class="fr">Mettre Tout Ensemble</span>
+            </h2>
+            <div class="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-xl">
+                <ul class="space-y-4 text-lg md:text-xl">
+                    <li class="flex items-center">
+                        <span class="text-3xl mr-4">💥</span>
+                        <div>
+                            <strong class="text-gray-900 dark:text-white">
+                                <span class="en">MAIN + Assassination</span>
+                                <span class="es">MAIN + Asesinato</span>
+                                <span class="fr">MAIN + Assassinat</span>
+                            </strong>
+                            <span class="en"> → explains <i>why</i> WWI started.</span>
+                            <span class="es"> → explica <i>por qué</i> comenzó la PGM.</span>
+                            <span class="fr"> → explique <i>pourquoi</i> la PGM a commencé.</span>
+                        </div>
+                    </li>
+                    <li class="flex items-center">
+                        <span class="text-3xl mr-4">🤝</span>
+                         <div>
+                            <strong class="text-gray-900 dark:text-white">
+                                <span class="en">Alliances = Teams</span>
+                                <span class="es">Alianzas = Equipos</span>
+                                <span class="fr">Alliances = Équipes</span>
+                            </strong>
+                            <span class="en"> → explains <i>who</i> fought.</span>
+                            <span class="es"> → explica <i>quién</i> luchó.</span>
+                            <span class="fr"> → explique <i>qui</i> a combattu.</span>
+                        </div>
+                    </li>
+                    <li class="flex items-center">
+                        <span class="text-3xl mr-4">💣</span>
+                         <div>
+                            <strong class="text-gray-900 dark:text-white">
+                                <span class="en">Trenches + Technology + Propaganda</span>
+                                <span class="es">Trincheras + Tecnología + Propaganda</span>
+                                <span class="fr">Tranchées + Technologie + Propagande</span>
+                            </strong>
+                            <span class="en"> → explains <i>how</i> WWI was fought.</span>
+                            <span class="es"> → explica <i>cómo</i> se luchó la PGM.</span>
+                            <span class="fr"> → explique <i>comment</i> la PGM s'est déroulée.</span>
+                        </div>
+                    </li>
+                </ul>
+                <p class="text-center text-lg text-gray-700 dark:text-gray-300 mt-6 font-medium">
+                    <span class="en">This structure sets up the entire unit and gives students a strong foundation for everything that comes next.</span>
+                    <span class="es">Esta estructura prepara toda la unidad y brinda a los estudiantes una base sólida para todo lo que sigue.</span>
+                    <span class="fr">Cette structure prépare l'ensemble de l'unité et donne aux étudiants une base solide pour tout ce qui suit.</span>
+                </p>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="text-center mt-12 py-6 border-t border-gray-200 dark:border-gray-700">
+            <p class="text-sm text-gray-500 dark:text-gray-400">
+                <span class="en">Created for Mr. Miljus' US History Class</span>
+                <span class="es">Creado para la clase de Historia de EE. UU. del Sr. Miljus</span>
+                <span class="fr">Créé pour la classe d'histoire des États-Unis de M. Miljus</span>
+            </p>
+        </footer>
+
+    </div> <!-- /end main container -->
+
+</body>
+</html>
