@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nationalism & The Fall of Empires</title>
+    <style>
+        /* --- CSS VARIABLES & RESET --- */
+        :root {
+            --primary: #2c3e50; /* Dark Blue */
+            --accent-blue: #3498db; /* Nationalism Blue */
+            --accent-red: #c0392b; /* Empire Red */
+            --bg-color: #f4f7f6;
+            --card-bg: #ffffff;
+            --text-color: #333;
+            --font-head: 'Playfair Display', serif; /* Classic History Look */
+            --font-body: 'Lato', sans-serif; /* Clean Modern Look */
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* --- TYPOGRAPHY --- */
+        h1, h2, h3 { font-family: var(--font-head); margin-bottom: 1rem; }
+        h1 { font-size: 2.5rem; color: var(--primary); }
+        h2 { font-size: 2rem; border-bottom: 2px solid var(--primary); padding-bottom: 10px; display: inline-block; }
+        
+        /* --- HEADER & NAV --- */
+        header {
+            background: white;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .lang-switch {
+            display: flex;
+            gap: 10px;
+        }
+
+        .lang-btn {
+            background: none;
+            border: 2px solid var(--primary);
+            padding: 5px 15px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border-radius: 20px;
+        }
+
+        .lang-btn:hover, .lang-btn.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, #ece9e6 0%, #ffffff 100%);
+        }
+
+        .hero p { font-size: 1.2rem; color: #555; max-width: 800px; margin: 0 auto; }
+
+        /* --- SECTIONS GENERIC --- */
+        section {
+            max-width: 1100px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+        .card:hover { transform: translateY(-5px); }
+
+        /* --- DEFINITION GRID --- */
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        .trait-box {
+            text-align: center;
+            padding: 1.5rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        .icon { font-size: 2rem; display: block; margin-bottom: 10px; }
+
+        /* --- CONFLICT TABLE (Split View) --- */
+        .conflict-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .side {
+            flex: 1;
+            min-width: 300px;
+            padding: 2rem;
+            border-radius: 8px;
+            color: white;
+        }
+        .nat-side { background-color: var(--accent-blue); }
+        .emp-side { background-color: var(--accent-red); }
+        
+        .side ul { list-style: none; }
+        .side li { margin-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.3); padding-bottom: 5px; }
+
+        /* --- CAUSE & EFFECT FLOW --- */
+        .flow-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .flow-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: white;
+            padding: 1rem;
+            border-left: 5px solid var(--primary);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        .arrow { font-size: 1.5rem; color: var(--accent-red); font-weight: bold; }
+
+        /* --- FOOTER --- */
+        footer {
+            background: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            header { flex-direction: column; gap: 1rem; }
+            .hero h1 { font-size: 2rem; }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        <div class="logo">History<span style="color:var(--accent-blue)">Explained</span></div>
+        <div class="lang-switch">
+            <button class="lang-btn active" onclick="setLang('en')">EN</button>
+            <button class="lang-btn" onclick="setLang('es')">ES</button>
+            <button class="lang-btn" onclick="setLang('fr')">FR</button>
+            <button class="lang-btn" onclick="setLang('mx')">MX</button>
+        </div>
+    </header>
+
+    <section class="hero">
+        <h1 data-i18n="hero_title">How Nationalism Broke Empires (1800-1914)</h1>
+        <p data-i18n="hero_sub">In the 1800s, a dangerous new idea transformed how people understood power, identity, and government.</p>
+    </section>
+
+    <section>
+        <h2 data-i18n="def_title">What is Nationalism?</h2>
+        <div class="card">
+            <p data-i18n="def_intro">The belief that people who share common traits should form their own nation and govern themselves.</p>
+            <div class="grid-4">
+                <div class="trait-box">
+                    <span class="icon">🗣️</span>
+                    <h3 data-i18n="trait_lang">Language</h3>
+                    <p data-i18n="trait_lang_desc">"We are one people"</p>
+                </div>
+                <div class="trait-box">
+                    <span class="icon">🎭</span>
+                    <h3 data-i18n="trait_cult">Culture</h3>
+                    <p data-i18n="trait_cult_desc">"Our traditions matter"</p>
+                </div>
+                <div class="trait-box">
+                    <span class="icon">📜</span>
+                    <h3 data-i18n="trait_hist">History</h3>
+                    <p data-i18n="trait_hist_desc">"We share a past"</p>
+                </div>
+                <div class="trait-box">
+                    <span class="icon">🧑‍🤝‍🧑</span>
+                    <h3 data-i18n="trait_id">Identity</h3>
+                    <p data-i18n="trait_id_desc">"We deserve a country"</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2 data-i18n="conflict_title">The Central Conflict</h2>
+        <p data-i18n="conflict_sub">The Old System (Empires) vs. The New Idea (Nationalism)</p>
+        
+        <div class="conflict-container">
+            <div class="side nat-side">
+                <h3>🟦 <span data-i18n="nat_head">NATIONALISM</span></h3>
+                <ul>
+                    <li data-i18n="nat_1">🏛️ Self-rule (Power from people)</li>
+                    <li data-i18n="nat_2">🧑‍🤝‍🧑 One national identity</li>
+                    <li data-i18n="nat_3">🗣️ Protects local culture</li>
+                    <li data-i18n="nat_4">🔥 Encourages independence</li>
+                </ul>
+            </div>
+
+            <div class="side emp-side">
+                <h3>🟥 <span data-i18n="emp_head">EMPIRE</span></h3>
+                <ul>
+                    <li data-i18n="emp_1">👑 Central control (Power from King)</li>
+                    <li data-i18n="emp_2">🌍 Many ethnic groups mixed</li>
+                    <li data-i18n="emp_3">⚖️ Imposes one system</li>
+                    <li data-i18n="emp_4">🧱 Maintains control by force</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2 data-i18n="cause_title">Cause & Effect</h2>
+        <div class="card">
+            <div class="flow-container">
+                <div class="flow-row">
+                    <span data-i18n="cause_1">Loyalty shifts to the Nation</span>
+                    <span class="arrow">➔</span>
+                    <span data-i18n="effect_1">Declining Authority of Emperors</span>
+                </div>
+                <div class="flow-row">
+                    <span data-i18n="cause_2">Desire for Self-Government</span>
+                    <span class="arrow">➔</span>
+                    <span data-i18n="effect_2">Independence Movements</span>
+                </div>
+                <div class="flow-row">
+                    <span data-i18n="cause_3">Protection of Culture</span>
+                    <span class="arrow">➔</span>
+                    <span data-i18n="effect_3">Ethnic Revolts & Violence</span>
+                </div>
+            </div>
+            <br>
+            <strong data-i18n="result_label">FINAL RESULT (1914):</strong> <span data-i18n="result_text">Weak empires, breakaway nations, and the brink of World War I.</span>
+        </div>
+    </section>
+
+    <footer>
+        <p>History Explained Educational Resources © 2023</p>
+    </footer>
+
+    <script>
+        const translations = {
+            en: {
+                hero_title: "How Nationalism Broke Empires (1800-1914)",
+                hero_sub: "In the 1800s, a dangerous new idea transformed how people understood power, identity, and government.",
+                def_title: "What is Nationalism?",
+                def_intro: "The belief that people who share common traits should form their own nation and govern themselves.",
+                trait_lang: "Language",
+                trait_lang_desc: "\"We are one people\"",
+                trait_cult: "Culture",
+                trait_cult_desc: "\"Our traditions matter\"",
+                trait_hist: "History",
+                trait_hist_desc: "\"We share a past\"",
+                trait_id: "Identity",
+                trait_id_desc: "\"We deserve a country\"",
+                conflict_title: "The Central Conflict",
+                conflict_sub: "The Old System (Empires) vs. The New Idea (Nationalism)",
+                nat_head: "NATIONALISM",
+                nat_1: "🏛️ Self-rule (Power from people)",
+                nat_2: "🧑‍🤝‍🧑 One national identity",
+                nat_3: "🗣️ Protects local culture",
+                nat_4: "🔥 Encourages independence",
+                emp_head: "EMPIRE",
+                emp_1: "👑 Central control (Power from King)",
+                emp_2: "🌍 Many ethnic groups mixed",
+                emp_3: "⚖️ Imposes one system",
+                emp_4: "🧱 Maintains control by force",
+                cause_title: "Cause & Effect",
+                cause_1: "Loyalty shifts to the Nation",
+                effect_1: "Declining Authority of Emperors",
+                cause_2: "Desire for Self-Government",
+                effect_2: "Independence Movements",
+                cause_3: "Protection of Culture",
+                effect_3: "Ethnic Revolts & Violence",
+                result_label: "FINAL RESULT (1914):",
+                result_text: "Weak empires, breakaway nations, and the brink of World War I."
+            },
+            es: {
+                hero_title: "Cómo el Nacionalismo Destruyó Imperios",
+                hero_sub: "En el siglo XIX, una nueva y peligrosa idea transformó la forma en que la gente entendía el poder y el gobierno.",
+                def_title: "¿Qué es el Nacionalismo?",
+                def_intro: "La creencia de que las personas que comparten rasgos comunes deben formar su propia nación.",
+                trait_lang: "Idioma",
+                trait_lang_desc: "\"Somos un solo pueblo\"",
+                trait_cult: "Cultura",
+                trait_cult_desc: "\"Nuestras tradiciones importan\"",
+                trait_hist: "Historia",
+                trait_hist_desc: "\"Compartimos un pasado\"",
+                trait_id: "Identidad",
+                trait_id_desc: "\"Merecemos nuestro país\"",
+                conflict_title: "El Conflicto Central",
+                conflict_sub: "El Viejo Sistema (Imperios) vs. La Nueva Idea (Nacionalismo)",
+                nat_head: "NACIONALISMO",
+                nat_1: "🏛️ Autogobierno (Poder del pueblo)",
+                nat_2: "🧑‍🤝‍🧑 Una identidad nacional",
+                nat_3: "🗣️ Protege la cultura local",
+                nat_4: "🔥 Fomenta la independencia",
+                emp_head: "IMPERIO",
+                emp_1: "👑 Control central (Poder del Rey)",
+                emp_2: "🌍 Muchos grupos étnicos",
+                emp_3: "⚖️ Impone un sistema único",
+                emp_4: "🧱 Mantiene el control por fuerza",
+                cause_title: "Causa y Efecto",
+                cause_1: "Lealtad cambia a la Nación",
+                effect_1: "Declive de la autoridad imperial",
+                cause_2: "Deseo de autogobierno",
+                effect_2: "Movimientos de independencia",
+                cause_3: "Protección de la cultura",
+                effect_3: "Revueltas étnicas y violencia",
+                result_label: "RESULTADO FINAL (1914):",
+                result_text: "Imperios débiles, naciones separadas y el borde de la Primera Guerra Mundial."
+            },
+            fr: {
+                hero_title: "Comment le nationalisme a brisé les empires",
+                hero_sub: "Au XIXe siècle, une nouvelle idée dangereuse a transformé la conception du pouvoir et du gouvernement.",
+                def_title: "Qu'est-ce que le nationalisme ?",
+                def_intro: "La croyance selon laquelle les personnes partageant des traits communs devraient former leur propre nation.",
+                trait_lang: "Langue",
+                trait_lang_desc: "\"Nous sommes un peuple\"",
+                trait_cult: "Culture",
+                trait_cult_desc: "\"Nos traditions comptent\"",
+                trait_hist: "Histoire",
+                trait_hist_desc: "\"Nous partageons un passé\"",
+                trait_id: "Identité",
+                trait_id_desc: "\"Nous méritons un pays\"",
+                conflict_title: "Le conflit central",
+                conflict_sub: "L'ancien système (Empires) contre la nouvelle idée (Nationalisme)",
+                nat_head: "NATIONALISME",
+                nat_1: "🏛️ Autonomie (Pouvoir du peuple)",
+                nat_2: "🧑‍🤝‍🧑 Une identité nationale",
+                nat_3: "🗣️ Protège la culture locale",
+                nat_4: "🔥 Encourage l'indépendance",
+                emp_head: "EMPIRE",
+                emp_1: "👑 Contrôle central (Pouvoir du Roi)",
+                emp_2: "🌍 Nombreux groupes ethniques",
+                emp_3: "⚖️ Impose un système unique",
+                emp_4: "🧱 Maintient le contrôle par la force",
+                cause_title: "Cause et Effet",
+                cause_1: "La loyauté passe à la nation",
+                effect_1: "Déclin de l'autorité des empereurs",
+                cause_2: "Désir d'autonomie",
+                effect_2: "Mouvements d'indépendance",
+                cause_3: "Protection de la culture",
+                effect_3: "Révoltes ethniques et violence",
+                result_label: "RÉSULTAT FINAL (1914) :",
+                result_text: "Des empires faibles, des nations séparées et le bord de la Première Guerre mondiale."
+            },
+            mx: {
+                hero_title: "Cómo el Nacionalismo Tronó a los Imperios",
+                hero_sub: "En el siglo XIX, una idea nueva y peligrosa cambió cómo la raza entendía el poder y quién mandaba.",
+                def_title: "¿Qué onda con el Nacionalismo?",
+                def_intro: "Es la creencia de que la gente con cosas en común debe armar su propia nación y mandarse sola.",
+                trait_lang: "Lengua",
+                trait_lang_desc: "\"Somos la misma gente\"",
+                trait_cult: "Cultura",
+                trait_cult_desc: "\"Nuestras costumbres valen\"",
+                trait_hist: "Historia",
+                trait_hist_desc: "\"Tenemos el mismo pasado\"",
+                trait_id: "Identidad",
+                trait_id_desc: "\"Merecemos nuestro propio país\"",
+                conflict_title: "El Pleito Central",
+                conflict_sub: "El Viejo Sistema (Imperios) vs. La Nueva Idea (Nacionalismo)",
+                nat_head: "NACIONALISMO",
+                nat_1: "🏛️ Autogobierno (El pueblo manda)",
+                nat_2: "🧑‍🤝‍🧑 Una sola identidad",
+                nat_3: "🗣️ Defiende lo local",
+                nat_4: "🔥 Busca la independencia",
+                emp_head: "IMPERIO",
+                emp_1: "👑 Control central (El Rey manda)",
+                emp_2: "🌍 Un montón de grupos revueltos",
+                emp_3: "⚖️ Impone un solo sistema",
+                emp_4: "🧱 Mantiene el control a la fuerza",
+                cause_title: "Causa y Efecto",
+                cause_1: "La lealtad se va a la Nación",
+                effect_1: "El Emperador pierde poder",
+                cause_2: "Ganas de mandarse solos",
+                effect_2: "Movimientos de independencia",
+                cause_3: "Proteger la cultura",
+                effect_3: "Rebeliones y trancazos",
+                result_label: "RESULTADO (1914):",
+                result_text: "Imperios débiles, países nuevos y listos para la Primera Guerra Mundial."
+            }
+        };
+
+        function setLang(lang) {
+            // Update Text
+            const elements = document.querySelectorAll('[data-i18n]');
+            elements.forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    el.innerText = translations[lang][key];
+                }
+            });
+
+            // Update Buttons
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>
