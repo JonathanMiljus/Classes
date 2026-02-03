@@ -10,12 +10,13 @@
         :root {
             --primary: #2c3e50; /* Dark Blue */
             --accent-blue: #3498db; /* Nationalism Blue */
-            --accent-red: #8B0000; /* DARK RED for top banner and empire */
+            --accent-red: #c0392b; /* Empire Red */
+            --dark-red-banner: #8B0000; /* SPECIFIC DARK RED FOR TOP */
             --bg-color: #f4f7f6;
             --card-bg: #ffffff;
             --text-color: #333;
-            --font-head: 'Playfair Display', serif; /* Classic History Look */
-            --font-body: 'Lato', sans-serif; /* Clean Modern Look */
+            --font-head: 'Playfair Display', serif;
+            --font-body: 'Lato', sans-serif;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -27,29 +28,39 @@
             line-height: 1.6;
         }
 
-        /* --- TYPOGRAPHY --- */
-        h1, h2, h3 { font-family: var(--font-head); margin-bottom: 1rem; }
-        h1 { font-size: 2.5rem; color: var(--primary); }
-        h2 { font-size: 2rem; border-bottom: 2px solid var(--primary); padding-bottom: 10px; display: inline-block; }
-        
-        /* --- TOP RED QUESTION BANNER --- */
-        .top-banner {
-            background-color: var(--accent-red);
+        /* --- 1. THE DARK RED QUESTION BANNER --- */
+        .question-banner {
+            background-color: var(--dark-red-banner);
             color: white;
             text-align: center;
-            padding: 1.5rem 2rem;
+            padding: 2rem 1rem;
+            border-bottom: 4px solid #5a0000;
+        }
+        
+        .question-banner h2 {
             font-family: var(--font-head);
+            font-size: 1.4rem; 
+            margin-bottom: 1rem;
+            border: none; /* Remove default underline */
+            color: white;
+            display: block;
         }
-        .top-banner p {
-            margin-bottom: 0.8rem;
-            font-size: 1.1rem;
-            font-weight: 700;
+
+        .question-banner p {
+            margin-bottom: 10px;
+            font-weight: 400;
         }
-        .top-banner p:last-child { margin-bottom: 0; }
-        .lang-label { opacity: 0.7; font-size: 0.9rem; margin-right: 10px; }
 
+        .lang-tag {
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 2px 6px;
+            border-radius: 4px;
+            margin-right: 8px;
+            font-size: 0.9rem;
+        }
 
-        /* --- HEADER & NAV --- */
+        /* --- 2. HEADER & NAV --- */
         header {
             background: white;
             padding: 1rem 2rem;
@@ -62,7 +73,12 @@
             align-items: center;
         }
 
-        .logo { font-family: var(--font-head); font-size: 1.5rem; font-weight: bold; color: var(--primary); }
+        .logo { 
+            font-family: var(--font-head); 
+            font-size: 1.5rem; 
+            font-weight: bold; 
+            color: var(--primary); 
+        }
 
         .lang-switch {
             display: flex;
@@ -85,6 +101,11 @@
             color: white;
         }
 
+        /* --- TYPOGRAPHY --- */
+        h1, h3 { font-family: var(--font-head); margin-bottom: 1rem; }
+        h1 { font-size: 2.5rem; color: var(--primary); }
+        .section-title { font-size: 2rem; border-bottom: 2px solid var(--primary); padding-bottom: 10px; display: inline-block; margin-bottom: 1rem; font-family: var(--font-head); }
+        
         /* --- HERO SECTION --- */
         .hero {
             text-align: center;
@@ -171,22 +192,23 @@
             margin-top: 4rem;
             font-family: var(--font-head);
             font-weight: bold;
+            font-size: 1.2rem;
+            border-top: 5px solid var(--accent-blue);
         }
 
         /* --- RESPONSIVE --- */
         @media (max-width: 768px) {
             header { flex-direction: column; gap: 1rem; }
             .hero h1 { font-size: 2rem; }
-            .top-banner { text-align: left; }
         }
     </style>
 </head>
 <body>
 
-    <div class="top-banner">
-        <p><span class="lang-label">[EN]</span> How did nationalism weaken and eventually break apart Europe’s major empires between 1800 and 1914?</p>
-        <p><span class="lang-label">[ES]</span> ¿Cómo debilitó el nacionalismo y finalmente fragmentó los principales imperios de Europa entre 1800 y 1914?</p>
-        <p><span class="lang-label">[FR]</span> Comment le nationalisme a-t-il affaibli et finalement brisé les principaux empires européens entre 1800 et 1914 ?</p>
+    <div class="question-banner">
+        <p><span class="lang-tag">EN</span> How did nationalism weaken and eventually break apart Europe’s major empires between 1800 and 1914?</p>
+        <p><span class="lang-tag">ES</span> ¿Cómo debilitó el nacionalismo y finalmente fragmentó los principales imperios de Europa entre 1800 y 1914?</p>
+        <p><span class="lang-tag">FR</span> Comment le nationalisme a-t-il affaibli et finalement brisé les principaux empires européens entre 1800 et 1914 ?</p>
     </div>
 
     <header>
@@ -205,7 +227,7 @@
     </section>
 
     <section>
-        <h2 data-i18n="def_title">What is Nationalism?</h2>
+        <h2 class="section-title" data-i18n="def_title">What is Nationalism?</h2>
         <div class="card">
             <p data-i18n="def_intro">The belief that people who share common traits should form their own nation and govern themselves.</p>
             <div class="grid-4">
@@ -234,7 +256,7 @@
     </section>
 
     <section>
-        <h2 data-i18n="conflict_title">The Central Conflict</h2>
+        <h2 class="section-title" data-i18n="conflict_title">The Central Conflict</h2>
         <p data-i18n="conflict_sub">The Old System (Empires) vs. The New Idea (Nationalism)</p>
         
         <div class="conflict-container">
@@ -261,7 +283,7 @@
     </section>
 
     <section>
-        <h2 data-i18n="cause_title">Cause & Effect</h2>
+        <h2 class="section-title" data-i18n="cause_title">Cause & Effect</h2>
         <div class="card">
             <div class="flow-container">
                 <div class="flow-row">
@@ -286,7 +308,7 @@
     </section>
 
     <footer>
-        <p>For Miljus' World History Classes</p>
+        For Miljus' World History Classes
     </footer>
 
     <script>
