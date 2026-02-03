@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nationalism & The Fall of Empires</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <style>
         /* --- CSS VARIABLES & RESET --- */
         :root {
             --primary: #2c3e50; /* Dark Blue */
             --accent-blue: #3498db; /* Nationalism Blue */
-            --accent-red: #c0392b; /* Empire Red */
+            --accent-red: #8B0000; /* DARK RED for top banner and empire */
             --bg-color: #f4f7f6;
             --card-bg: #ffffff;
             --text-color: #333;
@@ -31,6 +32,23 @@
         h1 { font-size: 2.5rem; color: var(--primary); }
         h2 { font-size: 2rem; border-bottom: 2px solid var(--primary); padding-bottom: 10px; display: inline-block; }
         
+        /* --- TOP RED QUESTION BANNER --- */
+        .top-banner {
+            background-color: var(--accent-red);
+            color: white;
+            text-align: center;
+            padding: 1.5rem 2rem;
+            font-family: var(--font-head);
+        }
+        .top-banner p {
+            margin-bottom: 0.8rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+        .top-banner p:last-child { margin-bottom: 0; }
+        .lang-label { opacity: 0.7; font-size: 0.9rem; margin-right: 10px; }
+
+
         /* --- HEADER & NAV --- */
         header {
             background: white;
@@ -44,6 +62,8 @@
             align-items: center;
         }
 
+        .logo { font-family: var(--font-head); font-size: 1.5rem; font-weight: bold; color: var(--primary); }
+
         .lang-switch {
             display: flex;
             gap: 10px;
@@ -54,6 +74,7 @@
             border: 2px solid var(--primary);
             padding: 5px 15px;
             cursor: pointer;
+            font-family: var(--font-body);
             font-weight: bold;
             transition: all 0.3s ease;
             border-radius: 20px;
@@ -148,17 +169,25 @@
             text-align: center;
             padding: 2rem;
             margin-top: 4rem;
+            font-family: var(--font-head);
+            font-weight: bold;
         }
 
         /* --- RESPONSIVE --- */
         @media (max-width: 768px) {
             header { flex-direction: column; gap: 1rem; }
             .hero h1 { font-size: 2rem; }
+            .top-banner { text-align: left; }
         }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
+
+    <div class="top-banner">
+        <p><span class="lang-label">[EN]</span> How did nationalism weaken and eventually break apart Europe’s major empires between 1800 and 1914?</p>
+        <p><span class="lang-label">[ES]</span> ¿Cómo debilitó el nacionalismo y finalmente fragmentó los principales imperios de Europa entre 1800 y 1914?</p>
+        <p><span class="lang-label">[FR]</span> Comment le nationalisme a-t-il affaibli et finalement brisé les principaux empires européens entre 1800 et 1914 ?</p>
+    </div>
 
     <header>
         <div class="logo">History<span style="color:var(--accent-blue)">Explained</span></div>
@@ -171,7 +200,7 @@
     </header>
 
     <section class="hero">
-        <h1 data-i18n="hero_title">How Nationalism Broke Empires (1800-1914)</h1>
+        <h1 data-i18n="hero_title">The Power of Nationalism (1800-1914)</h1>
         <p data-i18n="hero_sub">In the 1800s, a dangerous new idea transformed how people understood power, identity, and government.</p>
     </section>
 
@@ -257,13 +286,13 @@
     </section>
 
     <footer>
-        <p>History Explained Educational Resources © 2023</p>
+        <p>For Miljus' World History Classes</p>
     </footer>
 
     <script>
         const translations = {
             en: {
-                hero_title: "How Nationalism Broke Empires (1800-1914)",
+                hero_title: "The Power of Nationalism (1800-1914)",
                 hero_sub: "In the 1800s, a dangerous new idea transformed how people understood power, identity, and government.",
                 def_title: "What is Nationalism?",
                 def_intro: "The belief that people who share common traits should form their own nation and govern themselves.",
@@ -298,7 +327,7 @@
                 result_text: "Weak empires, breakaway nations, and the brink of World War I."
             },
             es: {
-                hero_title: "Cómo el Nacionalismo Destruyó Imperios",
+                hero_title: "El Poder del Nacionalismo (1800-1914)",
                 hero_sub: "En el siglo XIX, una nueva y peligrosa idea transformó la forma en que la gente entendía el poder y el gobierno.",
                 def_title: "¿Qué es el Nacionalismo?",
                 def_intro: "La creencia de que las personas que comparten rasgos comunes deben formar su propia nación.",
@@ -323,7 +352,7 @@
                 emp_3: "⚖️ Impone un sistema único",
                 emp_4: "🧱 Mantiene el control por fuerza",
                 cause_title: "Causa y Efecto",
-                cause_1: "Lealtad cambia a la Nación",
+                cause_1: "La lealtad cambia a la Nación",
                 effect_1: "Declive de la autoridad imperial",
                 cause_2: "Deseo de autogobierno",
                 effect_2: "Movimientos de independencia",
@@ -333,7 +362,7 @@
                 result_text: "Imperios débiles, naciones separadas y el borde de la Primera Guerra Mundial."
             },
             fr: {
-                hero_title: "Comment le nationalisme a brisé les empires",
+                hero_title: "Le pouvoir du nationalisme (1800-1914)",
                 hero_sub: "Au XIXe siècle, une nouvelle idée dangereuse a transformé la conception du pouvoir et du gouvernement.",
                 def_title: "Qu'est-ce que le nationalisme ?",
                 def_intro: "La croyance selon laquelle les personnes partageant des traits communs devraient former leur propre nation.",
@@ -368,7 +397,7 @@
                 result_text: "Des empires faibles, des nations séparées et le bord de la Première Guerre mondiale."
             },
             mx: {
-                hero_title: "Cómo el Nacionalismo Tronó a los Imperios",
+                hero_title: "El Poder del Nacionalismo (1800-1914)",
                 hero_sub: "En el siglo XIX, una idea nueva y peligrosa cambió cómo la raza entendía el poder y quién mandaba.",
                 def_title: "¿Qué onda con el Nacionalismo?",
                 def_intro: "Es la creencia de que la gente con cosas en común debe armar su propia nación y mandarse sola.",
