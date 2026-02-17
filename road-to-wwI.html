@@ -1,0 +1,1164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Powder Keg — Understanding World War I</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Sans+3:wght@300;400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>:root{--bg:#1a1a2e;--bg2:#16213e;--red:#e94560;--gold:#f0c040;--teal:#53d8b0;--blue:#4da6ff;--purple:#b56cff;--orange:#ff8c42;--txt:#eaeaea;--mute:#a0a8b8;--white:#fff;--bdr:rgba(255,255,255,0.08);--glass:rgba(255,255,255,0.04);--r:16px}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{font-family:'Source Sans 3',sans-serif;background:var(--bg);color:var(--txt);line-height:1.7;font-size:17px;overflow-x:hidden}
+.topnav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(26,26,46,0.94);backdrop-filter:blur(16px);border-bottom:1px solid var(--bdr);display:flex;align-items:center;justify-content:space-between;padding:0 24px;height:56px}
+.navbrand{font-family:'Playfair Display',serif;font-weight:700;font-size:1.1rem;color:var(--gold);white-space:nowrap}
+.navlinks{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;padding:4px 0}.navlinks::-webkit-scrollbar{display:none}
+.navlinks a{color:var(--mute);text-decoration:none;font-size:.8rem;font-weight:600;padding:6px 10px;border-radius:8px;white-space:nowrap;transition:all .2s}.navlinks a:hover{color:var(--white);background:var(--glass)}
+.langsel{display:flex;gap:3px;flex-shrink:0}
+.lbtn{background:var(--glass);border:1px solid var(--bdr);color:var(--mute);font-size:.72rem;font-weight:700;padding:4px 8px;border-radius:6px;cursor:pointer;transition:all .2s;font-family:'Source Sans 3',sans-serif}.lbtn:hover{color:var(--white);border-color:var(--gold)}.lbtn.active{background:var(--gold);color:var(--bg);border-color:var(--gold)}
+.spacer{height:56px}section{max-width:960px;margin:0 auto;padding:72px 24px}
+.slab{font-family:'JetBrains Mono',monospace;font-size:.72rem;font-weight:600;color:var(--red);text-transform:uppercase;letter-spacing:3px;margin-bottom:10px}
+h1{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,5.5vw,3.6rem);font-weight:900;color:var(--white);line-height:1.15;margin-bottom:20px}
+h2{font-family:'Playfair Display',serif;font-size:clamp(1.7rem,4vw,2.4rem);font-weight:700;color:var(--white);line-height:1.2;margin-bottom:18px}
+h3{font-family:'Playfair Display',serif;font-size:1.25rem;font-weight:700;color:var(--gold);margin-bottom:10px}
+p{margin-bottom:14px}
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;position:relative;padding:100px 24px 70px;max-width:960px;margin:0 auto}
+.hero::before{content:'';position:fixed;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 20% 50%,rgba(233,69,96,.07) 0%,transparent 60%),radial-gradient(ellipse at 80% 20%,rgba(240,192,64,.05) 0%,transparent 50%);z-index:-1;pointer-events:none}
+.hsub{font-size:1.1rem;color:var(--mute);max-width:640px;margin-bottom:36px}
+.cgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin:28px 0}
+.ccard{background:var(--glass);border:1px solid var(--bdr);border-radius:var(--r);padding:22px;transition:transform .2s,border-color .3s}.ccard:hover{transform:translateY(-2px);border-color:rgba(255,255,255,.12)}
+.ccard.red{border-left:3px solid var(--red)}.ccard.gold{border-left:3px solid var(--gold)}.ccard.teal{border-left:3px solid var(--teal)}.ccard.blue{border-left:3px solid var(--blue)}.ccard.purple{border-left:3px solid var(--purple)}
+.cicon{font-size:1.5rem;margin-bottom:6px;display:block}.ccard h4{font-weight:700;font-size:.95rem;color:var(--white);margin-bottom:4px}.ccard p,.ccard>p{font-size:.9rem;color:var(--mute);margin:0}
+.ibox{background:rgba(240,192,64,.06);border:1px solid rgba(240,192,64,.15);border-radius:var(--r);padding:22px 26px;margin:24px 0}
+.ibox.rb{background:rgba(233,69,96,.06);border-color:rgba(233,69,96,.15)}.ibox.tb{background:rgba(83,216,176,.06);border-color:rgba(83,216,176,.15)}
+.atag{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:.68rem;font-weight:600;color:var(--teal);text-transform:uppercase;letter-spacing:2px;margin-bottom:6px}
+.tl{position:relative;margin:40px 0;padding-left:32px}.tl::before{content:'';position:absolute;left:8px;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--red),var(--gold),var(--teal))}
+.tli{position:relative;margin-bottom:24px;padding-left:18px}.tli::before{content:'';position:absolute;left:-28px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--gold);border:2px solid var(--bg)}
+.tly{font-family:'JetBrains Mono',monospace;font-size:.82rem;font-weight:600;color:var(--gold)}.tlt{font-size:.92rem;color:var(--txt)}
+.treec{background:var(--glass);border:1px solid var(--bdr);border-radius:var(--r);padding:28px;margin:28px 0;overflow-x:auto}
+.troot{text-align:center;margin-bottom:20px}
+.tbadge{display:inline-block;padding:8px 20px;border-radius:20px;font-weight:700;font-size:.9rem}
+.tbadge.root{background:var(--gold);color:var(--bg)}.tbadge.slav{background:var(--teal);color:var(--bg)}.tbadge.germ{background:var(--blue);color:var(--bg)}.tbadge.rom{background:var(--red);color:var(--white)}.tbadge.celt{background:var(--purple);color:var(--white)}.tbadge.hell{background:var(--orange);color:var(--bg)}
+.tbranch{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:14px}
+.tb{text-align:center;padding:14px;border-radius:12px;border:1px solid var(--bdr)}.tb h4{font-size:.85rem;font-weight:700;margin-bottom:6px}.tb ul{list-style:none;font-size:.82rem;color:var(--mute)}.tb li{padding:2px 0}
+.egrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:18px;margin:28px 0}
+.ecard{background:var(--glass);border:1px solid var(--bdr);border-radius:var(--r);padding:24px;position:relative;overflow:hidden}.ecard::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.ecard.au::before{background:linear-gradient(90deg,var(--red),var(--gold))}.ecard.ot::before{background:linear-gradient(90deg,var(--red),var(--teal))}.ecard.ru::before{background:linear-gradient(90deg,var(--blue),var(--purple))}.ecard.se::before{background:linear-gradient(90deg,var(--teal),var(--blue))}
+.eflag{font-size:1.8rem;margin-bottom:10px;display:block}
+.ptags{display:flex;flex-wrap:wrap;gap:5px;margin-top:10px}.ptag{font-size:.75rem;padding:3px 9px;border-radius:10px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:var(--mute);font-weight:600}
+.agrid{display:grid;grid-template-columns:1fr auto 1fr;gap:20px;margin:28px 0;align-items:start}
+.abox{background:var(--glass);border:1px solid var(--bdr);border-radius:var(--r);padding:24px}.abox.ta{border-top:3px solid var(--red)}.abox.te{border-top:3px solid var(--blue)}
+.avs{display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:900;font-size:1.5rem;color:var(--gold);padding-top:36px}
+.amem{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--bdr)}.amem:last-child{border-bottom:none}
+.amem .fl{font-size:1.3rem}.amem .nm{font-weight:700;color:var(--white)}.amem .rl{font-size:.82rem;color:var(--mute)}
+.rgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin:28px 0}
+.rcard{padding:24px;border-radius:var(--r);border:1px solid var(--bdr)}.rcard.cat{background:rgba(240,192,64,.05);border-color:rgba(240,192,64,.15)}.rcard.ort{background:rgba(77,166,255,.05);border-color:rgba(77,166,255,.15)}.rcard.mus{background:rgba(83,216,176,.05);border-color:rgba(83,216,176,.15)}
+.cstep{display:flex;align-items:flex-start;gap:16px;margin-bottom:6px}.cnum{flex-shrink:0;width:40px;height:40px;border-radius:50%;background:var(--red);color:var(--white);font-family:'Playfair Display',serif;font-weight:900;font-size:1rem;display:flex;align-items:center;justify-content:center}
+.carr{text-align:center;font-size:1.3rem;color:var(--gold);margin:0 0 6px 10px}
+.ccont h4{font-weight:700;color:var(--white);margin-bottom:3px}.ccont p{font-size:.9rem;color:var(--mute);margin:0}
+.vcard{background:var(--glass);border:1px solid var(--bdr);border-radius:var(--r);padding:24px;margin-bottom:18px}.vcard h4{font-weight:700;color:var(--gold);margin-bottom:6px}
+.tsec{background:var(--bg2);border-top:2px solid var(--gold);margin-top:40px;padding:60px 24px}.tsec .inner{max-width:960px;margin:0 auto}
+.stable{width:100%;border-collapse:collapse;margin:18px 0;font-size:.88rem}.stable th{text-align:left;padding:10px 14px;background:rgba(240,192,64,.08);color:var(--gold);font-weight:700;border-bottom:1px solid var(--bdr)}.stable td{padding:8px 14px;border-bottom:1px solid var(--bdr);color:var(--mute)}
+.vgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:10px;margin:18px 0}
+.vitem{padding:10px 14px;background:var(--glass);border-radius:10px;border:1px solid var(--bdr)}.vitem strong{color:var(--gold)}
+.sdiv{max-width:960px;margin:0 auto;height:1px;background:linear-gradient(90deg,transparent,var(--bdr),transparent)}
+footer{text-align:center;padding:40px 24px;color:var(--mute);font-size:.85rem;border-top:1px solid var(--bdr)}footer .cr{font-family:'Playfair Display',serif;font-weight:700;color:var(--gold);font-size:.95rem;margin-bottom:4px}
+[data-lang]{display:none}[data-lang="en"]{display:block}
+@media(max-width:768px){.topnav{padding:0 10px;height:50px}.navlinks{display:none}section{padding:56px 14px}.agrid{grid-template-columns:1fr}.avs{padding:0;font-size:1.1rem}.hero{padding:70px 14px 50px;min-height:auto}}
+/* ═══ NEXUS POINT STYLES ═══ */
+.lbtn{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);color:#a0a8b8;font-size:.72rem;font-weight:700;padding:5px 10px;border-radius:6px;cursor:pointer;transition:all .2s;font-family:'Source Sans 3',sans-serif}.lbtn:hover{color:#fff;border-color:#f0c040}.lbtn.active{background:#f0c040;color:#1a1a2e;border-color:#f0c040}
+.nwrap{max-width:1100px;margin:0 auto;padding:60px 24px}
+.tbar{display:flex;align-items:center;gap:16px;margin:20px 0}
+.tl2{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--mute);text-transform:uppercase;letter-spacing:1px;white-space:nowrap}
+.ttr{flex:1;height:10px;background:var(--bg2);border:1px solid var(--bdr);border-radius:5px;overflow:hidden}
+.tfi{height:100%;border-radius:4px;transition:width .8s ease,background .8s ease}
+.tvl{font-family:'JetBrains Mono',monospace;font-size:1rem;font-weight:700;min-width:50px;text-align:right}
+.cg{display:grid;grid-template-columns:1fr 340px;gap:0;margin:24px 0;border:1px solid var(--bdr);border-radius:var(--r);overflow:hidden;background:var(--bg2)}
+.mp{position:relative;min-height:500px;background:var(--bg);border-right:1px solid var(--bdr)}
+.mp svg{width:100%;height:100%;display:block}
+.ip{overflow-y:auto;max-height:600px}
+.ps{padding:20px;border-bottom:1px solid var(--bdr)}
+.pl{font-family:'JetBrains Mono',monospace;font-size:.6rem;color:var(--gold);text-transform:uppercase;letter-spacing:2px;margin-bottom:6px}
+.pt2{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;color:var(--white);margin-bottom:6px;line-height:1.3}
+.ptm{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--gold);margin-top:4px}
+.am{position:absolute;cursor:pointer;z-index:10;transition:all .3s}
+.ad{width:16px;height:16px;border-radius:50%;border:2px solid var(--red);background:rgba(233,69,96,.15);position:relative}
+.ad::after{content:'';position:absolute;top:-4px;left:-4px;right:-4px;bottom:-4px;border-radius:50%;border:1px solid rgba(233,69,96,.2);animation:ap 2s ease infinite}
+.am:hover .ad{background:var(--red);box-shadow:0 0 16px rgba(233,69,96,.4)}
+.am .an{position:absolute;top:100%;left:50%;transform:translateX(-50%);white-space:nowrap;font-family:'JetBrains Mono',monospace;font-size:.5rem;color:var(--red);margin-top:2px;opacity:.7;font-weight:600}
+.am.off .ad{border-color:var(--mute);background:transparent;opacity:.25}
+.am.off .ad::after{display:none}
+.am.off .an{color:var(--mute)}
+.car{position:absolute;z-index:15;transition:all 1.2s ease}
+.cd2{width:10px;height:10px;border-radius:50%;background:var(--gold);box-shadow:0 0 12px rgba(240,192,64,.4),0 0 30px rgba(240,192,64,.1)}
+.gz{position:absolute;border:2px dashed var(--red);border-radius:8px;opacity:0;transition:opacity .4s;pointer-events:none}
+.gz.on{opacity:1;animation:gf .5s ease}
+.euo{position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(26,26,46,.95);opacity:0;pointer-events:none;transition:opacity .5s;display:flex;align-items:center;justify-content:center;z-index:20}
+.euo.on{opacity:1;pointer-events:all}
+.scr{padding:20px 24px;background:var(--bg2);border:1px solid var(--bdr);border-radius:var(--r);margin:20px 0}
+.str{position:relative;height:36px;margin:10px 0}
+.sln{position:absolute;top:16px;left:0;right:0;height:2px;background:var(--bdr)}
+.spr{position:absolute;top:16px;left:0;height:2px;background:var(--gold);transition:width .3s}
+.sns{position:absolute;top:0;left:0;right:0;height:36px;display:flex;justify-content:space-between;align-items:center}
+.sn{width:12px;height:12px;border-radius:50%;border:2px solid var(--bdr);background:var(--bg);cursor:pointer;position:relative;transition:all .3s;z-index:2}
+.sn:hover,.sn.on{border-color:var(--gold);background:var(--gold);box-shadow:0 0 10px rgba(240,192,64,.3)}
+.sn.fired{border-color:var(--red);background:var(--red);box-shadow:0 0 14px rgba(233,69,96,.4)}
+.sn .tip{position:absolute;bottom:calc(100% + 6px);left:50%;transform:translateX(-50%);white-space:nowrap;font-family:'JetBrains Mono',monospace;font-size:.55rem;color:var(--mute);padding:3px 8px;background:var(--bg);border:1px solid var(--bdr);border-radius:4px;opacity:0;transition:opacity .2s;pointer-events:none}
+.sn:hover .tip{opacity:1}
+.stm{display:flex;justify-content:space-between;font-family:'JetBrains Mono',monospace;font-size:.6rem;color:var(--mute)}
+.sbt{display:flex;gap:8px;margin-top:10px}
+.sb{background:var(--gold);color:var(--bg);border:none;padding:6px 18px;border-radius:8px;font-family:'JetBrains Mono',monospace;font-size:.7rem;font-weight:700;cursor:pointer;text-transform:uppercase;letter-spacing:1px;transition:all .2s}
+.sb:hover{box-shadow:0 0 20px rgba(240,192,64,.3)}
+.sb2{background:var(--glass);color:var(--mute);border:1px solid var(--bdr)}
+.wft{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:var(--glass);border:1px solid var(--bdr);border-radius:var(--r);margin-bottom:8px;cursor:pointer;transition:all .2s}
+.wft:hover{border-color:var(--gold)}
+.wft.on{border-color:var(--teal);background:rgba(83,216,176,.06)}
+.wfn{font-size:.88rem;color:var(--white)}
+.wfs{width:36px;height:20px;border-radius:10px;background:var(--bg);border:1px solid var(--bdr);position:relative;transition:all .3s;flex-shrink:0}
+.wfs::after{content:'';position:absolute;top:2px;left:2px;width:14px;height:14px;border-radius:50%;background:var(--mute);transition:all .3s}
+.wft.on .wfs{background:var(--teal);border-color:var(--teal)}
+.wft.on .wfs::after{left:18px;background:var(--white)}
+.wfr{padding:14px;background:rgba(83,216,176,.05);border:1px solid rgba(83,216,176,.12);border-radius:var(--r);margin-bottom:8px;display:none;font-size:.85rem;color:var(--teal)}
+.wfr.show{display:block;animation:fu .4s ease}
+.dr{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.04);opacity:.25;transition:all .5s}
+.dr.lit{opacity:1}
+.df{font-size:1.1rem}
+.dn{font-weight:600;color:var(--white);font-size:.88rem;flex:1}
+.dd{font-family:'JetBrains Mono',monospace;font-size:.6rem;color:var(--mute)}
+.da{font-family:'JetBrains Mono',monospace;font-size:.58rem;color:var(--red);text-transform:uppercase;letter-spacing:1px}
+.dc{text-align:center;padding:20px;background:rgba(233,69,96,.04);border:1px solid rgba(233,69,96,.1);border-radius:var(--r);margin-top:12px;display:none}
+.dc .num{font-family:'JetBrains Mono',monospace;font-size:2rem;font-weight:700;color:var(--red)}
+.dc .lbl{font-family:'JetBrains Mono',monospace;font-size:.6rem;color:var(--mute);text-transform:uppercase;letter-spacing:2px;margin-top:2px}
+.dos{padding:16px;background:var(--glass);border:1px solid var(--bdr);border-radius:var(--r);margin-top:8px;display:none}
+.dos.show{display:block;animation:fu .3s ease}
+.dos h4{font-family:'Playfair Display',serif;color:var(--white);font-size:1rem;margin-bottom:2px}
+.dos .pos{font-family:'JetBrains Mono',monospace;font-size:.6rem;color:var(--gold);text-transform:uppercase;letter-spacing:1px}
+.dos .desc{font-size:.82rem;color:var(--txt);margin-top:6px}
+.dos .badge{display:inline-block;padding:2px 8px;border-radius:4px;font-family:'JetBrains Mono',monospace;font-size:.58rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-top:6px}
+.badge.fail{background:rgba(160,168,184,.1);color:var(--mute)}
+.badge.kill{background:rgba(233,69,96,.12);color:var(--red)}
+.ewrap{max-width:1100px;margin:0 auto;padding:60px 24px}
+.etabs{display:flex;gap:4px;margin:20px 0;flex-wrap:wrap}
+.etab{padding:8px 18px;border-radius:8px;border:1px solid var(--bdr);background:var(--glass);color:var(--mute);font-family:'JetBrains Mono',monospace;font-size:.72rem;font-weight:600;cursor:pointer;transition:all .2s;letter-spacing:1px}
+.etab:hover{border-color:var(--gold);color:var(--white)}
+.etab.on{background:var(--gold);color:var(--bg);border-color:var(--gold)}
+.mdsp{background:var(--bg2);border:1px solid var(--bdr);border-radius:var(--r);overflow:hidden;position:relative}
+.mdsp svg{width:100%;display:block}
+.einf{padding:24px;border-top:1px solid var(--bdr);background:var(--glass)}
+.einf h3{margin-bottom:4px}
+.einf p{font-size:.9rem;color:var(--mute);margin:0}
+@media(max-width:900px){.cg{grid-template-columns:1fr}
+.ip{max-height:none}
+.mp{min-height:350px}
+@keyframes ap{0%{transform:scale(1);opacity:.5}100%{transform:scale(2);opacity:0}
+@keyframes gf{0%{opacity:0}30%{opacity:1}
+@keyframes fu{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}
+</style>
+</head>
+<body>
+<div style="display:flex;gap:3px;justify-content:center;padding:12px 0;position:sticky;top:0;z-index:100;background:rgba(26,26,46,.94);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.08)">
+<button class="lbtn active" onclick="setLang('en')">EN</button>
+<button class="lbtn" onclick="setLang('es')">ES</button>
+<button class="lbtn" onclick="setLang('fr')">FR</button>
+<button class="lbtn" onclick="setLang('pt')">PT</button>
+<button class="lbtn" onclick="setLang('ht')">HT</button>
+</div>
+
+<nav class="topnav">
+<div class="navbrand">💣 The Powder Keg</div>
+<div class="navlinks">
+<a href="#s1">Big Idea</a><a href="#s2">Ethnicity</a><a href="#s3">The Map</a><a href="#s4">Religion</a><a href="#s5">Alliances</a><a href="#s6">Chain Reaction</a><a href="#s7">Visuals</a><a href="#s8">Teacher</a>
+</div>
+<div class="langsel">
+<button class="lbtn active" onclick="setLang('en')">EN</button>
+<button class="lbtn" onclick="setLang('es')">ES</button>
+<button class="lbtn" onclick="setLang('fr')">FR</button>
+<button class="lbtn" onclick="setLang('pt')">PT</button>
+<button class="lbtn" onclick="setLang('ht')">HT</button>
+</div>
+</nav>
+<div class="spacer"></div>
+<section class="hero" id="s1">
+<div data-lang="en">
+<div class="slab">Section 1 — The Big Idea</div>
+<h1>Europe Was a Giant Powder Keg in 1914</h1>
+<p class="hsub">Imagine a group chat with 20 people. Everyone has secret alliances. Everyone is jealous. Everyone has weapons. And then someone sends the worst text ever. That's Europe before World War I.</p>
+<div class="ibox"><span class="atag">🧨 Analogy</span><p>A <strong>powder keg</strong> is a barrel full of gunpowder. One spark and the whole thing explodes. Before 1914, Europe was like that barrel — full of anger, jealousy, fear, and weapons. The assassination of Archduke Franz Ferdinand was the spark.</p></div>
+<h3>5 Key Takeaways</h3>
+<div class="cgrid">
+<div class="ccard"><span class="cicon">🗺️</span><h4>Borders ≠ People</h4><p>Empires forced many different ethnic groups to live under one flag. People wanted freedom.</p></div>
+<div class="ccard"><span class="cicon">🔥</span><h4>Nationalism = Pride + Danger</h4><p>People loved their own culture so much, they were willing to fight for it — and against others.</p></div>
+<div class="ccard"><span class="cicon">🤝</span><h4>Secret Alliances</h4><p>Countries made secret promises: 'If you get attacked, I'll fight for you.' This turned small fights into world wars.</p></div>
+<div class="ccard"><span class="cicon">💪</span><h4>Arms Race</h4><p>Every country was building bigger armies and more weapons, just in case. Fear made everyone prepare for war.</p></div>
+<div class="ccard"><span class="cicon">💥</span><h4>One Spark = Explosion</h4><p>The assassination of one man triggered a chain reaction that pulled the whole world into war.</p></div>
+</div>
+<h3 style="margin-top:40px">Summary Timeline: 1871 → 1914</h3>
+<div class="tl">
+<div class="tli"><span class="tly">1871</span><p class="tlt">Germany unifies. Becomes a powerful new empire. France is angry — they lost a war and gave up land.</p></div>
+<div class="tli"><span class="tly">1882</span><p class="tlt">Triple Alliance forms: Germany, Austria-Hungary, Italy agree to protect each other.</p></div>
+<div class="tli"><span class="tly">1894–1907</span><p class="tlt">France, Russia, Britain join in the Triple Entente. Now Europe has two giant teams.</p></div>
+<div class="tli"><span class="tly">1908</span><p class="tlt">Austria-Hungary takes Bosnia. Serbia is furious — many Slavs live there.</p></div>
+<div class="tli"><span class="tly">1912–1913</span><p class="tlt">Balkan Wars. Small countries fight the Ottoman Empire and each other. Tensions explode.</p></div>
+<div class="tli"><span class="tly">June 28, 1914</span><p class="tlt">Archduke Franz Ferdinand is assassinated in Sarajevo. The spark hits the powder keg.</p></div>
+<div class="tli"><span class="tly">August 1914</span><p class="tlt">Within weeks, almost all of Europe is at war.</p></div>
+</div>
+</div>
+<div data-lang="es">
+<div class="slab">Sección 1 — La Idea Principal</div>
+<h1>Europa Era un Barril de Pólvora Gigante en 1914</h1>
+<p class="hsub">Imagínate un chat grupal con 20 personas. Todos tienen alianzas secretas. Todos están celosos. Todos tienen armas. Y entonces alguien manda el peor mensaje de la historia. Así era Europa antes de la Primera Guerra Mundial.</p>
+<div class="ibox"><span class="atag">🧨 Analogía</span><p>Un <strong>barril de pólvora</strong> es un barril lleno de pólvora explosiva. Una chispa y todo explota. Antes de 1914, Europa era como ese barril — llena de rabia, celos, miedo y armas. El asesinato del Archiduque Francisco Fernando fue la chispa.</p></div>
+<h3>5 Ideas Clave</h3>
+<div class="cgrid">
+<div class="ccard"><span class="cicon">🗺️</span><h4>Fronteras ≠ Pueblos</h4><p>Los imperios obligaron a muchos grupos étnicos a vivir bajo una sola bandera. La gente quería libertad.</p></div>
+<div class="ccard"><span class="cicon">🔥</span><h4>Nacionalismo = Orgullo + Peligro</h4><p>La gente amaba tanto su cultura que estaba dispuesta a luchar por ella — y contra los demás.</p></div>
+<div class="ccard"><span class="cicon">🤝</span><h4>Alianzas Secretas</h4><p>Los países hicieron promesas secretas: 'Si te atacan, yo peleo por ti.' Esto convirtió peleas pequeñas en guerras mundiales.</p></div>
+<div class="ccard"><span class="cicon">💪</span><h4>Carrera Armamentista</h4><p>Cada país construía ejércitos más grandes y más armas. El miedo hizo que todos se prepararan.</p></div>
+<div class="ccard"><span class="cicon">💥</span><h4>Una Chispa = Explosión</h4><p>El asesinato de un solo hombre desencadenó una reacción en cadena que arrastró al mundo a la guerra.</p></div>
+</div>
+<h3 style="margin-top:40px">Línea de Tiempo: 1871 → 1914</h3>
+<div class="tl">
+<div class="tli"><span class="tly">1871</span><p class="tlt">Alemania se unifica. Francia está furiosa — perdieron una guerra y entregaron territorios.</p></div>
+<div class="tli"><span class="tly">1882</span><p class="tlt">Se forma la Triple Alianza: Alemania, Austria-Hungría e Italia.</p></div>
+<div class="tli"><span class="tly">1894–1907</span><p class="tlt">Francia, Rusia y Gran Bretaña forman la Triple Entente. Dos equipos gigantes.</p></div>
+<div class="tli"><span class="tly">1908</span><p class="tlt">Austria-Hungría toma Bosnia. Serbia furiosa — muchos eslavos viven allí.</p></div>
+<div class="tli"><span class="tly">1912–1913</span><p class="tlt">Guerras Balcánicas. Pequeños países luchan contra el Imperio Otomano. Tensiones explotan.</p></div>
+<div class="tli"><span class="tly">28 de junio, 1914</span><p class="tlt">El Archiduque Francisco Fernando es asesinado en Sarajevo. La chispa llega al barril.</p></div>
+<div class="tli"><span class="tly">Agosto 1914</span><p class="tlt">En pocas semanas, casi toda Europa está en guerra.</p></div>
+</div>
+</div>
+<div data-lang="fr">
+<div class="slab">Section 1 — L'Idée Principale</div>
+<h1>L'Europe Était une Poudrière Géante en 1914</h1>
+<p class="hsub">Imagine un groupe de discussion avec 20 personnes. Tout le monde a des alliances secrètes. Tout le monde est jaloux. Tout le monde a des armes. Et quelqu'un envoie le pire message de l'histoire. C'était l'Europe avant la Première Guerre mondiale.</p>
+<div class="ibox"><span class="atag">🧨 Analogie</span><p>Une <strong>poudrière</strong> est un baril rempli de poudre explosive. Une étincelle et tout explose. Avant 1914, l'Europe était comme ce baril — pleine de colère, de jalousie, de peur et d'armes. L'assassinat de l'Archiduc François-Ferdinand a été l'étincelle.</p></div>
+<h3>5 Idées Clés</h3>
+<div class="cgrid">
+<div class="ccard"><span class="cicon">🗺️</span><h4>Frontières ≠ Peuples</h4><p>Les empires ont forcé de nombreux groupes ethniques à vivre sous un même drapeau.</p></div>
+<div class="ccard"><span class="cicon">🔥</span><h4>Nationalisme = Fierté + Danger</h4><p>Les gens aimaient tellement leur culture qu'ils étaient prêts à se battre.</p></div>
+<div class="ccard"><span class="cicon">🤝</span><h4>Alliances Secrètes</h4><p>Les pays ont promis : 'Si on t'attaque, je me bats pour toi.' Cela a transformé de petits conflits en guerres mondiales.</p></div>
+<div class="ccard"><span class="cicon">💪</span><h4>Course aux Armements</h4><p>Chaque pays construisait des armées plus grandes. La peur a poussé tout le monde à se préparer.</p></div>
+<div class="ccard"><span class="cicon">💥</span><h4>Une Étincelle = Explosion</h4><p>L'assassinat d'un seul homme a déclenché une réaction en chaîne mondiale.</p></div>
+</div>
+<h3 style="margin-top:40px">Chronologie : 1871 → 1914</h3>
+<div class="tl">
+<div class="tli"><span class="tly">1871</span><p class="tlt">L'Allemagne s'unifie. La France est en colère — elle a perdu une guerre et cédé des territoires.</p></div>
+<div class="tli"><span class="tly">1882</span><p class="tlt">La Triple Alliance : Allemagne, Autriche-Hongrie, Italie.</p></div>
+<div class="tli"><span class="tly">1894–1907</span><p class="tlt">France, Russie, Grande-Bretagne forment la Triple Entente. Deux équipes géantes.</p></div>
+<div class="tli"><span class="tly">1908</span><p class="tlt">L'Autriche-Hongrie prend la Bosnie. La Serbie est furieuse.</p></div>
+<div class="tli"><span class="tly">1912–1913</span><p class="tlt">Guerres balkaniques. Les tensions explosent.</p></div>
+<div class="tli"><span class="tly">28 juin 1914</span><p class="tlt">L'Archiduc François-Ferdinand est assassiné à Sarajevo. L'étincelle atteint la poudrière.</p></div>
+<div class="tli"><span class="tly">Août 1914</span><p class="tlt">En quelques semaines, presque toute l'Europe est en guerre.</p></div>
+</div>
+</div>
+<div data-lang="pt">
+<div class="slab">Seção 1 — A Ideia Principal</div>
+<h1>A Europa Era um Barril de Pólvora em 1914</h1>
+<p class="hsub">Imagina um grupo de WhatsApp com 20 pessoas. Todo mundo tem alianças secretas. Todo mundo tem ciúmes. Todo mundo tem armas. E aí alguém manda a pior mensagem da história. Essa era a Europa antes da Primeira Guerra Mundial.</p>
+<div class="ibox"><span class="atag">🧨 Analogia</span><p>Um <strong>barril de pólvora</strong> é um barril cheio de pólvora explosiva. Uma faísca e tudo explode. Antes de 1914, a Europa era como esse barril — cheia de raiva, ciúmes, medo e armas. O assassinato do Arquiduque Francisco Ferdinando foi a faísca.</p></div>
+<h3>5 Ideias-Chave</h3>
+<div class="cgrid">
+<div class="ccard"><span class="cicon">🗺️</span><h4>Fronteiras ≠ Povos</h4><p>Os impérios forçaram muitos grupos étnicos a viver sob uma única bandeira.</p></div>
+<div class="ccard"><span class="cicon">🔥</span><h4>Nacionalismo = Orgulho + Perigo</h4><p>As pessoas amavam tanto sua cultura que lutariam por ela — e contra os outros.</p></div>
+<div class="ccard"><span class="cicon">🤝</span><h4>Alianças Secretas</h4><p>Os países prometeram: 'Se te atacarem, eu luto por você.' Isso transformou brigas pequenas em guerras mundiais.</p></div>
+<div class="ccard"><span class="cicon">💪</span><h4>Corrida Armamentista</h4><p>Cada país construía exércitos maiores e mais armas. O medo fez todos se prepararem.</p></div>
+<div class="ccard"><span class="cicon">💥</span><h4>Uma Faísca = Explosão</h4><p>O assassinato de um homem desencadeou uma reação em cadeia que arrastou o mundo à guerra.</p></div>
+</div>
+<h3 style="margin-top:40px">Linha do Tempo: 1871 → 1914</h3>
+<div class="tl">
+<div class="tli"><span class="tly">1871</span><p class="tlt">Alemanha se unifica. França furiosa — perdeu uma guerra e entregou territórios.</p></div>
+<div class="tli"><span class="tly">1882</span><p class="tlt">Tríplice Aliança: Alemanha, Áustria-Hungria, Itália.</p></div>
+<div class="tli"><span class="tly">1894–1907</span><p class="tlt">França, Rússia, Grã-Bretanha formam a Tríplice Entente. Dois times gigantes.</p></div>
+<div class="tli"><span class="tly">1908</span><p class="tlt">Áustria-Hungria toma a Bósnia. Sérvia furiosa — muitos eslavos vivem lá.</p></div>
+<div class="tli"><span class="tly">1912–1913</span><p class="tlt">Guerras Balcânicas. Tensões explodem.</p></div>
+<div class="tli"><span class="tly">28 de junho, 1914</span><p class="tlt">Arquiduque Francisco Ferdinando assassinado em Sarajevo. A faísca atinge o barril.</p></div>
+<div class="tli"><span class="tly">Agosto 1914</span><p class="tlt">Em poucas semanas, quase toda a Europa está em guerra.</p></div>
+</div>
+</div>
+<div data-lang="ht">
+<div class="slab">Seksyon 1 — Gwo Lide a</div>
+<h1>Ewop Te Yon Gwo Barik Poud an 1914</h1>
+<p class="hsub">Imajine yon gwoup chat ki gen 20 moun. Tout moun gen alyans sekre. Tout moun jalou. Tout moun gen zam. Epi yon moun voye pi move mesaj nan listwa. Se konsa Ewop te ye anvan Premye Ge Mondyal la.</p>
+<div class="ibox"><span class="atag">🧨 Analoji</span><p>Yon <strong>barik poud</strong> se yon barik ki plen ak poud eksplozif. Yon sel etensel epi tout bagay eksploze. Anvan 1914, Ewop te tankou barik sa a. Asasina Achidik Franz Ferdinand te etensel la.</p></div>
+<h3>5 Lide Kle</h3>
+<div class="cgrid">
+<div class="ccard"><span class="cicon">🗺️</span><h4>Fwontyè ≠ Pèp</h4><p>Anpi yo te fose anpil gwoup etnik viv anba yon sel drapo. Moun yo te vle libete.</p></div>
+<div class="ccard"><span class="cicon">🔥</span><h4>Nasyonalis = Fyete + Danje</h4><p>Moun yo te renmen kilti pa yo telma, yo te pare pou goumen.</p></div>
+<div class="ccard"><span class="cicon">🤝</span><h4>Alyans Sekre</h4><p>Peyi yo te fe pwomes sekre: 'Si yo atake w, m ap goumen pou ou.' Sa te transfome ti batay an ge mondyal.</p></div>
+<div class="ccard"><span class="cicon">💪</span><h4>Kous Zam</h4><p>Chak peyi t ap bati pi gwo lame. Laperez te fe tout moun prepare pou lage.</p></div>
+<div class="ccard"><span class="cicon">💥</span><h4>Yon Etensel = Eksplozyon</h4><p>Asasina yon sel nonm te deklanche yon reyaksyon an chen.</p></div>
+</div>
+<h3 style="margin-top:40px">Kronoloji: 1871 → 1914</h3>
+<div class="tl">
+<div class="tli"><span class="tly">1871</span><p class="tlt">Almay inifye. Lafrans an kole — yo pedi yon lage e bay teritwa.</p></div>
+<div class="tli"><span class="tly">1882</span><p class="tlt">Trip Alyans lan fome: Almay, Otrich-Ongri ak Itali.</p></div>
+<div class="tli"><span class="tly">1894–1907</span><p class="tlt">Lafrans, Risi ak Grann Bretay fome Trip Antant lan. De gwo ekip.</p></div>
+<div class="tli"><span class="tly">1908</span><p class="tlt">Otrich-Ongri pran Bosni. Sebi anraje.</p></div>
+<div class="tli"><span class="tly">1912–1913</span><p class="tlt">Ge Balkan yo. Tansyon yo eksploze.</p></div>
+<div class="tli"><span class="tly">28 jen 1914</span><p class="tlt">Achidik Franz Ferdinand asasine nan Sarajevo. Etensel la tonbe sou barik la.</p></div>
+<div class="tli"><span class="tly">Out 1914</span><p class="tlt">Nan kek semen, preske tout Ewop nan lage.</p></div>
+</div>
+</div>
+</section>
+<div class="sdiv"></div>
+<section id="s2">
+<div data-lang="en">
+<div class="slab">Section 2 — Understanding Ethnicity</div>
+<h2>What Is an Ethnic Group? (And Why It Matters for WWI)</h2>
+<p>Before we understand why WWI happened, we need to understand: <strong>people don't always match their country.</strong></p>
+<p>Today, if you live in the U.S., you're an American citizen. But your family might be from Mexico, Haiti, Vietnam, or Nigeria. Your <em>nationality</em> (country) and <em>ethnicity</em> (family background) are different things.</p>
+<p>In 1914 Europe, this was a HUGE problem. Empires controlled millions who didn't share the same language, religion, or culture. And they were angry.</p>
+<div class="ibox"><span class="atag">🧠 Think About It</span><p>Imagine your school forced every student to speak only one language — but half speak Spanish, a quarter speak Creole, and others speak Portuguese. How would people feel? That's what empires did.</p></div>
+<h3>4 Words You Need to Know</h3>
+<div class="cgrid">
+<div class="ccard red"><h3>Ethnicity</h3><p>Your <strong>family background</strong> — the culture, traditions, and history your ancestors passed down. Like your family tree. You can be ethnically Haitian even if you live in Florida.</p></div>
+<div class="ccard gold"><h3>Nationality</h3><p>Your <strong>country</strong> — where your passport is from. You can be nationally American, but ethnically Dominican.</p></div>
+<div class="ccard teal"><h3>Language</h3><p>What you <strong>speak</strong>. Languages often connect to ethnic groups, but not always. Mexico, Spain, and Argentina all speak Spanish — but different ethnic groups.</p></div>
+<div class="ccard blue"><h3>Religion</h3><p>What you <strong>believe</strong>. In Europe, religion was deeply tied to identity. Orthodox vs Catholic vs Muslim shaped who your allies were.</p></div>
+</div>
+<div class="ibox tb"><span class="atag">👨‍👩‍👧‍👦 Family Tree Analogy</span><p>Think of ethnic groups like branches of a family tree. All Slavic people are like <strong>cousins</strong> — from the same 'grandparent' culture, speaking related languages. Russians, Poles, Serbians, and Czechs are all Slavic — like cousins who share a last name but live in different houses.</p></div>
+<h3>The Big Language Families of Europe</h3>
+<p>Languages come in 'families' — groups that grew from the same ancient root:</p>
+<div class="treec"><div class="troot"><span class="tbadge root">🌳 Indo-European Language Family</span><p style="color:var(--mute);font-size:.88rem;margin-top:6px">The 'great-great-grandparent' of most European languages</p></div>
+<div class="tbranch">
+<div class="tb" style="border-color:var(--teal)"><span class="tbadge slav">Slavic</span><h4 style="color:var(--teal)">The 'Slavic Cousins'</h4><ul><li>🇷🇺 Russian</li><li>🇷🇸 Serbian</li><li>🇵🇱 Polish</li><li>🇨🇿 Czech</li><li>🇺🇦 Ukrainian</li><li>🇧🇬 Bulgarian</li><li>🇭🇷 Croatian</li></ul></div>
+<div class="tb" style="border-color:var(--blue)"><span class="tbadge germ">Germanic</span><h4 style="color:var(--blue)">The 'Germanic Cousins'</h4><ul><li>🇩🇪 German</li><li>🇬🇧 English</li><li>🇳🇱 Dutch</li><li>🇸🇪 Swedish</li><li>🇳🇴 Norwegian</li><li>🇩🇰 Danish</li></ul></div>
+<div class="tb" style="border-color:var(--red)"><span class="tbadge rom">Romance / Latin</span><h4 style="color:var(--red)">The 'Latin Cousins'</h4><ul><li>🇫🇷 French</li><li>🇪🇸 Spanish</li><li>🇮🇹 Italian</li><li>🇵🇹 Portuguese</li><li>🇷🇴 Romanian</li></ul></div>
+<div class="tb" style="border-color:var(--purple)"><span class="tbadge celt">Celtic</span><h4 style="color:var(--purple)">The 'Celtic Cousins'</h4><ul><li>🇮🇪 Irish</li><li>🏴 Scottish Gaelic</li><li>🏴 Welsh</li></ul></div>
+<div class="tb" style="border-color:var(--orange)"><span class="tbadge hell">Hellenic</span><h4 style="color:var(--orange)">Stands Alone</h4><ul><li>🇬🇷 Greek</li></ul></div>
+</div></div>
+<h3>Why Does This Matter for WWI?</h3>
+<div class="ibox rb"><p><strong>Pan-Slavism</strong> was the idea that all Slavic people should unite. Serbia believed it should lead. Russia — the biggest Slavic country — saw itself as protector of all Slavs. When Austria-Hungary controlled millions of Slavs, this created enormous tension. That's the ethnic time bomb at the heart of WWI.</p></div>
+</div>
+<div data-lang="es">
+<div class="slab">Sección 2 — Entender la Etnicidad</div>
+<h2>¿Qué es un Grupo Étnico?</h2>
+<p>Antes de entender la PGM: <strong>la gente no siempre coincide con su país.</strong></p>
+<p>Hoy, si vives en EE.UU., eres ciudadano americano. Pero tu familia puede ser de México, Haití o Vietnam. Tu <em>nacionalidad</em> y tu <em>etnicidad</em> son diferentes.</p>
+<p>En la Europa de 1914, esto era un GRAN problema. Los imperios controlaban millones que no compartían idioma, religión ni cultura.</p>
+<div class="ibox"><span class="atag">🧠 Piénsalo Así</span><p>Imagina que tu escuela obligara a todos a hablar solo un idioma — pero la mitad habla español, una cuarta parte habla criollo y otros hablan portugués. ¿Cómo se sentirían?</p></div>
+<h3>4 Palabras Clave</h3>
+<div class="cgrid">
+<div class="ccard red"><h3>Etnicidad</h3><p>Tu <strong>origen familiar</strong> — cultura, tradiciones e historia. Como tu árbol genealógico. Puedes ser étnicamente haitiano aunque vivas en Florida.</p></div>
+<div class="ccard gold"><h3>Nacionalidad</h3><p>Tu <strong>país</strong> — de dónde es tu pasaporte. Nacionalmente americano, étnicamente dominicano.</p></div>
+<div class="ccard teal"><h3>Idioma</h3><p>Lo que <strong>hablas</strong>. México, España y Argentina hablan español — pero son grupos étnicos diferentes.</p></div>
+<div class="ccard blue"><h3>Religión</h3><p>Lo que <strong>crees</strong>. En Europa, ser ortodoxo, católico o musulmán determinaba quiénes eran tus aliados.</p></div>
+</div>
+<div class="ibox tb"><span class="atag">👨‍👩‍👧‍👦 Analogía del Árbol Genealógico</span><p>Los grupos étnicos son como ramas de un árbol. Todos los eslavos son como <strong>primos</strong> — de la misma cultura 'abuelo', hablando idiomas relacionados. Rusos, polacos, serbios y checos son todos eslavos — como primos que comparten apellido pero viven en casas diferentes.</p></div>
+<h3>Familias Lingüísticas de Europa</h3>
+<p>Los idiomas vienen en 'familias' — grupos que crecieron de la misma raíz:</p>
+<div class="treec"><div class="troot"><span class="tbadge root">🌳 Familia Indoeuropea</span><p style="color:var(--mute);font-size:.88rem;margin-top:6px">El 'tatarabuelo' de la mayoría de idiomas europeos</p></div>
+<div class="tbranch">
+<div class="tb" style="border-color:var(--teal)"><span class="tbadge slav">Eslavo</span><h4 style="color:var(--teal)">Los 'Primos Eslavos'</h4><ul><li>🇷🇺 Ruso</li><li>🇷🇸 Serbio</li><li>🇵🇱 Polaco</li><li>🇨🇿 Checo</li><li>🇺🇦 Ucraniano</li><li>🇧🇬 Búlgaro</li><li>🇭🇷 Croata</li></ul></div>
+<div class="tb" style="border-color:var(--blue)"><span class="tbadge germ">Germánico</span><h4 style="color:var(--blue)">Los 'Primos Germánicos'</h4><ul><li>🇩🇪 Alemán</li><li>🇬🇧 Inglés</li><li>🇳🇱 Holandés</li><li>🇸🇪 Sueco</li><li>🇳🇴 Noruego</li><li>🇩🇰 Danés</li></ul></div>
+<div class="tb" style="border-color:var(--red)"><span class="tbadge rom">Romance / Latín</span><h4 style="color:var(--red)">Los 'Primos Latinos'</h4><ul><li>🇫🇷 Francés</li><li>🇪🇸 Español</li><li>🇮🇹 Italiano</li><li>🇵🇹 Portugués</li><li>🇷🇴 Rumano</li></ul></div>
+<div class="tb" style="border-color:var(--purple)"><span class="tbadge celt">Celta</span><h4 style="color:var(--purple)">Los 'Primos Celtas'</h4><ul><li>🇮🇪 Irlandés</li><li>🏴 Gaélico Escocés</li><li>🏴 Galés</li></ul></div>
+<div class="tb" style="border-color:var(--orange)"><span class="tbadge hell">Helénico</span><h4 style="color:var(--orange)">Solo</h4><ul><li>🇬🇷 Griego</li></ul></div>
+</div></div>
+<h3>¿Por Qué Importa para la PGM?</h3>
+<div class="ibox rb"><p><strong>El Paneslavismo</strong> era la idea de que todos los eslavos debían unirse. Serbia quería liderar. Rusia se veía como protectora. Cuando Austria-Hungría controlaba millones de eslavos, la tensión era enorme. La bomba de tiempo étnica en el corazón de la PGM.</p></div>
+</div>
+<div data-lang="fr">
+<div class="slab">Section 2 — Comprendre l'Ethnicité</div>
+<h2>Qu'est-ce qu'un Groupe Ethnique ?</h2>
+<p>Avant de comprendre la PGM : <strong>les gens ne correspondent pas toujours à leur pays.</strong></p>
+<p>Aujourd'hui aux États-Unis, tu es citoyen américain. Mais ta famille peut être du Mexique, d'Haïti ou du Vietnam. <em>Nationalité</em> et <em>ethnicité</em> sont différentes.</p>
+<p>En 1914, c'était un ÉNORME problème. Les empires contrôlaient des millions de gens sans langue, religion ou culture commune.</p>
+<div class="ibox"><span class="atag">🧠 Réfléchis</span><p>Imagine que ton école oblige tous les élèves à parler une seule langue — mais la moitié parle espagnol, un quart parle créole et d'autres parlent portugais.</p></div>
+<h3>4 Mots à Connaître</h3>
+<div class="cgrid">
+<div class="ccard red"><h3>Ethnicité</h3><p>Tes <strong>origines familiales</strong> — culture et histoire de tes ancêtres. Tu peux être ethniquement haïtien même en Floride.</p></div>
+<div class="ccard gold"><h3>Nationalité</h3><p>Ton <strong>pays</strong> — d'où vient ton passeport.</p></div>
+<div class="ccard teal"><h3>Langue</h3><p>Ce que tu <strong>parles</strong>. Le Mexique, l'Espagne et l'Argentine parlent espagnol — mais ce sont des groupes différents.</p></div>
+<div class="ccard blue"><h3>Religion</h3><p>Ce que tu <strong>crois</strong>. Être orthodoxe, catholique ou musulman déterminait tes alliés.</p></div>
+</div>
+<div class="ibox tb"><span class="atag">👨‍👩‍👧‍👦 L'Arbre Généalogique</span><p>Les groupes ethniques sont comme des branches d'un arbre. Tous les Slaves sont des <strong>cousins</strong> — même culture 'grand-parent', langues apparentées. Russes, Polonais, Serbes et Tchèques sont tous slaves — cousins qui partagent un nom mais vivent dans des maisons différentes.</p></div>
+<h3>Familles Linguistiques d'Europe</h3>
+<p>Les langues viennent en 'familles' — groupes qui ont grandi à partir de la même racine :</p>
+<div class="treec"><div class="troot"><span class="tbadge root">🌳 Famille Indo-Européenne</span><p style="color:var(--mute);font-size:.88rem;margin-top:6px">L''arrière-arrière-grand-parent' de la plupart des langues européennes</p></div>
+<div class="tbranch">
+<div class="tb" style="border-color:var(--teal)"><span class="tbadge slav">Slave</span><h4 style="color:var(--teal)">Les 'Cousins Slaves'</h4><ul><li>🇷🇺 Russe</li><li>🇷🇸 Serbe</li><li>🇵🇱 Polonais</li><li>🇨🇿 Tchèque</li><li>🇺🇦 Ukrainien</li><li>🇧🇬 Bulgare</li><li>🇭🇷 Croate</li></ul></div>
+<div class="tb" style="border-color:var(--blue)"><span class="tbadge germ">Germanique</span><h4 style="color:var(--blue)">Les 'Cousins Germaniques'</h4><ul><li>🇩🇪 Allemand</li><li>🇬🇧 Anglais</li><li>🇳🇱 Néerlandais</li><li>🇸🇪 Suédois</li><li>🇳🇴 Norvégien</li><li>🇩🇰 Danois</li></ul></div>
+<div class="tb" style="border-color:var(--red)"><span class="tbadge rom">Roman / Latin</span><h4 style="color:var(--red)">Les 'Cousins Latins'</h4><ul><li>🇫🇷 Français</li><li>🇪🇸 Espagnol</li><li>🇮🇹 Italien</li><li>🇵🇹 Portugais</li><li>🇷🇴 Roumain</li></ul></div>
+<div class="tb" style="border-color:var(--purple)"><span class="tbadge celt">Celtique</span><h4 style="color:var(--purple)">Les 'Cousins Celtes'</h4><ul><li>🇮🇪 Irlandais</li><li>🏴 Gaélique Écossais</li><li>🏴 Gallois</li></ul></div>
+<div class="tb" style="border-color:var(--orange)"><span class="tbadge hell">Hellénique</span><h4 style="color:var(--orange)">Tout Seul</h4><ul><li>🇬🇷 Grec</li></ul></div>
+</div></div>
+<h3>Pourquoi c'est Important ?</h3>
+<div class="ibox rb"><p><strong>Le Panslavisme</strong> : l'idée que tous les Slaves devaient s'unir. La Serbie voulait diriger. La Russie se voyait comme protectrice. Quand l'Autriche-Hongrie contrôlait des millions de Slaves, la tension était énorme. La bombe ethnique au cœur de la PGM.</p></div>
+</div>
+<div data-lang="pt">
+<div class="slab">Seção 2 — Entendendo Etnicidade</div>
+<h2>O Que é um Grupo Étnico?</h2>
+<p>Antes de entender a PGM: <strong>as pessoas nem sempre combinam com seu país.</strong></p>
+<p>Hoje nos EUA, você é cidadão americano. Mas sua família pode ser do México, Haiti ou Vietnã. <em>Nacionalidade</em> e <em>etnicidade</em> são diferentes.</p>
+<p>Na Europa de 1914, isso era um GRANDE problema. Os impérios controlavam milhões sem idioma, religião ou cultura em comum.</p>
+<div class="ibox"><span class="atag">🧠 Pense Nisso</span><p>Imagina que sua escola obrigasse todos a falar só um idioma — mas metade fala espanhol, um quarto fala crioulo e outros falam português.</p></div>
+<h3>4 Palavras-Chave</h3>
+<div class="cgrid">
+<div class="ccard red"><h3>Etnicidade</h3><p>Sua <strong>origem familiar</strong> — cultura e história dos antepassados. Você pode ser etnicamente haitiano morando na Flórida.</p></div>
+<div class="ccard gold"><h3>Nacionalidade</h3><p>Seu <strong>país</strong> — de onde é seu passaporte.</p></div>
+<div class="ccard teal"><h3>Idioma</h3><p>O que você <strong>fala</strong>. México, Espanha e Argentina falam espanhol — mas são grupos diferentes.</p></div>
+<div class="ccard blue"><h3>Religião</h3><p>No que você <strong>acredita</strong>. Na Europa, ser ortodoxo, católico ou muçulmano determinava seus aliados.</p></div>
+</div>
+<div class="ibox tb"><span class="atag">👨‍👩‍👧‍👦 Analogia da Árvore Genealógica</span><p>Grupos étnicos são como galhos de uma árvore. Todos os eslavos são <strong>primos</strong> — mesma cultura 'avô', idiomas relacionados. Russos, poloneses, sérvios e tchecos são todos eslavos — primos com o mesmo sobrenome em casas diferentes.</p></div>
+<h3>Famílias Linguísticas da Europa</h3>
+<p>As línguas vêm em 'famílias' — grupos que cresceram da mesma raiz:</p>
+<div class="treec"><div class="troot"><span class="tbadge root">🌳 Família Indo-Europeia</span><p style="color:var(--mute);font-size:.88rem;margin-top:6px">O 'tataravô' da maioria das línguas europeias</p></div>
+<div class="tbranch">
+<div class="tb" style="border-color:var(--teal)"><span class="tbadge slav">Eslavo</span><h4 style="color:var(--teal)">Os 'Primos Eslavos'</h4><ul><li>🇷🇺 Russo</li><li>🇷🇸 Sérvio</li><li>🇵🇱 Polonês</li><li>🇨🇿 Tcheco</li><li>🇺🇦 Ucraniano</li><li>🇧🇬 Búlgaro</li><li>🇭🇷 Croata</li></ul></div>
+<div class="tb" style="border-color:var(--blue)"><span class="tbadge germ">Germânico</span><h4 style="color:var(--blue)">Os 'Primos Germânicos'</h4><ul><li>🇩🇪 Alemão</li><li>🇬🇧 Inglês</li><li>🇳🇱 Holandês</li><li>🇸🇪 Sueco</li><li>🇳🇴 Norueguês</li><li>🇩🇰 Dinamarquês</li></ul></div>
+<div class="tb" style="border-color:var(--red)"><span class="tbadge rom">Românico / Latim</span><h4 style="color:var(--red)">Os 'Primos Latinos'</h4><ul><li>🇫🇷 Francês</li><li>🇪🇸 Espanhol</li><li>🇮🇹 Italiano</li><li>🇵🇹 Português</li><li>🇷🇴 Romeno</li></ul></div>
+<div class="tb" style="border-color:var(--purple)"><span class="tbadge celt">Celta</span><h4 style="color:var(--purple)">Os 'Primos Celtas'</h4><ul><li>🇮🇪 Irlandês</li><li>🏴 Gaélico Escocês</li><li>🏴 Galês</li></ul></div>
+<div class="tb" style="border-color:var(--orange)"><span class="tbadge hell">Helênico</span><h4 style="color:var(--orange)">Sozinho</h4><ul><li>🇬🇷 Grego</li></ul></div>
+</div></div>
+<h3>Por Que Importa para a PGM?</h3>
+<div class="ibox rb"><p><strong>Pan-Eslavismo</strong>: a ideia de que todos os eslavos deviam se unir. A Sérvia queria liderar. A Rússia se via como protetora. A tensão era enorme quando a Áustria-Hungria controlava milhões de eslavos. A bomba-relógio étnica no coração da PGM.</p></div>
+</div>
+<div data-lang="ht">
+<div class="slab">Seksyon 2 — Konprann Etnisite</div>
+<h2>Kisa yon Gwoup Etnik Ye?</h2>
+<p>Anvan nou konprann PGM la: <strong>moun pa toujou matche ak peyi yo.</strong></p>
+<p>Jodi a Ozetazini, ou se sitwayen ameriken. Men fanmi ou ka soti nan Meksik, Ayiti oubyen Vyetnam. <em>Nasyonalite</em> ak <em>etnisite</em> se bagay diferan.</p>
+<p>Nan Ewop 1914, sa te yon GWO pwoblem. Anpi yo te kontwole de milyon moun ki pa t pataje menm lang, relijyon oubyen kilti.</p>
+<div class="ibox"><span class="atag">🧠 Reflechi sou Sa</span><p>Imajine lekol ou te fose tout elev pale yon sel lang — men mwatye pale panyol, yon ka pale kreyol e lot yo pale potige. Ki jan moun yo ta santi yo?</p></div>
+<h3>4 Mo ou Bezwen Konnen</h3>
+<div class="cgrid">
+<div class="ccard red"><h3>Etnisite</h3><p><strong>Orijin fanmi</strong> ou — kilti ak istwa zanset ou te pase ba ou. Ou ka etnikman ayisyen menm si ou viv nan Florid.</p></div>
+<div class="ccard gold"><h3>Nasyonalite</h3><p><strong>Peyi</strong> ou — ki kote paspo ou soti.</p></div>
+<div class="ccard teal"><h3>Lang</h3><p>Sa ou <strong>pale</strong>. Meksik, Espay ak Ajantin tout pale panyol — men yo se gwoup diferan.</p></div>
+<div class="ccard blue"><h3>Relijyon</h3><p>Sa ou <strong>kwe</strong>. Nan Ewop, si ou te otodoks, katolik oubyen mizilman, sa te detèmine alye ou.</p></div>
+</div>
+<div class="ibox tb"><span class="atag">👨‍👩‍👧‍👦 Analoji Pyebwa Fanmi</span><p>Gwoup etnik yo se tankou branch nan yon pyebwa fanmi. Tout Slav yo se <strong>kouzen</strong> — menm kilti 'granparan', lang ki sanble. Ris, Polone, Seb ak Tchek tout se Slav — tankou kouzen ki gen menm non fanmi men ki viv nan kay diferan.</p></div>
+<h3>Gwo Fanmi Lengwistik yo</h3>
+<p>Lang nan Ewop vini an 'fanmi' — gwoup lang ki te grandi soti nan menm rasin:</p>
+<div class="treec"><div class="troot"><span class="tbadge root">🌳 Fanmi Indo-Ewopeyèn</span><p style="color:var(--mute);font-size:.88rem;margin-top:6px">'Zanset' pifò lang ewopeyèn yo</p></div>
+<div class="tbranch">
+<div class="tb" style="border-color:var(--teal)"><span class="tbadge slav">Slav</span><h4 style="color:var(--teal)">'Kouzen Slav yo'</h4><ul><li>🇷🇺 Ris</li><li>🇷🇸 Seb</li><li>🇵🇱 Polone</li><li>🇨🇿 Tchek</li><li>🇺🇦 Ikrenyen</li><li>🇧🇬 Bilge</li><li>🇭🇷 Kwat</li></ul></div>
+<div class="tb" style="border-color:var(--blue)"><span class="tbadge germ">Jemanik</span><h4 style="color:var(--blue)">'Kouzen Jemanik yo'</h4><ul><li>🇩🇪 Alman</li><li>🇬🇧 Angle</li><li>🇳🇱 Olande</li><li>🇸🇪 Seyedwa</li><li>🇳🇴 Novejyen</li><li>🇩🇰 Danwa</li></ul></div>
+<div class="tb" style="border-color:var(--red)"><span class="tbadge rom">Women / Laten</span><h4 style="color:var(--red)">'Kouzen Laten yo'</h4><ul><li>🇫🇷 Fransè</li><li>🇪🇸 Panyòl</li><li>🇮🇹 Italyen</li><li>🇵🇹 Potigè</li><li>🇷🇴 Women</li></ul></div>
+<div class="tb" style="border-color:var(--purple)"><span class="tbadge celt">Seltik</span><h4 style="color:var(--purple)">'Kouzen Selt yo'</h4><ul><li>🇮🇪 Ilande</li><li>🏴 Gaelik Ekose</li><li>🏴 Galwa</li></ul></div>
+<div class="tb" style="border-color:var(--orange)"><span class="tbadge hell">Elenik</span><h4 style="color:var(--orange)">Pou Kont Li</h4><ul><li>🇬🇷 Grek</li></ul></div>
+</div></div>
+<h3>Poukisa Sa Enpotan pou PGM la?</h3>
+<div class="ibox rb"><p><strong>Pan-Slavis</strong> te lide ke tout Slav ta dwe ini. Sebi te vle dirije. Risi te we tet li kom pwotekte. Le Otrich-Ongri te kontwole de milyon Slav, tansyon an te enòm. Bonm etnik sa a ki te nan ke PGM la.</p></div>
+</div>
+</section>
+<div class="sdiv"></div>
+<section id="s3">
+<div data-lang="en">
+<div class="slab">Section 3 — The Confusing Map</div>
+<h2>Europe Before WWI: Why the Map Was a Mess</h2>
+<p>Look at a map of 1914 Europe: <strong>a few big countries, but hundreds of different peoples inside them.</strong></p>
+<p>Most of Europe was controlled by <strong>empires</strong>. An empire is when one powerful group rules over many others — often people who don't want to be ruled.</p>
+<div class="ibox"><span class="atag">🏫 School Analogy</span><p>Imagine one principal controls 5 schools in different neighborhoods. Each speaks a different language, celebrates different holidays. The principal forces everyone to follow HIS rules. Some schools want to break free. That's what empires were like.</p></div>
+<h3>The 4 Key Powers</h3>
+<div class="egrid">
+<div class="ecard au"><span class="eflag">🏰</span><h3>Austro-Hungarian Empire</h3><p>One empire, two names — because it was THAT divided. Austrian (Germanic) and Hungarian sides shared power, but ruled many others with NO power.</p><p><strong>⚠ </strong>Slavic people inside (Czechs, Slovaks, Croats, Bosnians, Serbs) wanted freedom. Austria-Hungary said no.</p><div class="ptags"><span class="ptag">Germans</span><span class="ptag">Hungarians</span><span class="ptag">Czechs</span><span class="ptag">Slovaks</span><span class="ptag">Poles</span><span class="ptag">Croats</span><span class="ptag">Serbs</span><span class="ptag">Romanians</span><span class="ptag">Italians</span><span class="ptag">Bosnians</span><span class="ptag">Slovenes</span></div></div>
+<div class="ecard ot"><span class="eflag">🌙</span><h3>Ottoman Empire</h3><p>The 'Sick Man of Europe.' Once powerful, now falling apart. Based in modern Turkey, it ruled southeastern Europe for centuries.</p><p><strong>⚠ </strong>As Ottomans weakened, Balkan nations broke free. Everyone wanted their leftover land.</p><div class="ptags"><span class="ptag">Turks</span><span class="ptag">Arabs</span><span class="ptag">Greeks</span><span class="ptag">Bulgarians</span><span class="ptag">Serbs</span><span class="ptag">Romanians</span><span class="ptag">Armenians</span><span class="ptag">Kurds</span></div></div>
+<div class="ecard ru"><span class="eflag">🦅</span><h3>Russian Empire</h3><p>The biggest country, ruled by the Tsar. Russia saw itself as leader and protector of all Slavic people — especially Orthodox Slavs.</p><p><strong>⚠ </strong>Russia wanted to expand into the Balkans. This put them against Austria-Hungary and the Ottomans.</p><div class="ptags"><span class="ptag">Russians</span><span class="ptag">Ukrainians</span><span class="ptag">Poles</span><span class="ptag">Finns</span><span class="ptag">Baltic peoples</span><span class="ptag">Georgians</span><span class="ptag">Central Asians</span></div></div>
+<div class="ecard se"><span class="eflag">🔥</span><h3>Serbia (The Spark)</h3><p>A small but fiercely proud Slavic country. Just won the Balkan Wars. Dreamed of uniting all South Slavs into one country.</p><p><strong>⚠ </strong>Many of those Slavs lived inside Austria-Hungary. Serbia wanted them out. Austria-Hungary saw Serbia as a threat.</p><div class="ptags"><span class="ptag">Serbs</span><span class="ptag">Supported by Russia</span><span class="ptag">Pan-Slavic dream</span></div></div>
+</div>
+<div class="ibox rb"><h3>Why Did Nationalism Cause Tension?</h3><p><strong>Nationalism</strong> means loving your own nation so much you want your own country. When your ethnic group is trapped in someone else's empire, nationalism becomes explosive. The empires said: 'No — you belong to us.' That's the recipe for revolution.</p></div>
+</div>
+<div data-lang="es">
+<div class="slab">Sección 3 — El Mapa Confuso</div>
+<h2>Europa Antes de la PGM: El Mapa Era un Desorden</h2>
+<p>Mira el mapa de 1914: <strong>pocos países grandes, pero cientos de pueblos diferentes dentro.</strong></p>
+<p>Europa estaba controlada por <strong>imperios</strong>. Un imperio es cuando un grupo poderoso gobierna sobre muchos otros.</p>
+<div class="ibox"><span class="atag">🏫 Analogía de la Escuela</span><p>Imagina que un director controla 5 escuelas en diferentes barrios. Cada una habla un idioma diferente. Pero el director obliga a todos a seguir SUS reglas. Algunas quieren independizarse. Así eran los imperios.</p></div>
+<h3>Los 4 Poderes Clave</h3>
+<div class="egrid">
+<div class="ecard au"><span class="eflag">🏰</span><h3>Imperio Austrohúngaro</h3><p>Un imperio, dos nombres — porque estaba ASÍ de dividido. Austríacos y húngaros compartían poder, pero gobernaban a muchos otros sin poder.</p><p><strong>⚠ </strong>Los eslavos (checos, eslovacos, croatas, bosnios, serbios) querían libertad. Austria-Hungría dijo no.</p><div class="ptags"><span class="ptag">Alemanes</span><span class="ptag">Húngaros</span><span class="ptag">Checos</span><span class="ptag">Eslovacos</span><span class="ptag">Polacos</span><span class="ptag">Croatas</span><span class="ptag">Serbios</span><span class="ptag">Rumanos</span><span class="ptag">Italianos</span><span class="ptag">Bosnios</span><span class="ptag">Eslovenos</span></div></div>
+<div class="ecard ot"><span class="eflag">🌙</span><h3>Imperio Otomano</h3><p>El 'Hombre Enfermo de Europa.' Una vez poderoso, ahora desmoronándose.</p><p><strong>⚠ </strong>Los otomanos se debilitaron y pequeñas naciones balcánicas se liberaron. Todos querían los territorios restantes.</p><div class="ptags"><span class="ptag">Turcos</span><span class="ptag">Árabes</span><span class="ptag">Griegos</span><span class="ptag">Búlgaros</span><span class="ptag">Serbios</span><span class="ptag">Rumanos</span><span class="ptag">Armenios</span><span class="ptag">Kurdos</span></div></div>
+<div class="ecard ru"><span class="eflag">🦅</span><h3>Imperio Ruso</h3><p>El país más grande del mundo, gobernado por el Zar. Protector de todos los eslavos ortodoxos.</p><p><strong>⚠ </strong>Rusia quería expandirse hacia los Balcanes, enfrentándose a Austria-Hungría y al Imperio Otomano.</p><div class="ptags"><span class="ptag">Rusos</span><span class="ptag">Ucranianos</span><span class="ptag">Polacos</span><span class="ptag">Finlandeses</span><span class="ptag">Pueblos bálticos</span><span class="ptag">Georgianos</span><span class="ptag">Centroasiáticos</span></div></div>
+<div class="ecard se"><span class="eflag">🔥</span><h3>Serbia (La Chispa)</h3><p>Un país eslavo pequeño pero ferozmente orgulloso. Soñaban con unir a todos los eslavos del sur.</p><p><strong>⚠ </strong>Muchos de esos eslavos vivían dentro de Austria-Hungría. Serbia los quería afuera.</p><div class="ptags"><span class="ptag">Serbios</span><span class="ptag">Apoyados por Rusia</span><span class="ptag">Sueño paneslavista</span></div></div>
+</div>
+<div class="ibox rb"><h3>¿Por Qué el Nacionalismo Causó Tensión?</h3><p><strong>El Nacionalismo</strong> significa amar tanto a tu nación que quieres tu propio país. Cuando tu grupo étnico está atrapado en el imperio de otro, el nacionalismo se vuelve explosivo. Los imperios dijeron: 'No — ustedes nos pertenecen.' Receta para la revolución.</p></div>
+</div>
+<div data-lang="fr">
+<div class="slab">Section 3 — La Carte Confuse</div>
+<h2>L'Europe Avant la PGM : Un Désordre</h2>
+<p>Carte de 1914 : <strong>quelques grands pays, mais des centaines de peuples.</strong></p>
+<p>L'Europe était contrôlée par des <strong>empires</strong>. Un empire, c'est quand un groupe puissant gouverne de nombreux autres.</p>
+<div class="ibox"><span class="atag">🏫 Analogie de l'École</span><p>Un directeur contrôle 5 écoles dans des quartiers différents. Chacune a sa langue et ses fêtes. Le directeur force tout le monde à suivre SES règles. Certaines écoles veulent se séparer. C'est comme ça que les empires fonctionnaient.</p></div>
+<h3>Les 4 Puissances Clés</h3>
+<div class="egrid">
+<div class="ecard au"><span class="eflag">🏰</span><h3>Empire Austro-Hongrois</h3><p>Un empire très divisé. Autrichiens et Hongrois partageaient le pouvoir, mais gouvernaient beaucoup d'autres sans pouvoir.</p><p><strong>⚠ </strong>Les peuples slaves voulaient la liberté. L'Autriche-Hongrie a dit non.</p><div class="ptags"><span class="ptag">Allemands</span><span class="ptag">Hongrois</span><span class="ptag">Tchèques</span><span class="ptag">Slovaques</span><span class="ptag">Polonais</span><span class="ptag">Croates</span><span class="ptag">Serbes</span><span class="ptag">Roumains</span><span class="ptag">Italiens</span><span class="ptag">Bosniaques</span><span class="ptag">Slovènes</span></div></div>
+<div class="ecard ot"><span class="eflag">🌙</span><h3>Empire Ottoman</h3><p>'L'Homme Malade de l'Europe.' En déclin. Basé dans la Turquie actuelle.</p><p><strong>⚠ </strong>Les Ottomans s'affaiblissaient, les nations balkaniques se libéraient.</p><div class="ptags"><span class="ptag">Turcs</span><span class="ptag">Arabes</span><span class="ptag">Grecs</span><span class="ptag">Bulgares</span><span class="ptag">Serbes</span><span class="ptag">Roumains</span><span class="ptag">Arméniens</span><span class="ptag">Kurdes</span></div></div>
+<div class="ecard ru"><span class="eflag">🦅</span><h3>Empire Russe</h3><p>Le plus grand pays du monde. Le Tsar se voyait comme protecteur de tous les Slaves orthodoxes.</p><p><strong>⚠ </strong>La Russie voulait s'étendre dans les Balkans.</p><div class="ptags"><span class="ptag">Russes</span><span class="ptag">Ukrainiens</span><span class="ptag">Polonais</span><span class="ptag">Finlandais</span><span class="ptag">Peuples baltes</span><span class="ptag">Géorgiens</span><span class="ptag">Centrasiatiques</span></div></div>
+<div class="ecard se"><span class="eflag">🔥</span><h3>Serbie (L'Étincelle)</h3><p>Un petit pays slave fier. Rêvait d'unir tous les Slaves du Sud.</p><p><strong>⚠ </strong>Beaucoup de Slaves vivaient dans l'Autriche-Hongrie.</p><div class="ptags"><span class="ptag">Serbes</span><span class="ptag">Soutenus par la Russie</span><span class="ptag">Rêve panslave</span></div></div>
+</div>
+<div class="ibox rb"><h3>Pourquoi le Nationalisme ?</h3><p><strong>Le Nationalisme</strong> : aimer sa nation au point de vouloir son propre pays. Quand ton groupe ethnique est piégé dans un empire, ça devient explosif. Les empires ont dit : 'Vous nous appartenez.' Recette de la révolution.</p></div>
+</div>
+<div data-lang="pt">
+<div class="slab">Seção 3 — O Mapa Confuso</div>
+<h2>Europa Antes da PGM: Uma Bagunça</h2>
+<p>Mapa de 1914: <strong>poucos países grandes, centenas de povos dentro.</strong></p>
+<p>A Europa era controlada por <strong>impérios</strong>. Um império: um grupo poderoso governa muitos outros.</p>
+<div class="ibox"><span class="atag">🏫 Analogia da Escola</span><p>Um diretor controla 5 escolas em bairros diferentes. Cada uma fala um idioma diferente. O diretor obriga todos a seguir as regras DELE. Algumas querem se separar. Assim eram os impérios.</p></div>
+<h3>Os 4 Poderes-Chave</h3>
+<div class="egrid">
+<div class="ecard au"><span class="eflag">🏰</span><h3>Império Austro-Húngaro</h3><p>Um império muito dividido. Austríacos e húngaros compartilhavam poder, mas governavam muitos outros sem poder.</p><p><strong>⚠ </strong>Os eslavos queriam liberdade. A Áustria-Hungria disse não.</p><div class="ptags"><span class="ptag">Alemães</span><span class="ptag">Húngaros</span><span class="ptag">Tchecos</span><span class="ptag">Eslovacos</span><span class="ptag">Poloneses</span><span class="ptag">Croatas</span><span class="ptag">Sérvios</span><span class="ptag">Romenos</span><span class="ptag">Italianos</span><span class="ptag">Bósnios</span><span class="ptag">Eslovenos</span></div></div>
+<div class="ecard ot"><span class="eflag">🌙</span><h3>Império Otomano</h3><p>O 'Homem Doente da Europa.' Uma vez poderoso, agora desmoronando.</p><p><strong>⚠ </strong>Otomanos enfraqueceram, nações balcânicas se libertaram.</p><div class="ptags"><span class="ptag">Turcos</span><span class="ptag">Árabes</span><span class="ptag">Gregos</span><span class="ptag">Búlgaros</span><span class="ptag">Sérvios</span><span class="ptag">Romenos</span><span class="ptag">Armênios</span><span class="ptag">Curdos</span></div></div>
+<div class="ecard ru"><span class="eflag">🦅</span><h3>Império Russo</h3><p>O maior país do mundo. O Czar se via como protetor de todos os eslavos ortodoxos.</p><p><strong>⚠ </strong>Queria se expandir para os Bálcãs.</p><div class="ptags"><span class="ptag">Russos</span><span class="ptag">Ucranianos</span><span class="ptag">Poloneses</span><span class="ptag">Finlandeses</span><span class="ptag">Povos bálticos</span><span class="ptag">Georgianos</span><span class="ptag">Centro-asiáticos</span></div></div>
+<div class="ecard se"><span class="eflag">🔥</span><h3>Sérvia (A Faísca)</h3><p>País eslavo pequeno mas orgulhoso. Sonhava em unir todos os eslavos do sul.</p><p><strong>⚠ </strong>Muitos eslavos viviam na Áustria-Hungria. A Sérvia queria tirá-los.</p><div class="ptags"><span class="ptag">Sérvios</span><span class="ptag">Apoiados pela Rússia</span><span class="ptag">Sonho pan-eslavista</span></div></div>
+</div>
+<div class="ibox rb"><h3>Por Que o Nacionalismo Causou Tensão?</h3><p><strong>Nacionalismo</strong>: amar tanto sua nação que você quer seu próprio país. Quando seu grupo étnico está preso no império de outro, fica explosivo. Os impérios disseram: 'Vocês pertencem a nós.' Receita para revolução.</p></div>
+</div>
+<div data-lang="ht">
+<div class="slab">Seksyon 3 — Kat Konfize a</div>
+<h2>Ewop Anvan PGM la: Yon Dezod</h2>
+<p>Kat 1914: <strong>kek gwo peyi, men de santan pep diferan andedan yo.</strong></p>
+<p>Pifò Ewop te kontwole pa <strong>anpi</strong>. Yon anpi se le yon gwoup pwisan gouvene anpil lot gwoup.</p>
+<div class="ibox"><span class="atag">🏫 Analoji Lekol</span><p>Yon sel direkte kontwole 5 lekol nan katye diferan. Chak lekol pale yon lang diferan. Direkte a fose tout moun suiv reg PA LI yo. Gen lekol ki vle separe. Se konsa anpi yo te ye.</p></div>
+<h3>4 Gwo Pisans yo</h3>
+<div class="egrid">
+<div class="ecard au"><span class="eflag">🏰</span><h3>Anpi Otrich-Ongri</h3><p>Yon anpi tre divize. Bo otrichyen ak ongrwa pataje pouwa, men gouvene anpil lot moun san pouwa.</p><p><strong>⚠ </strong>Pep slav yo te vle libete. Otrich-Ongri te di non.</p><div class="ptags"><span class="ptag">Alman</span><span class="ptag">Ongrwa</span><span class="ptag">Tchek</span><span class="ptag">Slovak</span><span class="ptag">Polone</span><span class="ptag">Kwat</span><span class="ptag">Seb</span><span class="ptag">Women</span><span class="ptag">Italyen</span><span class="ptag">Bosnyak</span><span class="ptag">Sloven</span></div></div>
+<div class="ecard ot"><span class="eflag">🌙</span><h3>Anpi Otoman</h3><p>'Nonm Malad Ewop la.' Yon le pwisan, kounye a l ap tonbe.</p><p><strong>⚠ </strong>Otoman yo te vin feb, ti nasyon balkan yo te libere.</p><div class="ptags"><span class="ptag">Tik</span><span class="ptag">Arab</span><span class="ptag">Grek</span><span class="ptag">Bilge</span><span class="ptag">Seb</span><span class="ptag">Women</span><span class="ptag">Amenyen</span><span class="ptag">Kid</span></div></div>
+<div class="ecard ru"><span class="eflag">🦅</span><h3>Anpi Ris</h3><p>Pi gwo peyi nan mond lan. Tsar la te we tet li kom pwotekte tout Slav otodoks yo.</p><p><strong>⚠ </strong>Risi te vle grandi nan Balkan yo.</p><div class="ptags"><span class="ptag">Ris</span><span class="ptag">Ikrenyen</span><span class="ptag">Polone</span><span class="ptag">Finlande</span><span class="ptag">Pep Baltik</span><span class="ptag">Jojyen</span><span class="ptag">Santrazi</span></div></div>
+<div class="ecard se"><span class="eflag">🔥</span><h3>Sebi (Etensel la)</h3><p>Yon ti peyi slav men fye anpil. Te reve ini tout Slav sid yo.</p><p><strong>⚠ </strong>Anpil Slav te viv nan Otrich-Ongri. Sebi te vle retire yo.</p><div class="ptags"><span class="ptag">Seb</span><span class="ptag">Sipote pa Risi</span><span class="ptag">Rev pan-slavis</span></div></div>
+</div>
+<div class="ibox rb"><h3>Poukisa Nasyonalis Te Kreye Tansyon?</h3><p><strong>Nasyonalis</strong> vle di renmen nasyon ou telma ke ou vle pwop peyi pa ou. Le gwoup etnik ou bloke nan anpi yon lot moun, sa vin eksplozif. Anpi yo te di: 'Nou posede nou.' Rèset pou revolisyon.</p></div>
+</div>
+</section>
+<div class="sdiv"></div>
+<section id="s4">
+<div data-lang="en">
+<div class="slab">Section 4 — The Religion Split</div>
+<h2>Catholic vs Orthodox vs Muslim: How Religion Divided Europe</h2>
+<p>Religion wasn't just about belief. In Europe, it shaped <strong>who you were, who your friends were, and who your enemies were.</strong></p>
+<p>To understand WWI, know about <strong>The Great Schism of 1054</strong> — when Christianity split in two. That split still affects the world today.</p>
+<div class="ibox"><span class="atag">🧠 Simple Version</span><p>Imagine a church splits in two. The west follows the Pope in Rome. The east follows their own leaders in Constantinople. Over centuries, they develop different traditions. Now they don't trust each other. That's the Great Schism.</p></div>
+<h3>The 3 Religious Worlds</h3>
+<div class="rgrid">
+<div class="rcard cat"><p style="font-size:2rem;margin-bottom:8px">⛪</p><h3>Roman Catholic</h3><p style="color:var(--mute);font-size:.85rem"><em>Western & Central Europe</em></p><p>Leader: The Pope in Rome. Countries: France, Spain, Italy, Austria, Poland, Ireland, Croatia. Austria-Hungary's ruling class was Catholic.</p></div>
+<div class="rcard ort"><p style="font-size:2rem;margin-bottom:8px">☦️</p><h3>Eastern Orthodox</h3><p style="color:var(--mute);font-size:.85rem"><em>Eastern & Southeastern Europe</em></p><p>Leaders: Patriarchs in different countries (no single pope). Countries: Russia, Serbia, Greece, Bulgaria, Romania. Russia supported Serbia because of this bond.</p></div>
+<div class="rcard mus"><p style="font-size:2rem;margin-bottom:8px">🌙</p><h3>Islam</h3><p style="color:var(--mute);font-size:.85rem"><em>Ottoman Empire & parts of the Balkans</em></p><p>The Ottoman Empire was Muslim. After centuries, many in Bosnia and Albania became Muslim. Another layer of division in the Balkans.</p></div>
+</div>
+<div class="ibox rb"><h3>How Religion + Ethnicity + Nationalism Overlapped</h3><p>A Serb wasn't just 'Slavic.' A Serb was <strong>Slavic + Orthodox + Nationalist</strong>. A Croat was <strong>Slavic + Catholic</strong>. A Bosnian could be <strong>Slavic + Muslim</strong>. Same ethnic family, different religions, different loyalties. This made the Balkans the most explosive region — and exactly where WWI started.</p></div>
+</div>
+<div data-lang="es">
+<div class="slab">Sección 4 — La División Religiosa</div>
+<h2>Católico vs Ortodoxo vs Musulmán</h2>
+<p>La religión no era solo creencia. En Europa, determinaba <strong>quién eras, quiénes eran tus amigos y tus enemigos.</strong></p>
+<p>Para entender la PGM, conoce <strong>El Gran Cisma de 1054</strong> — cuando el cristianismo se dividió en dos.</p>
+<div class="ibox"><span class="atag">🧠 Versión Simple</span><p>Una iglesia se divide en dos. El oeste sigue al Papa en Roma. El este sigue a sus propios líderes en Constantinopla. Con los siglos, desarrollan tradiciones diferentes. Ya no confían entre sí. Eso es el Gran Cisma.</p></div>
+<h3>Los 3 Mundos Religiosos</h3>
+<div class="rgrid">
+<div class="rcard cat"><p style="font-size:2rem;margin-bottom:8px">⛪</p><h3>Católico Romano</h3><p style="color:var(--mute);font-size:.85rem"><em>Europa Occidental y Central</em></p><p>Líder: El Papa en Roma. Países: Francia, España, Italia, Austria, Polonia, Croacia. La clase gobernante de Austria-Hungría era católica.</p></div>
+<div class="rcard ort"><p style="font-size:2rem;margin-bottom:8px">☦️</p><h3>Ortodoxo Oriental</h3><p style="color:var(--mute);font-size:.85rem"><em>Europa Oriental y del Sureste</em></p><p>Patriarcas en diferentes países. Rusia, Serbia, Grecia, Bulgaria, Rumanía. Rusia protegía a los cristianos ortodoxos — por eso apoyó a Serbia.</p></div>
+<div class="rcard mus"><p style="font-size:2rem;margin-bottom:8px">🌙</p><h3>Islam</h3><p style="color:var(--mute);font-size:.85rem"><em>Imperio Otomano y Balcanes</em></p><p>El Imperio Otomano era musulmán. Después de siglos, mucha gente en Bosnia y Albania se hizo musulmana. Otra capa de división en los Balcanes.</p></div>
+</div>
+<div class="ibox rb"><h3>Religión + Etnicidad + Nacionalismo</h3><p>Un serbio era <strong>eslavo + ortodoxo + nacionalista</strong>. Un croata era <strong>eslavo + católico</strong>. Un bosnio podía ser <strong>eslavo + musulmán</strong>. Misma familia, diferentes lealtades. Los Balcanes eran la región más explosiva.</p></div>
+</div>
+<div data-lang="fr">
+<div class="slab">Section 4 — La Division Religieuse</div>
+<h2>Catholique vs Orthodoxe vs Musulman</h2>
+<p>La religion déterminait <strong>qui tu étais et qui étaient tes alliés.</strong></p>
+<p><strong>Le Grand Schisme de 1054</strong> a divisé le christianisme en deux. Cette division affecte encore le monde.</p>
+<div class="ibox"><span class="atag">🧠 Version Simple</span><p>Une église se divise. L'ouest suit le Pape à Rome. L'est suit ses propres chefs à Constantinople. Avec le temps, ils ne se font plus confiance. C'est le Grand Schisme.</p></div>
+<h3>Les 3 Mondes Religieux</h3>
+<div class="rgrid">
+<div class="rcard cat"><p style="font-size:2rem;margin-bottom:8px">⛪</p><h3>Catholique Romain</h3><p style="color:var(--mute);font-size:.85rem"><em>Europe Occidentale et Centrale</em></p><p>Le Pape à Rome. France, Espagne, Italie, Autriche, Pologne, Croatie. La classe dirigeante austro-hongroise était catholique.</p></div>
+<div class="rcard ort"><p style="font-size:2rem;margin-bottom:8px">☦️</p><h3>Orthodoxe Oriental</h3><p style="color:var(--mute);font-size:.85rem"><em>Europe Orientale et du Sud-Est</em></p><p>Patriarches dans différents pays. Russie, Serbie, Grèce, Bulgarie, Roumanie. La Russie protégeait les chrétiens orthodoxes.</p></div>
+<div class="rcard mus"><p style="font-size:2rem;margin-bottom:8px">🌙</p><h3>Islam</h3><p style="color:var(--mute);font-size:.85rem"><em>Empire Ottoman & Balkans</em></p><p>L'Empire ottoman était musulman. Après des siècles, beaucoup en Bosnie et Albanie sont devenus musulmans.</p></div>
+</div>
+<div class="ibox rb"><h3>Religion + Ethnicité + Nationalisme</h3><p>Un Serbe était <strong>slave + orthodoxe + nationaliste</strong>. Un Croate : <strong>slave + catholique</strong>. Un Bosniaque : <strong>slave + musulman</strong>. Même famille, loyautés différentes. Les Balkans étaient la région la plus explosive.</p></div>
+</div>
+<div data-lang="pt">
+<div class="slab">Seção 4 — A Divisão Religiosa</div>
+<h2>Católico vs Ortodoxo vs Muçulmano</h2>
+<p>A religião determinava <strong>quem você era e quem eram seus aliados.</strong></p>
+<p><strong>O Grande Cisma de 1054</strong> dividiu o cristianismo em dois. Essa divisão ainda afeta o mundo.</p>
+<div class="ibox"><span class="atag">🧠 Versão Simples</span><p>Uma igreja se divide em duas. O oeste segue o Papa em Roma. O leste segue seus próprios líderes em Constantinopla. Com o tempo, não confiam mais um no outro. Esse é o Grande Cisma.</p></div>
+<h3>Os 3 Mundos Religiosos</h3>
+<div class="rgrid">
+<div class="rcard cat"><p style="font-size:2rem;margin-bottom:8px">⛪</p><h3>Católico Romano</h3><p style="color:var(--mute);font-size:.85rem"><em>Europa Ocidental e Central</em></p><p>Papa em Roma. França, Espanha, Itália, Áustria, Polônia, Croácia. A classe dominante austro-húngara era católica.</p></div>
+<div class="rcard ort"><p style="font-size:2rem;margin-bottom:8px">☦️</p><h3>Ortodoxo Oriental</h3><p style="color:var(--mute);font-size:.85rem"><em>Europa Oriental e do Sudeste</em></p><p>Patriarcas em vários países. Rússia, Sérvia, Grécia, Bulgária, Romênia. A Rússia apoiava a Sérvia por esse vínculo.</p></div>
+<div class="rcard mus"><p style="font-size:2rem;margin-bottom:8px">🌙</p><h3>Islã</h3><p style="color:var(--mute);font-size:.85rem"><em>Império Otomano & Bálcãs</em></p><p>O Império Otomano era muçulmano. Após séculos, muitos na Bósnia e Albânia se tornaram muçulmanos.</p></div>
+</div>
+<div class="ibox rb"><h3>Religião + Etnicidade + Nacionalismo</h3><p>Um sérvio era <strong>eslavo + ortodoxo + nacionalista</strong>. Um croata: <strong>eslavo + católico</strong>. Um bósnio: <strong>eslavo + muçulmano</strong>. Mesma família, lealdades diferentes. Os Bálcãs eram a região mais explosiva.</p></div>
+</div>
+<div data-lang="ht">
+<div class="slab">Seksyon 4 — Divizyon Relijye a</div>
+<h2>Katolik vs Otodoks vs Mizilman</h2>
+<p>Relijyon te detèmine <strong>kilès ou ye ak kilès ki alye ou.</strong></p>
+<p><strong>Gran Chism 1054 la</strong> te divize krisyanis an de. Divizyon sa a toujou afekte mond lan.</p>
+<div class="ibox"><span class="atag">🧠 Vesyon Senp</span><p>Yon legliz divize an de. Bò lwès la suiv Pap la nan Wòm. Bò lès la suiv pwop chef pa yo nan Konstantinop. Ak tan, yo pa fe youn lot konfyans anko. Se Gran Chism nan.</p></div>
+<h3>3 Mond Relijye yo</h3>
+<div class="rgrid">
+<div class="rcard cat"><p style="font-size:2rem;margin-bottom:8px">⛪</p><h3>Katolik Women</h3><p style="color:var(--mute);font-size:.85rem"><em>Ewop Lwes ak Santral</em></p><p>Pap la nan Wom. Lafrans, Espay, Itali, Otrich, Poloy, Kwasi. Klas dirijan otrich-ongrwa a te katolik.</p></div>
+<div class="rcard ort"><p style="font-size:2rem;margin-bottom:8px">☦️</p><h3>Otodoks Les</h3><p style="color:var(--mute);font-size:.85rem"><em>Ewop Les ak Sides</em></p><p>Patriyach nan diferan peyi. Risi, Sebi, Gres, Bilgari, Woumani. Risi te sipote Sebi poutèt lyen sa a.</p></div>
+<div class="rcard mus"><p style="font-size:2rem;margin-bottom:8px">🌙</p><h3>Islam</h3><p style="color:var(--mute);font-size:.85rem"><em>Anpi Otoman ak Balkan yo</em></p><p>Anpi Otoman te mizilman. Apre plizye syek, anpil moun nan Bosni ak Albani te vin mizilman.</p></div>
+</div>
+<div class="ibox rb"><h3>Relijyon + Etnisite + Nasyonalis</h3><p>Yon Seb te <strong>slav + otodoks + nasyonalis</strong>. Yon Kwat te <strong>slav + katolik</strong>. Yon Bosnyak te ka <strong>slav + mizilman</strong>. Menm fanmi, lwayote diferan. Balkan yo te pi eksplozif.</p></div>
+</div>
+</section>
+<div class="sdiv"></div>
+<section id="s5">
+<div data-lang="en">
+<div class="slab">Section 5 — The Alliance System</div>
+<h2>The Domino Machine: How Alliances Made a World War</h2>
+<p>By 1914, Europe was split into two teams. Each promised: <strong>'If you get attacked, we fight for you.'</strong></p>
+<p>Sounds good — nobody attacks you if your friends are strong. But the problem: if ANY two countries fight, EVERYONE gets dragged in. Like dominoes.</p>
+<div class="ibox"><span class="atag">🎳 Domino Analogy</span><p>Set up 20 dominoes in a line. Push the first one. Can you stop the rest? No. That's exactly what alliances did. One fight knocked over all the dominoes.</p></div>
+<div class="agrid"><div class="abox ta">
+<h3 style="color:var(--red)">Triple Alliance (Central Powers)</h3>
+<div class="amem"><span class="fl">🇩🇪</span><div><span class="nm">Germany</span><br><span class="rl">Strongest military in Europe. Leader of this alliance.</span></div></div>
+<div class="amem"><span class="fl">🇦🇹</span><div><span class="nm">Austria-Hungary</span><br><span class="rl">Germany's closest ally. Shared Germanic culture, feared Slavic nationalism.</span></div></div>
+<div class="amem"><span class="fl">🇮🇹</span><div><span class="nm">Italy</span><br><span class="rl">Part of the alliance on paper — but switched sides when war started!</span></div></div>
+</div><div class="avs">VS</div><div class="abox te">
+<h3 style="color:var(--blue)">Triple Entente (Allied Team)</h3>
+<div class="amem"><span class="fl">🇫🇷</span><div><span class="nm">France</span><br><span class="rl">Wanted revenge against Germany for 1871. Feared German power.</span></div></div>
+<div class="amem"><span class="fl">🇷🇺</span><div><span class="nm">Russia</span><br><span class="rl">Biggest country. Protector of Slavic nations.</span></div></div>
+<div class="amem"><span class="fl">🇬🇧</span><div><span class="nm">Britain</span><br><span class="rl">Biggest navy in the world. Germany was getting too powerful.</span></div></div>
+</div></div>
+<h3>The Domino Scenario: Step by Step</h3>
+<div class="cstep"><div class="cnum">1</div><div class="ccont"><h4>If Austria-Hungary attacks Serbia…</h4><p>Russia jumps in to defend Serbia (Slavic brotherhood).</p></div></div>
+<div class="carr">⬇️</div>
+<div class="cstep"><div class="cnum">2</div><div class="ccont"><h4>If Russia fights Austria-Hungary…</h4><p>Germany jumps in to defend Austria-Hungary (alliance promise).</p></div></div>
+<div class="carr">⬇️</div>
+<div class="cstep"><div class="cnum">3</div><div class="ccont"><h4>If Germany fights Russia…</h4><p>France jumps in to fight Germany (alliance + revenge).</p></div></div>
+<div class="carr">⬇️</div>
+<div class="cstep"><div class="cnum">4</div><div class="ccont"><h4>If Germany attacks France through Belgium…</h4><p>Britain jumps in to defend Belgium (treaty promise).</p></div></div>
+<div class="carr">⬇️</div>
+<div class="cstep"><div class="cnum">5</div><div class="ccont"><h4>Result:</h4><p>A fight between TWO countries becomes a war involving ALL of Europe in weeks.</p></div></div>
+</div>
+<div data-lang="es">
+<div class="slab">Sección 5 — Las Alianzas</div>
+<h2>La Máquina de Dominó</h2>
+<p>Europa dividida en dos equipos. Cada uno prometió: <strong>'Si te atacan, pelearemos.'</strong></p>
+<p>Si CUALQUIER par de países pelea, TODOS son arrastrados. Como dominó.</p>
+<div class="ibox"><span class="atag">🎳 Analogía del Dominó</span><p>20 fichas de dominó en línea. Empujas la primera. ¿Puedes detener las demás? No. Eso hizo el sistema de alianzas.</p></div>
+<div class="agrid"><div class="abox ta">
+<h3 style="color:var(--red)">Triple Alianza (Potencias Centrales)</h3>
+<div class="amem"><span class="fl">🇩🇪</span><div><span class="nm">Alemania</span><br><span class="rl">Ejército más fuerte de Europa. Líder de la alianza.</span></div></div>
+<div class="amem"><span class="fl">🇦🇹</span><div><span class="nm">Austria-Hungría</span><br><span class="rl">Aliado más cercano de Alemania.</span></div></div>
+<div class="amem"><span class="fl">🇮🇹</span><div><span class="nm">Italia</span><br><span class="rl">En la alianza en papel — ¡pero cambió de bando!</span></div></div>
+</div><div class="avs">VS</div><div class="abox te">
+<h3 style="color:var(--blue)">Triple Entente (Aliados)</h3>
+<div class="amem"><span class="fl">🇫🇷</span><div><span class="nm">Francia</span><br><span class="rl">Quería venganza contra Alemania por 1871.</span></div></div>
+<div class="amem"><span class="fl">🇷🇺</span><div><span class="nm">Rusia</span><br><span class="rl">El país más grande. Protectora de naciones eslavas.</span></div></div>
+<div class="amem"><span class="fl">🇬🇧</span><div><span class="nm">Gran Bretaña</span><br><span class="rl">Mayor marina del mundo. Alemania era demasiado poderosa.</span></div></div>
+</div></div>
+<h3>Escenario Dominó: Paso a Paso</h3>
+<div class="cstep"><div class="cnum">1</div><div class="ccont"><h4>Si Austria-Hungría ataca a Serbia…</h4><p>Rusia defiende a Serbia (hermandad eslava).</p></div></div>
+<div class="carr">⬇️</div>
+<div class="cstep"><div class="cnum">2</div><div class="ccont"><h4>Si Rusia pelea contra Austria-Hungría…</h4><p>Alemania defiende a Austria-Hungría (promesa de alianza).</p></div></div>
+<div class="carr">⬇️</div>
+<div class="cstep"><div class="cnum">3</div><div class="ccont"><h4>Si Alemania pelea contra Rusia…</h4><p>Francia ataca a Alemania (alianza + venganza).</p></div></div>
+<div class="carr">⬇️</div>
+<div class="cstep"><div class="cnum">4</div><div class="ccont"><h4>Si Alemania ataca a Francia por Bélgica…</h4><p>Gran Bretaña defiende a Bélgica (tratado).</p></div></div>
+<div class="carr">⬇️</div>
+<div class="cstep"><div class="cnum">5</div><div class="ccont"><h4>Resultado:</h4><p>Una pelea entre DOS países se vuelve guerra mundial en semanas.</p></div></div>
+</div>
+<div data-lang="fr">
+<div class="slab">Section 5 — Les Alliances</div>
+<h2>La Machine à Dominos</h2>
+<p>L'Europe divisée en deux équipes. Chacune a promis : <strong>'Si tu es attaqué, on se bat.'</strong></p>
+<p>Si DEUX pays se battent, TOUT LE MONDE est entraîné. Comme des dominos.</p>
+<div class="ibox"><span class="atag">🎳 Analogie des Dominos</span><p>20 dominos en ligne. Tu pousses le premier. Peux-tu arrêter les autres ? Non. C'est ce que les alliances ont fait.</p></div>
+<div class="agrid"><div class="abox ta">
+<h3 style="color:var(--red)">Triple Alliance (Puissances Centrales)</h3>
+<div class="amem"><span class="fl">🇩🇪</span><div><span class="nm">Allemagne</span><br><span class="rl">L'armée la plus puissante d'Europe.</span></div></div>
+<div class="amem"><span class="fl">🇦🇹</span><div><span class="nm">Autriche-Hongrie</span><br><span class="rl">L'allié le plus proche de l'Allemagne.</span></div></div>
+<div class="amem"><span class="fl">🇮🇹</span><div><span class="nm">Italie</span><br><span class="rl">A changé de camp quand la guerre a commencé !</span></div></div>
+</div><div class="avs">VS</div><div class="abox te">
+<h3 style="color:var(--blue)">Triple Entente (Les Alliés)</h3>
+<div class="amem"><span class="fl">🇫🇷</span><div><span class="nm">France</span><br><span class="rl">Voulait se venger de l'Allemagne.</span></div></div>
+<div class="amem"><span class="fl">🇷🇺</span><div><span class="nm">Russie</span><br><span class="rl">Le plus grand pays. Protectrice des Slaves.</span></div></div>
+<div class="amem"><span class="fl">🇬🇧</span><div><span class="nm">Grande-Bretagne</span><br><span class="rl">La plus grande marine. L'Allemagne devenait trop puissante.</span></div></div>
+</div></div>
+<h3>Le Scénario Domino</h3>
+<div class="cstep"><div class="cnum">1</div><div class="ccont"><h4>Si l'Autriche-Hongrie attaque la Serbie…</h4><p>La Russie intervient (fraternité slave).</p></div></div>
+<div class="carr">⬇️</div>
+<div class="cstep"><div class="cnum">2</div><div class="ccont"><h4>Si la Russie combat l'Autriche-Hongrie…</h4><p>L'Allemagne intervient (promesse d'alliance).</p></div></div>
+<div class="carr">⬇️</div>
+<div class="cstep"><div class="cnum">3</div><div class="ccont"><h4>Si l'Allemagne combat la Russie…</h4><p>La France intervient (alliance + revanche).</p></div></div>
+<div class="carr">⬇️</div>
+<div class="cstep"><div class="cnum">4</div><div class="ccont"><h4>Si l'Allemagne attaque la France via la Belgique…</h4><p>La Grande-Bretagne intervient (traité).</p></div></div>
+<div class="carr">⬇️</div>
+<div class="cstep"><div class="cnum">5</div><div class="ccont"><h4>Résultat :</h4><p>Un conflit entre DEUX pays devient une guerre mondiale en semaines.</p></div></div>
+</div>
+<div data-lang="pt">
+<div class="slab">Seção 5 — As Alianças</div>
+<h2>A Máquina de Dominó</h2>
+<p>Europa dividida em dois times. Cada um prometeu: <strong>'Se te atacarem, lutamos.'</strong></p>
+<p>Se QUALQUER par briga, TODOS são arrastados. Como dominós.</p>
+<div class="ibox"><span class="atag">🎳 Analogia do Dominó</span><p>20 peças enfileiradas. Empurra a primeira. Dá pra parar as outras? Não. É o que as alianças fizeram.</p></div>
+<div class="agrid"><div class="abox ta">
+<h3 style="color:var(--red)">Tríplice Aliança (Potências Centrais)</h3>
+<div class="amem"><span class="fl">🇩🇪</span><div><span class="nm">Alemanha</span><br><span class="rl">Exército mais forte da Europa.</span></div></div>
+<div class="amem"><span class="fl">🇦🇹</span><div><span class="nm">Áustria-Hungria</span><br><span class="rl">Aliada mais próxima da Alemanha.</span></div></div>
+<div class="amem"><span class="fl">🇮🇹</span><div><span class="nm">Itália</span><br><span class="rl">Trocou de lado quando a guerra começou!</span></div></div>
+</div><div class="avs">VS</div><div class="abox te">
+<h3 style="color:var(--blue)">Tríplice Entente (Aliados)</h3>
+<div class="amem"><span class="fl">🇫🇷</span><div><span class="nm">França</span><br><span class="rl">Queria vingança contra a Alemanha.</span></div></div>
+<div class="amem"><span class="fl">🇷🇺</span><div><span class="nm">Rússia</span><br><span class="rl">O maior país. Protetora dos eslavos.</span></div></div>
+<div class="amem"><span class="fl">🇬🇧</span><div><span class="nm">Grã-Bretanha</span><br><span class="rl">Maior marinha do mundo. Alemanha ficando poderosa demais.</span></div></div>
+</div></div>
+<h3>Cenário Dominó: Passo a Passo</h3>
+<div class="cstep"><div class="cnum">1</div><div class="ccont"><h4>Se a Áustria-Hungria ataca a Sérvia…</h4><p>Rússia defende a Sérvia (irmandade eslava).</p></div></div>
+<div class="carr">⬇️</div>
+<div class="cstep"><div class="cnum">2</div><div class="ccont"><h4>Se a Rússia luta contra a Áustria-Hungria…</h4><p>Alemanha defende a Áustria-Hungria (aliança).</p></div></div>
+<div class="carr">⬇️</div>
+<div class="cstep"><div class="cnum">3</div><div class="ccont"><h4>Se a Alemanha luta contra a Rússia…</h4><p>França ataca a Alemanha (aliança + vingança).</p></div></div>
+<div class="carr">⬇️</div>
+<div class="cstep"><div class="cnum">4</div><div class="ccont"><h4>Se a Alemanha ataca a França pela Bélgica…</h4><p>Grã-Bretanha defende a Bélgica (tratado).</p></div></div>
+<div class="carr">⬇️</div>
+<div class="cstep"><div class="cnum">5</div><div class="ccont"><h4>Resultado:</h4><p>Uma briga entre DOIS países vira guerra mundial em semanas.</p></div></div>
+</div>
+<div data-lang="ht">
+<div class="slab">Seksyon 5 — Alyans yo</div>
+<h2>Machin Domino a</h2>
+<p>Ewop divize an de ekip. Chak te pwomèt: <strong>'Si yo atake ou, n ap goumen.'</strong></p>
+<p>Si NENPOT de peyi goumen, TOUT MOUN rale ladan. Tankou domino.</p>
+<div class="ibox"><span class="atag">🎳 Analoji Domino</span><p>20 domino an liy. Ou pouse premye a. Ou ka rete lot yo? Non. Se sa sistèm alyans lan te fè.</p></div>
+<div class="agrid"><div class="abox ta">
+<h3 style="color:var(--red)">Trip Alyans (Pisans Santral)</h3>
+<div class="amem"><span class="fl">🇩🇪</span><div><span class="nm">Almay</span><br><span class="rl">Lame ki pi fo nan Ewop.</span></div></div>
+<div class="amem"><span class="fl">🇦🇹</span><div><span class="nm">Otrich-Ongri</span><br><span class="rl">Alye ki pi pwoch Almay.</span></div></div>
+<div class="amem"><span class="fl">🇮🇹</span><div><span class="nm">Itali</span><br><span class="rl">Te chanje bo le lage a te komanse!</span></div></div>
+</div><div class="avs">VS</div><div class="abox te">
+<h3 style="color:var(--blue)">Trip Antant (Alye yo)</h3>
+<div class="amem"><span class="fl">🇫🇷</span><div><span class="nm">Lafrans</span><br><span class="rl">Te vle revanj kont Almay.</span></div></div>
+<div class="amem"><span class="fl">🇷🇺</span><div><span class="nm">Risi</span><br><span class="rl">Pi gwo peyi a. Pwotekte Slav yo.</span></div></div>
+<div class="amem"><span class="fl">🇬🇧</span><div><span class="nm">Grann Bretay</span><br><span class="rl">Pi gwo marin. Almay te twò pwisan.</span></div></div>
+</div></div>
+<h3>Senayo Domino a</h3>
+<div class="cstep"><div class="cnum">1</div><div class="ccont"><h4>Si Otrich-Ongri atake Sebi…</h4><p>Risi antre pou defann Sebi (fwatenite slav).</p></div></div>
+<div class="carr">⬇️</div>
+<div class="cstep"><div class="cnum">2</div><div class="ccont"><h4>Si Risi goumen kont Otrich-Ongri…</h4><p>Almay antre pou defann Otrich-Ongri (pwomes alyans).</p></div></div>
+<div class="carr">⬇️</div>
+<div class="cstep"><div class="cnum">3</div><div class="ccont"><h4>Si Almay goumen kont Risi…</h4><p>Lafrans antre pou goumen kont Almay (alyans + revanj).</p></div></div>
+<div class="carr">⬇️</div>
+<div class="cstep"><div class="cnum">4</div><div class="ccont"><h4>Si Almay atake Lafrans nan Beljik…</h4><p>Grann Bretay antre pou defann Beljik (trete).</p></div></div>
+<div class="carr">⬇️</div>
+<div class="cstep"><div class="cnum">5</div><div class="ccont"><h4>Rezilta:</h4><p>Yon batay ant DE peyi vin yon lage ki enplike TOUT Ewop nan kek semen.</p></div></div>
+</div>
+</section>
+<div class="sdiv"></div>
+<section id="s6">
+<div data-lang="en">
+<div class="slab">Section 6 — The Chain Reaction</div>
+<h2>How One Bullet Started a World War</h2>
+<p>On June 28, 1914, 19-year-old Gavrilo Princip shot and killed Archduke Franz Ferdinand — heir to Austria-Hungary — and his wife Sophie in Sarajevo. Here's what happened:</p>
+<div class="cstep"><div class="cnum">1</div><div class="ccont"><h4>The Assassination</h4><p>Gavrilo Princip kills the Archduke. He was part of a group wanting Bosnia to join Serbia.</p></div></div>
+<div class="carr">⬇️</div>
+<div class="cstep"><div class="cnum">2</div><div class="ccont"><h4>Austria Blames Serbia</h4><p>Austria-Hungary sends Serbia an ultimatum. Serbia agrees to most — but not all. Austria declares war.</p></div></div>
+<div class="carr">⬇️</div>
+<div class="cstep"><div class="cnum">3</div><div class="ccont"><h4>Russia Defends Serbia</h4><p>Russia prepares its army. They can't let Austria crush Serbia.</p></div></div>
+<div class="carr">⬇️</div>
+<div class="cstep"><div class="cnum">4</div><div class="ccont"><h4>Germany Defends Austria</h4><p>Germany tells Russia to stop. Russia refuses. Germany declares war on Russia.</p></div></div>
+<div class="carr">⬇️</div>
+<div class="cstep"><div class="cnum">5</div><div class="ccont"><h4>France Gets Pulled In</h4><p>Germany declares war on France and plans to attack through Belgium.</p></div></div>
+<div class="carr">⬇️</div>
+<div class="cstep"><div class="cnum">6</div><div class="ccont"><h4>Britain Joins</h4><p>Britain promised to protect Belgium. When Germany invades, Britain declares war.</p></div></div>
+<div class="carr">⬇️</div>
+<div class="cstep"><div class="cnum">7</div><div class="ccont"><h4>The World Is at War</h4><p>In 5 weeks, one assassination pulled almost every European power into the deadliest war yet — World War I.</p></div></div>
+</div>
+<div data-lang="es">
+<div class="slab">Sección 6 — La Reacción en Cadena</div>
+<h2>Cómo Una Bala Inició una Guerra Mundial</h2>
+<p>El 28 de junio de 1914, Gavrilo Princip, de 19 años, mató al Archiduque Francisco Fernando y a su esposa Sofía en Sarajevo. Lo que pasó después:</p>
+<div class="cstep"><div class="cnum">1</div><div class="ccont"><h4>El Asesinato</h4><p>Gavrilo Princip mata al Archiduque. Quería que Bosnia se uniera a Serbia.</p></div></div>
+<div class="carr">⬇️</div>
+<div class="cstep"><div class="cnum">2</div><div class="ccont"><h4>Austria Culpa a Serbia</h4><p>Austria-Hungría envía un ultimátum. Serbia acepta la mayoría — pero no todo. Austria declara guerra.</p></div></div>
+<div class="carr">⬇️</div>
+<div class="cstep"><div class="cnum">3</div><div class="ccont"><h4>Rusia Defiende a Serbia</h4><p>Rusia prepara su ejército. No puede dejar que Austria aplaste a Serbia.</p></div></div>
+<div class="carr">⬇️</div>
+<div class="cstep"><div class="cnum">4</div><div class="ccont"><h4>Alemania Defiende a Austria</h4><p>Alemania le dice a Rusia que pare. Rusia se niega. Alemania declara guerra.</p></div></div>
+<div class="carr">⬇️</div>
+<div class="cstep"><div class="cnum">5</div><div class="ccont"><h4>Francia Es Arrastrada</h4><p>Alemania declara guerra a Francia y planea atacar por Bélgica.</p></div></div>
+<div class="carr">⬇️</div>
+<div class="cstep"><div class="cnum">6</div><div class="ccont"><h4>Gran Bretaña Se Une</h4><p>Gran Bretaña prometió proteger a Bélgica. Cuando Alemania invade, declara guerra.</p></div></div>
+<div class="carr">⬇️</div>
+<div class="cstep"><div class="cnum">7</div><div class="ccont"><h4>El Mundo en Guerra</h4><p>En 5 semanas, un asesinato arrastró a casi todas las potencias a la guerra más mortífera de la historia.</p></div></div>
+</div>
+<div data-lang="fr">
+<div class="slab">Section 6 — La Réaction en Chaîne</div>
+<h2>Comment Une Balle a Déclenché une Guerre Mondiale</h2>
+<p>Le 28 juin 1914, Gavrilo Princip, 19 ans, a tué l'Archiduc François-Ferdinand et sa femme Sophie à Sarajevo. Voici ce qui s'est passé :</p>
+<div class="cstep"><div class="cnum">1</div><div class="ccont"><h4>L'Assassinat</h4><p>Gavrilo Princip tue l'Archiduc. Il voulait que la Bosnie rejoigne la Serbie.</p></div></div>
+<div class="carr">⬇️</div>
+<div class="cstep"><div class="cnum">2</div><div class="ccont"><h4>L'Autriche Accuse la Serbie</h4><p>Ultimatum envoyé. La Serbie accepte la plupart — mais pas tout. L'Autriche déclare la guerre.</p></div></div>
+<div class="carr">⬇️</div>
+<div class="cstep"><div class="cnum">3</div><div class="ccont"><h4>La Russie Défend la Serbie</h4><p>La Russie prépare son armée. Elle ne peut pas laisser l'Autriche écraser la Serbie.</p></div></div>
+<div class="carr">⬇️</div>
+<div class="cstep"><div class="cnum">4</div><div class="ccont"><h4>L'Allemagne Défend l'Autriche</h4><p>L'Allemagne demande à la Russie d'arrêter. Refus. L'Allemagne déclare la guerre.</p></div></div>
+<div class="carr">⬇️</div>
+<div class="cstep"><div class="cnum">5</div><div class="ccont"><h4>La France Est Entraînée</h4><p>L'Allemagne déclare la guerre à la France et attaque via la Belgique.</p></div></div>
+<div class="carr">⬇️</div>
+<div class="cstep"><div class="cnum">6</div><div class="ccont"><h4>La Grande-Bretagne Entre</h4><p>La Grande-Bretagne avait promis de protéger la Belgique. Elle déclare la guerre.</p></div></div>
+<div class="carr">⬇️</div>
+<div class="cstep"><div class="cnum">7</div><div class="ccont"><h4>Le Monde Est en Guerre</h4><p>En 5 semaines, un assassinat a entraîné presque toute l'Europe dans la guerre la plus meurtrière de l'histoire.</p></div></div>
+</div>
+<div data-lang="pt">
+<div class="slab">Seção 6 — A Reação em Cadeia</div>
+<h2>Como Uma Bala Iniciou uma Guerra Mundial</h2>
+<p>Em 28 de junho de 1914, Gavrilo Princip, de 19 anos, matou o Arquiduque Francisco Ferdinando e sua esposa Sofia em Sarajevo. O que aconteceu:</p>
+<div class="cstep"><div class="cnum">1</div><div class="ccont"><h4>O Assassinato</h4><p>Princip mata o Arquiduque. Queria que a Bósnia se unisse à Sérvia.</p></div></div>
+<div class="carr">⬇️</div>
+<div class="cstep"><div class="cnum">2</div><div class="ccont"><h4>Áustria Culpa a Sérvia</h4><p>Ultimato enviado. A Sérvia aceita a maioria — mas não tudo. Áustria declara guerra.</p></div></div>
+<div class="carr">⬇️</div>
+<div class="cstep"><div class="cnum">3</div><div class="ccont"><h4>Rússia Defende a Sérvia</h4><p>Rússia prepara seu exército. Não pode deixar a Áustria esmagar a Sérvia.</p></div></div>
+<div class="carr">⬇️</div>
+<div class="cstep"><div class="cnum">4</div><div class="ccont"><h4>Alemanha Defende a Áustria</h4><p>Alemanha diz à Rússia para parar. Rússia recusa. Alemanha declara guerra.</p></div></div>
+<div class="carr">⬇️</div>
+<div class="cstep"><div class="cnum">5</div><div class="ccont"><h4>França É Arrastada</h4><p>Alemanha declara guerra à França e ataca pela Bélgica.</p></div></div>
+<div class="carr">⬇️</div>
+<div class="cstep"><div class="cnum">6</div><div class="ccont"><h4>Grã-Bretanha Entra</h4><p>Prometeu proteger a Bélgica. Quando a Alemanha invade, declara guerra.</p></div></div>
+<div class="carr">⬇️</div>
+<div class="cstep"><div class="cnum">7</div><div class="ccont"><h4>O Mundo em Guerra</h4><p>Em 5 semanas, um assassinato arrastou quase todas as potências para a guerra mais mortal da história.</p></div></div>
+</div>
+<div data-lang="ht">
+<div class="slab">Seksyon 6 — Reyaksyon an Chen</div>
+<h2>Kijan Yon Sel Bal Te Komanse yon Ge Mondyal</h2>
+<p>Nan 28 jen 1914, Gavrilo Princip, 19 an, te tire epi touye Achidik Franz Ferdinand ak madanm li Sophie nan Sarajevo. Men sa ki te pase:</p>
+<div class="cstep"><div class="cnum">1</div><div class="ccont"><h4>Asasina a</h4><p>Princip touye Achidik la. Li te vle Bosni jwenn Sebi.</p></div></div>
+<div class="carr">⬇️</div>
+<div class="cstep"><div class="cnum">2</div><div class="ccont"><h4>Otrich Blame Sebi</h4><p>Otrich-Ongri voye iltimatom. Sebi aksepte pifo — men pa tout. Otrich deklare lage.</p></div></div>
+<div class="carr">⬇️</div>
+<div class="cstep"><div class="cnum">3</div><div class="ccont"><h4>Risi Defann Sebi</h4><p>Risi prepare lame li. Pa ka kite Otrich kraze Sebi.</p></div></div>
+<div class="carr">⬇️</div>
+<div class="cstep"><div class="cnum">4</div><div class="ccont"><h4>Almay Defann Otrich</h4><p>Almay di Risi rete. Risi refize. Almay deklare lage kont Risi.</p></div></div>
+<div class="carr">⬇️</div>
+<div class="cstep"><div class="cnum">5</div><div class="ccont"><h4>Lafrans Rale Ladan</h4><p>Almay deklare lage kont Lafrans epi atake nan Beljik.</p></div></div>
+<div class="carr">⬇️</div>
+<div class="cstep"><div class="cnum">6</div><div class="ccont"><h4>Grann Bretay Antre</h4><p>Grann Bretay te pwomèt pwoteje Beljik. Yo deklare lage.</p></div></div>
+<div class="carr">⬇️</div>
+<div class="cstep"><div class="cnum">7</div><div class="ccont"><h4>Mond lan nan Lage</h4><p>Nan 5 semen, yon sel asasina te rale preske tout gwo pisans nan lage ki pi motel nan listwa.</p></div></div>
+</div>
+</section>
+<div class="sdiv"></div>
+<section id="s7">
+<div data-lang="en">
+<div class="slab">Section 7 — Visualization Ideas</div>
+<h2>Graphics & Diagrams for This Website</h2>
+<p>Detailed descriptions of key visuals a designer should create:</p>
+<div class="vcard"><h4>1. Ethnic Language Family Tree</h4><p>A large colorful tree. Trunk: 'Indo-European.' Three main branches: Slavic (teal), Germanic (blue), Romance/Latin (red). Smaller: Celtic (purple), Hellenic (orange). Each shows languages as 'leaves' with flags. Label trunk 'Great-Great-Grandparent,' branches as 'Cousin Groups.'</p></div>
+<div class="vcard"><h4>2. Pre-WWI Ethnic Map</h4><p>Map of Europe c. 1914 with political borders (black lines) overlaid with ethnic group colors. Key insight: colors DON'T match borders. Balkans = patchwork quilt. Note: 'The colors don't match the borders. That's the problem.'</p></div>
+<div class="vcard"><h4>3. Alliance Domino Diagram</h4><p>Horizontal domino chain with country flags. Austria-Hungary tips into Serbia → Russia → Germany → France → Britain. Labels explain WHY each falls. Background: calm blue to fire red.</p></div>
+<div class="vcard"><h4>4. Empire 'Who Lives Inside?' Diagrams</h4><p>Four circle diagrams per empire. Segments = ethnic groups, sized by population. Austria-Hungary most divided (11+ groups). Note: 'More divided = more unstable.'</p></div>
+<div class="vcard"><h4>5. Chain Reaction Flowchart</h4><p>Vertical flowchart, 7 steps, red arrows. Each step: flag + bold action + reason. Top: gunshot icon. Bottom: globe on fire. Side dates: June 28 → Aug 4, 1914.</p></div>
+</div>
+<div data-lang="es">
+<div class="slab">Sección 7 — Visualización</div>
+<h2>Gráficos y Diagramas</h2>
+<p>Descripciones de los elementos visuales clave:</p>
+<div class="vcard"><h4>1. Árbol de Familias Lingüísticas</h4><p>Árbol grande y colorido. Tronco: 'Indoeuropeo.' Ramas: Eslava (verde azulado), Germánica (azul), Romance/Latín (rojo). Idiomas como 'hojas' con banderas.</p></div>
+<div class="vcard"><h4>2. Mapa Étnico Pre-PGM</h4><p>Mapa de Europa c. 1914 con fronteras negras y zonas étnicas en colores. Los Balcanes como mosaico. Nota: 'Los colores no coinciden con las fronteras.'</p></div>
+<div class="vcard"><h4>3. Diagrama de Dominó</h4><p>Cadena horizontal de fichas con banderas. La primera cae sobre la siguiente. Flechas y etiquetas.</p></div>
+<div class="vcard"><h4>4. '¿Quién Vive Adentro?'</h4><p>Cuatro diagramas circulares por imperio. Segmentos = grupos étnicos. Austria-Hungría el más dividido.</p></div>
+<div class="vcard"><h4>5. Diagrama de Flujo</h4><p>Vertical, 7 pasos, flechas rojas. Del tiro al globo en llamas. Fechas: 28 junio → 4 agosto 1914.</p></div>
+</div>
+<div data-lang="fr">
+<div class="slab">Section 7 — Visualisation</div>
+<h2>Graphiques et Diagrammes</h2>
+<p>Descriptions des éléments visuels clés :</p>
+<div class="vcard"><h4>1. Arbre des Familles Linguistiques</h4><p>Grand arbre coloré. Tronc: 'Indo-Européen.' Branches: Slave (bleu-vert), Germanique (bleu), Roman (rouge). Langues comme 'feuilles' avec drapeaux.</p></div>
+<div class="vcard"><h4>2. Carte Ethnique Pré-PGM</h4><p>Carte d'Europe c. 1914 avec frontières noires et zones ethniques en couleurs. Les Balkans = patchwork. Note: 'Les couleurs ne correspondent pas aux frontières.'</p></div>
+<div class="vcard"><h4>3. Diagramme des Dominos</h4><p>Chaîne horizontale de dominos avec drapeaux. Chaque pièce tombe sur la suivante. Flèches et étiquettes.</p></div>
+<div class="vcard"><h4>4. Diagrammes 'Qui Vit Dedans ?'</h4><p>Quatre cercles par empire. Segments = groupes ethniques. L'Autriche-Hongrie le plus divisé.</p></div>
+<div class="vcard"><h4>5. Organigramme de la Réaction en Chaîne</h4><p>Vertical, 7 étapes, flèches rouges. Du coup de feu au globe en feu. Dates: 28 juin → 4 août 1914.</p></div>
+</div>
+<div data-lang="pt">
+<div class="slab">Seção 7 — Visualização</div>
+<h2>Gráficos e Diagramas</h2>
+<p>Descrições dos visuais-chave:</p>
+<div class="vcard"><h4>1. Árvore de Famílias Linguísticas</h4><p>Árvore grande e colorida. Tronco: 'Indo-Europeu.' Ramos: Eslavo, Germânico, Românico. Idiomas como 'folhas' com bandeiras.</p></div>
+<div class="vcard"><h4>2. Mapa Étnico Pré-PGM</h4><p>Mapa da Europa c. 1914 com fronteiras em preto e zonas étnicas coloridas. Bálcãs = colcha de retalhos. Nota: 'As cores não combinam com as fronteiras.'</p></div>
+<div class="vcard"><h4>3. Diagrama de Dominó</h4><p>Cadeia horizontal com bandeiras. Cada peça cai sobre a próxima. Setas e rótulos.</p></div>
+<div class="vcard"><h4>4. 'Quem Vive Dentro?'</h4><p>Quatro círculos por império. Segmentos = grupos étnicos. Áustria-Hungria o mais dividido.</p></div>
+<div class="vcard"><h4>5. Fluxograma da Reação em Cadeia</h4><p>Vertical, 7 passos, setas vermelhas. Do tiro ao globo em chamas. Datas: 28 junho → 4 agosto 1914.</p></div>
+</div>
+<div data-lang="ht">
+<div class="slab">Seksyon 7 — Vizyalizasyon</div>
+<h2>Grafik ak Dyagram</h2>
+<p>Deskripsyon vizyel kle yo:</p>
+<div class="vcard"><h4>1. Pyebwa Fanmi Lengwistik</h4><p>Gwo pyebwa ki gen koule. Twonk: 'Indo-Ewopeyèn.' Branch: Slav, Jemanik, Women/Laten. Lang tankou 'fey' ak drapo.</p></div>
+<div class="vcard"><h4>2. Kat Etnik Anvan PGM</h4><p>Kat Ewop v. 1914 ak fwontye nwa e zon etnik an koule. Balkan yo = mozayik. Not: 'Koule yo pa matche ak fwontye yo.'</p></div>
+<div class="vcard"><h4>3. Dyagram Domino Alyans</h4><p>Chen orizontal domino ak drapo. Chak tonbe sou pwochèn. Flesh ak etiket.</p></div>
+<div class="vcard"><h4>4. 'Kilès Ki Viv Andedan?'</h4><p>Kat sèk pa anpi. Segman = gwoup etnik. Otrich-Ongri pi divize.</p></div>
+<div class="vcard"><h4>5. Dyagram Reyaksyon an Chen</h4><p>Vètikal, 7 etap, flesh wouj. Soti nan kout zam rive nan glob an dife. Dat: 28 jen → 4 out 1914.</p></div>
+</div>
+</section>
+<div class="sdiv"></div>
+<div class="tsec" id="s8"><div class="inner">
+<div class="slab">Teacher Section</div>
+<h2>Teacher Guide</h2>
+<h3>Florida Standards Alignment</h3>
+<table class="stable">
+<tr><th>Standard</th><th>Description</th><th>Section</th></tr>
+<tr><td>SS.912.W.1.1</td><td>Use timelines to establish cause-and-effect</td><td>1, 5, 6</td></tr>
+<tr><td>SS.912.W.7.1</td><td>Analyze causes of WWI: nationalism, militarism, imperialism, alliances</td><td>All</td></tr>
+<tr><td>SS.912.W.7.2</td><td>Role of nationalism and ethnic rivalries</td><td>2, 3, 4</td></tr>
+<tr><td>SS.912.W.7.3</td><td>Effects of the alliance system</td><td>5, 6</td></tr>
+<tr><td>SS.912.W.7.6</td><td>Political and ethnic conflict in the Balkans</td><td>3, 4, 6</td></tr>
+<tr><td>SS.912.G.2.1</td><td>Cultural regions and ethnic distributions</td><td>2, 3, 7</td></tr>
+</table>
+<h3>How to Use (1–2 Days)</h3>
+<div class="ibox">
+<p><strong>Day 1 (50 min):</strong> Open with Section 1 as a hook. Have students switch languages. Walk through Section 2 (Ethnicity) — use the language family tree to connect to students’ own languages. Close with Section 3 (The Map).</p>
+<p style="margin-top:12px"><strong>Day 2 (50 min):</strong> Section 4 (Religion). Section 5 (Alliances) — act out the domino chain. Section 6 (Chain Reaction) as a story. Section 7 visuals as exit tickets.</p>
+</div>
+<h3>Key Vocabulary</h3>
+<div class="vgrid">
+<div class="vitem"><strong>Nationalism</strong> — Deep love for your own nation</div>
+<div class="vitem"><strong>Imperialism</strong> — Powerful countries taking over weaker ones</div>
+<div class="vitem"><strong>Militarism</strong> — Building up armies and weapons</div>
+<div class="vitem"><strong>Alliance</strong> — Promise to help each other in war</div>
+<div class="vitem"><strong>Ethnicity</strong> — Family background and ancestral identity</div>
+<div class="vitem"><strong>Nationality</strong> — The country you belong to</div>
+<div class="vitem"><strong>Pan-Slavism</strong> — Movement to unite all Slavic peoples</div>
+<div class="vitem"><strong>Ultimatum</strong> — "Do this or else" demands</div>
+<div class="vitem"><strong>Assassination</strong> — Murder of a political figure</div>
+<div class="vitem"><strong>Powder Keg</strong> — Situation ready to explode</div>
+<div class="vitem"><strong>Great Schism</strong> — 1054 split: Catholic vs Orthodox</div>
+<div class="vitem"><strong>Balkans</strong> — SE Europe, highest tensions</div>
+<div class="vitem"><strong>Triple Alliance</strong> — Germany, Austria-Hungary, Italy</div>
+<div class="vitem"><strong>Triple Entente</strong> — France, Russia, Britain</div>
+<div class="vitem"><strong>Archduke</strong> — Franz Ferdinand, heir to Austria-Hungary</div>
+<div class="vitem"><strong>Chain Reaction</strong> — One event causing a series of connected events</div>
+</div>
+</div></div>
+
+<section class="nwrap" id="s8nexus">
+<div class="slab"><span data-i18n="s8lab">Section 8 — The Nexus Point</span></div>
+<h2 data-i18n="s8t">The Sarajevo Glitch: How One Wrong Turn Started a World War</h2>
+<p style="color:var(--mute);max-width:700px">On June 28, 1914, seven assassins lined the Appel Quay. The first attempt failed. The Archduke should have escaped. But a wrong turn, a stalled engine, and five feet of distance changed the entire 20th century.</p>
+<div class="tbar"><span class="tl2" data-i18n="wp">⚡ War Probability</span><div class="ttr"><div class="tfi" id="tFill" style="width:15%;background:var(--teal)"></div></div><span class="tvl" id="tVal" style="color:var(--teal)">15%</span></div>
+<div class="ibox"><span class="atag" data-i18n="ctag">🎯 Student Challenge</span><p data-i18n="chal" data-html="1">Your job is to find the <strong>“Save Point.”</strong> At what exact minute on the timeline could the 20th century have been saved?</p></div>
+
+<div class="cg">
+<div class="mp" id="mapP">
+<svg viewBox="0 0 700 440" xmlns="http://www.w3.org/2000/svg">
+<defs><linearGradient id="rg" x1="0%" y1="0%" x2="100%"><stop offset="0%" stop-color="#1a3a4a" stop-opacity=".5"/><stop offset="100%" stop-color="#1a3a4a" stop-opacity=".2"/></linearGradient><filter id="gl"><feGaussianBlur stdDeviation="2.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+<rect x="175" y="120" width="80" height="65" rx="3" fill="#12152a" stroke="#1e2140" stroke-width=".8"/><rect x="268" y="118" width="85" height="65" rx="3" fill="#12152a" stroke="#1e2140" stroke-width=".8"/><rect x="366" y="115" width="95" height="70" rx="3" fill="#12152a" stroke="#1e2140" stroke-width=".8"/><rect x="474" y="112" width="65" height="75" rx="3" fill="#12152a" stroke="#1e2140" stroke-width=".8"/><rect x="175" y="260" width="80" height="50" rx="3" fill="#12152a" stroke="#1e2140" stroke-width=".8"/><rect x="268" y="262" width="85" height="48" rx="3" fill="#12152a" stroke="#1e2140" stroke-width=".8"/><rect x="366" y="264" width="95" height="46" rx="3" fill="#12152a" stroke="#1e2140" stroke-width=".8"/><rect x="550" y="115" width="55" height="68" rx="3" fill="#12152a" stroke="#1e2140" stroke-width=".8"/>
+<path d="M0,248 Q180,232 350,244 Q520,256 700,240" fill="none" stroke="url(#rg)" stroke-width="35" opacity=".4"/><text x="300" y="250" font-family="JetBrains Mono" font-size="6" fill="#53d8b0" opacity=".3" letter-spacing="3">MILJACKA RIVER</text>
+<path d="M0,210 Q180,196 350,208 Q520,218 700,205" fill="none" stroke="#1e2140" stroke-width="16"/><text x="240" y="206" font-family="JetBrains Mono" font-size="5.5" fill="#a0a8b8" opacity=".4" letter-spacing="2">APPEL QUAY</text>
+<line x1="260" y1="210" x2="260" y2="125" stroke="#1e2140" stroke-width="10"/><line x1="360" y1="210" x2="360" y2="120" stroke="#1e2140" stroke-width="10"/><line x1="465" y1="212" x2="465" y2="115" stroke="#1e2140" stroke-width="12"/>
+<text x="473" y="165" font-family="JetBrains Mono" font-size="5" fill="#a0a8b8" opacity=".4" transform="rotate(-90,473,165)" letter-spacing="1">FRANZ JOSEF ST</text>
+<rect x="390" y="224" width="36" height="10" rx="2" fill="#1e2140" stroke="#2a2e4a" stroke-width=".8"/><text x="394" y="232" font-family="JetBrains Mono" font-size="4" fill="#a0a8b8" opacity=".5">LATIN BRIDGE</text>
+<rect x="454" y="198" width="22" height="12" rx="2" fill="rgba(233,69,96,.06)" stroke="#e94560" stroke-width=".8" stroke-dasharray="2,2"/><text x="449" y="196" font-family="JetBrains Mono" font-size="4" fill="#e94560" opacity=".6">SCHILLER'S DELI</text>
+<path d="M40,208 Q180,196 350,206 L465,214" fill="none" stroke="#f0c040" stroke-width="1.5" stroke-dasharray="5,3" opacity=".35" filter="url(#gl)"/>
+<path d="M465,214 L465,165" fill="none" stroke="#e94560" stroke-width="2" stroke-dasharray="3,3" opacity="0" filter="url(#gl)" id="rW"/>
+<text x="30" y="30" font-family="Playfair Display" font-size="11" fill="#f0c040" font-weight="700">SARAJEVO</text><text x="30" y="42" font-family="JetBrains Mono" font-size="5" fill="#a0a8b8" letter-spacing="2">JUNE 28, 1914</text>
+<text x="635" y="48" font-family="Playfair Display" font-size="12" fill="#f0c040" font-weight="700">N</text><line x1="641" y1="52" x2="641" y2="64" stroke="#f0c040" stroke-width="1.2"/><polygon points="641,48 637,56 645,56" fill="#f0c040" opacity=".7"/>
+<line x1="560" y1="380" x2="640" y2="380" stroke="#a0a8b8" stroke-width=".8"/><text x="580" y="392" font-family="JetBrains Mono" font-size="5" fill="#a0a8b8">~200m</text>
+</svg>
+<div class="am" style="left:8%;top:43%" data-i="0" onclick="shA(0)"><div class="ad"></div><span class="an">Mehmebašić</span></div>
+<div class="am" style="left:20%;top:41%" data-i="1" onclick="shA(1)"><div class="ad"></div><span class="an">Čubrilović</span></div>
+<div class="am" style="left:30%;top:42%" data-i="2" onclick="shA(2)"><div class="ad"></div><span class="an">Čabrinović</span></div>
+<div class="am" style="left:42%;top:41%" data-i="3" onclick="shA(3)"><div class="ad"></div><span class="an">Popović</span></div>
+<div class="am" style="left:50%;top:43%" data-i="4" onclick="shA(4)"><div class="ad"></div><span class="an">Ilić</span></div>
+<div class="am" style="left:56%;top:42%" data-i="5" onclick="shA(5)"><div class="ad"></div><span class="an">Grabež</span></div>
+<div class="am" style="left:63%;top:44%" data-i="6" onclick="shA(6)"><div class="ad"></div><span class="an" style="color:var(--white);font-weight:700">PRINCIP</span></div>
+<div class="car" id="car" style="left:3%;top:43%"><div class="cd2"></div></div>
+<div class="gz" id="gz" style="left:60%;top:36%;width:50px;height:55px"></div>
+<div class="euo" id="euO">
+<svg viewBox="0 0 600 380" width="92%">
+<text x="300" y="30" text-anchor="middle" font-family="Playfair Display" font-size="16" fill="#f0c040" font-weight="700">THE SHOCKWAVE</text>
+<text x="300" y="48" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="#a0a8b8" letter-spacing="2">ONE BULLET → 17 MILLION DEAD</text>
+<circle cx="370" cy="260" r="7" fill="#e94560" opacity=".8"><animate attributeName="r" values="7;18;7" dur="2s" repeatCount="indefinite"/></circle>
+<text x="370" y="282" text-anchor="middle" font-family="JetBrains Mono" font-size="6" fill="#e94560">SARAJEVO</text>
+<circle cx="340" cy="190" r="10" fill="none" stroke="#a0a8b8" stroke-width="1" id="nV"/>
+<text x="340" y="178" text-anchor="middle" font-family="JetBrains Mono" font-size="6" fill="#a0a8b8">VIENNA</text>
+<circle cx="280" cy="150" r="11" fill="none" stroke="#a0a8b8" stroke-width="1" id="nB"/>
+<text x="280" y="138" text-anchor="middle" font-family="JetBrains Mono" font-size="6" fill="#a0a8b8">BERLIN</text>
+<circle cx="460" cy="110" r="11" fill="none" stroke="#a0a8b8" stroke-width="1" id="nSP"/>
+<text x="460" y="98" text-anchor="middle" font-family="JetBrains Mono" font-size="6" fill="#a0a8b8">ST. PETERSBURG</text>
+<circle cx="180" cy="190" r="11" fill="none" stroke="#a0a8b8" stroke-width="1" id="nP"/>
+<text x="180" y="178" text-anchor="middle" font-family="JetBrains Mono" font-size="6" fill="#a0a8b8">PARIS</text>
+<circle cx="150" cy="120" r="11" fill="none" stroke="#a0a8b8" stroke-width="1" id="nL"/>
+<text x="150" y="108" text-anchor="middle" font-family="JetBrains Mono" font-size="6" fill="#a0a8b8">LONDON</text>
+<line x1="370" y1="260" x2="340" y2="190" stroke="#e94560" stroke-width="1.5" opacity="0" id="sl1"/>
+<line x1="340" y1="190" x2="280" y2="150" stroke="#e94560" stroke-width="1.5" opacity="0" id="sl2"/>
+<line x1="340" y1="190" x2="460" y2="110" stroke="#e94560" stroke-width="1.5" opacity="0" id="sl3"/>
+<line x1="280" y1="150" x2="180" y2="190" stroke="#e94560" stroke-width="1.5" opacity="0" id="sl4"/>
+<line x1="180" y1="190" x2="150" y2="120" stroke="#e94560" stroke-width="1.5" opacity="0" id="sl5"/>
+<text x="300" y="340" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="#a0a8b8" letter-spacing="2">PRESS ▶ PLAY TO SEE THE DOMINOES FALL</text>
+</svg>
+</div>
+</div>
+
+<div class="ip">
+<div class="ps"><div class="pl" data-i18n="ce">Current Event</div><div class="pt2" id="eT">The Motorcade Begins</div><p id="eD" style="font-size:.84rem;color:var(--mute);margin:0">Seven assassins from the Black Hand are stationed along the Appel Quay. The Archduke rides in an open car.</p><div class="ptm" id="eTm">10:00 AM</div></div>
+<div class="ps" id="aP" style="display:none"><div class="pl" data-i18n="dos">Assassin Dossier</div><div class="dos show" id="aC"><h4 id="aN"></h4><div class="pos" id="aPos"></div><p class="desc" id="aDsc"></p><span class="badge" id="aSt"></span></div></div>
+<div class="ps"><div class="pl">The "What If" Sandbox</div>
+<div class="wft" id="w1" onclick="tW(1)"><span class="wfn">🗺️ Driver gets the correct route</span><div class="wfs"></div></div>
+<div class="wfr" id="wr1" data-i18n="w2r" data-html="1">The car never turns onto Franz Josef Street. The Archduke escapes. War probability stays yellow. <strong>WWI averted… for now.</strong></div>
+<div class="wft" id="w2" onclick="tW(2)"><span class="wfn" data-i18n="w2">🛡️ Soldiers line the motorcade</span><div class="wfs"></div></div>
+<div class="wfr" id="wr2" data-i18n="w3r" data-html="1">The assassins can’t get close. The Black Hand fails. But Slavic nationalism hasn’t gone away — the powder keg just has a longer fuse.</div>
+<div class="wft" id="w3" onclick="tW(3)"><span class="wfn">💣 The first bomb hits its target</span><div class="wfs"></div></div>
+<div class="wfr" id="wr3">War starts at 10:10 AM instead of 10:50 AM. Same chain reaction, same ending — just 40 minutes earlier.</div>
+</div>
+<div class="ps" style="background:var(--bg2)"><div class="pl" data-i18n="domt">The Domino Cascade</div>
+<div class="dr" id="d0"><span class="df">💀</span><span class="dn">Assassination</span><span class="dd">Jun 28</span><span class="da">Shots Fired</span></div>
+<div class="dr" id="d1"><span class="df">🇦🇹</span><span class="dn">Austria-Hungary</span><span class="dd">Jul 28</span><span class="da">War on Serbia</span></div>
+<div class="dr" id="d2"><span class="df">🇷🇺</span><span class="dn">Russia</span><span class="dd">Jul 30</span><span class="da">Mobilizes</span></div>
+<div class="dr" id="d3"><span class="df">🇩🇪</span><span class="dn">Germany</span><span class="dd">Aug 1</span><span class="da">War on Russia</span></div>
+<div class="dr" id="d4"><span class="df">🇫🇷</span><span class="dn">France</span><span class="dd">Aug 3</span><span class="da">Germany Attacks</span></div>
+<div class="dr" id="d5"><span class="df">🇬🇧</span><span class="dn">Britain</span><span class="dd">Aug 4</span><span class="da">War on Germany</span></div>
+<div class="dc" id="dC"><div class="num" id="dN">0</div><div class="lbl" data-i18n="dl">Total Deaths — World War I</div></div>
+</div>
+</div>
+</div>
+
+<div class="scr">
+<div class="pl" data-i18n="tll">Timeline — June 28, 1914</div>
+<div class="str"><div class="sln"></div><div class="spr" id="sP" style="width:0%"></div>
+<div class="sns">
+<div class="sn on" onclick="gS(0)"><span class="tip">10:00 — Motorcade</span></div>
+<div class="sn" onclick="gS(1)"><span class="tip">10:10 — Bomb thrown</span></div>
+<div class="sn" onclick="gS(2)"><span class="tip">10:15 — Bomb misses</span></div>
+<div class="sn" onclick="gS(3)"><span class="tip">10:30 — City Hall</span></div>
+<div class="sn" onclick="gS(4)"><span class="tip">10:45 — Hospital decision</span></div>
+<div class="sn" onclick="gS(5)"><span class="tip">10:48 — WRONG TURN</span></div>
+<div class="sn" onclick="gS(6)"><span class="tip">10:49 — Car stalls</span></div>
+<div class="sn fired" onclick="gS(7)"><span class="tip">10:50 — SHOTS FIRED</span></div>
+<div class="sn" onclick="gS(8)"><span class="tip">THE SHOCKWAVE</span></div>
+</div></div>
+<div class="stm"><span>10:00 AM</span><span>10:50 AM</span><span>AFTERMATH</span></div>
+<div class="sbt"><button class="sb" onclick="pTL()" data-i18n="play">▶ Play Timeline</button><button class="sb sb2" onclick="rTL()" data-i18n="rst">↺ Reset</button></div>
+</div>
+</section>
+<div class="sdiv"></div>
+<section class="ewrap" id="s9evo">
+<div class="slab"><span data-i18n="s9lab">Section 9 — The Evolving Map</span></div>
+<h2 data-i18n="s9t">How Europe’s Borders Changed: 1871 → 1918</h2>
+<p style="color:var(--mute);max-width:700px;margin-bottom:8px" data-i18n="s9i">Click each era to see empires expand, crack, and shatter — and new nations emerge from the rubble.</p>
+<div class="etabs">
+<div class="etab on" onclick="shE(0)">1871</div>
+<div class="etab" onclick="shE(1)">1878</div>
+<div class="etab" onclick="shE(2)">1908</div>
+<div class="etab" onclick="shE(3)">1912</div>
+<div class="etab" onclick="shE(4)">1914</div>
+<div class="etab" onclick="shE(5)">1918</div>
+</div>
+<div class="mdsp" id="mD"></div>
+<div class="einf"><h3 id="eTitle">1871 — Germany Unifies</h3><p id="eDsc">A powerful new empire forms in central Europe after defeating France. France loses Alsace-Lorraine. The balance of power shifts permanently.</p></div>
+</section>
+<div class="sdiv"></div>
+
+<footer>
+<p class="cr">by J.M. Miljus</p>
+<p>The Powder Keg — Understanding World War I</p>
+<p>Created for 10th Grade World History — East Lee County High School</p>
+</footer>
+<script>
+function setLang(l){document.querySelectorAll('[data-lang]').forEach(e=>{e.style.display=e.getAttribute('data-lang')===l?'block':'none'});document.querySelectorAll('.lbtn').forEach(b=>{b.classList.remove('active');if(b.textContent.trim()===l.toUpperCase())b.classList.add('active')})}
+document.querySelectorAll('.navlinks a').forEach(a=>{a.addEventListener('click',e=>{e.preventDefault();document.querySelector(a.getAttribute('href'))?.scrollIntoView({behavior:'smooth'})})});
+const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)'}})},{threshold:.1});
+document.querySelectorAll('.ccard,.ecard,.rcard,.cstep,.tli').forEach(e=>{e.style.opacity='0';e.style.transform='translateY(15px)';e.style.transition='opacity .5s ease,transform .5s ease';obs.observe(e)});
+</script>
+<script>
+
+const TR={"en": {"s8lab": "Section 8 — The Nexus Point", "s8t": "The Sarajevo Glitch: How One Wrong Turn Started a World War", "s8i": "On June 28, 1914, seven assassins lined the streets of Sarajevo. The first attempt failed. The Archduke should have escaped. But a wrong turn, a stalled engine, and five feet of distance rewrote the entire 20th century.", "wp": "⚡ War Probability", "ctag": "🎯 Student Challenge", "chal": "Your job is to find the <strong>“Save Point.”</strong> At what exact minute could the 20th century have been saved?", "ce": "Current Event", "dos": "Assassin Dossier", "wif": "The “What If” Sandbox", "w1": "🗺️ Driver gets correct route", "w1r": "The car never turns onto Franz Josef Street. The Archduke leaves Sarajevo unharmed. <strong>WWI averted… for now.</strong>", "w2": "🛡️ Soldiers line the motorcade", "w2r": "The assassins can’t get close. The Black Hand fails. But Slavic nationalism hasn’t gone away — the powder keg just has a longer fuse.", "w3": "💣 First bomb hits target", "w3r": "War starts at 10:10 AM instead of 10:50 AM. Same chain reaction, same ending — just 40 minutes earlier.", "domt": "The Domino Cascade", "dl": "Total Deaths — World War I", "tll": "Timeline — June 28, 1914", "play": "▶ Play Timeline", "rst": "↺ Reset", "s9lab": "Section 9 — The Evolving Map", "s9t": "How Europe’s Borders Changed: 1871 → 1918", "s9i": "Click each era to see empires expand, crack, and shatter — and new nations emerge from the rubble.", "sht": "THE SHOCKWAVE", "shs": "ONE BULLET → 17 MILLION DEAD", "shp": "PRESS ▶ PLAY TO SEE THE DOMINOES FALL"}, "es": {"s8lab": "Sección 8 — El Punto Nexo", "s8t": "El Fallo de Sarajevo: Cómo un Giro Equivocado Inició una Guerra Mundial", "s8i": "El 28 de junio de 1914, siete asesinos se alinearon en las calles de Sarajevo. El primer intento falló. El Archiduque debió escapar. Pero un giro equivocado, un motor detenido y cinco pies de distancia reescribieron el siglo XX.", "wp": "⚡ Probabilidad de Guerra", "ctag": "🎯 Reto Estudiantil", "chal": "Tu trabajo es encontrar el <strong>“Punto de Salvación.”</strong> ¿En qué minuto exacto se podría haber salvado el siglo XX?", "ce": "Evento Actual", "dos": "Expediente del Asesino", "wif": "Simulador “¿Qué Pasaría Si?”", "w1": "🗺️ El conductor recibe la ruta correcta", "w1r": "El carro nunca gira. El Archiduque sale ileso. <strong>PGM evitada… por ahora.</strong>", "w2": "🛡️ Soldados custodian la ruta", "w2r": "Los asesinos no pueden acercarse. El nacionalismo eslavo no desaparece — el barril de pólvora tiene una mecha más larga.", "w3": "💣 La primera bomba acierta", "w3r": "La guerra empieza a las 10:10 AM. Misma reacción en cadena — solo 40 minutos antes.", "domt": "La Cascada de Dominó", "dl": "Muertes Totales — Primera Guerra Mundial", "tll": "Línea de Tiempo — 28 de junio, 1914", "play": "▶ Reproducir", "rst": "↺ Reiniciar", "s9lab": "Sección 9 — El Mapa que Evoluciona", "s9t": "Cómo Cambiaron las Fronteras: 1871 → 1918", "s9i": "Haz clic en cada era para ver cómo los imperios se expandieron, agrietaron y rompieron.", "sht": "LA ONDA EXPANSIVA", "shs": "UNA BALA → 17 MILLONES DE MUERTOS", "shp": "PRESIONA ▶ PARA VER LOS DOMINÓS CAER"}, "fr": {"s8lab": "Section 8 — Le Point Nexus", "s8t": "Le Bug de Sarajevo : Un Mauvais Virage a Déclenché une Guerre Mondiale", "s8i": "Le 28 juin 1914, sept assassins postés dans Sarajevo. La première tentative échoue. L’Archiduc aurait dû s’en sortir. Mais un mauvais virage, un moteur calé et cinq pieds de distance ont réécrit le XXe siècle.", "wp": "⚡ Probabilité de Guerre", "ctag": "🎯 Défi Étudiant", "chal": "Votre mission : trouver le <strong>« Point de Sauvegarde »</strong>. À quelle minute le XXe siècle aurait-il pu être sauvé ?", "ce": "Événement Actuel", "dos": "Dossier de l’Assassin", "wif": "Bac à Sable « Et Si ? »", "w1": "🗺️ Le chauffeur reçoit le bon itinéraire", "w1r": "La voiture ne tourne pas. L’Archiduc part indemne. <strong>PGM évitée… pour l’instant.</strong>", "w2": "🛡️ Soldats le long du cortège", "w2r": "Les assassins ne peuvent approcher. Mais le nationalisme slave n’a pas disparu.", "w3": "💣 La première bombe atteint sa cible", "w3r": "La guerre commence à 10h10. Même réaction en chaîne.", "domt": "La Cascade de Dominos", "dl": "Morts Totaux — Première Guerre Mondiale", "tll": "Chronologie — 28 juin 1914", "play": "▶ Lancer", "rst": "↺ Réinitialiser", "s9lab": "Section 9 — La Carte qui Évolue", "s9t": "Comment les Frontières ont Changé : 1871 → 1918", "s9i": "Cliquez sur chaque ère pour voir les empires s’étendre, se fissurer et se briser.", "sht": "L’ONDE DE CHOC", "shs": "UNE BALLE → 17 MILLIONS DE MORTS", "shp": "APPUYEZ SUR ▶ POUR VOIR LES DOMINOS TOMBER"}, "pt": {"s8lab": "Seção 8 — O Ponto Nexo", "s8t": "A Falha de Sarajevo: Como Uma Curva Errada Iniciou uma Guerra Mundial", "s8i": "Em 28 de junho de 1914, sete assassinos nas ruas de Sarajevo. A primeira tentativa falhou. O Arquiduque deveria ter escapado. Mas uma curva errada, um motor que morreu e cinco pés de distância reescreveram o século XX.", "wp": "⚡ Probabilidade de Guerra", "ctag": "🎯 Desafio do Estudante", "chal": "Seu trabalho é encontrar o <strong>“Ponto de Salvação.”</strong> Em que minuto exato o século XX poderia ter sido salvo?", "ce": "Evento Atual", "dos": "Dossiê do Assassino", "wif": "Simulador “E Se?”", "w1": "🗺️ Motorista recebe rota certa", "w1r": "O carro nunca vira. O Arquiduque sai ileso. <strong>PGM evitada… por enquanto.</strong>", "w2": "🛡️ Soldados na rota", "w2r": "Assassinos não conseguem se aproximar. Mas nacionalismo eslavo continua.", "w3": "💣 Primeira bomba acerta", "w3r": "Guerra começa às 10:10. Mesma reação em cadeia — só 40 minutos antes.", "domt": "Cascata de Dominó", "dl": "Mortes Totais — Primeira Guerra Mundial", "tll": "Linha do Tempo — 28 de junho, 1914", "play": "▶ Reproduzir", "rst": "↺ Reiniciar", "s9lab": "Seção 9 — O Mapa que Evolui", "s9t": "Como as Fronteiras Mudaram: 1871 → 1918", "s9i": "Clique em cada era para ver impérios expandir, rachar e quebrar.", "sht": "A ONDA DE CHOQUE", "shs": "UMA BALA → 17 MILHÕES DE MORTOS", "shp": "PRESSIONE ▶ PARA VER OS DOMINÓS CAÍREM"}, "ht": {"s8lab": "Seksyon 8 — Pwen Neksis la", "s8t": "Erè Sarajevo a: Kijan yon Move Vire Te Komanse yon Gè Mondyal", "s8i": "Nan 28 jen 1914, sèt asasen te aliyen nan lari Sarajevo yo. Premye tantativ la te echwe. Achidik la te dwe chape. Men yon move vire, yon motè ki mouri, ak senk pye distans te reekri tout 20yèm syèk la.", "wp": "⚡ Pwobabilite Lagè", "ctag": "🎯 Defi Elèv", "chal": "Travay ou se jwenn <strong>“Pwen Sovgad la.”</strong> Nan ki minit egzak 20yèm syèk la te ka sove?", "ce": "Evènman Aktyèl", "dos": "Dosye Asasen", "wif": "Simulatè “E Si?”", "w1": "🗺️ Chofè a resevwa bon wout la", "w1r": "Machin nan pa janm vire. Achidik la kite Sarajevo san blesi. <strong>PGM evite… pou kounye a.</strong>", "w2": "🛡️ Sòlda sou wout la", "w2r": "Asasen yo pa ka pwoche. Men Nasyonalis Slav la pa disparèt — barik poud la jis gen yon mèch ki pi long.", "w3": "💣 Premye bonm nan frape", "w3r": "Lagè komanse a 10:10 AM. Menm reyaksyon an chen — jis 40 minit pi bonè.", "domt": "Kaskad Domino a", "dl": "Total Lanmò — Premye Gè Mondyal", "tll": "Kronoloji — 28 jen 1914", "play": "▶ Jwe", "rst": "↺ Rekòmanse", "s9lab": "Seksyon 9 — Kat ki Evolye", "s9t": "Kijan Fwontyè Ewòp yo Te Chanje: 1871 → 1918", "s9i": "Klike sou chak epòk pou wè kijan anpi yo te grandi, fann, epi kraze.", "sht": "OND CHÒK LA", "shs": "YON BAL → 17 MILYON MÒ", "shp": "PEZE ▶ POU WÈ DOMINO YO TONBE"}};
+const STP={"en": [{"t": "The Motorcade Begins", "d": "Seven Black Hand assassins stationed along the Appel Quay. The Archduke rides in an open car with his wife Sophie.", "m": "10:00 AM"}, {"t": "The Bomb Is Thrown", "d": "Čabrinović throws a grenade. It bounces off the folded convertible top and explodes under the car behind. Officers wounded. FAILED.", "m": "10:10 AM"}, {"t": "The Bomb Misses", "d": "Archduke unharmed. Čabrinović swallows expired cyanide, jumps into shallow river. Captured. Others lose nerve.", "m": "10:15 AM"}, {"t": "City Hall — Angry Speech", "d": "Franz Ferdinand: 'So you welcome your guests with bombs!' Insists on visiting wounded officers. This decision changes history.", "m": "10:30 AM"}, {"t": "The Fateful Decision", "d": "New route planned — but nobody tells the driver. Princip went to Schiller's Deli for a sandwich. Still on the corner.", "m": "10:45 AM"}, {"t": "THE WRONG TURN", "d": "Driver turns onto Franz Josef Street — the OLD route. Potiorek screams 'Not that way!' Car brakes. Stalls in front of Princip.", "m": "10:48 AM"}, {"t": "The Engine Stalls", "d": "Gears grind. Engine dies. Car stuck 5 feet from Princip. Probability at maximum. No escape.", "m": "10:49 AM"}, {"t": "SHOTS FIRED", "d": "Princip steps forward, fires twice. First bullet: Archduke's jugular. Second: Sophie's abdomen. Both dead in minutes.", "m": "10:50 AM"}, {"t": "THE SHOCKWAVE", "d": "One bullet. One wrong turn. One stalled engine. Within 5 weeks every great power at war. 17 million die.", "m": "AFTERMATH"}], "es": [{"t": "La Caravana Comienza", "d": "Siete asesinos de la Mano Negra posicionados en el Muelle Appel. El Archiduque viaja en carro descubierto con su esposa Sofía.", "m": "10:00 AM"}, {"t": "Lanzan la Bomba", "d": "Čabrinović lanza una granada. Rebota en el techo plegado y explota debajo del carro de atrás. FRACASA.", "m": "10:10 AM"}, {"t": "La Bomba Falla", "d": "El Archiduque está ileso. Čabrinović traga cianuro vencido y salta al río. Capturado.", "m": "10:15 AM"}, {"t": "Ayuntamiento — Discurso Furioso", "d": "Franz Ferdinand furioso: '¡Así reciben a sus invitados, con bombas!' Insiste en visitar heridos.", "m": "10:30 AM"}, {"t": "La Decisión Fatal", "d": "Planean nueva ruta pero nadie le avisa al conductor. Princip sigue parado en la esquina.", "m": "10:45 AM"}, {"t": "EL GIRO EQUIVOCADO", "d": "El conductor gira por Franz Josef — la ruta VIEJA. Potiorek grita '¡Por ahí no!' El motor se detiene frente a Princip.", "m": "10:48 AM"}, {"t": "El Motor Se Detiene", "d": "Engranajes rechinan. Motor muere. Carro atascado a 1.5 metros de Princip. No hay escape.", "m": "10:49 AM"}, {"t": "DISPAROS", "d": "Princip se acerca, dispara dos veces. Primera bala: yugular. Segunda: abdomen de Sofía. Ambos muertos.", "m": "10:50 AM"}, {"t": "LA ONDA EXPANSIVA", "d": "Una bala. Un giro equivocado. Un motor que falló. En 5 semanas, casi todas las potencias en guerra. 17 millones morirán.", "m": "DESPUÉS"}], "fr": [{"t": "Le Cortège Commence", "d": "Sept assassins de la Main Noire postés le long du Quai Appel. L'Archiduc voyage en voiture découverte.", "m": "10:00"}, {"t": "La Bombe Est Lancée", "d": "Čabrinović lance une grenade. Rebondit et explose sous la voiture derrière. ÉCHOUÉ.", "m": "10:10"}, {"t": "La Bombe Rate", "d": "L'Archiduc indemne. Čabrinović avale du cyanure périmé. Capturé.", "m": "10:15"}, {"t": "L'Hôtel de Ville", "d": "François-Ferdinand furieux : 'C'est ainsi que vous accueillez vos invités !' Insiste pour visiter les blessés.", "m": "10:30"}, {"t": "La Décision Fatale", "d": "Nouvel itinéraire prévu mais personne ne prévient le chauffeur. Princip est au coin de la rue.", "m": "10:45"}, {"t": "LE MAUVAIS VIRAGE", "d": "Le chauffeur tourne sur la rue Franz Josef — l'ANCIEN itinéraire. La voiture cale devant Princip.", "m": "10:48"}, {"t": "Le Moteur Cale", "d": "Les engrenages grincent. Le moteur s'éteint. Bloquée à 1,5 mètre de Princip. Aucune échappatoire.", "m": "10:49"}, {"t": "COUPS DE FEU", "d": "Princip s'avance, tire deux fois. Première balle : la jugulaire. Deuxième : l'abdomen de Sophie.", "m": "10:50"}, {"t": "L'ONDE DE CHOC", "d": "Une balle. Un mauvais virage. Un moteur calé. En 5 semaines, toutes les puissances en guerre. 17 millions mourront.", "m": "APRÈS"}], "pt": [{"t": "O Cortejo Começa", "d": "Sete assassinos da Mão Negra no Cais Appel. O Arquiduque em carro aberto com sua esposa Sofia.", "m": "10:00"}, {"t": "A Bomba É Lançada", "d": "Čabrinović lança granada. Quica no teto e explode sob o carro de trás. FRACASSOU.", "m": "10:10"}, {"t": "A Bomba Erra", "d": "Arquiduque ileso. Čabrinović engole cianeto vencido, pula no rio raso. Capturado.", "m": "10:15"}, {"t": "Prefeitura — Discurso Furioso", "d": "Franz Ferdinand furioso: 'É assim que recebem convidados!' Insiste em visitar feridos.", "m": "10:30"}, {"t": "Decisão Fatal", "d": "Nova rota planejada mas ninguém avisa o motorista. Princip ainda na esquina.", "m": "10:45"}, {"t": "A CURVA ERRADA", "d": "Motorista vira na Franz Josef — rota ANTIGA. Potiorek grita. Carro morre na frente de Princip.", "m": "10:48"}, {"t": "Motor Morre", "d": "Engrenagens rangem. Motor morre. Preso a 1,5m de Princip. Sem escapatória.", "m": "10:49"}, {"t": "TIROS", "d": "Princip se aproxima, dispara duas vezes. Primeira bala: jugular. Segunda: abdômen de Sofia.", "m": "10:50"}, {"t": "A ONDA DE CHOQUE", "d": "Uma bala. Uma curva errada. Um motor morto. Em 5 semanas, quase todas as potências em guerra. 17 milhões morrerão.", "m": "DEPOIS"}], "ht": [{"t": "Konvwa a Komanse", "d": "Sèt asasen Men Nwa a sou Ke Appel la. Achidik la ap vwayaje nan machin ouvè ak madanm li Sophie.", "m": "10:00"}, {"t": "Yo Lanse Bonm nan", "d": "Čabrinović lanse yon grenad. Li rebondi epi eksploze anba machin dèyè a. ECHWE.", "m": "10:10"}, {"t": "Bonm nan Rate", "d": "Achidik la pa blese. Čabrinović vale syanid ekspire epi sote nan rivyè. Yo kenbe l.", "m": "10:15"}, {"t": "Otèl Vil — Diskou Fache", "d": "Franz Ferdinand fache: 'Se konsa nou resevwa envite nou!' Li enstite pou vizite ofisyè blese yo.", "m": "10:30"}, {"t": "Desizyon Fatal la", "d": "Nouvo wout planifye men pèsonn pa di chofè a. Princip toujou kanpe sou kwen an.", "m": "10:45"}, {"t": "MOVE VIRE A", "d": "Chofè a vire sou ri Franz Josef — ANSYEN wout la. Motè a mouri dirèkteman devan Princip.", "m": "10:48"}, {"t": "Motè a Mouri", "d": "Angrennaj yo gwènse. Motè a mouri. Machin nan bloke 1.5 mèt devan Princip. Pa gen echapman.", "m": "10:49"}, {"t": "KOUT ZAM", "d": "Princip avanse, tire de fwa. Premye bal: nan venn jigilè Achidik la. Dezyèm: nan vant Sophie.", "m": "10:50"}, {"t": "OND CHÒK LA", "d": "Yon bal. Yon move vire. Yon motè ki mouri. Nan 5 semen, preske tout gwo pisans nan lagè. 17 milyon moun pral mouri.", "m": "APRÈ"}]};
+const DMT={"en": [{"f": "💀", "n": "Assassination", "d": "Jun 28", "a": "Shots Fired"}, {"f": "🇦🇹", "n": "Austria-Hungary", "d": "Jul 28", "a": "War on Serbia"}, {"f": "🇷🇺", "n": "Russia", "d": "Jul 30", "a": "Mobilizes"}, {"f": "🇩🇪", "n": "Germany", "d": "Aug 1", "a": "War on Russia"}, {"f": "🇫🇷", "n": "France", "d": "Aug 3", "a": "Germany Attacks"}, {"f": "🇬🇧", "n": "Britain", "d": "Aug 4", "a": "War on Germany"}], "es": [{"f": "💀", "n": "Asesinato", "d": "28 jun", "a": "Disparos"}, {"f": "🇦🇹", "n": "Austria-Hungría", "d": "28 jul", "a": "Guerra a Serbia"}, {"f": "🇷🇺", "n": "Rusia", "d": "30 jul", "a": "Moviliza"}, {"f": "🇩🇪", "n": "Alemania", "d": "1 ago", "a": "Guerra a Rusia"}, {"f": "🇫🇷", "n": "Francia", "d": "3 ago", "a": "Alemania Ataca"}, {"f": "🇬🇧", "n": "Gran Bretaña", "d": "4 ago", "a": "Guerra a Alemania"}], "fr": [{"f": "💀", "n": "Assassinat", "d": "28 juin", "a": "Coups de feu"}, {"f": "🇦🇹", "n": "Autriche-Hongrie", "d": "28 juil", "a": "Guerre à la Serbie"}, {"f": "🇷🇺", "n": "Russie", "d": "30 juil", "a": "Mobilise"}, {"f": "🇩🇪", "n": "Allemagne", "d": "1 août", "a": "Guerre à la Russie"}, {"f": "🇫🇷", "n": "France", "d": "3 août", "a": "Déclare"}, {"f": "🇬🇧", "n": "Grande-Bretagne", "d": "4 août", "a": "Guerre à l'Allemagne"}], "pt": [{"f": "💀", "n": "Assassinato", "d": "28 jun", "a": "Tiros"}, {"f": "🇦🇹", "n": "Áustria-Hungria", "d": "28 jul", "a": "Guerra à Sérvia"}, {"f": "🇷🇺", "n": "Rússia", "d": "30 jul", "a": "Mobiliza"}, {"f": "🇩🇪", "n": "Alemanha", "d": "1 ago", "a": "Guerra à Rússia"}, {"f": "🇫🇷", "n": "França", "d": "3 ago", "a": "Declara"}, {"f": "🇬🇧", "n": "Grã-Bretanha", "d": "4 ago", "a": "Guerra à Alemanha"}], "ht": [{"f": "💀", "n": "Asasina", "d": "28 jen", "a": "Kout Zam"}, {"f": "🇦🇹", "n": "Otrich-Ongri", "d": "28 jiyè", "a": "Lagè kont Sebi"}, {"f": "🇷🇺", "n": "Risi", "d": "30 jiyè", "a": "Mobilize"}, {"f": "🇩🇪", "n": "Almay", "d": "1 out", "a": "Lagè kont Risi"}, {"f": "🇫🇷", "n": "Lafrans", "d": "3 out", "a": "Deklare"}, {"f": "🇬🇧", "n": "Grann Bretay", "d": "4 out", "a": "Lagè kont Almay"}]};
+const ERT={"en": [{"tb": "1871", "t": "1871 — Germany Unifies", "d": "German Empire proclaimed after defeating France. France loses Alsace-Lorraine. A powerful new force in central Europe."}, {"tb": "1878", "t": "1878 — Congress of Berlin", "d": "Serbia, Romania, Montenegro independent. Austria-Hungary occupies Bosnia. Ottoman shrinks."}, {"tb": "1908", "t": "1908 — Bosnia Crisis", "d": "Austria-Hungary ANNEXES Bosnia. Serbia furious — millions of Slavs trapped. Russia backs Serbia."}, {"tb": "1912", "t": "1912–13 — Balkan Wars", "d": "Serbia DOUBLES in size. Ottoman nearly gone from Europe. Austria-Hungary panics."}, {"tb": "1914", "t": "1914 — World at War", "d": "One assassination triggers alliance chain reaction. Germany + A-H vs France + Russia + Britain."}, {"tb": "1918", "t": "1918 — Map Redrawn", "d": "Austria-Hungary and Ottoman GONE. New nations: Czechoslovakia, Yugoslavia, Poland, Finland, Baltic states."}], "es": [{"tb": "1871", "t": "1871 — Alemania se Unifica", "d": "El Imperio Alemán se proclama. Francia pierde Alsacia-Lorena."}, {"tb": "1878", "t": "1878 — Congreso de Berlín", "d": "Serbia, Rumania y Montenegro independientes. Austria-Hungría ocupa Bosnia."}, {"tb": "1908", "t": "1908 — Crisis de Bosnia", "d": "Austria-Hungría ANEXA Bosnia. Serbia furiosa. Millones de eslavos atrapados."}, {"tb": "1912", "t": "1912–13 — Guerras Balcánicas", "d": "Serbia DUPLICA su tamaño. El Imperio Otomano casi desaparece."}, {"tb": "1914", "t": "1914 — El Mundo en Guerra", "d": "Un asesinato desencadena la reacción en cadena de alianzas."}, {"tb": "1918", "t": "1918 — Mapa Redibujado", "d": "Austria-Hungría y el Imperio Otomano DESAPARECEN. Nuevas naciones surgen."}], "fr": [{"tb": "1871", "t": "1871 — L'Allemagne s'Unifie", "d": "L'Empire allemand proclamé. La France perd l'Alsace-Lorraine."}, {"tb": "1878", "t": "1878 — Congrès de Berlin", "d": "Serbie, Roumanie, Monténégro indépendants. L'Autriche-Hongrie occupe la Bosnie."}, {"tb": "1908", "t": "1908 — Crise de Bosnie", "d": "L'Autriche-Hongrie ANNEXE la Bosnie. La Serbie est furieuse."}, {"tb": "1912", "t": "1912–13 — Guerres Balkaniques", "d": "La Serbie DOUBLE de taille. L'Ottoman disparaît presque d'Europe."}, {"tb": "1914", "t": "1914 — Le Monde en Guerre", "d": "Un assassinat déclenche la réaction en chaîne des alliances."}, {"tb": "1918", "t": "1918 — Carte Redessinée", "d": "L'Autriche-Hongrie et l'Empire ottoman DISPARAISSENT. Nouvelles nations."}], "pt": [{"tb": "1871", "t": "1871 — Alemanha se Unifica", "d": "Império Alemão proclamado. França perde Alsácia-Lorena."}, {"tb": "1878", "t": "1878 — Congresso de Berlim", "d": "Sérvia, Romênia e Montenegro independentes. Áustria-Hungria ocupa Bósnia."}, {"tb": "1908", "t": "1908 — Crise da Bósnia", "d": "Áustria-Hungria ANEXA Bósnia. Sérvia furiosa."}, {"tb": "1912", "t": "1912–13 — Guerras Balcânicas", "d": "Sérvia DUPLICA de tamanho. Otomano quase desaparece."}, {"tb": "1914", "t": "1914 — Mundo em Guerra", "d": "Um assassinato desencadeia a reação em cadeia de alianças."}, {"tb": "1918", "t": "1918 — Mapa Redesenhado", "d": "Áustria-Hungria e Otomano DESAPARECEM. Novas nações surgem."}], "ht": [{"tb": "1871", "t": "1871 — Almay Inifye", "d": "Anpi Alman an pwoklame. Lafrans pèdi Alsace-Lorraine."}, {"tb": "1878", "t": "1878 — Kongrè Bèlen", "d": "Sebi, Woumani ak Montenewgo vin endepandan. Otrich-Ongri okipe Bosni."}, {"tb": "1908", "t": "1908 — Kriz Bosni", "d": "Otrich-Ongri ANNEKSE Bosni. Sebi an kòlè."}, {"tb": "1912", "t": "1912–13 — Gè Balkan yo", "d": "Sebi DOUBLE gwosè li. Anpi Otoman prèske disparèt."}, {"tb": "1914", "t": "1914 — Mond lan nan Lagè", "d": "Yon asasina deklanche reyaksyon an chen alyans yo."}, {"tb": "1918", "t": "1918 — Kat la Retrase", "d": "Otrich-Ongri ak Anpi Otoman DISPARÈT. Nouvo nasyon parèt."}]};
+
+let cL='en';
+function setLang(l){
+  cL=l;
+  document.querySelectorAll('.lbtn').forEach(b=>b.classList.toggle('active',b.textContent.trim().toLowerCase()===l));
+  applyLang();
+  // Re-render current step
+  if(typeof gS==='function') gS(cur);
+  if(typeof shE==='function') shE(document.querySelector('.etab.on')?[...document.querySelectorAll('.etab')].indexOf(document.querySelector('.etab.on')):0);
+}
+
+function applyLang(){
+  const t=TR[cL]||TR.en;
+  // Static text elements with data-i18n
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const k=el.getAttribute('data-i18n');
+    if(t[k]!==undefined){
+      if(el.getAttribute('data-html')==='1') el.innerHTML=t[k]; else el.textContent=t[k];
+    }
+  });
+  // Rebuild domino rows
+  const dc=document.getElementById('domCont')||document.querySelector('[id^="d0"]')?.parentElement;
+  if(dc){
+    const dm=DMT[cL]||DMT.en;
+    let dh='';
+    dm.forEach((d,i)=>{dh+=`<div class="dr" id="d${i}"><span class="df">${d.f}</span><span class="dn">${d.n}</span><span class="dd">${d.d}</span><span class="da">${d.a}</span></div>`;});
+    // Find the container - it's the parent of the first .dr
+    const firstDr=document.querySelector('.dr');
+    if(firstDr){
+      const p=firstDr.parentElement;
+      const drs=p.querySelectorAll('.dr');
+      drs.forEach(r=>r.remove());
+      p.insertAdjacentHTML('afterbegin',dh);
+    }
+  }
+}
+
+</script>
+<script>
+
+const ST=[
+{t:"The Motorcade Begins",d:"Seven Black Hand assassins line the Appel Quay. The Archduke rides in an open car with his wife Sophie.",tm:"10:00 AM",tn:15,tc:"var(--teal)",c:{l:"3%",t:"43%"},aa:[0,1,2,3,4,5,6],gz:0,eu:0},
+{t:"The Bomb Is Thrown",d:"\u010cabrinovi\u0107 throws a grenade. It bounces off the folded convertible top and explodes under the car behind. Officers wounded. Assassination attempt FAILED.",tm:"10:10 AM",tn:35,tc:"var(--gold)",c:{l:"28%",t:"41%"},aa:[2],gz:0,eu:0},
+{t:"The Bomb Misses",d:"Archduke unharmed. \u010cabrinovi\u0107 swallows expired cyanide, jumps into the shallow river. Captured. Other assassins lose their nerve. Motorcade speeds up.",tm:"10:15 AM",tn:22,tc:"var(--teal)",c:{l:"42%",t:"42%"},aa:[],gz:0,eu:0},
+{t:"City Hall \u2014 The Angry Speech",d:"Franz Ferdinand arrives furious: 'So you welcome your guests with bombs!' He insists on visiting the wounded officers at the hospital. This decision changes history.",tm:"10:30 AM",tn:18,tc:"var(--teal)",c:{l:"72%",t:"36%"},aa:[],gz:0,eu:0},
+{t:"The Fateful Decision",d:"New route planned back along Appel Quay. But nobody tells driver Leopold Lojka. Princip, who gave up, is still at Schiller's Deli on the corner.",tm:"10:45 AM",tn:42,tc:"var(--gold)",c:{l:"72%",t:"36%"},aa:[6],gz:0,eu:0},
+{t:"THE WRONG TURN",d:"Driver turns onto Franz Josef Street \u2014 the OLD route. Potiorek screams 'Not that way!' Brakes hit. Car stalls. It has stopped directly in front of Gavrilo Princip.",tm:"10:48 AM",tn:78,tc:"var(--red)",c:{l:"63%",t:"33%"},aa:[6],gz:1,eu:0},
+{t:"The Engine Stalls",d:"Gears grind. Engine dies. Car stuck, 5 feet from Princip. The probability of assassination is at maximum. There is no escape.",tm:"10:49 AM",tn:96,tc:"var(--red)",c:{l:"63%",t:"38%"},aa:[6],gz:1,eu:0},
+{t:"SHOTS FIRED",d:"Princip steps forward, draws his FN Model 1910 pistol, fires twice. First bullet: Archduke's jugular. Second: Sophie's abdomen. Both dead within minutes.",tm:"10:50 AM",tn:100,tc:"var(--red)",c:{l:"63%",t:"42%"},aa:[6],gz:1,eu:0},
+{t:"THE SHOCKWAVE",d:"One bullet. One wrong turn. One stalled engine. Watch the dominoes fall. Within 5 weeks, every great power at war. 17 million will die.",tm:"AFTERMATH",tn:100,tc:"var(--red)",c:{l:"63%",t:"42%"},aa:[],gz:0,eu:1}
+];
+const ASS=[
+{n:"Muhamed Mehmeba\u0161i\u0107",p:"Position 1",d:"Armed with a bomb. A policeman stood nearby. Lost his nerve. The only Bosnian Muslim in the group.",s:"FAILED",c:"fail"},
+{n:"Vaso \u010cubrilovi\u0107",p:"Position 2",d:"17 years old. Armed with pistol and bomb. Too scared. Later became a university professor.",s:"FAILED",c:"fail"},
+{n:"Nedeljko \u010cabrinovi\u0107",p:"Position 3",d:"Threw the bomb. It bounced off the car. Swallowed expired cyanide, jumped into 4-inch-deep river. Captured.",s:"BOMB MISSED",c:"fail"},
+{n:"Cvjetko Popovi\u0107",p:"Position 4",d:"Armed with a bomb. Said he couldn't see the car. Did nothing. Became a museum curator.",s:"FAILED",c:"fail"},
+{n:"Danilo Ili\u0107",p:"Organizer",d:"Recruited assassins, distributed weapons. Did not fire. Executed after the war.",s:"ORGANIZER",c:"fail"},
+{n:"Trifko Grabe\u017e",p:"Position 6",d:"Armed with bomb and pistol. Crowd too thick. Froze. Did nothing.",s:"FAILED",c:"fail"},
+{n:"Gavrilo Princip",p:"Position 7 \u2014 Schiller's Deli",d:"19 years old. Gave up, went for a sandwich. By catastrophic chance, the car stalled right in front of him. Fired two shots that started World War I.",s:"KILLED THE ARCHDUKE",c:"kill"}
+];
+let cur=0,pl=0,pI=null;
+function gS(n){cur=n;const s=ST[n];
+const st=(STP[cL]||STP.en)[n];document.getElementById('eT').textContent=st.t;
+document.getElementById('eD').textContent=st.d;
+document.getElementById('eTm').textContent=st.m;
+const f=document.getElementById('tFill'),v=document.getElementById('tVal');
+f.style.width=s.tn+'%';f.style.background=s.tc;v.textContent=s.tn+'%';v.style.color=s.tc;
+const c=document.getElementById('car');c.style.left=s.c.l;c.style.top=s.c.t;
+document.getElementById('sP').style.width=(n/8*100)+'%';
+document.querySelectorAll('.sn').forEach((nd,i)=>nd.classList.toggle('on',i<=n));
+document.querySelectorAll('.am').forEach(m=>{m.classList.toggle('off',!s.aa.includes(parseInt(m.dataset.i)))});
+document.getElementById('gz').classList.toggle('on',!!s.gz);
+document.getElementById('rW').style.opacity=n>=5?'0.6':'0';
+document.getElementById('euO').classList.toggle('on',!!s.eu);
+if(n===8)lD();else{document.querySelectorAll('.dr').forEach(r=>r.classList.remove('lit'));document.getElementById('dC').style.display='none';}
+}
+function lD(){const rs=document.querySelectorAll('.dr'),sls=['sl1','sl2','sl3','sl4','sl5'],nds=['nV','nB','nSP','nP','nL'];
+rs.forEach((r,i)=>{setTimeout(()=>{r.classList.add('lit');if(i>0&&i<=5){const l=document.getElementById(sls[i-1]),nd=document.getElementById(nds[i-1]);if(l){l.style.opacity='.8';l.style.transition='opacity .5s';}if(nd){nd.style.fill='#e94560';nd.style.stroke='#e94560';nd.style.transition='all .5s';}}},i*650)});
+setTimeout(()=>{document.getElementById('dC').style.display='block';let s=Date.now();(function tk(){let p=Math.min((Date.now()-s)/3000,1);document.getElementById('dN').textContent=Math.floor(17000000*p).toLocaleString();if(p<1)requestAnimationFrame(tk)})()},rs.length*650+400)}
+function shA(i){const a=ASS[i];document.getElementById('aP').style.display='block';document.getElementById('aN').textContent=a.n;document.getElementById('aPos').textContent=a.p;document.getElementById('aDsc').textContent=a.d;const s=document.getElementById('aSt');s.textContent=a.s;s.className='badge '+a.c}
+function tW(n){document.getElementById('w'+n).classList.toggle('on');document.getElementById('wr'+n).classList.toggle('show')}
+function pTL(){if(pl)return;pl=1;cur=0;gS(0);pI=setInterval(()=>{cur++;if(cur>8){clearInterval(pI);pl=0;return}gS(cur)},2800)}
+function rTL(){clearInterval(pI);pl=0;gS(0);['sl1','sl2','sl3','sl4','sl5'].forEach(id=>{const e=document.getElementById(id);if(e)e.style.opacity='0'});['nV','nB','nSP','nP','nL'].forEach(id=>{const e=document.getElementById(id);if(e){e.style.fill='none';e.style.stroke='#a0a8b8'}});document.getElementById('aP').style.display='none';document.querySelectorAll('.wft').forEach(t=>t.classList.remove('on'));document.querySelectorAll('.wfr').forEach(r=>r.classList.remove('show'))}
+
+const ERAS=[
+{t:'1871 — Germany Unifies',d:'The German Empire is proclaimed after defeating France. France loses Alsace-Lorraine. A powerful new force sits in the center of Europe, changing the balance of power forever.',s:'<svg viewBox="0 0 800 500"><rect width="800" height="500" fill="#16213e"/> <text x="400" y="28" text-anchor="middle" font-family="Playfair Display" font-size="14" fill="#f0c040" font-weight="700">EUROPE — 1871</text> <path d="M0,0 L160,0 L140,60 C120,80 100,100 80,140 L60,200 L0,200 Z" fill="#0f2030" opacity=".5"/> <path d="M0,200 L60,200 L40,280 L20,340 L0,400 Z" fill="#0f2030" opacity=".5"/> <path d="M100,300 L180,290 L200,310 L190,350 L160,380 L110,380 L80,360 L90,320 Z" fill="rgba(255,255,255,.03)" stroke="#a0a8b8" stroke-width=".8"/> <text x="145" y="345" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="#a0a8b8" opacity=".4">SPAIN</text> <path d="M270,270 L300,260 L320,280 L330,320 L310,360 L290,380 L270,350 L260,300 Z" fill="rgba(255,140,66,.08)" stroke="#ff8c42" stroke-width="1"/> <text x="295" y="325" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="#ff8c42">ITALY</text><path d="M145,80 C150,60 170,45 180,50 C190,55 195,70 190,90 C185,110 175,130 170,140 C165,150 155,155 148,145 C140,130 138,100 145,80 Z" fill="rgba(77,166,255,.12)" stroke="#4da6ff" stroke-width="1"/> <text x="168" y="105" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="#4da6ff">BRITAIN</text><path d="M160,180 L210,160 L250,170 L260,200 L270,250 L250,290 L220,310 L180,300 L150,270 L140,230 Z" fill="rgba(233,69,96,.1)" stroke="#e94560" stroke-width="1"/> <text x="210" y="245" text-anchor="middle" font-family="JetBrains Mono" font-size="8" fill="#e94560">FRANCE</text><path d="M500,60 L800,60 L800,380 L600,400 L545,350 L545,300 L530,280 L510,240 L490,210 L500,170 L520,130 L500,60 Z" fill="rgba(181,108,255,.08)" stroke="#b56cff" stroke-width="1" stroke-dasharray="4,3"/> <text x="650" y="220" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="#b56cff">RUSSIAN EMPIRE</text><path d="M460,340 L530,350 L600,400 L700,430 L800,420 L800,500 L500,500 L420,460 L400,420 L420,380 L460,340 Z" fill="rgba(83,216,176,.07)" stroke="#53d8b0" stroke-width="1" stroke-dasharray="4,3"/> <text x="580" y="460" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#53d8b0">OTTOMAN EMPIRE</text><path d="M260,130 L310,110 L360,115 L380,130 L390,160 L370,190 L340,210 L300,220 L270,210 L260,200 L250,170 Z" fill="rgba(77,166,255,.18)" stroke="#4da6ff" stroke-width="1.8"><animate attributeName="stroke-opacity" values=".5;1;.5" dur="2s" repeatCount="indefinite"/></path><text x="320" y="168" text-anchor="middle" font-family="Playfair Display" font-size="10" fill="#4da6ff" font-weight="700">GERMAN EMPIRE</text><text x="320" y="182" text-anchor="middle" font-family="JetBrains Mono" font-size="5" fill="#4da6ff" opacity=".7">★ PROCLAIMED 1871</text><path d="M340,210 L390,195 L440,200 L490,210 L510,240 L500,280 L460,300 L440,325 L425,340 L405,335 L400,310 L380,300 L350,280 L330,250 L340,210 Z" fill="rgba(240,192,64,.1)" stroke="#f0c040" stroke-width="1.2"/> <text x="420" y="255" text-anchor="middle" font-family="JetBrains Mono" font-size="8" fill="#f0c040">AUSTRIA-HUNGARY</text><text x="255" y="185" font-family="JetBrains Mono" font-size="5" fill="#e94560" opacity=".6">Alsace-Lorraine LOST</text><rect x="20" y="440" width="200" height="45" rx="6" fill="rgba(0,0,0,.3)"/><text x="30" y="458" font-family="JetBrains Mono" font-size="6" fill="#4da6ff">★ Germany unified from 39 states</text><text x="30" y="472" font-family="JetBrains Mono" font-size="6" fill="#e94560">★ France humiliated, wants revenge</text></svg>'},
+{t:'1878 — Congress of Berlin',d:'After the Russo-Turkish War, the great powers redraw the Balkans. Serbia, Romania, and Montenegro become independent. Austria-Hungary gains the right to occupy Bosnia. The \'Eastern Question\' begins.',s:'<svg viewBox="0 0 800 500"><rect width="800" height="500" fill="#16213e"/> <text x="400" y="28" text-anchor="middle" font-family="Playfair Display" font-size="14" fill="#f0c040" font-weight="700">EUROPE — 1878</text> <path d="M0,0 L160,0 L140,60 C120,80 100,100 80,140 L60,200 L0,200 Z" fill="#0f2030" opacity=".5"/> <path d="M0,200 L60,200 L40,280 L20,340 L0,400 Z" fill="#0f2030" opacity=".5"/> <path d="M100,300 L180,290 L200,310 L190,350 L160,380 L110,380 L80,360 L90,320 Z" fill="rgba(255,255,255,.03)" stroke="#a0a8b8" stroke-width=".8"/> <text x="145" y="345" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="#a0a8b8" opacity=".4">SPAIN</text> <path d="M270,270 L300,260 L320,280 L330,320 L310,360 L290,380 L270,350 L260,300 Z" fill="rgba(255,140,66,.08)" stroke="#ff8c42" stroke-width="1"/> <text x="295" y="325" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="#ff8c42">ITALY</text><path d="M145,80 C150,60 170,45 180,50 C190,55 195,70 190,90 C185,110 175,130 170,140 C165,150 155,155 148,145 C140,130 138,100 145,80 Z" fill="rgba(77,166,255,.12)" stroke="#4da6ff" stroke-width="1"/> <text x="168" y="105" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="#4da6ff">BRITAIN</text><path d="M160,180 L210,160 L250,170 L260,200 L270,250 L250,290 L220,310 L180,300 L150,270 L140,230 Z" fill="rgba(233,69,96,.1)" stroke="#e94560" stroke-width="1"/> <text x="210" y="245" text-anchor="middle" font-family="JetBrains Mono" font-size="8" fill="#e94560">FRANCE</text><path d="M260,130 L310,110 L360,115 L380,130 L390,160 L370,190 L340,210 L300,220 L270,210 L260,200 L250,170 Z" fill="rgba(77,166,255,.15)" stroke="#4da6ff" stroke-width="1.2"/> <text x="320" y="170" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#4da6ff" font-weight="600">GERMANY</text><path d="M340,210 L390,195 L440,200 L490,210 L510,240 L500,280 L460,300 L420,310 L380,300 L350,280 L330,250 L340,210 Z" fill="rgba(240,192,64,.1)" stroke="#f0c040" stroke-width="1.2"/><text x="420" y="255" text-anchor="middle" font-family="JetBrains Mono" font-size="8" fill="#f0c040">AUSTRIA-HUNGARY</text><path d="M400,310 L430,305 L440,325 L425,340 L405,335 Z" fill="rgba(240,192,64,.15)" stroke="#f0c040" stroke-width="1.5" stroke-dasharray="3,2"><animate attributeName="fill-opacity" values=".1;.25;.1" dur="2s" repeatCount="indefinite"/></path><text x="420" y="328" text-anchor="middle" font-family="JetBrains Mono" font-size="5" fill="#f0c040" font-weight="700">BOSNIA (A-H Occupied)</text><path d="M445,320 L465,315 L475,335 L460,350 L445,340 Z" fill="rgba(233,69,96,.15)" stroke="#e94560" stroke-width="1.5"><animate attributeName="stroke-opacity" values=".5;1;.5" dur="2s" repeatCount="indefinite"/></path><text x="460" y="338" text-anchor="middle" font-family="JetBrains Mono" font-size="5" fill="#e94560" font-weight="700">SERBIA ★</text><path d="M490,285 L530,280 L545,300 L530,320 L500,315 Z" fill="rgba(255,140,66,.1)" stroke="#ff8c42" stroke-width="1"/><text x="515" y="305" text-anchor="middle" font-family="JetBrains Mono" font-size="5" fill="#ff8c42">ROMANIA ★</text><circle cx="418" cy="355" r="6" fill="rgba(181,108,255,.15)" stroke="#b56cff" stroke-width="1"/><text x="418" y="368" text-anchor="middle" font-family="JetBrains Mono" font-size="4" fill="#b56cff">MONTENEGRO ★</text><path d="M485,330 L520,325 L535,345 L515,360 L485,350 Z" fill="rgba(83,216,176,.1)" stroke="#53d8b0" stroke-width="1"/><text x="510" y="348" text-anchor="middle" font-family="JetBrains Mono" font-size="5" fill="#53d8b0">BULGARIA ★</text><path d="M500,60 L800,60 L800,380 L600,400 L545,350 L545,300 L530,280 L510,240 L490,210 L500,170 L520,130 L500,60 Z" fill="rgba(181,108,255,.08)" stroke="#b56cff" stroke-width="1" stroke-dasharray="4,3"/> <text x="650" y="220" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="#b56cff">RUSSIAN EMPIRE</text><path d="M480,365 L535,345 L600,400 L700,430 L800,420 L800,500 L500,500 L420,460 L420,380 L460,360 Z" fill="rgba(83,216,176,.05)" stroke="#53d8b0" stroke-width="1" stroke-dasharray="4,3"/><text x="600" y="460" text-anchor="middle" font-family="JetBrains Mono" font-size="8" fill="#53d8b0" opacity=".6">OTTOMAN ↓</text><rect x="20" y="440" width="250" height="45" rx="6" fill="rgba(0,0,0,.3)"/><text x="30" y="458" font-family="JetBrains Mono" font-size="6" fill="#e94560">★ Serbia, Romania, Montenegro: INDEPENDENT</text><text x="30" y="472" font-family="JetBrains Mono" font-size="6" fill="#f0c040">★ Bosnia: A-H occupied</text></svg>'},
+{t:'1908 — The Bosnia Crisis',d:'Austria-Hungary officially ANNEXES Bosnia. Serbia is furious — millions of Slavs now trapped. Russia backs Serbia but is too weak to act. The seeds of 1914 are planted.',s:'<svg viewBox="0 0 800 500"><rect width="800" height="500" fill="#16213e"/> <text x="400" y="28" text-anchor="middle" font-family="Playfair Display" font-size="14" fill="#f0c040" font-weight="700">EUROPE — 1908</text> <path d="M0,0 L160,0 L140,60 C120,80 100,100 80,140 L60,200 L0,200 Z" fill="#0f2030" opacity=".5"/> <path d="M0,200 L60,200 L40,280 L20,340 L0,400 Z" fill="#0f2030" opacity=".5"/> <path d="M100,300 L180,290 L200,310 L190,350 L160,380 L110,380 L80,360 L90,320 Z" fill="rgba(255,255,255,.03)" stroke="#a0a8b8" stroke-width=".8"/> <text x="145" y="345" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="#a0a8b8" opacity=".4">SPAIN</text> <path d="M270,270 L300,260 L320,280 L330,320 L310,360 L290,380 L270,350 L260,300 Z" fill="rgba(255,140,66,.08)" stroke="#ff8c42" stroke-width="1"/> <text x="295" y="325" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="#ff8c42">ITALY</text><path d="M145,80 C150,60 170,45 180,50 C190,55 195,70 190,90 C185,110 175,130 170,140 C165,150 155,155 148,145 C140,130 138,100 145,80 Z" fill="rgba(77,166,255,.12)" stroke="#4da6ff" stroke-width="1"/> <text x="168" y="105" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="#4da6ff">BRITAIN</text><path d="M160,180 L210,160 L250,170 L260,200 L270,250 L250,290 L220,310 L180,300 L150,270 L140,230 Z" fill="rgba(233,69,96,.1)" stroke="#e94560" stroke-width="1"/> <text x="210" y="245" text-anchor="middle" font-family="JetBrains Mono" font-size="8" fill="#e94560">FRANCE</text><path d="M260,130 L310,110 L360,115 L380,130 L390,160 L370,190 L340,210 L300,220 L270,210 L260,200 L250,170 Z" fill="rgba(77,166,255,.15)" stroke="#4da6ff" stroke-width="1.2"/> <text x="320" y="170" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#4da6ff" font-weight="600">GERMANY</text><path d="M340,210 L390,195 L440,200 L490,210 L510,240 L500,280 L460,300 L440,325 L425,340 L405,335 L400,310 L380,300 L350,280 L330,250 L340,210 Z" fill="rgba(240,192,64,.12)" stroke="#f0c040" stroke-width="1.5"><animate attributeName="stroke-opacity" values=".6;1;.6" dur="2s" repeatCount="indefinite"/></path><text x="420" y="255" text-anchor="middle" font-family="JetBrains Mono" font-size="8" fill="#f0c040" font-weight="600">AUSTRIA-HUNGARY</text><text x="418" y="328" text-anchor="middle" font-family="JetBrains Mono" font-size="5" fill="#e94560" font-weight="700">BOSNIA ANNEXED ⚠</text><path d="M445,320 L465,315 L475,335 L460,350 L445,340 Z" fill="rgba(233,69,96,.2)" stroke="#e94560" stroke-width="2"><animate attributeName="stroke-width" values="1.5;3;1.5" dur="1.5s" repeatCount="indefinite"/></path><text x="460" y="338" text-anchor="middle" font-family="JetBrains Mono" font-size="5.5" fill="#e94560" font-weight="700">SERBIA 🔥</text><line x1="445" y1="330" x2="430" y2="325" stroke="#e94560" stroke-width="1.5" stroke-dasharray="3,2" opacity=".7"/><text x="435" y="318" text-anchor="middle" font-family="JetBrains Mono" font-size="4" fill="#e94560" opacity=".7">WANTS BACK</text><path d="M490,285 L530,280 L545,300 L530,320 L500,315 Z" fill="rgba(255,140,66,.1)" stroke="#ff8c42" stroke-width="1"/><text x="515" y="305" text-anchor="middle" font-family="JetBrains Mono" font-size="5" fill="#ff8c42">ROMANIA</text><path d="M485,330 L520,325 L535,345 L515,360 L485,350 Z" fill="rgba(83,216,176,.1)" stroke="#53d8b0" stroke-width="1"/><text x="510" y="348" text-anchor="middle" font-family="JetBrains Mono" font-size="5" fill="#53d8b0">BULGARIA</text><path d="M500,60 L800,60 L800,380 L600,400 L545,350 L545,300 L530,280 L510,240 L490,210 L500,170 L520,130 L500,60 Z" fill="rgba(181,108,255,.08)" stroke="#b56cff" stroke-width="1" stroke-dasharray="4,3"/> <text x="650" y="220" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="#b56cff">RUSSIAN EMPIRE</text><line x1="560" y1="340" x2="475" y2="335" stroke="#b56cff" stroke-width="1.5" stroke-dasharray="4,3" opacity=".5"/><text x="515" y="332" text-anchor="middle" font-family="JetBrains Mono" font-size="4" fill="#b56cff" opacity=".7">SUPPORTS</text><path d="M540,390 L600,400 L700,430 L800,420 L800,500 L550,500 L540,420 Z" fill="rgba(83,216,176,.04)" stroke="#53d8b0" stroke-width="1" stroke-dasharray="4,3" opacity=".5"/> <text x="650" y="460" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="#53d8b0" opacity=".5">OTTOMAN (SHRINKING)</text><rect x="20" y="440" width="270" height="45" rx="6" fill="rgba(0,0,0,.3)"/><text x="30" y="458" font-family="JetBrains Mono" font-size="6" fill="#e94560">⚠ Austria-Hungary ANNEXES Bosnia</text><text x="30" y="472" font-family="JetBrains Mono" font-size="6" fill="#e94560">⚠ Serbia furious — millions of Slavs trapped</text></svg>'},
+{t:'1912–1913 — Balkan Wars',d:'Serbia DOUBLES in size after driving the Ottoman Empire out of Europe. Austria-Hungary panics. The powder keg is primed. One spark and it all goes up.',s:'<svg viewBox="0 0 800 500"><rect width="800" height="500" fill="#16213e"/> <text x="400" y="28" text-anchor="middle" font-family="Playfair Display" font-size="14" fill="#f0c040" font-weight="700">EUROPE — 1912–1913 (After Balkan Wars)</text> <path d="M0,0 L160,0 L140,60 C120,80 100,100 80,140 L60,200 L0,200 Z" fill="#0f2030" opacity=".5"/> <path d="M0,200 L60,200 L40,280 L20,340 L0,400 Z" fill="#0f2030" opacity=".5"/> <path d="M100,300 L180,290 L200,310 L190,350 L160,380 L110,380 L80,360 L90,320 Z" fill="rgba(255,255,255,.03)" stroke="#a0a8b8" stroke-width=".8"/> <text x="145" y="345" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="#a0a8b8" opacity=".4">SPAIN</text> <path d="M270,270 L300,260 L320,280 L330,320 L310,360 L290,380 L270,350 L260,300 Z" fill="rgba(255,140,66,.08)" stroke="#ff8c42" stroke-width="1"/> <text x="295" y="325" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="#ff8c42">ITALY</text><path d="M145,80 C150,60 170,45 180,50 C190,55 195,70 190,90 C185,110 175,130 170,140 C165,150 155,155 148,145 C140,130 138,100 145,80 Z" fill="rgba(77,166,255,.12)" stroke="#4da6ff" stroke-width="1"/> <text x="168" y="105" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="#4da6ff">BRITAIN</text><path d="M160,180 L210,160 L250,170 L260,200 L270,250 L250,290 L220,310 L180,300 L150,270 L140,230 Z" fill="rgba(233,69,96,.1)" stroke="#e94560" stroke-width="1"/> <text x="210" y="245" text-anchor="middle" font-family="JetBrains Mono" font-size="8" fill="#e94560">FRANCE</text><path d="M260,130 L310,110 L360,115 L380,130 L390,160 L370,190 L340,210 L300,220 L270,210 L260,200 L250,170 Z" fill="rgba(77,166,255,.15)" stroke="#4da6ff" stroke-width="1.2"/> <text x="320" y="170" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#4da6ff" font-weight="600">GERMANY</text><path d="M340,210 L390,195 L440,200 L490,210 L510,240 L500,280 L460,300 L440,325 L425,340 L405,335 L400,310 L380,300 L350,280 L330,250 L340,210 Z" fill="rgba(240,192,64,.1)" stroke="#f0c040" stroke-width="1.2"/><text x="420" y="255" text-anchor="middle" font-family="JetBrains Mono" font-size="8" fill="#f0c040">AUSTRIA-HUNGARY</text><path d="M440,315 L475,310 L490,340 L480,370 L455,375 L435,360 L430,335 Z" fill="rgba(233,69,96,.2)" stroke="#e94560" stroke-width="2"><animate attributeName="fill-opacity" values=".15;.3;.15" dur="2s" repeatCount="indefinite"/></path><text x="462" y="348" text-anchor="middle" font-family="Playfair Display" font-size="8" fill="#e94560" font-weight="700">SERBIA ↑↑</text><text x="462" y="360" text-anchor="middle" font-family="JetBrains Mono" font-size="4" fill="#e94560">DOUBLED IN SIZE</text><path d="M440,385 L475,375 L490,400 L470,420 L445,415 Z" fill="rgba(77,166,255,.1)" stroke="#4da6ff" stroke-width="1"/><text x="465" y="402" text-anchor="middle" font-family="JetBrains Mono" font-size="5" fill="#4da6ff">GREECE ↑</text><path d="M420,360 L435,355 L440,380 L425,390 Z" fill="rgba(255,255,255,.08)" stroke="#fff" stroke-width="1"/><text x="430" y="378" text-anchor="middle" font-family="JetBrains Mono" font-size="4" fill="#fff">ALB. ★</text><path d="M490,285 L530,280 L545,300 L530,320 L500,315 Z" fill="rgba(255,140,66,.1)" stroke="#ff8c42" stroke-width="1"/><text x="515" y="305" text-anchor="middle" font-family="JetBrains Mono" font-size="5" fill="#ff8c42">ROMANIA</text><path d="M495,340 L530,330 L548,355 L530,375 L500,365 Z" fill="rgba(83,216,176,.1)" stroke="#53d8b0" stroke-width="1"/><text x="520" y="358" text-anchor="middle" font-family="JetBrains Mono" font-size="5" fill="#53d8b0">BULGARIA</text><path d="M500,60 L800,60 L800,380 L600,400 L545,350 L545,300 L530,280 L510,240 L490,210 L500,170 L520,130 L500,60 Z" fill="rgba(181,108,255,.08)" stroke="#b56cff" stroke-width="1" stroke-dasharray="4,3"/> <text x="650" y="220" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="#b56cff">RUSSIAN EMPIRE</text><path d="M540,390 L600,400 L700,430 L800,420 L800,500 L550,500 L540,420 Z" fill="rgba(83,216,176,.04)" stroke="#53d8b0" stroke-width="1" stroke-dasharray="4,3" opacity=".5"/> <text x="650" y="460" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="#53d8b0" opacity=".5">OTTOMAN (SHRINKING)</text><rect x="415" y="305" width="140" height="125" rx="8" fill="none" stroke="#e94560" stroke-width="1" stroke-dasharray="4,4" opacity=".3"><animate attributeName="opacity" values=".2;.5;.2" dur="3s" repeatCount="indefinite"/></rect><rect x="20" y="440" width="260" height="45" rx="6" fill="rgba(0,0,0,.3)"/><text x="30" y="458" font-family="JetBrains Mono" font-size="6" fill="#e94560">Serbia doubled. Austria-Hungary terrified.</text><text x="30" y="472" font-family="JetBrains Mono" font-size="6" fill="#53d8b0">Ottoman Empire nearly gone from Europe.</text></svg>'},
+{t:'1914 — The World at War',d:'One assassination in Sarajevo. Five weeks of dominoes. Germany + Austria-Hungary vs France + Russia + Britain. Italy switches sides. The Ottoman Empire joins Germany. Every major power at war.',s:'<svg viewBox="0 0 800 500"><rect width="800" height="500" fill="#16213e"/> <text x="400" y="28" text-anchor="middle" font-family="Playfair Display" font-size="14" fill="#e94560" font-weight="700">EUROPE — AUGUST 1914: WAR</text> <path d="M0,0 L160,0 L140,60 C120,80 100,100 80,140 L60,200 L0,200 Z" fill="#0f2030" opacity=".5"/> <path d="M0,200 L60,200 L40,280 L20,340 L0,400 Z" fill="#0f2030" opacity=".5"/> <path d="M100,300 L180,290 L200,310 L190,350 L160,380 L110,380 L80,360 L90,320 Z" fill="rgba(255,255,255,.03)" stroke="#a0a8b8" stroke-width=".8"/> <text x="145" y="345" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="#a0a8b8" opacity=".4">SPAIN</text> <path d="M270,270 L300,260 L320,280 L330,320 L310,360 L290,380 L270,350 L260,300 Z" fill="rgba(255,140,66,.08)" stroke="#ff8c42" stroke-width="1"/> <text x="295" y="325" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="#ff8c42">ITALY</text><path d="M260,130 L310,110 L360,115 L380,130 L390,160 L370,190 L340,210 L300,220 L270,210 L260,200 L250,170 Z" fill="rgba(233,69,96,.15)" stroke="#e94560" stroke-width="2"/><text x="320" y="170" text-anchor="middle" font-family="Playfair Display" font-size="10" fill="#e94560" font-weight="700">GERMANY</text><path d="M340,210 L390,195 L440,200 L490,210 L510,240 L500,280 L460,300 L440,325 L425,340 L405,335 L400,310 L380,300 L350,280 L330,250 L340,210 Z" fill="rgba(233,69,96,.12)" stroke="#e94560" stroke-width="1.5"/><text x="420" y="255" text-anchor="middle" font-family="JetBrains Mono" font-size="8" fill="#e94560">AUSTRIA-HUNGARY</text><path d="M540,390 L600,400 L700,430 L800,420 L800,500 L550,500 L540,420 Z" fill="rgba(233,69,96,.08)" stroke="#e94560" stroke-width="1" stroke-dasharray="3,2"/><text x="650" y="460" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="#e94560">OTTOMAN (joins Central)</text><line x1="370" y1="195" x2="420" y2="240" stroke="#e94560" stroke-width="1.5" opacity=".4"/><path d="M145,80 C150,60 170,45 180,50 C190,55 195,70 190,90 C185,110 175,130 170,140 C165,150 155,155 148,145 C140,130 138,100 145,80 Z" fill="rgba(77,166,255,.15)" stroke="#4da6ff" stroke-width="1.8"/><text x="168" y="105" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="#4da6ff" font-weight="700">BRITAIN</text><path d="M160,180 L210,160 L250,170 L260,200 L270,250 L250,290 L220,310 L180,300 L150,270 L140,230 Z" fill="rgba(77,166,255,.12)" stroke="#4da6ff" stroke-width="1.5"/><text x="210" y="245" text-anchor="middle" font-family="JetBrains Mono" font-size="8" fill="#4da6ff" font-weight="600">FRANCE</text><path d="M500,60 L800,60 L800,380 L600,400 L545,350 L545,300 L530,280 L510,240 L490,210 L500,170 L520,130 L500,60 Z" fill="rgba(77,166,255,.1)" stroke="#4da6ff" stroke-width="1.5"/><text x="650" y="220" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="#4da6ff" font-weight="600">RUSSIAN EMPIRE</text><path d="M440,315 L475,310 L490,340 L480,370 L455,375 L435,360 L430,335 Z" fill="rgba(77,166,255,.15)" stroke="#4da6ff" stroke-width="1.5"/><text x="462" y="348" text-anchor="middle" font-family="JetBrains Mono" font-size="5" fill="#4da6ff" font-weight="700">SERBIA</text><rect x="240" y="130" width="310" height="200" rx="12" fill="none" stroke="#e94560" stroke-width="1.5" stroke-dasharray="6,4" opacity=".2"><animate attributeName="opacity" values=".1;.3;.1" dur="2s" repeatCount="indefinite"/></rect><rect x="20" y="430" width="200" height="55" rx="6" fill="rgba(0,0,0,.4)"/><rect x="30" y="445" width="10" height="10" rx="2" fill="rgba(233,69,96,.3)" stroke="#e94560"/><text x="48" y="454" font-family="JetBrains Mono" font-size="6" fill="#e94560">CENTRAL POWERS</text><rect x="30" y="460" width="10" height="10" rx="2" fill="rgba(77,166,255,.3)" stroke="#4da6ff"/><text x="48" y="469" font-family="JetBrains Mono" font-size="6" fill="#4da6ff">ENTENTE / ALLIES</text></svg>'},
+{t:'1918 — The Map Redrawn',d:'Austria-Hungary DISSOLVED. Ottoman Empire GONE. New nations: Czechoslovakia, Yugoslavia, Poland, Finland, Estonia, Latvia, Lithuania. Germany humiliated. Seeds of WWII planted.',s:'<svg viewBox="0 0 800 500"><rect width="800" height="500" fill="#16213e"/> <text x="400" y="28" text-anchor="middle" font-family="Playfair Display" font-size="14" fill="#53d8b0" font-weight="700">EUROPE — 1918–1920 (After WWI)</text> <path d="M0,0 L160,0 L140,60 C120,80 100,100 80,140 L60,200 L0,200 Z" fill="#0f2030" opacity=".5"/> <path d="M0,200 L60,200 L40,280 L20,340 L0,400 Z" fill="#0f2030" opacity=".5"/> <path d="M100,300 L180,290 L200,310 L190,350 L160,380 L110,380 L80,360 L90,320 Z" fill="rgba(255,255,255,.03)" stroke="#a0a8b8" stroke-width=".8"/> <text x="145" y="345" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="#a0a8b8" opacity=".4">SPAIN</text> <path d="M270,270 L300,260 L320,280 L330,320 L310,360 L290,380 L270,350 L260,300 Z" fill="rgba(255,140,66,.08)" stroke="#ff8c42" stroke-width="1"/> <text x="295" y="325" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="#ff8c42">ITALY</text><path d="M145,80 C150,60 170,45 180,50 C190,55 195,70 190,90 C185,110 175,130 170,140 C165,150 155,155 148,145 C140,130 138,100 145,80 Z" fill="rgba(77,166,255,.12)" stroke="#4da6ff" stroke-width="1"/> <text x="168" y="105" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="#4da6ff">BRITAIN</text><path d="M160,180 L210,160 L250,170 L260,200 L270,250 L250,290 L220,310 L180,300 L150,270 L140,230 Z" fill="rgba(233,69,96,.1)" stroke="#e94560" stroke-width="1"/> <text x="210" y="245" text-anchor="middle" font-family="JetBrains Mono" font-size="8" fill="#e94560">FRANCE</text><text x="256" y="185" font-family="JetBrains Mono" font-size="4.5" fill="#53d8b0" font-weight="600">A-L RETURNED ★</text><path d="M270,135 L310,120 L350,125 L365,140 L370,170 L350,190 L320,200 L290,200 L270,190 L260,170 Z" fill="rgba(77,166,255,.1)" stroke="#4da6ff" stroke-width="1.2"/><text x="315" y="165" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="#4da6ff">GERMANY ↓</text><text x="315" y="176" text-anchor="middle" font-family="JetBrains Mono" font-size="4" fill="#4da6ff" opacity=".6">(smaller, humiliated)</text><path d="M340,210 L380,205 L390,225 L370,240 L345,235 Z" fill="rgba(240,192,64,.1)" stroke="#f0c040" stroke-width="1"/><text x="365" y="228" text-anchor="middle" font-family="JetBrains Mono" font-size="5" fill="#f0c040">AUSTRIA ★</text><path d="M395,220 L435,215 L445,240 L425,255 L395,248 Z" fill="rgba(240,192,64,.1)" stroke="#f0c040" stroke-width="1"/><text x="420" y="240" text-anchor="middle" font-family="JetBrains Mono" font-size="5" fill="#f0c040">HUNGARY ★</text><path d="M340,210 L390,195 L440,200 L490,210 L510,240 L500,280 L460,300 L440,325 L425,340 L405,335 L400,310 L380,300 L350,280 L330,250 L340,210 Z" fill="none" stroke="#f0c040" stroke-width=".8" stroke-dasharray="4,4" opacity=".2"/><text x="440" y="195" font-family="JetBrains Mono" font-size="4" fill="#f0c040" opacity=".4">WAS: AUSTRIA-HUNGARY</text><path d="M355,195 L400,188 L430,195 L425,210 L390,215 L355,210 Z" fill="rgba(83,216,176,.15)" stroke="#53d8b0" stroke-width="1.5"/><text x="392" y="207" text-anchor="middle" font-family="JetBrains Mono" font-size="5" fill="#53d8b0" font-weight="700">CZECHOSLOVAKIA ★</text><path d="M400,270 L445,260 L475,280 L480,320 L460,350 L430,360 L405,345 L395,310 Z" fill="rgba(83,216,176,.15)" stroke="#53d8b0" stroke-width="1.5"/><text x="438" y="310" text-anchor="middle" font-family="Playfair Display" font-size="7" fill="#53d8b0" font-weight="700">YUGOSLAVIA ★</text><path d="M380,135 L430,125 L480,140 L490,175 L470,200 L435,210 L390,200 L375,170 Z" fill="rgba(83,216,176,.12)" stroke="#53d8b0" stroke-width="1.5"/><text x="432" y="172" text-anchor="middle" font-family="JetBrains Mono" font-size="6" fill="#53d8b0" font-weight="700">POLAND ★</text><text x="432" y="183" text-anchor="middle" font-family="JetBrains Mono" font-size="4" fill="#53d8b0">(free after 123 years)</text><rect x="485" y="65" width="30" height="28" rx="3" fill="rgba(83,216,176,.1)" stroke="#53d8b0" stroke-width="1"/><text x="500" y="83" text-anchor="middle" font-family="JetBrains Mono" font-size="4" fill="#53d8b0">FINLAND ★</text><rect x="485" y="98" width="20" height="10" rx="2" fill="rgba(83,216,176,.08)" stroke="#53d8b0" stroke-width=".8"/><text x="495" y="106" text-anchor="middle" font-family="JetBrains Mono" font-size="3.5" fill="#53d8b0">EST</text><rect x="480" y="112" width="20" height="10" rx="2" fill="rgba(83,216,176,.08)" stroke="#53d8b0" stroke-width=".8"/><text x="490" y="120" text-anchor="middle" font-family="JetBrains Mono" font-size="3.5" fill="#53d8b0">LAT</text><rect x="470" y="126" width="20" height="10" rx="2" fill="rgba(83,216,176,.08)" stroke="#53d8b0" stroke-width=".8"/><text x="480" y="134" text-anchor="middle" font-family="JetBrains Mono" font-size="3.5" fill="#53d8b0">LIT</text><path d="M460,255 L510,245 L540,265 L535,295 L505,305 L470,290 Z" fill="rgba(255,140,66,.1)" stroke="#ff8c42" stroke-width="1.2"/><text x="502" y="280" text-anchor="middle" font-family="JetBrains Mono" font-size="5" fill="#ff8c42">ROMANIA ↑</text><path d="M520,100 L800,60 L800,380 L600,400 L550,350 L540,300 L530,265 L510,245 L490,210 L490,175 L500,140 L520,100 Z" fill="rgba(233,69,96,.06)" stroke="#e94560" stroke-width="1" stroke-dasharray="4,3"/><text x="660" y="230" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#e94560">SOVIET RUSSIA</text><text x="660" y="245" text-anchor="middle" font-family="JetBrains Mono" font-size="5" fill="#e94560" opacity=".6">(Revolution 1917)</text><path d="M580,400 L700,430 L800,420 L800,500 L550,500 L560,420 Z" fill="rgba(83,216,176,.04)" stroke="#53d8b0" stroke-width="1"/><text x="670" y="465" text-anchor="middle" font-family="JetBrains Mono" font-size="6" fill="#53d8b0">TURKEY ★</text><text x="670" y="476" text-anchor="middle" font-family="JetBrains Mono" font-size="4" fill="#53d8b0" opacity=".6">(Ottoman GONE)</text><path d="M440,385 L475,375 L490,400 L470,420 L445,415 Z" fill="rgba(77,166,255,.08)" stroke="#4da6ff" stroke-width="1"/><text x="465" y="402" text-anchor="middle" font-family="JetBrains Mono" font-size="5" fill="#4da6ff">GREECE</text><rect x="20" y="440" width="280" height="50" rx="6" fill="rgba(0,0,0,.4)"/><text x="30" y="458" font-family="JetBrains Mono" font-size="6" fill="#53d8b0">★ = NEW / REDRAWN NATIONS</text><text x="30" y="472" font-family="JetBrains Mono" font-size="6" fill="#e94560">A-H → dissolved | Ottoman → Turkey | Russia → Soviet</text></svg>'},
+];
+function shE(n){
+  document.querySelectorAll('.etab').forEach((t,i)=>t.classList.toggle('on',i===n));
+  document.getElementById('mD').innerHTML=ERAS[n].s;
+  // Add grid overlay
+  const svg=document.querySelector('#mD svg');
+  if(svg){const g='<line x1="0" y1="200" x2="800" y2="200" stroke="#1e2540" stroke-width=".3" opacity=".3"/><line x1="0" y1="350" x2="800" y2="350" stroke="#1e2540" stroke-width=".3" opacity=".3"/><line x1="200" y1="0" x2="200" y2="520" stroke="#1e2540" stroke-width=".3" opacity=".3"/><line x1="400" y1="0" x2="400" y2="520" stroke="#1e2540" stroke-width=".3" opacity=".3"/><line x1="600" y1="0" x2="600" y2="520" stroke="#1e2540" stroke-width=".3" opacity=".3"/>';svg.insertAdjacentHTML('afterbegin',g);}
+  const er=(ERT[cL]||ERT.en)[n];document.getElementById('eTitle').textContent=er.t;
+  document.getElementById('eDsc').textContent=er.d;
+}
+gS(0);shE(0);applyLang();
+
+</script>
+
+</body></html>
