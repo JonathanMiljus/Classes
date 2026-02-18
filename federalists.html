@@ -1,0 +1,1365 @@
+import { useState, useEffect, useRef } from “react”;
+
+// ─── CONTENT DATABASE ───────────────────────────────────────────────────────
+const CONTENT = {
+siteTitle: {
+en: “Foundations of American Government”,
+es: “Fundamentos del Gobierno Estadounidense”,
+fr: “Fondements du Gouvernement Américain”,
+},
+siteSubtitle: {
+en: “From Magna Carta to the Bill of Rights”,
+es: “Desde la Carta Magna hasta la Declaración de Derechos”,
+fr: “De la Magna Carta à la Déclaration des Droits”,
+},
+nav: {
+home: { en: “Home”, es: “Inicio”, fr: “Accueil” },
+timeline: { en: “Timeline”, es: “Línea de Tiempo”, fr: “Chronologie” },
+comparison: { en: “Articles vs Constitution”, es: “Artículos vs Constitución”, fr: “Articles vs Constitution” },
+federalists: { en: “Federalists vs Anti-Federalists”, es: “Federalistas vs Antifederalistas”, fr: “Fédéralistes vs Antifédéralistes” },
+glossary: { en: “Glossary”, es: “Glosario”, fr: “Glossaire” },
+assessment: { en: “Check Understanding”, es: “Verifica tu Comprensión”, fr: “Vérifie ta Compréhension” },
+},
+readingLevels: {
+quick: { en: “Quick”, es: “Rápido”, fr: “Rapide” },
+student: { en: “Student”, es: “Estudiante”, fr: “Étudiant” },
+deep: { en: “Deep”, es: “Profundo”, fr: “Approfondi” },
+},
+// ── HOME PAGE ──
+homeIntro: {
+quick: {
+en: “The U.S. government was not invented from nothing. It was built on hundreds of years of ideas about rights and power. Each document tried to solve a real problem.”,
+es: “El gobierno de EE.UU. no se inventó de la nada. Se construyó sobre cientos de años de ideas sobre derechos y poder. Cada documento intentó resolver un problema real.”,
+fr: “Le gouvernement américain n’a pas été inventé à partir de rien. Il s’est construit sur des centaines d’années d’idées sur les droits et le pouvoir. Chaque document a tenté de résoudre un vrai problème.”,
+},
+student: {
+en: “The United States Constitution did not appear overnight. It came from a long chain of documents, thinkers, and political experiments stretching back to 1215 England. Each step tried to answer the same basic question: How do you give a government enough power to work, but not so much power that it takes away people’s rights? Understanding this chain helps you see why American government works the way it does today.”,
+es: “La Constitución de los Estados Unidos no apareció de la noche a la mañana. Provino de una larga cadena de documentos, pensadores y experimentos políticos que se remontan a la Inglaterra de 1215. Cada paso intentó responder la misma pregunta básica: ¿Cómo le das a un gobierno suficiente poder para funcionar, pero no tanto poder que le quite los derechos a la gente? Entender esta cadena te ayuda a ver por qué el gobierno estadounidense funciona como funciona hoy.”,
+fr: “La Constitution des États-Unis n’est pas apparue du jour au lendemain. Elle est née d’une longue chaîne de documents, de penseurs et d’expériences politiques remontant à l’Angleterre de 1215. Chaque étape a tenté de répondre à la même question fondamentale : Comment donner à un gouvernement assez de pouvoir pour fonctionner, sans lui donner tant de pouvoir qu’il supprime les droits des gens ? Comprendre cette chaîne t’aide à voir pourquoi le gouvernement américain fonctionne comme il fonctionne aujourd’hui.”,
+},
+deep: {
+en: “Key themes to track across every document:\n• Limiting government power (checks and balances)\n• Protecting individual rights\n• Consent of the governed (people agree to be ruled)\n• Rule of law (no one is above the law)\n• Federalism (sharing power between national and state governments)\n• Representative government (elected leaders speak for the people)”,
+es: “Temas clave para seguir a través de cada documento:\n• Limitar el poder del gobierno (controles y equilibrios)\n• Proteger los derechos individuales\n• Consentimiento de los gobernados (la gente acepta ser gobernada)\n• Estado de derecho (nadie está por encima de la ley)\n• Federalismo (compartir el poder entre gobiernos nacionales y estatales)\n• Gobierno representativo (líderes electos hablan por el pueblo)”,
+fr: “Thèmes clés à suivre à travers chaque document :\n• Limiter le pouvoir du gouvernement (freins et contrepoids)\n• Protéger les droits individuels\n• Consentement des gouvernés (les gens acceptent d’être gouvernés)\n• État de droit (personne n’est au-dessus de la loi)\n• Fédéralisme (partager le pouvoir entre gouvernements national et étatiques)\n• Gouvernement représentatif (les élus parlent au nom du peuple)”,
+},
+},
+// ── TIMELINE DOCUMENTS ──
+timelineDocs: [
+{
+year: “1215”,
+title: { en: “Magna Carta”, es: “Carta Magna”, fr: “Magna Carta” },
+context: {
+en: “English nobles forced King John to sign this document after years of unfair taxes and abuse of power.”,
+es: “Los nobles ingleses obligaron al Rey Juan a firmar este documento después de años de impuestos injustos y abuso de poder.”,
+fr: “Les nobles anglais ont forcé le roi Jean à signer ce document après des années d’impôts injustes et d’abus de pouvoir.”,
+},
+problem: {
+en: “The king had unlimited power. No one could stop him from taking property, raising taxes, or punishing people unfairly.”,
+es: “El rey tenía poder ilimitado. Nadie podía impedir que tomara propiedades, subiera impuestos o castigara injustamente a la gente.”,
+fr: “Le roi avait un pouvoir illimité. Personne ne pouvait l’empêcher de prendre des propriétés, d’augmenter les impôts ou de punir injustement les gens.”,
+},
+keyIdeas: {
+en: “Rule of law — even the king must follow rules. Right to a fair trial. No taxes without agreement.”,
+es: “Estado de derecho — incluso el rey debe seguir las reglas. Derecho a un juicio justo. No hay impuestos sin acuerdo.”,
+fr: “État de droit — même le roi doit suivre les règles. Droit à un procès équitable. Pas d’impôts sans accord.”,
+},
+impact: {
+en: “First time a written document limited a ruler’s power. Inspired every rights document that followed.”,
+es: “Primera vez que un documento escrito limitó el poder de un gobernante. Inspiró cada documento de derechos que siguió.”,
+fr: “Première fois qu’un document écrit a limité le pouvoir d’un dirigeant. A inspiré chaque document de droits qui a suivi.”,
+},
+color: “#C49A6C”,
+},
+{
+year: “1628”,
+title: { en: “Petition of Right”, es: “Petición de Derecho”, fr: “Pétition du Droit” },
+context: {
+en: “Parliament challenged King Charles I who was taxing people without Parliament’s consent and jailing people without charge.”,
+es: “El Parlamento desafió al Rey Carlos I, quien cobraba impuestos sin el consentimiento del Parlamento y encarcelaba a personas sin cargos.”,
+fr: “Le Parlement a contesté le roi Charles Ier qui taxait les gens sans le consentement du Parlement et emprisonnait des personnes sans inculpation.”,
+},
+problem: {
+en: “The king ignored Magna Carta’s limits. He forced people to house soldiers and used military courts against civilians.”,
+es: “El rey ignoró los límites de la Carta Magna. Obligó a la gente a alojar soldados y usó tribunales militares contra civiles.”,
+fr: “Le roi a ignoré les limites de la Magna Carta. Il a forcé les gens à loger des soldats et a utilisé des tribunaux militaires contre des civils.”,
+},
+keyIdeas: {
+en: “No taxes without Parliament’s consent. No imprisonment without cause. No quartering of soldiers. No martial law in peacetime.”,
+es: “No hay impuestos sin consentimiento del Parlamento. No hay encarcelamiento sin causa. No se alojan soldados en casas. No hay ley marcial en tiempos de paz.”,
+fr: “Pas d’impôts sans le consentement du Parlement. Pas d’emprisonnement sans motif. Pas de logement de soldats. Pas de loi martiale en temps de paix.”,
+},
+impact: {
+en: “Reinforced that rights come from law, not from the king’s kindness. Directly influenced the U.S. Bill of Rights (Amendments 3 and 5).”,
+es: “Reforzó que los derechos provienen de la ley, no de la bondad del rey. Influyó directamente en la Declaración de Derechos de EE.UU. (Enmiendas 3 y 5).”,
+fr: “A renforcé que les droits viennent de la loi, pas de la bonté du roi. A directement influencé la Déclaration des Droits américaine (Amendements 3 et 5).”,
+},
+color: “#8B6F47”,
+},
+{
+year: “1689”,
+title: { en: “English Bill of Rights”, es: “Declaración de Derechos Inglesa”, fr: “Déclaration des Droits Anglaise” },
+context: {
+en: “After the Glorious Revolution removed King James II, Parliament wrote rules the new monarchs had to accept before taking the throne.”,
+es: “Después de que la Revolución Gloriosa removió al Rey Jaime II, el Parlamento escribió reglas que los nuevos monarcas debían aceptar antes de tomar el trono.”,
+fr: “Après que la Glorieuse Révolution a renversé le roi Jacques II, le Parlement a rédigé des règles que les nouveaux monarques devaient accepter avant de monter sur le trône.”,
+},
+problem: {
+en: “Kings kept trying to rule without Parliament. People needed permanent, written protections.”,
+es: “Los reyes seguían intentando gobernar sin el Parlamento. La gente necesitaba protecciones permanentes y escritas.”,
+fr: “Les rois continuaient d’essayer de gouverner sans le Parlement. Les gens avaient besoin de protections permanentes et écrites.”,
+},
+keyIdeas: {
+en: “Free elections. Freedom of speech in Parliament. No cruel and unusual punishment. Right to petition the government. Right to bear arms (for Protestants).”,
+es: “Elecciones libres. Libertad de expresión en el Parlamento. No hay castigos crueles e inusuales. Derecho a peticionar al gobierno. Derecho a portar armas (para protestantes).”,
+fr: “Élections libres. Liberté d’expression au Parlement. Pas de châtiments cruels et inhabituels. Droit de pétitionner le gouvernement. Droit de porter des armes (pour les protestants).”,
+},
+impact: {
+en: “Model for the U.S. Bill of Rights. Established that Parliament (the legislature), not the king, holds supreme power.”,
+es: “Modelo para la Declaración de Derechos de EE.UU. Estableció que el Parlamento (la legislatura), no el rey, tiene el poder supremo.”,
+fr: “Modèle pour la Déclaration des Droits américaine. A établi que le Parlement (la législature), pas le roi, détient le pouvoir suprême.”,
+},
+color: “#7A4F3E”,
+},
+{
+year: “1690”,
+title: { en: “Locke’s Two Treatises”, es: “Dos Tratados de Locke”, fr: “Deux Traités de Locke” },
+context: {
+en: “Philosopher John Locke published ideas about government that challenged the belief that kings ruled by divine right.”,
+es: “El filósofo John Locke publicó ideas sobre el gobierno que desafiaron la creencia de que los reyes gobernaban por derecho divino.”,
+fr: “Le philosophe John Locke a publié des idées sur le gouvernement qui contestaient la croyance que les rois gouvernaient par droit divin.”,
+},
+problem: {
+en: “People accepted that kings were chosen by God. Locke asked: Where does government power actually come from?”,
+es: “La gente aceptaba que los reyes eran elegidos por Dios. Locke preguntó: ¿De dónde viene realmente el poder del gobierno?”,
+fr: “Les gens acceptaient que les rois étaient choisis par Dieu. Locke a demandé : D’où vient réellement le pouvoir du gouvernement ?”,
+},
+keyIdeas: {
+en: “Natural rights: life, liberty, property. Social contract: people agree to form a government. Government must protect rights or the people can replace it.”,
+es: “Derechos naturales: vida, libertad, propiedad. Contrato social: la gente acepta formar un gobierno. El gobierno debe proteger los derechos o la gente puede reemplazarlo.”,
+fr: “Droits naturels : vie, liberté, propriété. Contrat social : les gens acceptent de former un gouvernement. Le gouvernement doit protéger les droits ou le peuple peut le remplacer.”,
+},
+impact: {
+en: “Thomas Jefferson used Locke’s ideas directly in the Declaration of Independence (‘life, liberty, and the pursuit of happiness’).”,
+es: “Thomas Jefferson usó las ideas de Locke directamente en la Declaración de Independencia (‘vida, libertad y la búsqueda de la felicidad’).”,
+fr: “Thomas Jefferson a utilisé les idées de Locke directement dans la Déclaration d’Indépendance (‘la vie, la liberté et la poursuite du bonheur’).”,
+},
+color: “#5B7F5B”,
+},
+{
+year: “1748”,
+title: { en: “Montesquieu’s Spirit of the Laws”, es: “El Espíritu de las Leyes de Montesquieu”, fr: “De l’Esprit des Lois de Montesquieu” },
+context: {
+en: “French thinker Montesquieu studied different governments and wrote about how to prevent tyranny.”,
+es: “El pensador francés Montesquieu estudió diferentes gobiernos y escribió sobre cómo prevenir la tiranía.”,
+fr: “Le penseur français Montesquieu a étudié différents gouvernements et a écrit sur la façon de prévenir la tyrannie.”,
+},
+problem: {
+en: “When one person or group holds all the power, they become corrupt. How do you split power safely?”,
+es: “Cuando una persona o grupo tiene todo el poder, se corrompe. ¿Cómo divides el poder de manera segura?”,
+fr: “Quand une personne ou un groupe détient tout le pouvoir, il devient corrompu. Comment diviser le pouvoir en toute sécurité ?”,
+},
+keyIdeas: {
+en: “Separation of powers into three branches: legislative (makes laws), executive (enforces laws), judicial (interprets laws). Each branch checks the others.”,
+es: “Separación de poderes en tres ramas: legislativa (hace leyes), ejecutiva (hace cumplir leyes), judicial (interpreta leyes). Cada rama controla a las otras.”,
+fr: “Séparation des pouvoirs en trois branches : législative (fait les lois), exécutive (applique les lois), judiciaire (interprète les lois). Chaque branche contrôle les autres.”,
+},
+impact: {
+en: “The Framers of the Constitution used this as the blueprint for three branches of U.S. government.”,
+es: “Los creadores de la Constitución usaron esto como el plan para las tres ramas del gobierno de EE.UU.”,
+fr: “Les rédacteurs de la Constitution ont utilisé cela comme plan pour les trois branches du gouvernement américain.”,
+},
+color: “#4A6B8A”,
+},
+{
+year: “1762”,
+title: { en: “Rousseau’s Social Contract”, es: “El Contrato Social de Rousseau”, fr: “Du Contrat Social de Rousseau” },
+context: {
+en: “French philosopher Rousseau argued that legitimate government can only come from the agreement of the people.”,
+es: “El filósofo francés Rousseau argumentó que el gobierno legítimo solo puede venir del acuerdo del pueblo.”,
+fr: “Le philosophe français Rousseau a soutenu que le gouvernement légitime ne peut venir que de l’accord du peuple.”,
+},
+problem: {
+en: “Most governments ruled by force or inheritance, not by the people’s choice.”,
+es: “La mayoría de los gobiernos gobernaban por fuerza o herencia, no por elección del pueblo.”,
+fr: “La plupart des gouvernements régnaient par la force ou l’héritage, pas par le choix du peuple.”,
+},
+keyIdeas: {
+en: “Popular sovereignty: the people hold ultimate power. The ‘general will’ of the people should guide government. Freedom means obeying laws you helped create.”,
+es: “Soberanía popular: el pueblo tiene el poder máximo. La ‘voluntad general’ del pueblo debe guiar al gobierno. La libertad significa obedecer leyes que ayudaste a crear.”,
+fr: “Souveraineté populaire : le peuple détient le pouvoir ultime. La ‘volonté générale’ du peuple doit guider le gouvernement. La liberté signifie obéir aux lois que tu as aidé à créer.”,
+},
+impact: {
+en: “Influenced the Declaration of Independence’s idea that government gets power ‘from the consent of the governed.’”,
+es: “Influyó en la idea de la Declaración de Independencia de que el gobierno obtiene poder ‘del consentimiento de los gobernados’.”,
+fr: “A influencé l’idée de la Déclaration d’Indépendance que le gouvernement tire son pouvoir ‘du consentement des gouvernés’.”,
+},
+color: “#6B5B7B”,
+},
+{
+year: “1776”,
+title: { en: “Declaration of Independence”, es: “Declaración de Independencia”, fr: “Déclaration d’Indépendance” },
+context: {
+en: “The 13 American colonies declared independence from Britain after years of conflict over taxes, representation, and rights.”,
+es: “Las 13 colonias americanas declararon su independencia de Gran Bretaña después de años de conflicto sobre impuestos, representación y derechos.”,
+fr: “Les 13 colonies américaines ont déclaré leur indépendance de la Grande-Bretagne après des années de conflit sur les impôts, la représentation et les droits.”,
+},
+problem: {
+en: “Colonists were taxed without representation in Parliament. Britain restricted colonial trade and quartered soldiers in homes.”,
+es: “Los colonos eran gravados sin representación en el Parlamento. Gran Bretaña restringió el comercio colonial y alojó soldados en casas.”,
+fr: “Les colons étaient taxés sans représentation au Parlement. La Grande-Bretagne a restreint le commerce colonial et logé des soldats dans les maisons.”,
+},
+keyIdeas: {
+en: “All men are created equal. Unalienable rights: life, liberty, pursuit of happiness. Government gets power from consent of the governed. People can change or abolish an unjust government.”,
+es: “Todos los hombres son creados iguales. Derechos inalienables: vida, libertad, búsqueda de la felicidad. El gobierno obtiene poder del consentimiento de los gobernados. El pueblo puede cambiar o abolir un gobierno injusto.”,
+fr: “Tous les hommes sont créés égaux. Droits inaliénables : vie, liberté, poursuite du bonheur. Le gouvernement tire son pouvoir du consentement des gouvernés. Le peuple peut changer ou abolir un gouvernement injuste.”,
+},
+impact: {
+en: “Created the philosophical foundation for the U.S. as a nation. Still used worldwide as a model for independence movements.”,
+es: “Creó la base filosófica para EE.UU. como nación. Todavía se usa en todo el mundo como modelo para movimientos de independencia.”,
+fr: “A créé le fondement philosophique des États-Unis en tant que nation. Encore utilisé dans le monde entier comme modèle pour les mouvements d’indépendance.”,
+},
+color: “#8B4444”,
+},
+{
+year: “1781”,
+title: { en: “Articles of Confederation”, es: “Artículos de la Confederación”, fr: “Articles de la Confédération” },
+context: {
+en: “The first attempt at a national government for the newly independent United States.”,
+es: “El primer intento de un gobierno nacional para los recién independizados Estados Unidos.”,
+fr: “La première tentative de gouvernement national pour les États-Unis nouvellement indépendants.”,
+},
+problem: {
+en: “The 13 states needed to cooperate but feared giving too much power to a central government (because they just escaped a king).”,
+es: “Los 13 estados necesitaban cooperar pero temían darle demasiado poder a un gobierno central (porque acababan de escapar de un rey).”,
+fr: “Les 13 états devaient coopérer mais craignaient de donner trop de pouvoir à un gouvernement central (parce qu’ils venaient d’échapper à un roi).”,
+},
+keyIdeas: {
+en: “Weak central government, strong states. One vote per state in Congress. No president. No national courts. Congress could not tax or regulate trade.”,
+es: “Gobierno central débil, estados fuertes. Un voto por estado en el Congreso. No había presidente. No había tribunales nacionales. El Congreso no podía cobrar impuestos ni regular el comercio.”,
+fr: “Gouvernement central faible, états forts. Un vote par état au Congrès. Pas de président. Pas de tribunaux nationaux. Le Congrès ne pouvait pas taxer ni réguler le commerce.”,
+},
+impact: {
+en: “Showed that a government too weak to tax, enforce laws, or settle disputes between states cannot survive. Led directly to the Constitutional Convention.”,
+es: “Demostró que un gobierno demasiado débil para cobrar impuestos, hacer cumplir leyes o resolver disputas entre estados no puede sobrevivir. Llevó directamente a la Convención Constitucional.”,
+fr: “A montré qu’un gouvernement trop faible pour taxer, appliquer les lois ou régler les différends entre états ne peut pas survivre. A mené directement à la Convention Constitutionnelle.”,
+},
+color: “#AA6644”,
+},
+{
+year: “1787”,
+title: { en: “U.S. Constitution”, es: “Constitución de EE.UU.”, fr: “Constitution des É.-U.” },
+context: {
+en: “Delegates met in Philadelphia to fix the Articles of Confederation but ended up writing an entirely new plan of government.”,
+es: “Delegados se reunieron en Filadelfia para arreglar los Artículos de la Confederación pero terminaron escribiendo un plan de gobierno completamente nuevo.”,
+fr: “Des délégués se sont réunis à Philadelphie pour corriger les Articles de la Confédération mais ont fini par rédiger un plan de gouvernement entièrement nouveau.”,
+},
+problem: {
+en: “The Articles were too weak. States argued over trade, money, and borders. The national government could not pay debts or keep order (Shays’ Rebellion proved this).”,
+es: “Los Artículos eran demasiado débiles. Los estados discutían sobre comercio, dinero y fronteras. El gobierno nacional no podía pagar deudas ni mantener el orden (la Rebelión de Shays lo demostró).”,
+fr: “Les Articles étaient trop faibles. Les états se disputaient sur le commerce, l’argent et les frontières. Le gouvernement national ne pouvait pas payer les dettes ni maintenir l’ordre (la Rébellion de Shays l’a prouvé).”,
+},
+keyIdeas: {
+en: “Three branches of government. Checks and balances. Federalism (shared power). Bicameral legislature (two houses). Supremacy clause (Constitution is the highest law). Amendment process.”,
+es: “Tres ramas del gobierno. Controles y equilibrios. Federalismo (poder compartido). Legislatura bicameral (dos cámaras). Cláusula de supremacía (la Constitución es la ley máxima). Proceso de enmiendas.”,
+fr: “Trois branches du gouvernement. Freins et contrepoids. Fédéralisme (pouvoir partagé). Législature bicamérale (deux chambres). Clause de suprématie (la Constitution est la loi suprême). Processus d’amendement.”,
+},
+impact: {
+en: “The oldest written national constitution still in use. Has been amended 27 times. Model for democracies worldwide.”,
+es: “La constitución nacional escrita más antigua aún en uso. Ha sido enmendada 27 veces. Modelo para democracias en todo el mundo.”,
+fr: “La plus ancienne constitution nationale écrite encore en usage. A été amendée 27 fois. Modèle pour les démocraties du monde entier.”,
+},
+color: “#2B4F7F”,
+},
+{
+year: “1791”,
+title: { en: “Bill of Rights”, es: “Declaración de Derechos”, fr: “Déclaration des Droits” },
+context: {
+en: “Anti-Federalists refused to approve the Constitution unless it included written protections for individual rights. James Madison wrote the first 10 amendments.”,
+es: “Los antifederalistas se negaron a aprobar la Constitución a menos que incluyera protecciones escritas para los derechos individuales. James Madison escribió las primeras 10 enmiendas.”,
+fr: “Les antifédéralistes ont refusé d’approuver la Constitution à moins qu’elle n’inclue des protections écrites pour les droits individuels. James Madison a rédigé les 10 premiers amendements.”,
+},
+problem: {
+en: “The original Constitution listed government powers but did not list the people’s rights. Many feared the new government could become as tyrannical as the king.”,
+es: “La Constitución original listaba los poderes del gobierno pero no listaba los derechos del pueblo. Muchos temían que el nuevo gobierno pudiera volverse tan tiránico como el rey.”,
+fr: “La Constitution originale listait les pouvoirs du gouvernement mais ne listait pas les droits du peuple. Beaucoup craignaient que le nouveau gouvernement puisse devenir aussi tyrannique que le roi.”,
+},
+keyIdeas: {
+en: “Freedom of speech, religion, press, assembly, petition (1st). Right to bear arms (2nd). No quartering soldiers (3rd). No unreasonable search (4th). Due process (5th). Fair trial (6th). Jury trial (7th). No cruel punishment (8th). Rights kept by people (9th). Powers kept by states (10th).”,
+es: “Libertad de expresión, religión, prensa, reunión, petición (1a). Derecho a portar armas (2a). No alojar soldados (3a). No registro irrazonable (4a). Debido proceso (5a). Juicio justo (6a). Juicio por jurado (7a). No castigo cruel (8a). Derechos reservados al pueblo (9a). Poderes reservados a los estados (10a).”,
+fr: “Liberté d’expression, de religion, de presse, de réunion, de pétition (1er). Droit de porter des armes (2e). Pas de logement de soldats (3e). Pas de fouille déraisonnable (4e). Procédure régulière (5e). Procès équitable (6e). Procès par jury (7e). Pas de punition cruelle (8e). Droits réservés au peuple (9e). Pouvoirs réservés aux états (10e).”,
+},
+impact: {
+en: “Guaranteed individual freedoms. Made ratification possible by calming Anti-Federalist fears. Still the basis for most rights cases in U.S. courts today.”,
+es: “Garantizó libertades individuales. Hizo posible la ratificación al calmar los temores antifederalistas. Todavía es la base de la mayoría de los casos de derechos en los tribunales de EE.UU. hoy.”,
+fr: “A garanti les libertés individuelles. A rendu la ratification possible en apaisant les craintes antifédéralistes. Toujours la base de la plupart des affaires de droits dans les tribunaux américains aujourd’hui.”,
+},
+color: “#3B6B3B”,
+},
+],
+
+// ── ARTICLES vs CONSTITUTION COMPARISON ──
+comparisonBigIdea: {
+en: “The Articles of Confederation created a government too weak to govern. The Constitution fixed those problems by creating a stronger national government while still protecting states’ rights and individual freedoms.”,
+es: “Los Artículos de la Confederación crearon un gobierno demasiado débil para gobernar. La Constitución arregló esos problemas creando un gobierno nacional más fuerte mientras seguía protegiendo los derechos de los estados y las libertades individuales.”,
+fr: “Les Articles de la Confédération ont créé un gouvernement trop faible pour gouverner. La Constitution a corrigé ces problèmes en créant un gouvernement national plus fort tout en protégeant les droits des états et les libertés individuelles.”,
+},
+comparisonCategories: [
+{
+category: { en: “Sovereignty”, es: “Soberanía”, fr: “Souveraineté” },
+articles: {
+en: “States were sovereign (independent). The national government was just a ‘league of friendship.’”,
+es: “Los estados eran soberanos (independientes). El gobierno nacional era solo una ‘liga de amistad’.”,
+fr: “Les états étaient souverains (indépendants). Le gouvernement national n’était qu’une ‘ligue d’amitié’.”,
+},
+constitution: {
+en: “The Constitution is the supreme law. National government and states share power (federalism).”,
+es: “La Constitución es la ley suprema. El gobierno nacional y los estados comparten el poder (federalismo).”,
+fr: “La Constitution est la loi suprême. Le gouvernement national et les états partagent le pouvoir (fédéralisme).”,
+},
+},
+{
+category: { en: “Taxation”, es: “Impuestos”, fr: “Fiscalité” },
+articles: {
+en: “Congress could NOT tax. It could only ask states for money (states often refused).”,
+es: “El Congreso NO podía cobrar impuestos. Solo podía pedir dinero a los estados (los estados frecuentemente se negaban).”,
+fr: “Le Congrès ne pouvait PAS taxer. Il pouvait seulement demander de l’argent aux états (les états refusaient souvent).”,
+},
+constitution: {
+en: “Congress CAN tax (Article I, Section 8). This gives the government reliable income.”,
+es: “El Congreso PUEDE cobrar impuestos (Artículo I, Sección 8). Esto le da al gobierno ingresos confiables.”,
+fr: “Le Congrès PEUT taxer (Article I, Section 8). Cela donne au gouvernement des revenus fiables.”,
+},
+},
+{
+category: { en: “Commerce / Trade”, es: “Comercio”, fr: “Commerce” },
+articles: {
+en: “Congress could NOT regulate trade. States taxed each other’s goods, creating chaos.”,
+es: “El Congreso NO podía regular el comercio. Los estados se cobraban impuestos mutuamente, creando caos.”,
+fr: “Le Congrès ne pouvait PAS réguler le commerce. Les états se taxaient mutuellement, créant le chaos.”,
+},
+constitution: {
+en: “Congress CAN regulate interstate and foreign commerce (Commerce Clause).”,
+es: “El Congreso PUEDE regular el comercio interestatal y extranjero (Cláusula de Comercio).”,
+fr: “Le Congrès PEUT réguler le commerce interétatique et étranger (Clause de Commerce).”,
+},
+},
+{
+category: { en: “Executive Branch”, es: “Rama Ejecutiva”, fr: “Branche Exécutive” },
+articles: {
+en: “No president. No one to enforce laws or lead the nation.”,
+es: “No había presidente. No había nadie para hacer cumplir las leyes ni liderar la nación.”,
+fr: “Pas de président. Personne pour appliquer les lois ni diriger la nation.”,
+},
+constitution: {
+en: “President enforces laws, commands military, conducts foreign policy.”,
+es: “El presidente hace cumplir las leyes, comanda el ejército, dirige la política exterior.”,
+fr: “Le président applique les lois, commande l’armée, dirige la politique étrangère.”,
+},
+},
+{
+category: { en: “Judicial Branch”, es: “Rama Judicial”, fr: “Branche Judiciaire” },
+articles: {
+en: “No national courts. Disputes between states had no fair referee.”,
+es: “No había tribunales nacionales. Las disputas entre estados no tenían un árbitro justo.”,
+fr: “Pas de tribunaux nationaux. Les différends entre états n’avaient pas d’arbitre équitable.”,
+},
+constitution: {
+en: “Supreme Court and federal courts interpret laws and settle disputes.”,
+es: “La Corte Suprema y los tribunales federales interpretan leyes y resuelven disputas.”,
+fr: “La Cour Suprême et les tribunaux fédéraux interprètent les lois et règlent les différends.”,
+},
+},
+{
+category: { en: “Legislature Structure”, es: “Estructura Legislativa”, fr: “Structure Législative” },
+articles: {
+en: “One house (unicameral). Each state got one vote regardless of population.”,
+es: “Una cámara (unicameral). Cada estado tenía un voto sin importar la población.”,
+fr: “Une chambre (unicamérale). Chaque état avait un vote quelle que soit la population.”,
+},
+constitution: {
+en: “Two houses (bicameral): Senate (equal representation) and House (population-based).”,
+es: “Dos cámaras (bicameral): Senado (representación igual) y Cámara (basada en población).”,
+fr: “Deux chambres (bicamérale) : Sénat (représentation égale) et Chambre (basée sur la population).”,
+},
+},
+{
+category: { en: “Amendments”, es: “Enmiendas”, fr: “Amendements” },
+articles: {
+en: “Required unanimous approval of all 13 states (nearly impossible).”,
+es: “Requería aprobación unánime de los 13 estados (casi imposible).”,
+fr: “Nécessitait l’approbation unanime des 13 états (presque impossible).”,
+},
+constitution: {
+en: “Requires 2/3 of Congress + 3/4 of states (difficult but achievable).”,
+es: “Requiere 2/3 del Congreso + 3/4 de los estados (difícil pero alcanzable).”,
+fr: “Nécessite 2/3 du Congrès + 3/4 des états (difficile mais réalisable).”,
+},
+},
+{
+category: { en: “Military”, es: “Militar”, fr: “Militaire” },
+articles: {
+en: “No national army. Congress depended on states to volunteer soldiers.”,
+es: “No había ejército nacional. El Congreso dependía de que los estados ofrecieran soldados voluntariamente.”,
+fr: “Pas d’armée nationale. Le Congrès dépendait des états pour fournir des soldats volontaires.”,
+},
+constitution: {
+en: “Congress can raise and support armies. President is Commander in Chief.”,
+es: “El Congreso puede formar y mantener ejércitos. El presidente es Comandante en Jefe.”,
+fr: “Le Congrès peut lever et entretenir des armées. Le président est Commandant en Chef.”,
+},
+},
+{
+category: { en: “Enforcement Power”, es: “Poder de Ejecución”, fr: “Pouvoir d’Application” },
+articles: {
+en: “Congress could pass laws but had no way to force states to follow them.”,
+es: “El Congreso podía aprobar leyes pero no tenía forma de obligar a los estados a cumplirlas.”,
+fr: “Le Congrès pouvait adopter des lois mais n’avait aucun moyen de forcer les états à les suivre.”,
+},
+constitution: {
+en: “Federal laws apply directly to citizens. Courts and the executive branch enforce them.”,
+es: “Las leyes federales se aplican directamente a los ciudadanos. Los tribunales y la rama ejecutiva las hacen cumplir.”,
+fr: “Les lois fédérales s’appliquent directement aux citoyens. Les tribunaux et la branche exécutive les appliquent.”,
+},
+},
+{
+category: { en: “State vs National Power”, es: “Poder Estatal vs Nacional”, fr: “Pouvoir Étatique vs National” },
+articles: {
+en: “States held almost all power. The national government was intentionally weak.”,
+es: “Los estados tenían casi todo el poder. El gobierno nacional era intencionalmente débil.”,
+fr: “Les états détenaient presque tout le pouvoir. Le gouvernement national était intentionnellement faible.”,
+},
+constitution: {
+en: “Power is shared (federalism). Some powers are national, some state, some shared (concurrent).”,
+es: “El poder es compartido (federalismo). Algunos poderes son nacionales, otros estatales, otros compartidos (concurrentes).”,
+fr: “Le pouvoir est partagé (fédéralisme). Certains pouvoirs sont nationaux, d’autres étatiques, d’autres partagés (concurrents).”,
+},
+},
+],
+
+// ── FEDERALISTS vs ANTI-FEDERALISTS ──
+fedArguments: [
+{
+topic: { en: “Strong National Government”, es: “Gobierno Nacional Fuerte”, fr: “Gouvernement National Fort” },
+fed: {
+claim: {
+en: “A strong central government is necessary to hold the nation together.”,
+es: “Un gobierno central fuerte es necesario para mantener unida a la nación.”,
+fr: “Un gouvernement central fort est nécessaire pour maintenir la nation unie.”,
+},
+evidence: {
+en: “Under the Articles, states fought over trade, refused to pay national debts, and could not put down rebellions (Shays’ Rebellion).”,
+es: “Bajo los Artículos, los estados peleaban por el comercio, se negaban a pagar deudas nacionales y no podían sofocar rebeliones (Rebelión de Shays).”,
+fr: “Sous les Articles, les états se disputaient le commerce, refusaient de payer les dettes nationales et ne pouvaient pas réprimer les rébellions (Rébellion de Shays).”,
+},
+reasoning: {
+en: “Without a government strong enough to tax, enforce laws, and regulate trade, the states would fall apart or be conquered by a foreign power.”,
+es: “Sin un gobierno lo suficientemente fuerte para cobrar impuestos, hacer cumplir las leyes y regular el comercio, los estados se desmoronarían o serían conquistados por una potencia extranjera.”,
+fr: “Sans un gouvernement assez fort pour taxer, appliquer les lois et réguler le commerce, les états s’effondreraient ou seraient conquis par une puissance étrangère.”,
+},
+},
+anti: {
+claim: {
+en: “A strong central government will become tyrannical, just like the British king.”,
+es: “Un gobierno central fuerte se volverá tiránico, igual que el rey británico.”,
+fr: “Un gouvernement central fort deviendra tyrannique, tout comme le roi britannique.”,
+},
+evidence: {
+en: “History shows that powerful governments always abuse their power. The colonies just fought a war to escape exactly this.”,
+es: “La historia demuestra que los gobiernos poderosos siempre abusan de su poder. Las colonias acababan de luchar una guerra para escapar exactamente de esto.”,
+fr: “L’histoire montre que les gouvernements puissants abusent toujours de leur pouvoir. Les colonies venaient de mener une guerre pour échapper exactement à cela.”,
+},
+reasoning: {
+en: “Giving the national government power to tax and raise armies without explicit limits on that power is an invitation for tyranny.”,
+es: “Darle al gobierno nacional el poder de cobrar impuestos y formar ejércitos sin límites explícitos a ese poder es una invitación a la tiranía.”,
+fr: “Donner au gouvernement national le pouvoir de taxer et de lever des armées sans limites explicites à ce pouvoir est une invitation à la tyrannie.”,
+},
+},
+},
+{
+topic: { en: “Bill of Rights”, es: “Declaración de Derechos”, fr: “Déclaration des Droits” },
+fed: {
+claim: {
+en: “A bill of rights is unnecessary because the Constitution already limits government power.”,
+es: “Una declaración de derechos es innecesaria porque la Constitución ya limita el poder del gobierno.”,
+fr: “Une déclaration des droits est inutile car la Constitution limite déjà le pouvoir du gouvernement.”,
+},
+evidence: {
+en: “The government can only do what the Constitution specifically allows. If a power is not listed, the government cannot use it (Hamilton, Federalist No. 84).”,
+es: “El gobierno solo puede hacer lo que la Constitución específicamente permite. Si un poder no está listado, el gobierno no puede usarlo (Hamilton, Federalista No. 84).”,
+fr: “Le gouvernement ne peut faire que ce que la Constitution permet spécifiquement. Si un pouvoir n’est pas listé, le gouvernement ne peut pas l’utiliser (Hamilton, Fédéraliste No. 84).”,
+},
+reasoning: {
+en: “Listing rights could actually be dangerous — if you forget one, the government might claim it has power over it.”,
+es: “Listar derechos podría ser realmente peligroso — si olvidas uno, el gobierno podría reclamar que tiene poder sobre él.”,
+fr: “Lister les droits pourrait en fait être dangereux — si on en oublie un, le gouvernement pourrait prétendre avoir le pouvoir dessus.”,
+},
+},
+anti: {
+claim: {
+en: “Without a written bill of rights, the government WILL eventually take away individual freedoms.”,
+es: “Sin una declaración de derechos escrita, el gobierno EVENTUALMENTE quitará las libertades individuales.”,
+fr: “Sans une déclaration des droits écrite, le gouvernement finira par supprimer les libertés individuelles.”,
+},
+evidence: {
+en: “The English Bill of Rights (1689) exists precisely because the king abused his power when rights were not written down.”,
+es: “La Declaración de Derechos Inglesa (1689) existe precisamente porque el rey abusó de su poder cuando los derechos no estaban escritos.”,
+fr: “La Déclaration des Droits anglaise (1689) existe précisément parce que le roi a abusé de son pouvoir quand les droits n’étaient pas écrits.”,
+},
+reasoning: {
+en: “People need to see their rights in writing. A government that doesn’t promise to protect specific rights cannot be trusted.”,
+es: “La gente necesita ver sus derechos por escrito. Un gobierno que no promete proteger derechos específicos no es confiable.”,
+fr: “Les gens doivent voir leurs droits par écrit. Un gouvernement qui ne promet pas de protéger des droits spécifiques n’est pas digne de confiance.”,
+},
+},
+},
+{
+topic: { en: “Representation”, es: “Representación”, fr: “Représentation” },
+fed: {
+claim: {
+en: “A large republic with many representatives will actually protect liberty better than small states.”,
+es: “Una república grande con muchos representantes en realidad protegerá la libertad mejor que estados pequeños.”,
+fr: “Une grande république avec de nombreux représentants protégera en fait mieux la liberté que de petits états.”,
+},
+evidence: {
+en: “In a large republic, so many different groups exist that no single faction can dominate (Madison, Federalist No. 10).”,
+es: “En una república grande, existen tantos grupos diferentes que ninguna facción puede dominar (Madison, Federalista No. 10).”,
+fr: “Dans une grande république, tant de groupes différents existent qu’aucune faction ne peut dominer (Madison, Fédéraliste No. 10).”,
+},
+reasoning: {
+en: “Diversity of interests prevents any one group from becoming a majority tyrant.”,
+es: “La diversidad de intereses previene que cualquier grupo se convierta en una mayoría tiránica.”,
+fr: “La diversité des intérêts empêche tout groupe de devenir une majorité tyrannique.”,
+},
+},
+anti: {
+claim: {
+en: “A large republic means representatives are too far from the people to understand their needs.”,
+es: “Una república grande significa que los representantes están demasiado lejos del pueblo para entender sus necesidades.”,
+fr: “Une grande république signifie que les représentants sont trop éloignés du peuple pour comprendre ses besoins.”,
+},
+evidence: {
+en: “In small communities, leaders know the people personally. National legislators represent thousands of strangers (Brutus No. 1).”,
+es: “En comunidades pequeñas, los líderes conocen personalmente a la gente. Los legisladores nacionales representan a miles de extraños (Brutus No. 1).”,
+fr: “Dans les petites communautés, les dirigeants connaissent les gens personnellement. Les législateurs nationaux représentent des milliers d’étrangers (Brutus No. 1).”,
+},
+reasoning: {
+en: “True democracy requires close connection between representatives and voters. Distance creates corruption.”,
+es: “La verdadera democracia requiere una conexión cercana entre representantes y votantes. La distancia crea corrupción.”,
+fr: “La vraie démocratie exige un lien étroit entre représentants et électeurs. La distance crée la corruption.”,
+},
+},
+},
+{
+topic: { en: “Checks and Balances”, es: “Controles y Equilibrios”, fr: “Freins et Contrepoids” },
+fed: {
+claim: {
+en: “Separation of powers and checks and balances will prevent any branch from becoming too powerful.”,
+es: “La separación de poderes y los controles y equilibrios evitarán que cualquier rama se vuelva demasiado poderosa.”,
+fr: “La séparation des pouvoirs et les freins et contrepoids empêcheront toute branche de devenir trop puissante.”,
+},
+evidence: {
+en: “The president can veto laws, Congress can override vetoes, and courts can declare laws unconstitutional (Madison, Federalist No. 51).”,
+es: “El presidente puede vetar leyes, el Congreso puede anular vetos, y los tribunales pueden declarar leyes inconstitucionales (Madison, Federalista No. 51).”,
+fr: “Le président peut opposer son veto aux lois, le Congrès peut passer outre les vetos, et les tribunaux peuvent déclarer les lois inconstitutionnelles (Madison, Fédéraliste No. 51).”,
+},
+reasoning: {
+en: “"Ambition must be made to counteract ambition" — giving each branch tools to stop the others keeps everyone in check.”,
+es: “"La ambición debe contrarrestar la ambición" — darle a cada rama herramientas para detener a las otras mantiene a todos bajo control.”,
+fr: “"L’ambition doit contrebalancer l’ambition" — donner à chaque branche des outils pour arrêter les autres maintient tout le monde sous contrôle.”,
+},
+},
+anti: {
+claim: {
+en: “The checks and balances are not strong enough, especially for the presidency.”,
+es: “Los controles y equilibrios no son lo suficientemente fuertes, especialmente para la presidencia.”,
+fr: “Les freins et contrepoids ne sont pas assez forts, surtout pour la présidence.”,
+},
+evidence: {
+en: “The president commands the military and can pardon criminals. This looks dangerously like a king.”,
+es: “El presidente comanda el ejército y puede indultar criminales. Esto se parece peligrosamente a un rey.”,
+fr: “Le président commande l’armée et peut gracier des criminels. Cela ressemble dangereusement à un roi.”,
+},
+reasoning: {
+en: “Without term limits (originally) and with so many executive powers, there is nothing stopping a president from acting as a monarch.”,
+es: “Sin límites de mandato (originalmente) y con tantos poderes ejecutivos, nada impide que un presidente actúe como un monarca.”,
+fr: “Sans limites de mandat (à l’origine) et avec tant de pouvoirs exécutifs, rien n’empêche un président d’agir comme un monarque.”,
+},
+},
+},
+{
+topic: { en: “State Power”, es: “Poder de los Estados”, fr: “Pouvoir des États” },
+fed: {
+claim: {
+en: “States keep significant power. The national government only has the powers listed in the Constitution.”,
+es: “Los estados mantienen poder significativo. El gobierno nacional solo tiene los poderes listados en la Constitución.”,
+fr: “Les états conservent un pouvoir significatif. Le gouvernement national n’a que les pouvoirs listés dans la Constitution.”,
+},
+evidence: {
+en: “The Constitution lists (enumerates) specific federal powers. Everything else belongs to the states or the people.”,
+es: “La Constitución lista (enumera) poderes federales específicos. Todo lo demás pertenece a los estados o al pueblo.”,
+fr: “La Constitution liste (énumère) des pouvoirs fédéraux spécifiques. Tout le reste appartient aux états ou au peuple.”,
+},
+reasoning: {
+en: “The system of federalism balances national unity with local control.”,
+es: “El sistema de federalismo equilibra la unidad nacional con el control local.”,
+fr: “Le système de fédéralisme équilibre l’unité nationale avec le contrôle local.”,
+},
+},
+anti: {
+claim: {
+en: “The ‘necessary and proper’ clause gives Congress unlimited power that will destroy state independence.”,
+es: “La cláusula ‘necesaria y apropiada’ le da al Congreso poder ilimitado que destruirá la independencia estatal.”,
+fr: “La clause ‘nécessaire et appropriée’ donne au Congrès un pouvoir illimité qui détruira l’indépendance des états.”,
+},
+evidence: {
+en: “Article I, Section 8 says Congress can make all laws ‘necessary and proper’ to carry out its powers. This is vague and open to abuse.”,
+es: “El Artículo I, Sección 8 dice que el Congreso puede hacer todas las leyes ‘necesarias y apropiadas’ para ejercer sus poderes. Esto es vago y abierto al abuso.”,
+fr: “L’Article I, Section 8 dit que le Congrès peut faire toutes les lois ‘nécessaires et appropriées’ pour exercer ses pouvoirs. C’est vague et ouvert aux abus.”,
+},
+reasoning: {
+en: “A government that can decide for itself how much power it needs will always take more than it should.”,
+es: “Un gobierno que puede decidir por sí mismo cuánto poder necesita siempre tomará más de lo que debería.”,
+fr: “Un gouvernement qui peut décider lui-même de combien de pouvoir il a besoin en prendra toujours plus qu’il ne devrait.”,
+},
+},
+},
+],
+
+billOfRightsLink: {
+en: “The Bill of Rights was the compromise that made ratification possible. Anti-Federalists demanded written protections for individual rights before they would approve the Constitution. Federalists eventually agreed, and James Madison drafted the first 10 amendments. The Bill of Rights directly addressed Anti-Federalist fears: freedom of speech and religion (1st), protection against unreasonable government searches (4th), right to a fair trial (5th–8th), and reserved powers to states and people (9th–10th).”,
+es: “La Declaración de Derechos fue el compromiso que hizo posible la ratificación. Los antifederalistas exigieron protecciones escritas para los derechos individuales antes de aprobar la Constitución. Los federalistas finalmente aceptaron, y James Madison redactó las primeras 10 enmiendas. La Declaración de Derechos abordó directamente los temores antifederalistas: libertad de expresión y religión (1a), protección contra registros irrazonables del gobierno (4a), derecho a un juicio justo (5a–8a), y poderes reservados a los estados y al pueblo (9a–10a).”,
+fr: “La Déclaration des Droits était le compromis qui a rendu la ratification possible. Les antifédéralistes ont exigé des protections écrites pour les droits individuels avant d’approuver la Constitution. Les fédéralistes ont finalement accepté, et James Madison a rédigé les 10 premiers amendements. La Déclaration des Droits a directement répondu aux craintes antifédéralistes : liberté d’expression et de religion (1er), protection contre les fouilles déraisonnables du gouvernement (4e), droit à un procès équitable (5e–8e), et pouvoirs réservés aux états et au peuple (9e–10e).”,
+},
+
+// ── GLOSSARY ──
+glossary: [
+{ term: { en: “Amendment”, es: “Enmienda”, fr: “Amendement” }, def: { en: “A formal change or addition to the Constitution.”, es: “Un cambio o adición formal a la Constitución.”, fr: “Un changement ou ajout formel à la Constitution.” } },
+{ term: { en: “Anti-Federalist”, es: “Antifederalista”, fr: “Antifédéraliste” }, def: { en: “A person who opposed the Constitution because they feared a strong central government.”, es: “Una persona que se opuso a la Constitución porque temía un gobierno central fuerte.”, fr: “Une personne qui s’est opposée à la Constitution par crainte d’un gouvernement central fort.” } },
+{ term: { en: “Bicameral”, es: “Bicameral”, fr: “Bicaméral” }, def: { en: “A legislature with two houses (Senate and House of Representatives).”, es: “Una legislatura con dos cámaras (Senado y Cámara de Representantes).”, fr: “Une législature à deux chambres (Sénat et Chambre des Représentants).” } },
+{ term: { en: “Bill of Rights”, es: “Declaración de Derechos”, fr: “Déclaration des Droits” }, def: { en: “The first 10 amendments to the Constitution, protecting individual freedoms.”, es: “Las primeras 10 enmiendas a la Constitución, protegiendo libertades individuales.”, fr: “Les 10 premiers amendements à la Constitution, protégeant les libertés individuelles.” } },
+{ term: { en: “Checks and Balances”, es: “Controles y Equilibrios”, fr: “Freins et Contrepoids” }, def: { en: “A system where each branch of government can limit the power of the other branches.”, es: “Un sistema donde cada rama del gobierno puede limitar el poder de las otras ramas.”, fr: “Un système où chaque branche du gouvernement peut limiter le pouvoir des autres branches.” } },
+{ term: { en: “Consent of the Governed”, es: “Consentimiento de los Gobernados”, fr: “Consentement des Gouvernés” }, def: { en: “The idea that government is only legitimate if the people agree to it.”, es: “La idea de que el gobierno solo es legítimo si la gente está de acuerdo.”, fr: “L’idée que le gouvernement n’est légitime que si les gens l’acceptent.” } },
+{ term: { en: “Due Process”, es: “Debido Proceso”, fr: “Procédure Régulière” }, def: { en: “The government must follow fair procedures before taking away life, liberty, or property.”, es: “El gobierno debe seguir procedimientos justos antes de quitar vida, libertad o propiedad.”, fr: “Le gouvernement doit suivre des procédures équitables avant de priver de vie, de liberté ou de propriété.” } },
+{ term: { en: “Federalism”, es: “Federalismo”, fr: “Fédéralisme” }, def: { en: “A system that divides power between national and state governments.”, es: “Un sistema que divide el poder entre gobiernos nacionales y estatales.”, fr: “Un système qui divise le pouvoir entre les gouvernements national et étatiques.” } },
+{ term: { en: “Federalist”, es: “Federalista”, fr: “Fédéraliste” }, def: { en: “A person who supported the Constitution and a stronger central government.”, es: “Una persona que apoyó la Constitución y un gobierno central más fuerte.”, fr: “Une personne qui a soutenu la Constitution et un gouvernement central plus fort.” } },
+{ term: { en: “Natural Rights”, es: “Derechos Naturales”, fr: “Droits Naturels” }, def: { en: “Rights that all people have at birth (life, liberty, property) — not given by government.”, es: “Derechos que todas las personas tienen al nacer (vida, libertad, propiedad) — no otorgados por el gobierno.”, fr: “Droits que toutes les personnes ont à la naissance (vie, liberté, propriété) — non accordés par le gouvernement.” } },
+{ term: { en: “Popular Sovereignty”, es: “Soberanía Popular”, fr: “Souveraineté Populaire” }, def: { en: “Political power belongs to the people.”, es: “El poder político pertenece al pueblo.”, fr: “Le pouvoir politique appartient au peuple.” } },
+{ term: { en: “Ratification”, es: “Ratificación”, fr: “Ratification” }, def: { en: “The formal approval process (9 of 13 states had to approve the Constitution).”, es: “El proceso formal de aprobación (9 de 13 estados tenían que aprobar la Constitución).”, fr: “Le processus d’approbation formel (9 des 13 états devaient approuver la Constitution).” } },
+{ term: { en: “Republic”, es: “República”, fr: “République” }, def: { en: “A government where citizens elect representatives to make decisions for them.”, es: “Un gobierno donde los ciudadanos eligen representantes para tomar decisiones por ellos.”, fr: “Un gouvernement où les citoyens élisent des représentants pour prendre des décisions à leur place.” } },
+{ term: { en: “Rule of Law”, es: “Estado de Derecho”, fr: “État de Droit” }, def: { en: “Everyone, including leaders, must follow the law.”, es: “Todos, incluidos los líderes, deben seguir la ley.”, fr: “Tout le monde, y compris les dirigeants, doit suivre la loi.” } },
+{ term: { en: “Separation of Powers”, es: “Separación de Poderes”, fr: “Séparation des Pouvoirs” }, def: { en: “Dividing government into three branches so no one branch has all the power.”, es: “Dividir el gobierno en tres ramas para que ninguna rama tenga todo el poder.”, fr: “Diviser le gouvernement en trois branches pour qu’aucune branche n’ait tout le pouvoir.” } },
+{ term: { en: “Social Contract”, es: “Contrato Social”, fr: “Contrat Social” }, def: { en: “An agreement between people and government: people give up some freedom in exchange for protection.”, es: “Un acuerdo entre la gente y el gobierno: la gente cede algo de libertad a cambio de protección.”, fr: “Un accord entre les gens et le gouvernement : les gens cèdent une partie de leur liberté en échange de protection.” } },
+{ term: { en: “Sovereignty”, es: “Soberanía”, fr: “Souveraineté” }, def: { en: “Supreme authority or power to govern.”, es: “Autoridad suprema o poder para gobernar.”, fr: “Autorité suprême ou pouvoir de gouverner.” } },
+{ term: { en: “Tyranny”, es: “Tiranía”, fr: “Tyrannie” }, def: { en: “Cruel and unfair use of power by a ruler or government.”, es: “Uso cruel e injusto del poder por un gobernante o gobierno.”, fr: “Utilisation cruelle et injuste du pouvoir par un dirigeant ou un gouvernement.” } },
+{ term: { en: “Unicameral”, es: “Unicameral”, fr: “Unicaméral” }, def: { en: “A legislature with only one house.”, es: “Una legislatura con solo una cámara.”, fr: “Une législature à une seule chambre.” } },
+],
+
+// ── ASSESSMENT ──
+quizQuestions: [
+{
+module: “timeline”,
+q: { en: “What was the main idea of the Magna Carta (1215)?”, es: “¿Cuál fue la idea principal de la Carta Magna (1215)?”, fr: “Quelle était l’idée principale de la Magna Carta (1215) ?” },
+options: [
+{ en: “The king must follow the law like everyone else.”, es: “El rey debe seguir la ley como todos los demás.”, fr: “Le roi doit suivre la loi comme tout le monde.” },
+{ en: “Only rich people have rights.”, es: “Solo la gente rica tiene derechos.”, fr: “Seuls les riches ont des droits.” },
+{ en: “The church should run the government.”, es: “La iglesia debería dirigir el gobierno.”, fr: “L’église devrait diriger le gouvernement.” },
+{ en: “Kings are chosen by the people.”, es: “Los reyes son elegidos por el pueblo.”, fr: “Les rois sont choisis par le peuple.” },
+],
+correct: 0,
+},
+{
+module: “timeline”,
+q: { en: “Which Enlightenment thinker is most associated with separation of powers?”, es: “¿Qué pensador de la Ilustración se asocia más con la separación de poderes?”, fr: “Quel penseur des Lumières est le plus associé à la séparation des pouvoirs ?” },
+options: [
+{ en: “John Locke”, es: “John Locke”, fr: “John Locke” },
+{ en: “Montesquieu”, es: “Montesquieu”, fr: “Montesquieu” },
+{ en: “Rousseau”, es: “Rousseau”, fr: “Rousseau” },
+{ en: “Thomas Jefferson”, es: “Thomas Jefferson”, fr: “Thomas Jefferson” },
+],
+correct: 1,
+},
+{
+module: “comparison”,
+q: { en: “Under the Articles of Confederation, could Congress collect taxes?”, es: “Bajo los Artículos de la Confederación, ¿podía el Congreso cobrar impuestos?”, fr: “Sous les Articles de la Confédération, le Congrès pouvait-il percevoir des impôts ?” },
+options: [
+{ en: “Yes, unlimited taxes”, es: “Sí, impuestos ilimitados”, fr: “Oui, des impôts illimités” },
+{ en: “No, it could only ask states for money”, es: “No, solo podía pedir dinero a los estados”, fr: “Non, il pouvait seulement demander de l’argent aux états” },
+{ en: “Yes, but only on imports”, es: “Sí, pero solo en importaciones”, fr: “Oui, mais seulement sur les importations” },
+{ en: “No taxes existed at that time”, es: “No existían impuestos en esa época”, fr: “Il n’y avait pas d’impôts à cette époque” },
+],
+correct: 1,
+},
+{
+module: “comparison”,
+q: { en: “What type of legislature does the Constitution create?”, es: “¿Qué tipo de legislatura crea la Constitución?”, fr: “Quel type de législature la Constitution crée-t-elle ?” },
+options: [
+{ en: “Unicameral (one house)”, es: “Unicameral (una cámara)”, fr: “Unicamérale (une chambre)” },
+{ en: “Bicameral (two houses)”, es: “Bicameral (dos cámaras)”, fr: “Bicamérale (deux chambres)” },
+{ en: “Tricameral (three houses)”, es: “Tricameral (tres cámaras)”, fr: “Tricamérale (trois chambres)” },
+{ en: “No legislature”, es: “No hay legislatura”, fr: “Pas de législature” },
+],
+correct: 1,
+},
+{
+module: “federalists”,
+q: { en: “Why did Anti-Federalists demand a Bill of Rights?”, es: “¿Por qué los antifederalistas exigieron una Declaración de Derechos?”, fr: “Pourquoi les antifédéralistes ont-ils exigé une Déclaration des Droits ?” },
+options: [
+{ en: “They wanted to give the president more power.”, es: “Querían darle más poder al presidente.”, fr: “Ils voulaient donner plus de pouvoir au président.” },
+{ en: “They feared the government would take away individual freedoms without written protections.”, es: “Temían que el gobierno quitaría las libertades individuales sin protecciones escritas.”, fr: “Ils craignaient que le gouvernement supprime les libertés individuelles sans protections écrites.” },
+{ en: “They wanted to abolish state governments.”, es: “Querían abolir los gobiernos estatales.”, fr: “Ils voulaient abolir les gouvernements étatiques.” },
+{ en: “They thought the Constitution was too short.”, es: “Pensaban que la Constitución era demasiado corta.”, fr: “Ils pensaient que la Constitution était trop courte.” },
+],
+correct: 1,
+},
+],
+
+exitTickets: [
+{ en: “Name one problem the Articles of Confederation had and explain how the Constitution fixed it.”, es: “Nombra un problema que tenían los Artículos de la Confederación y explica cómo la Constitución lo arregló.”, fr: “Nomme un problème que les Articles de la Confédération avaient et explique comment la Constitution l’a corrigé.” },
+{ en: “Pick one Enlightenment thinker. What idea did they contribute to American government?”, es: “Elige un pensador de la Ilustración. ¿Qué idea contribuyó al gobierno estadounidense?”, fr: “Choisis un penseur des Lumières. Quelle idée a-t-il contribué au gouvernement américain ?” },
+{ en: “Would you have been a Federalist or Anti-Federalist? Give one reason with evidence.”, es: “¿Habrías sido federalista o antifederalista? Da una razón con evidencia.”, fr: “Aurais-tu été fédéraliste ou antifédéraliste ? Donne une raison avec des preuves.” },
+],
+
+dbqPrompts: [
+{ en: “Using at least two documents from the timeline, explain how the idea of ‘limiting government power’ developed from 1215 to 1791.”, es: “Usando al menos dos documentos de la línea de tiempo, explica cómo se desarrolló la idea de ‘limitar el poder del gobierno’ de 1215 a 1791.”, fr: “En utilisant au moins deux documents de la chronologie, explique comment l’idée de ‘limiter le pouvoir du gouvernement’ s’est développée de 1215 à 1791.” },
+{ en: “Compare the Federalist and Anti-Federalist positions on the Bill of Rights. Which side made the stronger argument? Use evidence.”, es: “Compara las posiciones federalista y antifederalista sobre la Declaración de Derechos. ¿Qué lado presentó el argumento más fuerte? Usa evidencia.”, fr: “Compare les positions fédéraliste et antifédéraliste sur la Déclaration des Droits. Quel côté a présenté l’argument le plus fort ? Utilise des preuves.” },
+],
+
+standardsChecks: {
+comparison: [
+{ en: “Explain at least 3 weaknesses of the Articles of Confederation.”, es: “Explicar al menos 3 debilidades de los Artículos de la Confederación.”, fr: “Expliquer au moins 3 faiblesses des Articles de la Confédération.” },
+{ en: “Compare the powers of Congress under the Articles vs the Constitution.”, es: “Comparar los poderes del Congreso bajo los Artículos vs la Constitución.”, fr: “Comparer les pouvoirs du Congrès sous les Articles vs la Constitution.” },
+{ en: “Describe how the Constitution created a system of federalism.”, es: “Describir cómo la Constitución creó un sistema de federalismo.”, fr: “Décrire comment la Constitution a créé un système de fédéralisme.” },
+],
+federalists: [
+{ en: “Identify key arguments of Federalists and Anti-Federalists.”, es: “Identificar argumentos clave de federalistas y antifederalistas.”, fr: “Identifier les arguments clés des fédéralistes et antifédéralistes.” },
+{ en: “Explain why the Bill of Rights was added to the Constitution.”, es: “Explicar por qué la Declaración de Derechos fue añadida a la Constitución.”, fr: “Expliquer pourquoi la Déclaration des Droits a été ajoutée à la Constitution.” },
+{ en: “Analyze how the Federalist Papers defended the Constitution.”, es: “Analizar cómo los Documentos Federalistas defendieron la Constitución.”, fr: “Analyser comment les Documents Fédéralistes ont défendu la Constitution.” },
+],
+},
+};
+
+// ─── MAIN APP ────────────────────────────────────────────────────────────────
+const LANGS = [“en”, “es”, “fr”];
+const LANG_LABELS = { en: “English”, es: “Español”, fr: “Français” };
+const LEVEL_KEYS = [“quick”, “student”, “deep”];
+
+export default function App() {
+const [lang, setLang] = useState(“en”);
+const [level, setLevel] = useState(“student”);
+const [page, setPage] = useState(“home”);
+const [mobileNav, setMobileNav] = useState(false);
+const [glossarySearch, setGlossarySearch] = useState(””);
+const [quizAnswers, setQuizAnswers] = useState({});
+const [quizSubmitted, setQuizSubmitted] = useState(false);
+const [expandedTimeline, setExpandedTimeline] = useState(null);
+const [expandedFed, setExpandedFed] = useState(null);
+
+const t = (obj) => obj[lang] || obj.en;
+
+const navItems = [“home”, “timeline”, “comparison”, “federalists”, “glossary”, “assessment”];
+
+// ── STYLES ──
+const colors = {
+parchment: “#F5F0E8”,
+parchmentDark: “#EDE5D6”,
+ink: “#2C2418”,
+inkLight: “#5A4D3A”,
+accent: “#8B2500”,
+accentLight: “#C44D26”,
+blue: “#2B4F7F”,
+blueSoft: “#3D6BA3”,
+green: “#3B6B3B”,
+greenSoft: “#5A8F5A”,
+gold: “#B8860B”,
+goldSoft: “#DAA520”,
+redSoft: “#CD5C5C”,
+white: “#FEFCF7”,
+cardBg: “#FAF7F0”,
+shadow: “rgba(44, 36, 24, 0.08)”,
+shadowMd: “rgba(44, 36, 24, 0.12)”,
+};
+
+const pageStyle = {
+fontFamily: “‘Libre Baskerville’, ‘Georgia’, serif”,
+background: `linear-gradient(180deg, ${colors.parchment} 0%, ${colors.parchmentDark} 100%)`,
+color: colors.ink,
+minHeight: “100vh”,
+fontSize: “16px”,
+lineHeight: “1.7”,
+};
+
+// ── COMPONENTS ──
+const LangToggle = () => (
+<div style={{ display: “flex”, gap: “2px”, background: colors.parchmentDark, borderRadius: “8px”, padding: “3px”, border: `1px solid ${colors.parchmentDark}` }}>
+{LANGS.map((l) => (
+<button
+key={l}
+onClick={() => setLang(l)}
+style={{
+padding: “6px 14px”,
+border: “none”,
+borderRadius: “6px”,
+cursor: “pointer”,
+fontSize: “13px”,
+fontWeight: lang === l ? “700” : “400”,
+fontFamily: “‘Source Sans 3’, sans-serif”,
+background: lang === l ? colors.white : “transparent”,
+color: lang === l ? colors.accent : colors.inkLight,
+boxShadow: lang === l ? `0 1px 3px ${colors.shadow}` : “none”,
+transition: “all 0.2s”,
+letterSpacing: “0.02em”,
+}}
+>
+{LANG_LABELS[l]}
+</button>
+))}
+</div>
+);
+
+const LevelToggle = () => (
+<div style={{ display: “flex”, gap: “2px”, background: colors.parchmentDark, borderRadius: “8px”, padding: “3px”, border: `1px solid ${colors.parchmentDark}` }}>
+{LEVEL_KEYS.map((lv) => (
+<button
+key={lv}
+onClick={() => setLevel(lv)}
+style={{
+padding: “6px 14px”,
+border: “none”,
+borderRadius: “6px”,
+cursor: “pointer”,
+fontSize: “13px”,
+fontWeight: level === lv ? “700” : “400”,
+fontFamily: “‘Source Sans 3’, sans-serif”,
+background: level === lv ? colors.white : “transparent”,
+color: level === lv ? colors.blue : colors.inkLight,
+boxShadow: level === lv ? `0 1px 3px ${colors.shadow}` : “none”,
+transition: “all 0.2s”,
+}}
+>
+{t(CONTENT.readingLevels[lv])}
+</button>
+))}
+</div>
+);
+
+const NavBar = () => (
+<header style={{ background: colors.white, borderBottom: `2px solid ${colors.gold}`, position: “sticky”, top: 0, zIndex: 100, boxShadow: `0 2px 12px ${colors.shadow}` }}>
+<div style={{ maxWidth: “1200px”, margin: “0 auto”, padding: “0 20px” }}>
+<div style={{ display: “flex”, justifyContent: “space-between”, alignItems: “center”, padding: “12px 0” }}>
+<div style={{ cursor: “pointer” }} onClick={() => setPage(“home”)}>
+<div style={{ fontFamily: “‘Playfair Display’, serif”, fontSize: “20px”, fontWeight: “800”, color: colors.accent, letterSpacing: “-0.02em” }}>
+{t(CONTENT.siteTitle)}
+</div>
+<div style={{ fontSize: “12px”, color: colors.inkLight, fontFamily: “‘Source Sans 3’, sans-serif”, letterSpacing: “0.05em”, textTransform: “uppercase” }}>
+{t(CONTENT.siteSubtitle)}
+</div>
+</div>
+<div style={{ display: “flex”, gap: “12px”, alignItems: “center” }}>
+<LangToggle />
+<LevelToggle />
+</div>
+<button
+onClick={() => setMobileNav(!mobileNav)}
+style={{ display: “none”, background: “none”, border: “none”, fontSize: “24px”, cursor: “pointer”, color: colors.ink }}
+className=“mobile-menu-btn”
+>
+☰
+</button>
+</div>
+<nav style={{ display: “flex”, gap: “4px”, paddingBottom: “8px”, overflowX: “auto” }}>
+{navItems.map((item) => (
+<button
+key={item}
+onClick={() => { setPage(item); setMobileNav(false); }}
+style={{
+padding: “8px 16px”,
+border: “none”,
+borderRadius: “6px 6px 0 0”,
+cursor: “pointer”,
+fontSize: “14px”,
+fontFamily: “‘Source Sans 3’, sans-serif”,
+fontWeight: page === item ? “700” : “500”,
+background: page === item ? colors.parchment : “transparent”,
+color: page === item ? colors.accent : colors.inkLight,
+borderBottom: page === item ? `3px solid ${colors.accent}` : “3px solid transparent”,
+transition: “all 0.2s”,
+whiteSpace: “nowrap”,
+}}
+>
+{t(CONTENT.nav[item])}
+</button>
+))}
+</nav>
+</div>
+<style>{`@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;500;600;700&display=swap'); @media (max-width: 900px) { .mobile-menu-btn { display: block !important; } } * { box-sizing: border-box; margin: 0; padding: 0; } html { scroll-behavior: smooth; } ::selection { background: #B8860B44; }`}</style>
+</header>
+);
+
+const Card = ({ children, style: s = {}, accent }) => (
+<div style={{ background: colors.cardBg, borderRadius: “12px”, padding: “24px”, boxShadow: `0 2px 8px ${colors.shadow}`, borderLeft: accent ? `4px solid ${accent}` : “none”, …s }}>
+{children}
+</div>
+);
+
+const SectionTitle = ({ children, sub }) => (
+<div style={{ marginBottom: “24px” }}>
+<h2 style={{ fontFamily: “‘Playfair Display’, serif”, fontSize: “28px”, fontWeight: “700”, color: colors.ink, marginBottom: sub ? “4px” : “0”, letterSpacing: “-0.01em” }}>
+{children}
+</h2>
+{sub && <p style={{ fontSize: “15px”, color: colors.inkLight, fontFamily: “‘Source Sans 3’, sans-serif” }}>{sub}</p>}
+</div>
+);
+
+const StandardsCallout = ({ items }) => (
+<Card style={{ background: “#F0F4FF”, borderLeft: `4px solid ${colors.blue}`, marginTop: “20px” }}>
+<div style={{ fontFamily: “‘Source Sans 3’, sans-serif”, fontWeight: “700”, fontSize: “14px”, color: colors.blue, textTransform: “uppercase”, letterSpacing: “0.05em”, marginBottom: “8px” }}>
+🎯 { lang === “es” ? “Verificación de Estándares de Florida” : lang === “fr” ? “Vérification des Standards de Floride” : “Florida Standards Check” }
+</div>
+<div style={{ fontSize: “14px”, color: colors.inkLight, fontFamily: “‘Source Sans 3’, sans-serif”, marginBottom: “8px” }}>
+{ lang === “es” ? “Los estudiantes deben poder…” : lang === “fr” ? “Les étudiants doivent pouvoir…” : “Students should be able to…” }
+</div>
+{items.map((item, i) => (
+<div key={i} style={{ fontSize: “14px”, padding: “4px 0”, paddingLeft: “16px”, color: colors.ink, fontFamily: “‘Source Sans 3’, sans-serif”, position: “relative” }}>
+<span style={{ position: “absolute”, left: 0, color: colors.blue }}>✓</span>
+{t(item)}
+</div>
+))}
+</Card>
+);
+
+const ReadingContent = ({ content }) => {
+const text = t(content[level]) || t(content.quick);
+return (
+<div style={{ fontFamily: level === “deep” ? “‘Source Sans 3’, sans-serif” : “‘Libre Baskerville’, serif”, fontSize: level === “quick” ? “16px” : “15px”, lineHeight: “1.75”, color: colors.ink, whiteSpace: “pre-line” }}>
+{text}
+</div>
+);
+};
+
+// ── PAGES ──
+
+const HomePage = () => (
+<div style={{ maxWidth: “900px”, margin: “0 auto”, padding: “40px 20px” }}>
+<div style={{ textAlign: “center”, marginBottom: “48px” }}>
+<div style={{ fontSize: “14px”, fontFamily: “‘Source Sans 3’, sans-serif”, color: colors.gold, fontWeight: “600”, textTransform: “uppercase”, letterSpacing: “0.12em”, marginBottom: “12px” }}>
+{ lang === “es” ? “Gobierno de EE.UU. / Educación Cívica — Grado 12” : lang === “fr” ? “Gouvernement des É.-U. / Éducation Civique — 12e année” : “U.S. Government / Civics — Grade 12” }
+</div>
+<h1 style={{ fontFamily: “‘Playfair Display’, serif”, fontSize: “42px”, fontWeight: “800”, color: colors.ink, lineHeight: “1.15”, marginBottom: “16px”, letterSpacing: “-0.02em” }}>
+{t(CONTENT.siteTitle)}
+</h1>
+<p style={{ fontSize: “18px”, color: colors.inkLight, fontFamily: “‘Source Sans 3’, sans-serif”, maxWidth: “600px”, margin: “0 auto” }}>
+{t(CONTENT.siteSubtitle)}
+</p>
+</div>
+
+```
+  <Card accent={colors.gold} style={{ marginBottom: "32px" }}>
+    <ReadingContent content={CONTENT.homeIntro} />
+  </Card>
+
+  <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: "16px", marginTop: "32px" }}>
+    {[
+      { key: "timeline", icon: "📜", color: colors.gold },
+      { key: "comparison", icon: "⚖️", color: colors.accent },
+      { key: "federalists", icon: "🗣️", color: colors.blue },
+      { key: "glossary", icon: "📖", color: colors.green },
+      { key: "assessment", icon: "✏️", color: colors.inkLight },
+    ].map(({ key, icon, color }) => (
+      <button
+        key={key}
+        onClick={() => setPage(key)}
+        style={{
+          background: colors.white,
+          border: `1px solid ${colors.parchmentDark}`,
+          borderRadius: "12px",
+          padding: "24px 20px",
+          cursor: "pointer",
+          textAlign: "left",
+          transition: "all 0.2s",
+          boxShadow: `0 2px 8px ${colors.shadow}`,
+          borderTop: `3px solid ${color}`,
+        }}
+        onMouseOver={(e) => { e.currentTarget.style.transform = "translateY(-2px)"; e.currentTarget.style.boxShadow = `0 6px 20px ${colors.shadowMd}`; }}
+        onMouseOut={(e) => { e.currentTarget.style.transform = "translateY(0)"; e.currentTarget.style.boxShadow = `0 2px 8px ${colors.shadow}`; }}
+      >
+        <div style={{ fontSize: "28px", marginBottom: "8px" }}>{icon}</div>
+        <div style={{ fontFamily: "'Source Sans 3', sans-serif", fontWeight: "700", fontSize: "16px", color: colors.ink }}>{t(CONTENT.nav[key])}</div>
+      </button>
+    ))}
+  </div>
+</div>
+```
+
+);
+
+const TimelinePage = () => (
+<div style={{ maxWidth: “900px”, margin: “0 auto”, padding: “40px 20px” }}>
+<SectionTitle sub={lang === “es” ? “Haz clic en cada documento para ver más detalles.” : lang === “fr” ? “Clique sur chaque document pour plus de détails.” : “Click each document card for more details.”}>
+{t(CONTENT.nav.timeline)}
+</SectionTitle>
+
+```
+  <div style={{ position: "relative", paddingLeft: "40px" }}>
+    <div style={{ position: "absolute", left: "16px", top: 0, bottom: 0, width: "3px", background: `linear-gradient(to bottom, ${colors.gold}, ${colors.accent})`, borderRadius: "3px" }} />
+
+    {CONTENT.timelineDocs.map((doc, i) => (
+      <div key={i} style={{ marginBottom: "20px", position: "relative" }}>
+        <div style={{ position: "absolute", left: "-32px", top: "24px", width: "20px", height: "20px", borderRadius: "50%", background: doc.color, border: `3px solid ${colors.white}`, boxShadow: `0 0 0 2px ${doc.color}` }} />
+
+        <button
+          onClick={() => setExpandedTimeline(expandedTimeline === i ? null : i)}
+          style={{
+            width: "100%", textAlign: "left", background: expandedTimeline === i ? colors.white : colors.cardBg, border: `1px solid ${expandedTimeline === i ? doc.color : colors.parchmentDark}`,
+            borderRadius: "12px", padding: "20px 24px", cursor: "pointer", transition: "all 0.2s", borderLeft: `4px solid ${doc.color}`,
+            boxShadow: expandedTimeline === i ? `0 4px 16px ${colors.shadowMd}` : `0 1px 4px ${colors.shadow}`,
+          }}
+        >
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+            <div>
+              <span style={{ fontFamily: "'Source Sans 3', sans-serif", fontSize: "13px", fontWeight: "700", color: doc.color, letterSpacing: "0.05em" }}>{doc.year}</span>
+              <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: "20px", fontWeight: "700", color: colors.ink, marginTop: "2px" }}>{t(doc.title)}</h3>
+            </div>
+            <span style={{ fontSize: "18px", color: colors.inkLight, transform: expandedTimeline === i ? "rotate(180deg)" : "rotate(0deg)", transition: "transform 0.2s" }}>▼</span>
+          </div>
+          <p style={{ fontSize: "14px", color: colors.inkLight, marginTop: "6px", fontFamily: "'Source Sans 3', sans-serif" }}>{t(doc.context)}</p>
+        </button>
+
+        {expandedTimeline === i && (
+          <div style={{ background: colors.white, borderRadius: "0 0 12px 12px", padding: "20px 24px", marginTop: "-8px", borderLeft: `4px solid ${doc.color}`, borderRight: `1px solid ${colors.parchmentDark}`, borderBottom: `1px solid ${colors.parchmentDark}` }}>
+            {[
+              { label: lang === "es" ? "Problema que intentó resolver" : lang === "fr" ? "Problème à résoudre" : "Problem it tried to solve", text: t(doc.problem), emoji: "⚡" },
+              { label: lang === "es" ? "Ideas clave" : lang === "fr" ? "Idées clés" : "Key ideas", text: t(doc.keyIdeas), emoji: "💡" },
+              { label: lang === "es" ? "Impacto duradero" : lang === "fr" ? "Impact durable" : "Lasting impact", text: t(doc.impact), emoji: "🔗" },
+            ].map((section, j) => (
+              <div key={j} style={{ marginBottom: "16px" }}>
+                <div style={{ fontFamily: "'Source Sans 3', sans-serif", fontWeight: "700", fontSize: "13px", color: doc.color, textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: "4px" }}>
+                  {section.emoji} {section.label}
+                </div>
+                <p style={{ fontSize: "14px", color: colors.ink, fontFamily: "'Source Sans 3', sans-serif", lineHeight: "1.6" }}>{section.text}</p>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+    ))}
+  </div>
+</div>
+```
+
+);
+
+const ComparisonPage = () => (
+<div style={{ maxWidth: “1000px”, margin: “0 auto”, padding: “40px 20px” }}>
+<SectionTitle>{t(CONTENT.nav.comparison)}</SectionTitle>
+
+```
+  <Card accent={colors.gold} style={{ marginBottom: "32px" }}>
+    <div style={{ fontFamily: "'Source Sans 3', sans-serif", fontWeight: "700", fontSize: "14px", color: colors.gold, textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: "8px" }}>
+      💡 { lang === "es" ? "La Idea Principal" : lang === "fr" ? "L'Idée Principale" : "The Big Idea" }
+    </div>
+    <p style={{ fontSize: "15px", lineHeight: "1.7" }}>{t(CONTENT.comparisonBigIdea)}</p>
+  </Card>
+
+  <div style={{ overflowX: "auto" }}>
+    <table style={{ width: "100%", borderCollapse: "separate", borderSpacing: "0", fontSize: "14px", fontFamily: "'Source Sans 3', sans-serif" }}>
+      <thead>
+        <tr>
+          <th style={{ padding: "14px 16px", background: colors.inkLight, color: colors.white, textAlign: "left", borderRadius: "8px 0 0 0", fontWeight: "700", fontSize: "13px", textTransform: "uppercase", letterSpacing: "0.05em", width: "20%" }}>
+            { lang === "es" ? "Categoría" : lang === "fr" ? "Catégorie" : "Category" }
+          </th>
+          <th style={{ padding: "14px 16px", background: colors.accent, color: colors.white, textAlign: "left", fontWeight: "700", fontSize: "13px", textTransform: "uppercase", letterSpacing: "0.05em", width: "40%" }}>
+            { lang === "es" ? "Artículos de la Confederación (1781)" : lang === "fr" ? "Articles de la Confédération (1781)" : "Articles of Confederation (1781)" }
+          </th>
+          <th style={{ padding: "14px 16px", background: colors.blue, color: colors.white, textAlign: "left", borderRadius: "0 8px 0 0", fontWeight: "700", fontSize: "13px", textTransform: "uppercase", letterSpacing: "0.05em", width: "40%" }}>
+            { lang === "es" ? "Constitución de EE.UU. (1787)" : lang === "fr" ? "Constitution des É.-U. (1787)" : "U.S. Constitution (1787)" }
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        {CONTENT.comparisonCategories.map((row, i) => (
+          <tr key={i} style={{ background: i % 2 === 0 ? colors.white : colors.cardBg }}>
+            <td style={{ padding: "14px 16px", fontWeight: "700", color: colors.ink, borderBottom: `1px solid ${colors.parchmentDark}`, verticalAlign: "top" }}>
+              {t(row.category)}
+            </td>
+            <td style={{ padding: "14px 16px", color: colors.ink, borderBottom: `1px solid ${colors.parchmentDark}`, verticalAlign: "top", lineHeight: "1.6" }}>
+              {t(row.articles)}
+            </td>
+            <td style={{ padding: "14px 16px", color: colors.ink, borderBottom: `1px solid ${colors.parchmentDark}`, verticalAlign: "top", lineHeight: "1.6" }}>
+              {t(row.constitution)}
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+
+  <Card style={{ marginTop: "32px", background: "#FFF8F0", borderLeft: `4px solid ${colors.accentLight}` }}>
+    <div style={{ fontFamily: "'Source Sans 3', sans-serif", fontWeight: "700", fontSize: "14px", color: colors.accent, textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: "8px" }}>
+      ❌ { lang === "es" ? "Por qué fracasó / ✅ Qué arregló" : lang === "fr" ? "Pourquoi ça a échoué / ✅ Ce que ça a corrigé" : "Why it failed / ✅ What it fixed" }
+    </div>
+    <p style={{ fontSize: "14px", lineHeight: "1.7", fontFamily: "'Source Sans 3', sans-serif" }}>
+      { lang === "es"
+        ? "Los Artículos fracasaron porque el gobierno nacional no podía cobrar impuestos, regular el comercio, hacer cumplir las leyes ni resolver disputas entre estados. Sin presidente ni tribunales, no había nadie a cargo. La Constitución lo arregló creando tres ramas, dándole al Congreso poder real para cobrar impuestos y regular el comercio, y haciendo que las leyes federales se aplicaran directamente a los ciudadanos."
+        : lang === "fr"
+          ? "Les Articles ont échoué parce que le gouvernement national ne pouvait pas taxer, réguler le commerce, appliquer les lois ni régler les différends entre les états. Sans président ni tribunaux, personne n'était responsable. La Constitution a corrigé cela en créant trois branches, en donnant au Congrès le vrai pouvoir de taxer et de réguler le commerce, et en faisant appliquer les lois fédérales directement aux citoyens."
+          : "The Articles failed because the national government could not tax, regulate trade, enforce laws, or settle disputes between states. With no president and no courts, nobody was in charge. The Constitution fixed this by creating three branches, giving Congress real power to tax and regulate trade, and making federal laws apply directly to citizens."
+      }
+    </p>
+  </Card>
+
+  <StandardsCallout items={CONTENT.standardsChecks.comparison} />
+</div>
+```
+
+);
+
+const FederalistsPage = () => (
+<div style={{ maxWidth: “1000px”, margin: “0 auto”, padding: “40px 20px” }}>
+<SectionTitle sub={lang === “es” ? “Haz clic en cada tema para ver los argumentos completos de ambos lados.” : lang === “fr” ? “Clique sur chaque sujet pour voir les arguments complets des deux côtés.” : “Click each topic to see full arguments from both sides.”}>
+{t(CONTENT.nav.federalists)}
+</SectionTitle>
+
+```
+  {CONTENT.fedArguments.map((arg, i) => (
+    <div key={i} style={{ marginBottom: "16px" }}>
+      <button
+        onClick={() => setExpandedFed(expandedFed === i ? null : i)}
+        style={{
+          width: "100%", textAlign: "left", padding: "18px 24px", border: `1px solid ${colors.parchmentDark}`, borderRadius: expandedFed === i ? "12px 12px 0 0" : "12px",
+          background: colors.white, cursor: "pointer", display: "flex", justifyContent: "space-between", alignItems: "center",
+          boxShadow: `0 2px 8px ${colors.shadow}`, transition: "all 0.2s",
+        }}
+      >
+        <div>
+          <span style={{ fontFamily: "'Source Sans 3', sans-serif", fontSize: "12px", fontWeight: "700", color: colors.inkLight, textTransform: "uppercase", letterSpacing: "0.06em" }}>
+            { lang === "es" ? `Debate ${i + 1} de 5` : lang === "fr" ? `Débat ${i + 1} sur 5` : `Debate ${i + 1} of 5` }
+          </span>
+          <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: "20px", fontWeight: "700", color: colors.ink, marginTop: "2px" }}>{t(arg.topic)}</h3>
+        </div>
+        <span style={{ fontSize: "18px", color: colors.inkLight, transform: expandedFed === i ? "rotate(180deg)" : "rotate(0deg)", transition: "transform 0.2s" }}>▼</span>
+      </button>
+
+      {expandedFed === i && (
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0", borderRadius: "0 0 12px 12px", overflow: "hidden", border: `1px solid ${colors.parchmentDark}`, borderTop: "none" }}>
+          {/* Federalist Side */}
+          <div style={{ padding: "24px", background: "#F0F4FF", borderRight: `1px solid ${colors.parchmentDark}` }}>
+            <div style={{ fontFamily: "'Source Sans 3', sans-serif", fontWeight: "700", fontSize: "13px", color: colors.blue, textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: "16px" }}>
+              🏛️ { lang === "es" ? "Federalistas" : lang === "fr" ? "Fédéralistes" : "Federalists" }
+            </div>
+            {[
+              { label: lang === "es" ? "Afirmación" : lang === "fr" ? "Affirmation" : "Claim", text: t(arg.fed.claim), color: colors.blue },
+              { label: lang === "es" ? "Evidencia" : lang === "fr" ? "Preuve" : "Evidence", text: t(arg.fed.evidence), color: colors.blueSoft },
+              { label: lang === "es" ? "Razonamiento" : lang === "fr" ? "Raisonnement" : "Reasoning", text: t(arg.fed.reasoning), color: colors.blueSoft },
+            ].map((part, j) => (
+              <div key={j} style={{ marginBottom: "14px" }}>
+                <div style={{ fontFamily: "'Source Sans 3', sans-serif", fontWeight: "700", fontSize: "12px", color: part.color, textTransform: "uppercase", letterSpacing: "0.04em", marginBottom: "4px" }}>{part.label}</div>
+                <p style={{ fontSize: "14px", lineHeight: "1.6", fontFamily: "'Source Sans 3', sans-serif", color: colors.ink }}>{part.text}</p>
+              </div>
+            ))}
+          </div>
+          {/* Anti-Federalist Side */}
+          <div style={{ padding: "24px", background: "#FFF4F0" }}>
+            <div style={{ fontFamily: "'Source Sans 3', sans-serif", fontWeight: "700", fontSize: "13px", color: colors.accent, textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: "16px" }}>
+              🛡️ { lang === "es" ? "Antifederalistas" : lang === "fr" ? "Antifédéralistes" : "Anti-Federalists" }
+            </div>
+            {[
+              { label: lang === "es" ? "Afirmación" : lang === "fr" ? "Affirmation" : "Claim", text: t(arg.anti.claim), color: colors.accent },
+              { label: lang === "es" ? "Evidencia" : lang === "fr" ? "Preuve" : "Evidence", text: t(arg.anti.evidence), color: colors.accentLight },
+              { label: lang === "es" ? "Razonamiento" : lang === "fr" ? "Raisonnement" : "Reasoning", text: t(arg.anti.reasoning), color: colors.accentLight },
+            ].map((part, j) => (
+              <div key={j} style={{ marginBottom: "14px" }}>
+                <div style={{ fontFamily: "'Source Sans 3', sans-serif", fontWeight: "700", fontSize: "12px", color: part.color, textTransform: "uppercase", letterSpacing: "0.04em", marginBottom: "4px" }}>{part.label}</div>
+                <p style={{ fontSize: "14px", lineHeight: "1.6", fontFamily: "'Source Sans 3', sans-serif", color: colors.ink }}>{part.text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
+  ))}
+
+  <Card accent={colors.green} style={{ marginTop: "32px" }}>
+    <div style={{ fontFamily: "'Source Sans 3', sans-serif", fontWeight: "700", fontSize: "14px", color: colors.green, textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: "8px" }}>
+      🔗 { lang === "es" ? "Conexión con la Declaración de Derechos" : lang === "fr" ? "Lien avec la Déclaration des Droits" : "Link to the Bill of Rights" }
+    </div>
+    <p style={{ fontSize: "14px", lineHeight: "1.7", fontFamily: "'Source Sans 3', sans-serif" }}>{t(CONTENT.billOfRightsLink)}</p>
+  </Card>
+
+  <StandardsCallout items={CONTENT.standardsChecks.federalists} />
+</div>
+```
+
+);
+
+const GlossaryPage = () => {
+const filtered = CONTENT.glossary.filter((g) =>
+t(g.term).toLowerCase().includes(glossarySearch.toLowerCase()) ||
+t(g.def).toLowerCase().includes(glossarySearch.toLowerCase())
+);
+return (
+<div style={{ maxWidth: “800px”, margin: “0 auto”, padding: “40px 20px” }}>
+<SectionTitle>{t(CONTENT.nav.glossary)}</SectionTitle>
+<div style={{ marginBottom: “24px” }}>
+<input
+type=“text”
+placeholder={lang === “es” ? “Buscar términos…” : lang === “fr” ? “Rechercher des termes…” : “Search terms…”}
+value={glossarySearch}
+onChange={(e) => setGlossarySearch(e.target.value)}
+style={{
+width: “100%”, padding: “12px 16px”, border: `2px solid ${colors.parchmentDark}`, borderRadius: “8px”,
+fontSize: “15px”, fontFamily: “‘Source Sans 3’, sans-serif”, background: colors.white, color: colors.ink,
+outline: “none”,
+}}
+onFocus={(e) => e.target.style.borderColor = colors.gold}
+onBlur={(e) => e.target.style.borderColor = colors.parchmentDark}
+/>
+</div>
+<div style={{ display: “grid”, gap: “8px” }}>
+{filtered.map((g, i) => (
+<div key={i} style={{ background: colors.white, padding: “14px 18px”, borderRadius: “8px”, border: `1px solid ${colors.parchmentDark}`, display: “flex”, gap: “12px”, alignItems: “baseline” }}>
+<span style={{ fontFamily: “‘Playfair Display’, serif”, fontWeight: “700”, fontSize: “15px”, color: colors.accent, minWidth: “fit-content”, whiteSpace: “nowrap” }}>
+{t(g.term)}
+</span>
+<span style={{ fontSize: “14px”, color: colors.ink, fontFamily: “‘Source Sans 3’, sans-serif”, lineHeight: “1.5” }}>
+{t(g.def)}
+</span>
+</div>
+))}
+</div>
+</div>
+);
+};
+
+const AssessmentPage = () => {
+const handleAnswer = (qIdx, oIdx) => {
+if (!quizSubmitted) setQuizAnswers({ …quizAnswers, [qIdx]: oIdx });
+};
+
+```
+return (
+  <div style={{ maxWidth: "800px", margin: "0 auto", padding: "40px 20px" }}>
+    <SectionTitle>{t(CONTENT.nav.assessment)}</SectionTitle>
+
+    {/* Quick Check Quiz */}
+    <Card style={{ marginBottom: "32px" }}>
+      <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: "20px", fontWeight: "700", marginBottom: "20px" }}>
+        ✏️ { lang === "es" ? "Verificación Rápida" : lang === "fr" ? "Vérification Rapide" : "Quick Check" }
+      </h3>
+      {CONTENT.quizQuestions.map((q, qi) => (
+        <div key={qi} style={{ marginBottom: "24px", paddingBottom: "20px", borderBottom: qi < CONTENT.quizQuestions.length - 1 ? `1px solid ${colors.parchmentDark}` : "none" }}>
+          <p style={{ fontWeight: "600", fontSize: "15px", fontFamily: "'Source Sans 3', sans-serif", marginBottom: "10px", color: colors.ink }}>
+            {qi + 1}. {t(q.q)}
+          </p>
+          <div style={{ display: "grid", gap: "6px" }}>
+            {q.options.map((opt, oi) => {
+              const selected = quizAnswers[qi] === oi;
+              const isCorrect = q.correct === oi;
+              let bg = colors.white;
+              let border = colors.parchmentDark;
+              if (quizSubmitted) {
+                if (isCorrect) { bg = "#E8F5E9"; border = colors.green; }
+                else if (selected && !isCorrect) { bg = "#FFEBEE"; border = colors.redSoft; }
+              } else if (selected) {
+                bg = "#F0F4FF"; border = colors.blue;
+              }
+              return (
+                <button
+                  key={oi}
+                  onClick={() => handleAnswer(qi, oi)}
+                  style={{
+                    padding: "10px 14px", border: `2px solid ${border}`, borderRadius: "8px",
+                    background: bg, cursor: quizSubmitted ? "default" : "pointer", textAlign: "left",
+                    fontSize: "14px", fontFamily: "'Source Sans 3', sans-serif", color: colors.ink,
+                    transition: "all 0.15s",
+                  }}
+                >
+                  {t(opt)}
+                  {quizSubmitted && isCorrect && " ✓"}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      ))}
+      <div style={{ display: "flex", gap: "12px" }}>
+        <button
+          onClick={() => setQuizSubmitted(true)}
+          style={{
+            padding: "12px 28px", background: colors.blue, color: colors.white, border: "none",
+            borderRadius: "8px", cursor: "pointer", fontFamily: "'Source Sans 3', sans-serif", fontWeight: "700", fontSize: "14px",
+          }}
+        >
+          { lang === "es" ? "Verificar Respuestas" : lang === "fr" ? "Vérifier les Réponses" : "Check Answers" }
+        </button>
+        {quizSubmitted && (
+          <button
+            onClick={() => { setQuizSubmitted(false); setQuizAnswers({}); }}
+            style={{
+              padding: "12px 28px", background: "transparent", color: colors.inkLight, border: `1px solid ${colors.parchmentDark}`,
+              borderRadius: "8px", cursor: "pointer", fontFamily: "'Source Sans 3', sans-serif", fontWeight: "600", fontSize: "14px",
+            }}
+          >
+            { lang === "es" ? "Reiniciar" : lang === "fr" ? "Recommencer" : "Reset" }
+          </button>
+        )}
+      </div>
+      {quizSubmitted && (
+        <div style={{ marginTop: "16px", padding: "12px 16px", background: "#F0F4FF", borderRadius: "8px", fontFamily: "'Source Sans 3', sans-serif", fontSize: "14px" }}>
+          { lang === "es" ? "Resultado" : lang === "fr" ? "Résultat" : "Score" }: {CONTENT.quizQuestions.filter((q, i) => quizAnswers[i] === q.correct).length} / {CONTENT.quizQuestions.length}
+        </div>
+      )}
+    </Card>
+
+    {/* Exit Tickets */}
+    <Card style={{ marginBottom: "32px" }} accent={colors.gold}>
+      <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: "20px", fontWeight: "700", marginBottom: "16px" }}>
+        🎫 { lang === "es" ? "Boletos de Salida" : lang === "fr" ? "Billets de Sortie" : "Exit Tickets" }
+      </h3>
+      {CONTENT.exitTickets.map((ticket, i) => (
+        <div key={i} style={{ padding: "12px 16px", background: colors.white, borderRadius: "8px", marginBottom: "8px", fontSize: "14px", fontFamily: "'Source Sans 3', sans-serif", lineHeight: "1.6", border: `1px solid ${colors.parchmentDark}` }}>
+          {i + 1}. {t(ticket)}
+        </div>
+      ))}
+    </Card>
+
+    {/* Mini-DBQ Prompts */}
+    <Card accent={colors.accent}>
+      <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: "20px", fontWeight: "700", marginBottom: "16px" }}>
+        📝 { lang === "es" ? "Mini-DBQ" : lang === "fr" ? "Mini-DBQ" : "Mini-DBQ Prompts" }
+      </h3>
+      {CONTENT.dbqPrompts.map((prompt, i) => (
+        <div key={i} style={{ padding: "14px 16px", background: "#FFF8F0", borderRadius: "8px", marginBottom: "8px", fontSize: "14px", fontFamily: "'Source Sans 3', sans-serif", lineHeight: "1.6", borderLeft: `3px solid ${colors.accentLight}` }}>
+          {t(prompt)}
+        </div>
+      ))}
+    </Card>
+  </div>
+);
+```
+
+};
+
+// ── RENDER ──
+return (
+<div style={pageStyle}>
+<NavBar />
+{page === “home” && <HomePage />}
+{page === “timeline” && <TimelinePage />}
+{page === “comparison” && <ComparisonPage />}
+{page === “federalists” && <FederalistsPage />}
+{page === “glossary” && <GlossaryPage />}
+{page === “assessment” && <AssessmentPage />}
+
+```
+  <footer style={{ textAlign: "center", padding: "32px 20px", borderTop: `1px solid ${colors.parchmentDark}`, marginTop: "40px" }}>
+    <p style={{ fontSize: "13px", color: colors.inkLight, fontFamily: "'Source Sans 3', sans-serif" }}>
+      { lang === "es" ? "Educación Cívica de Florida — Grado 12 — Recurso Educativo"
+        : lang === "fr" ? "Éducation Civique de Floride — 12e Année — Ressource Éducative"
+        : "Florida Civics — Grade 12 — Educational Resource" }
+    </p>
+  </footer>
+</div>
+```
+
+);
+}
