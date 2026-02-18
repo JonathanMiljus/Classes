@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from “react”;
+import { useState, useEffect } from “react”;
 
 // ─── CONTENT DATABASE ───────────────────────────────────────────────────────
 const CONTENT = {
@@ -753,6 +753,22 @@ const [quizAnswers, setQuizAnswers] = useState({});
 const [quizSubmitted, setQuizSubmitted] = useState(false);
 const [expandedTimeline, setExpandedTimeline] = useState(null);
 const [expandedFed, setExpandedFed] = useState(null);
+const [fontsLoaded, setFontsLoaded] = useState(false);
+
+// Load Google Fonts via <link> in <head> — reliable across all React setups
+useEffect(() => {
+const id = “gov-fonts-link”;
+if (!document.getElementById(id)) {
+const link = document.createElement(“link”);
+link.id = id;
+link.rel = “stylesheet”;
+link.href = “https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;500;600;700&display=swap”;
+document.head.appendChild(link);
+link.onload = () => setFontsLoaded(true);
+} else {
+setFontsLoaded(true);
+}
+}, []);
 
 const t = (obj) => obj[lang] || obj.en;
 
@@ -861,7 +877,6 @@ const NavBar = () => (
 <button
 onClick={() => setMobileNav(!mobileNav)}
 style={{ display: “none”, background: “none”, border: “none”, fontSize: “24px”, cursor: “pointer”, color: colors.ink }}
-className=“mobile-menu-btn”
 >
 ☰
 </button>
@@ -891,7 +906,7 @@ whiteSpace: “nowrap”,
 ))}
 </nav>
 </div>
-<style>{`@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;500;600;700&display=swap'); @media (max-width: 900px) { .mobile-menu-btn { display: block !important; } } * { box-sizing: border-box; margin: 0; padding: 0; } html { scroll-behavior: smooth; } ::selection { background: #B8860B44; }`}</style>
+<style>{`* { box-sizing: border-box; margin: 0; padding: 0; } html { scroll-behavior: smooth; } ::selection { background: #B8860B44; }`}</style>
 </header>
 );
 
