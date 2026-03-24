@@ -1,0 +1,1373 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>From War to War: 1919–1939</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Serif+4:wght@300;400;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-dark: #1a1714;
+  --bg-card: #252220;
+  --bg-card-hover: #2e2b28;
+  --text-primary: #f0ece4;
+  --text-secondary: #b8b0a2;
+  --accent-red: #c0392b;
+  --accent-red-light: #e74c3c;
+  --accent-gold: #d4a847;
+  --accent-gold-light: #f0c75e;
+  --accent-blue: #2c6fad;
+  --accent-blue-light: #3498db;
+  --accent-green: #27ae60;
+  --communist-red: #cc0000;
+  --fascist-black: #2c2c2c;
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'DM Sans', 'Segoe UI', sans-serif;
+  --font-serif: 'Source Serif 4', Georgia, serif;
+}
+
+- { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+background: var(–bg-dark);
+color: var(–text-primary);
+font-family: var(–font-body);
+line-height: 1.7;
+font-size: 17px;
+overflow-x: hidden;
+}
+
+/* ── LANGUAGE SWITCHER ── */
+.lang-bar {
+position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+background: rgba(26,23,20,0.95);
+backdrop-filter: blur(12px);
+border-bottom: 1px solid rgba(212,168,71,0.2);
+display: flex; justify-content: space-between; align-items: center;
+padding: 0 2rem; height: 52px;
+}
+.lang-bar .site-title {
+font-family: var(–font-display);
+font-size: 0.95rem; color: var(–accent-gold);
+letter-spacing: 0.05em;
+}
+.lang-buttons { display: flex; gap: 4px; }
+.lang-btn {
+background: transparent; border: 1.5px solid rgba(240,236,228,0.2);
+color: var(–text-secondary); padding: 6px 16px;
+font-family: var(–font-body); font-size: 0.85rem; font-weight: 600;
+cursor: pointer; border-radius: 4px; transition: all 0.25s;
+letter-spacing: 0.03em;
+}
+.lang-btn:hover { border-color: var(–accent-gold); color: var(–text-primary); }
+.lang-btn.active {
+background: var(–accent-gold); color: var(–bg-dark);
+border-color: var(–accent-gold);
+}
+
+/* ── NAV ── */
+.section-nav {
+position: fixed; top: 52px; left: 0; right: 0; z-index: 999;
+background: rgba(37,34,32,0.92); backdrop-filter: blur(8px);
+border-bottom: 1px solid rgba(240,236,228,0.08);
+display: flex; justify-content: center; gap: 0; flex-wrap: wrap;
+padding: 0;
+}
+.nav-link {
+color: var(–text-secondary); text-decoration: none;
+font-size: 0.78rem; font-weight: 600; padding: 10px 14px;
+transition: all 0.2s; letter-spacing: 0.02em;
+text-transform: uppercase; white-space: nowrap;
+}
+.nav-link:hover { color: var(–accent-gold); }
+
+/* ── HERO ── */
+.hero {
+min-height: 100vh; display: flex; flex-direction: column;
+justify-content: center; align-items: center; text-align: center;
+padding: 6rem 2rem 4rem;
+background: linear-gradient(180deg, #0f0d0b 0%, var(–bg-dark) 100%);
+position: relative; overflow: hidden;
+}
+.hero::before {
+content: ‘’; position: absolute; inset: 0;
+background: repeating-linear-gradient(
+0deg, transparent, transparent 40px,
+rgba(212,168,71,0.03) 40px, rgba(212,168,71,0.03) 41px
+);
+}
+.hero-date {
+font-family: var(–font-body); font-size: 1rem;
+color: var(–accent-gold); letter-spacing: 0.4em;
+text-transform: uppercase; margin-bottom: 1.5rem;
+opacity: 0; animation: fadeUp 0.8s 0.3s forwards;
+}
+.hero h1 {
+font-family: var(–font-display); font-size: clamp(2.8rem, 6vw, 5rem);
+font-weight: 900; line-height: 1.1; margin-bottom: 1.5rem;
+opacity: 0; animation: fadeUp 0.8s 0.5s forwards;
+position: relative;
+}
+.hero h1 span { color: var(–accent-red-light); }
+.hero-sub {
+font-family: var(–font-serif); font-size: clamp(1rem, 2vw, 1.25rem);
+color: var(–text-secondary); max-width: 680px; line-height: 1.8;
+opacity: 0; animation: fadeUp 0.8s 0.7s forwards;
+}
+.hero-arrow {
+margin-top: 3rem; opacity: 0; animation: fadeUp 0.8s 0.9s forwards;
+}
+.hero-arrow a {
+color: var(–accent-gold); text-decoration: none; font-size: 2rem;
+animation: bounce 2s infinite;
+}
+
+@keyframes fadeUp {
+from { opacity: 0; transform: translateY(30px); }
+to { opacity: 1; transform: translateY(0); }
+}
+@keyframes bounce {
+0%, 100% { transform: translateY(0); }
+50% { transform: translateY(10px); }
+}
+
+/* ── SECTIONS ── */
+.section {
+padding: 5rem 2rem; max-width: 1100px; margin: 0 auto;
+}
+.section-label {
+font-family: var(–font-body); font-size: 0.75rem;
+color: var(–accent-gold); letter-spacing: 0.3em;
+text-transform: uppercase; margin-bottom: 0.75rem;
+}
+.section h2 {
+font-family: var(–font-display); font-size: clamp(1.8rem, 4vw, 2.6rem);
+font-weight: 700; margin-bottom: 1.5rem; line-height: 1.2;
+}
+.section h2 span { color: var(–accent-red-light); }
+.section p {
+color: var(–text-secondary); max-width: 800px;
+font-family: var(–font-serif); font-size: 1.05rem;
+margin-bottom: 1.25rem;
+}
+.divider {
+width: 100%; height: 1px; margin: 0;
+background: linear-gradient(90deg, transparent, rgba(212,168,71,0.3), transparent);
+}
+
+/* ── TREATY VISUAL ── */
+.treaty-grid {
+display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+gap: 1.25rem; margin-top: 2rem;
+}
+.treaty-card {
+background: var(–bg-card); border: 1px solid rgba(240,236,228,0.08);
+border-radius: 8px; padding: 1.75rem; cursor: pointer;
+transition: all 0.3s; position: relative; overflow: hidden;
+}
+.treaty-card:hover {
+background: var(–bg-card-hover);
+border-color: var(–accent-gold);
+transform: translateY(-3px);
+box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+}
+.treaty-card .card-icon {
+font-size: 2.2rem; margin-bottom: 0.75rem;
+}
+.treaty-card h3 {
+font-family: var(–font-display); font-size: 1.15rem;
+margin-bottom: 0.5rem; color: var(–text-primary);
+}
+.treaty-card .card-detail {
+font-size: 0.92rem; color: var(–text-secondary);
+line-height: 1.6; display: none;
+font-family: var(–font-serif);
+}
+.treaty-card.open .card-detail { display: block; margin-top: 0.75rem; }
+.treaty-card .card-hint {
+font-size: 0.75rem; color: var(–accent-gold); margin-top: 0.75rem;
+font-style: italic;
+}
+.treaty-card.open .card-hint { display: none; }
+
+/* ── HYPERINFLATION ── */
+.inflation-visual {
+margin: 2.5rem 0; background: var(–bg-card);
+border-radius: 10px; padding: 2rem; overflow: hidden;
+border: 1px solid rgba(240,236,228,0.06);
+}
+.inflation-chart {
+display: flex; align-items: flex-end; gap: 6px;
+height: 320px; padding: 1rem 0; position: relative;
+}
+.inflation-bar-group {
+flex: 1; display: flex; flex-direction: column;
+align-items: center; height: 100%; justify-content: flex-end;
+}
+.inflation-bar {
+width: 100%; border-radius: 4px 4px 0 0;
+transition: height 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+position: relative; cursor: pointer;
+min-height: 4px;
+}
+.inflation-bar:hover { opacity: 0.85; }
+.bar-label {
+font-size: 0.7rem; color: var(–text-secondary);
+margin-top: 8px; text-align: center; font-weight: 600;
+}
+.bar-value {
+position: absolute; top: -28px; left: 50%;
+transform: translateX(-50%); font-size: 0.72rem;
+color: var(–accent-gold); font-weight: 700;
+white-space: nowrap; opacity: 0;
+transition: opacity 0.3s;
+}
+.inflation-bar:hover .bar-value { opacity: 1; }
+.chart-title {
+font-family: var(–font-display); font-size: 1.15rem;
+margin-bottom: 0.25rem;
+}
+.chart-subtitle {
+font-size: 0.85rem; color: var(–text-secondary);
+margin-bottom: 1.5rem;
+}
+.bread-comparison {
+display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+gap: 1rem; margin-top: 2rem;
+}
+.bread-card {
+background: rgba(192,57,43,0.08); border: 1px solid rgba(192,57,43,0.2);
+border-radius: 8px; padding: 1.25rem; text-align: center;
+}
+.bread-card .year { font-weight: 700; color: var(–accent-red-light); font-size: 1.1rem; }
+.bread-card .price {
+font-family: var(–font-display); font-size: 1.5rem;
+color: var(–text-primary); margin: 0.5rem 0;
+}
+.bread-card .note { font-size: 0.82rem; color: var(–text-secondary); }
+
+/* ── IDEOLOGY SPECTRUM ── */
+.spectrum-container {
+margin: 2.5rem 0; position: relative;
+}
+.spectrum-bar-container {
+background: var(–bg-card); border-radius: 10px;
+padding: 2rem 2rem 1rem; margin-bottom: 1rem;
+border: 1px solid rgba(240,236,228,0.06);
+}
+.spectrum-bar {
+height: 8px; border-radius: 4px; margin: 1.5rem 0 0.5rem;
+background: linear-gradient(90deg,
+#cc0000 0%, #e74c3c 25%, #f39c12 50%, #2c3e50 75%, #1a1a1a 100%
+);
+position: relative;
+}
+.spectrum-labels {
+display: flex; justify-content: space-between;
+font-size: 0.75rem; color: var(–text-secondary);
+text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600;
+}
+.ideology-cards {
+display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+gap: 1rem; margin-top: 1.5rem;
+}
+.ideology-card {
+border-radius: 8px; padding: 1.5rem; cursor: pointer;
+transition: all 0.35s; position: relative; overflow: hidden;
+border: 2px solid transparent;
+}
+.ideology-card::before {
+content: ‘’; position: absolute; top: 0; left: 0;
+width: 4px; height: 100%; border-radius: 2px 0 0 2px;
+}
+.ideology-card[data-id=“communism”] {
+background: rgba(204,0,0,0.08);
+}
+.ideology-card[data-id=“communism”]::before { background: #cc0000; }
+.ideology-card[data-id=“socialism”] {
+background: rgba(231,76,60,0.08);
+}
+.ideology-card[data-id=“socialism”]::before { background: #e74c3c; }
+.ideology-card[data-id=“capitalism”] {
+background: rgba(52,152,219,0.08);
+}
+.ideology-card[data-id=“capitalism”]::before { background: #3498db; }
+.ideology-card[data-id=“fascism”] {
+background: rgba(44,44,44,0.4);
+}
+.ideology-card[data-id=“fascism”]::before { background: #555; }
+.ideology-card[data-id=“nationalism”] {
+background: rgba(243,156,18,0.08);
+}
+.ideology-card[data-id=“nationalism”]::before { background: #f39c12; }
+
+.ideology-card:hover {
+transform: translateY(-2px);
+box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+}
+.ideology-card.active {
+border-color: var(–accent-gold);
+}
+.ideology-card h3 {
+font-family: var(–font-display); font-size: 1.1rem;
+margin-bottom: 0.25rem;
+}
+.ideology-card .ideology-one-line {
+font-size: 0.85rem; color: var(–text-secondary);
+font-style: italic;
+}
+.ideology-detail-panel {
+background: var(–bg-card); border: 1px solid rgba(212,168,71,0.2);
+border-radius: 10px; padding: 2rem; margin-top: 1.5rem;
+display: none;
+}
+.ideology-detail-panel.visible { display: block; animation: fadeUp 0.4s; }
+.ideology-detail-panel h3 {
+font-family: var(–font-display); font-size: 1.4rem; margin-bottom: 1rem;
+}
+.ideology-detail-panel .detail-grid {
+display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem;
+}
+.detail-item {
+background: rgba(240,236,228,0.04); border-radius: 6px; padding: 1rem;
+}
+.detail-item .detail-label {
+font-size: 0.72rem; text-transform: uppercase;
+letter-spacing: 0.1em; color: var(–accent-gold);
+margin-bottom: 0.35rem; font-weight: 700;
+}
+.detail-item .detail-text {
+font-size: 0.95rem; color: var(–text-secondary);
+font-family: var(–font-serif); line-height: 1.6;
+}
+.real-world-example {
+margin-top: 1.25rem; padding: 1rem 1.25rem;
+background: rgba(212,168,71,0.06);
+border-left: 3px solid var(–accent-gold);
+border-radius: 0 6px 6px 0;
+}
+.real-world-example .rw-label {
+font-size: 0.72rem; text-transform: uppercase;
+letter-spacing: 0.1em; color: var(–accent-gold);
+font-weight: 700; margin-bottom: 0.35rem;
+}
+.real-world-example p {
+font-size: 0.95rem; color: var(–text-secondary);
+font-family: var(–font-serif); margin-bottom: 0;
+}
+
+/* ── COMPARISON TABLE ── */
+.comparison-section {
+margin: 2.5rem 0;
+}
+.comparison-table {
+width: 100%; border-collapse: separate; border-spacing: 0;
+background: var(–bg-card); border-radius: 10px; overflow: hidden;
+border: 1px solid rgba(240,236,228,0.06);
+}
+.comparison-table th {
+font-family: var(–font-display); font-size: 1.1rem;
+padding: 1.25rem 1rem; text-align: center;
+border-bottom: 2px solid rgba(240,236,228,0.1);
+}
+.comparison-table th:first-child {
+text-align: left; width: 22%;
+color: var(–accent-gold); font-size: 0.85rem;
+text-transform: uppercase; letter-spacing: 0.08em;
+}
+.comparison-table th.fascism-head { color: var(–text-primary); }
+.comparison-table th.communism-head { color: var(–communist-red); }
+.comparison-table td {
+padding: 1rem; border-bottom: 1px solid rgba(240,236,228,0.05);
+font-size: 0.92rem; color: var(–text-secondary);
+font-family: var(–font-serif); line-height: 1.5;
+vertical-align: top;
+}
+.comparison-table td:first-child {
+font-family: var(–font-body); font-weight: 600;
+color: var(–accent-gold); font-size: 0.8rem;
+text-transform: uppercase; letter-spacing: 0.05em;
+}
+.comparison-table tr:hover td {
+background: rgba(240,236,228,0.02);
+}
+.comparison-table td:not(:first-child) { text-align: center; }
+
+/* ── TOTALITARIANISM WHEEL ── */
+.total-wheel {
+display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+gap: 1rem; margin: 2rem 0;
+}
+.wheel-spoke {
+background: var(–bg-card); border: 1px solid rgba(240,236,228,0.06);
+border-radius: 8px; padding: 1.5rem; text-align: center;
+transition: all 0.3s; cursor: pointer;
+position: relative;
+}
+.wheel-spoke:hover {
+border-color: var(–accent-red);
+transform: translateY(-3px);
+box-shadow: 0 6px 24px rgba(192,57,43,0.15);
+}
+.wheel-spoke .spoke-icon { font-size: 2rem; margin-bottom: 0.5rem; }
+.wheel-spoke h4 {
+font-family: var(–font-display); font-size: 0.95rem;
+margin-bottom: 0.35rem;
+}
+.wheel-spoke p {
+font-size: 0.82rem; color: var(–text-secondary);
+font-family: var(–font-serif); max-width: 100%;
+}
+.wheel-spoke .spoke-detail {
+display: none; margin-top: 0.75rem; padding-top: 0.75rem;
+border-top: 1px solid rgba(240,236,228,0.1);
+font-size: 0.82rem; color: var(–text-secondary);
+font-family: var(–font-serif); text-align: left;
+}
+.wheel-spoke.open .spoke-detail { display: block; }
+
+/* ── DICTATOR PROFILES ── */
+.dictator-cards {
+display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+gap: 1.5rem; margin: 2rem 0;
+}
+.dictator-card {
+background: var(–bg-card); border: 1px solid rgba(240,236,228,0.06);
+border-radius: 10px; overflow: hidden; transition: all 0.3s;
+}
+.dictator-card:hover {
+box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+transform: translateY(-2px);
+}
+.dictator-header {
+padding: 1.5rem; display: flex; align-items: center; gap: 1rem;
+border-bottom: 1px solid rgba(240,236,228,0.06);
+cursor: pointer;
+}
+.dictator-avatar {
+width: 56px; height: 56px; border-radius: 50%;
+display: flex; align-items: center; justify-content: center;
+font-size: 1.8rem; flex-shrink: 0;
+}
+.dictator-header h3 {
+font-family: var(–font-display); font-size: 1.15rem;
+margin-bottom: 0.15rem;
+}
+.dictator-header .d-subtitle {
+font-size: 0.82rem; color: var(–text-secondary);
+}
+.dictator-body {
+padding: 0 1.5rem; max-height: 0; overflow: hidden;
+transition: max-height 0.5s, padding 0.3s;
+}
+.dictator-card.open .dictator-body {
+max-height: 600px; padding: 1.5rem;
+}
+.dictator-body .d-fact {
+margin-bottom: 1rem; padding-bottom: 1rem;
+border-bottom: 1px solid rgba(240,236,228,0.05);
+}
+.dictator-body .d-fact:last-child { border-bottom: none; margin-bottom: 0; }
+.dictator-body .d-fact-label {
+font-size: 0.72rem; text-transform: uppercase;
+letter-spacing: 0.1em; color: var(–accent-gold);
+font-weight: 700; margin-bottom: 0.25rem;
+}
+.dictator-body .d-fact-text {
+font-size: 0.92rem; color: var(–text-secondary);
+font-family: var(–font-serif); line-height: 1.6;
+}
+
+/* ── CAUSE-EFFECT CHAIN ── */
+.chain-container {
+margin: 2.5rem 0; position: relative;
+}
+.chain-step {
+display: flex; align-items: stretch; margin-bottom: 0;
+position: relative;
+}
+.chain-line {
+width: 3px; background: var(–accent-gold);
+margin-left: 24px; flex-shrink: 0;
+}
+.chain-dot {
+width: 14px; height: 14px; border-radius: 50%;
+background: var(–accent-gold); border: 3px solid var(–bg-dark);
+position: absolute; left: 18px; top: 1.5rem;
+z-index: 1;
+}
+.chain-content {
+background: var(–bg-card); border: 1px solid rgba(240,236,228,0.06);
+border-radius: 8px; padding: 1.25rem 1.5rem;
+margin: 0.5rem 0 0.5rem 2.5rem; flex: 1;
+transition: all 0.3s;
+}
+.chain-content:hover {
+border-color: var(–accent-gold);
+background: var(–bg-card-hover);
+}
+.chain-content h4 {
+font-family: var(–font-display); font-size: 1rem;
+margin-bottom: 0.35rem;
+}
+.chain-content p {
+font-size: 0.9rem; color: var(–text-secondary);
+font-family: var(–font-serif); margin: 0; max-width: 100%;
+}
+.chain-arrow {
+text-align: center; color: var(–accent-gold);
+font-size: 1.2rem; padding: 0.25rem 0 0.25rem 24px;
+}
+
+/* ── QUIZ ── */
+.quiz-section {
+background: var(–bg-card); border-radius: 10px;
+padding: 2rem; margin: 2.5rem 0;
+border: 1px solid rgba(240,236,228,0.06);
+}
+.quiz-q {
+margin-bottom: 1.5rem; padding-bottom: 1.5rem;
+border-bottom: 1px solid rgba(240,236,228,0.06);
+}
+.quiz-q:last-child { border-bottom: none; }
+.quiz-q h4 {
+font-family: var(–font-display); font-size: 1rem;
+margin-bottom: 0.75rem;
+}
+.quiz-options { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.quiz-opt {
+background: rgba(240,236,228,0.04); border: 1.5px solid rgba(240,236,228,0.1);
+border-radius: 6px; padding: 0.6rem 1rem; cursor: pointer;
+font-size: 0.9rem; transition: all 0.25s; font-family: var(–font-body);
+color: var(–text-secondary);
+}
+.quiz-opt:hover {
+border-color: var(–accent-gold); color: var(–text-primary);
+}
+.quiz-opt.correct {
+background: rgba(39,174,96,0.15); border-color: var(–accent-green);
+color: var(–accent-green);
+}
+.quiz-opt.wrong {
+background: rgba(192,57,43,0.15); border-color: var(–accent-red);
+color: var(–accent-red-light);
+}
+.quiz-feedback {
+margin-top: 0.5rem; font-size: 0.85rem;
+font-family: var(–font-serif); display: none;
+}
+
+/* ── PIE CHART (CSS) ── */
+.pie-container {
+display: flex; flex-wrap: wrap; gap: 2rem;
+align-items: center; justify-content: center;
+margin: 2rem 0;
+}
+.css-pie {
+width: 200px; height: 200px; border-radius: 50%;
+position: relative; overflow: hidden;
+}
+.pie-legend {
+display: flex; flex-direction: column; gap: 0.5rem;
+}
+.pie-legend-item {
+display: flex; align-items: center; gap: 0.5rem;
+font-size: 0.88rem; color: var(–text-secondary);
+}
+.pie-legend-color {
+width: 14px; height: 14px; border-radius: 3px; flex-shrink: 0;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+.section { padding: 3rem 1.25rem; }
+.lang-bar { padding: 0 1rem; }
+.section-nav { gap: 0; }
+.nav-link { padding: 8px 8px; font-size: 0.68rem; }
+.inflation-chart { height: 200px; }
+.comparison-table { font-size: 0.82rem; }
+.comparison-table td, .comparison-table th { padding: 0.75rem 0.5rem; }
+.ideology-detail-panel .detail-grid { grid-template-columns: 1fr; }
+.dictator-cards { grid-template-columns: 1fr; }
+}
+
+/* ── UTILITY ── */
+.hidden { display: none !important; }
+.mt-1 { margin-top: 1rem; }
+.mt-2 { margin-top: 2rem; }
+.text-gold { color: var(–accent-gold); }
+.text-red { color: var(–accent-red-light); }
+.text-center { text-align: center; }
+.callout {
+background: rgba(212,168,71,0.06);
+border-left: 3px solid var(–accent-gold);
+padding: 1rem 1.25rem; border-radius: 0 6px 6px 0;
+margin: 1.5rem 0;
+}
+.callout p { margin: 0; font-size: 0.95rem; }
+.emoji-big { font-size: 3.5rem; text-align: center; margin-bottom: 0.5rem; }
+</style>
+
+</head>
+<body>
+
+<!-- ═══════════ LANGUAGE BAR ═══════════ -->
+
+<div class="lang-bar">
+  <div class="site-title" data-en="Mr. Miljus' Class" data-es="Clase del Sr. Miljus" data-fr="Classe de M. Miljus">Mr. Miljus' Class</div>
+  <div class="lang-buttons">
+    <button class="lang-btn active" onclick="setLang('en')">English</button>
+    <button class="lang-btn" onclick="setLang('es')">Español</button>
+    <button class="lang-btn" onclick="setLang('fr')">Français</button>
+  </div>
+</div>
+
+<!-- ═══════════ SECTION NAV ═══════════ -->
+
+<nav class="section-nav">
+  <a href="#treaty" class="nav-link" data-en="Treaty" data-es="Tratado" data-fr="Traité">Treaty</a>
+  <a href="#inflation" class="nav-link" data-en="Hyperinflation" data-es="Hiperinflación" data-fr="Hyperinflation">Hyperinflation</a>
+  <a href="#ideologies" class="nav-link" data-en="Ideologies" data-es="Ideologías" data-fr="Idéologies">Ideologies</a>
+  <a href="#nationalism" class="nav-link" data-en="Nationalism" data-es="Nacionalismo" data-fr="Nationalisme">Nationalism</a>
+  <a href="#totalitarianism" class="nav-link" data-en="Totalitarianism" data-es="Totalitarismo" data-fr="Totalitarisme">Totalitarianism</a>
+  <a href="#compare" class="nav-link" data-en="Fascism vs. Stalin" data-es="Fascismo vs. Stalin" data-fr="Fascisme vs. Staline">Fascism vs. Stalin</a>
+  <a href="#dictators" class="nav-link" data-en="Dictators" data-es="Dictadores" data-fr="Dictateurs">Dictators</a>
+  <a href="#chain" class="nav-link" data-en="Cause → Effect" data-es="Causa → Efecto" data-fr="Cause → Effet">Cause → Effect</a>
+  <a href="#check" class="nav-link" data-en="Check" data-es="Prueba" data-fr="Vérifier">Check</a>
+</nav>
+
+<!-- ═══════════ HERO ═══════════ -->
+
+<section class="hero" id="top">
+  <div class="hero-date" data-en="1919 – 1939" data-es="1919 – 1939" data-fr="1919 – 1939">1919 – 1939</div>
+  <h1>
+    <span data-en="From War" data-es="De la Guerra" data-fr="De la Guerre">From War</span>
+    <br>
+    <span class="lang-text" data-en="to War" data-es="a la Guerra" data-fr="à la Guerre">to War</span>
+  </h1>
+  <p class="hero-sub" data-en="World War I ended in 1918. But the peace was not really peace. The decisions made after the war created anger, poverty, and fear — and new, dangerous leaders used those feelings to take power. This is the story of how the world moved from one war to the next." data-es="La Primera Guerra Mundial terminó en 1918. Pero la paz no era realmente paz. Las decisiones tomadas después de la guerra crearon rabia, pobreza y miedo — y nuevos líderes peligrosos usaron esos sentimientos para tomar el poder. Esta es la historia de cómo el mundo pasó de una guerra a la siguiente." data-fr="La Première Guerre mondiale s'est terminée en 1918. Mais la paix n'était pas vraiment la paix. Les décisions prises après la guerre ont créé de la colère, de la pauvreté et de la peur — et de nouveaux dirigeants dangereux ont utilisé ces sentiments pour prendre le pouvoir. Voici l'histoire de comment le monde est passé d'une guerre à la suivante.">World War I ended in 1918. But the peace was not really peace. The decisions made after the war created anger, poverty, and fear — and new, dangerous leaders used those feelings to take power. This is the story of how the world moved from one war to the next.</p>
+  <div class="hero-arrow"><a href="#treaty">▼</a></div>
+</section>
+
+<!-- ═══════════ 1. TREATY OF VERSAILLES ═══════════ -->
+
+<div class="divider"></div>
+<section class="section" id="treaty">
+  <div class="section-label" data-en="Section 1" data-es="Sección 1" data-fr="Section 1">Section 1</div>
+  <h2 data-en="The Treaty of Versailles &amp; the <span>War Guilt Clause</span>" data-es="El Tratado de Versalles y la <span>Cláusula de Culpa de Guerra</span>" data-fr="Le Traité de Versailles et la <span>Clause de Culpabilité de Guerre</span>">The Treaty of Versailles &amp; the <span>War Guilt Clause</span></h2>
+
+  <p data-en="After World War I, the winning countries (the Allies) forced Germany to sign the Treaty of Versailles in 1919. Article 231 — the War Guilt Clause — said Germany was <strong>completely responsible</strong> for the war. This was not just words. It came with real punishments that crushed Germany." data-es="Después de la Primera Guerra Mundial, los países ganadores (los Aliados) obligaron a Alemania a firmar el Tratado de Versalles en 1919. El Artículo 231 — la Cláusula de Culpa de Guerra — decía que Alemania era <strong>completamente responsable</strong> de la guerra. Esto no era solo palabras. Venía con castigos reales que aplastaron a Alemania." data-fr="Après la Première Guerre mondiale, les pays vainqueurs (les Alliés) ont forcé l'Allemagne à signer le Traité de Versailles en 1919. L'article 231 — la Clause de Culpabilité de Guerre — disait que l'Allemagne était <strong>entièrement responsable</strong> de la guerre. Ce n'étaient pas que des mots. Cela venait avec de vraies punitions qui ont écrasé l'Allemagne.">After World War I, the winning countries (the Allies) forced Germany to sign the Treaty of Versailles in 1919. Article 231 — the War Guilt Clause — said Germany was <strong>completely responsible</strong> for the war. This was not just words. It came with real punishments that crushed Germany.</p>
+
+  <p class="callout" style="margin-bottom:0">
+    <span data-en="💡 <strong>Think of it this way:</strong> Imagine you and four friends get into a fight. Afterward, everyone blames only YOU. You have to pay for all the damage. You lose your car, your room, and you can only carry a small bag. That is what happened to Germany." data-es="💡 <strong>Piénsalo así:</strong> Imagina que tú y cuatro amigos se pelean. Después, todos te culpan SOLO A TI. Tú tienes que pagar todo el daño. Pierdes tu carro, tu cuarto, y solo puedes cargar una bolsa pequeña. Eso fue lo que le pasó a Alemania." data-fr="💡 <strong>Pensez-y comme ceci :</strong> Imaginez que vous et quatre amis vous battez. Après, tout le monde ne blâme que VOUS. Vous devez payer tous les dégâts. Vous perdez votre voiture, votre chambre, et vous ne pouvez porter qu'un petit sac. C'est ce qui est arrivé à l'Allemagne.">💡 <strong>Think of it this way:</strong> Imagine you and four friends get into a fight. Afterward, everyone blames only YOU. You have to pay for all the damage. You lose your car, your room, and you can only carry a small bag. That is what happened to Germany.</span>
+  </p>
+
+  <div class="treaty-grid">
+    <div class="treaty-card" onclick="toggleCard(this)">
+      <div class="card-icon">💰</div>
+      <h3 data-en="Reparations" data-es="Reparaciones" data-fr="Réparations">Reparations</h3>
+      <div class="card-detail" data-en="Germany had to pay <strong>33 billion dollars</strong> (in 1919 money — that is hundreds of billions today). Germany did not have enough money. The government started printing more and more money, which destroyed the value of their currency. This is called <strong>hyperinflation</strong>." data-es="Alemania tuvo que pagar <strong>33 mil millones de dólares</strong> (en dinero de 1919 — eso son cientos de miles de millones hoy). Alemania no tenía suficiente dinero. El gobierno empezó a imprimir más y más dinero, lo que destruyó el valor de su moneda. Esto se llama <strong>hiperinflación</strong>." data-fr="L'Allemagne devait payer <strong>33 milliards de dollars</strong> (en monnaie de 1919 — c'est des centaines de milliards aujourd'hui). L'Allemagne n'avait pas assez d'argent. Le gouvernement a commencé à imprimer de plus en plus d'argent, ce qui a détruit la valeur de sa monnaie. C'est ce qu'on appelle <strong>l'hyperinflation</strong>.">Germany had to pay <strong>33 billion dollars</strong> (in 1919 money — that is hundreds of billions today). Germany did not have enough money. The government started printing more and more money, which destroyed the value of their currency. This is called <strong>hyperinflation</strong>.</div>
+      <div class="card-hint" data-en="Click to learn more ▸" data-es="Haz clic para saber más ▸" data-fr="Cliquez pour en savoir plus ▸">Click to learn more ▸</div>
+    </div>
+    <div class="treaty-card" onclick="toggleCard(this)">
+      <div class="card-icon">🗺️</div>
+      <h3 data-en="Lost Territory" data-es="Territorio Perdido" data-fr="Territoire Perdu">Lost Territory</h3>
+      <div class="card-detail" data-en="Germany lost <strong>13% of its land</strong> and <strong>10% of its people</strong>. Alsace-Lorraine went back to France. Parts of eastern Germany went to the new country of Poland. Germany also lost all its colonies in Africa and Asia. Millions of Germans now lived in other countries." data-es="Alemania perdió <strong>13% de su tierra</strong> y <strong>10% de su gente</strong>. Alsacia-Lorena volvió a Francia. Partes del este de Alemania pasaron al nuevo país de Polonia. Alemania también perdió todas sus colonias en África y Asia. Millones de alemanes ahora vivían en otros países." data-fr="L'Allemagne a perdu <strong>13% de son territoire</strong> et <strong>10% de sa population</strong>. L'Alsace-Lorraine est retournée à la France. Des parties de l'est de l'Allemagne sont allées au nouveau pays, la Pologne. L'Allemagne a aussi perdu toutes ses colonies en Afrique et en Asie. Des millions d'Allemands vivaient maintenant dans d'autres pays.">Germany lost <strong>13% of its land</strong> and <strong>10% of its people</strong>. Alsace-Lorraine went back to France. Parts of eastern Germany went to the new country of Poland. Germany also lost all its colonies in Africa and Asia. Millions of Germans now lived in other countries.</div>
+      <div class="card-hint" data-en="Click to learn more ▸" data-es="Haz clic para saber más ▸" data-fr="Cliquez pour en savoir plus ▸">Click to learn more ▸</div>
+    </div>
+    <div class="treaty-card" onclick="toggleCard(this)">
+      <div class="card-icon">⚔️</div>
+      <h3 data-en="Military Limits" data-es="Límites Militares" data-fr="Limites Militaires">Military Limits</h3>
+      <div class="card-detail" data-en="Germany's army was cut to only <strong>100,000 soldiers</strong>. No air force. No submarines. Only 6 small warships. The Rhineland (the border area with France) had to be <strong>demilitarized</strong> — no soldiers allowed. Germany went from one of the strongest militaries in the world to almost nothing." data-es="El ejército de Alemania fue reducido a solo <strong>100,000 soldados</strong>. Sin fuerza aérea. Sin submarinos. Solo 6 buques de guerra pequeños. La Renania (la zona fronteriza con Francia) tenía que ser <strong>desmilitarizada</strong> — sin soldados permitidos. Alemania pasó de tener uno de los ejércitos más fuertes del mundo a casi nada." data-fr="L'armée allemande a été réduite à seulement <strong>100 000 soldats</strong>. Pas de force aérienne. Pas de sous-marins. Seulement 6 petits navires de guerre. La Rhénanie (la zone frontalière avec la France) devait être <strong>démilitarisée</strong> — aucun soldat autorisé. L'Allemagne est passée de l'une des armées les plus puissantes du monde à presque rien.">Germany's army was cut to only <strong>100,000 soldiers</strong>. No air force. No submarines. Only 6 small warships. The Rhineland (the border area with France) had to be <strong>demilitarized</strong> — no soldiers allowed. Germany went from one of the strongest militaries in the world to almost nothing.</div>
+      <div class="card-hint" data-en="Click to learn more ▸" data-es="Haz clic para saber más ▸" data-fr="Cliquez pour en savoir plus ▸">Click to learn more ▸</div>
+    </div>
+    <div class="treaty-card" onclick="toggleCard(this)">
+      <div class="card-icon">😤</div>
+      <h3 data-en="National Humiliation" data-es="Humillación Nacional" data-fr="Humiliation Nationale">National Humiliation</h3>
+      <div class="card-detail" data-en="Germans called the treaty a <strong>&quot;Diktat&quot;</strong> — a dictated peace. They had no choice. The German people felt deep shame and anger. Many believed the treaty was unfair. This humiliation became fuel for extremist leaders like Hitler, who promised to tear up the treaty and restore German pride." data-es="Los alemanes llamaron al tratado un <strong>&quot;Diktat&quot;</strong> — una paz impuesta. No tenían opción. El pueblo alemán sintió una vergüenza y rabia profundas. Muchos creían que el tratado era injusto. Esta humillación se convirtió en combustible para líderes extremistas como Hitler, quien prometió romper el tratado y restaurar el orgullo alemán." data-fr="Les Allemands ont appelé le traité un <strong>&laquo; Diktat &raquo;</strong> — une paix dictée. Ils n'avaient pas le choix. Le peuple allemand a ressenti une honte et une colère profondes. Beaucoup croyaient que le traité était injuste. Cette humiliation est devenue le carburant pour des dirigeants extrémistes comme Hitler, qui a promis de déchirer le traité et de restaurer la fierté allemande.">Germans called the treaty a <strong>"Diktat"</strong> — a dictated peace. They had no choice. The German people felt deep shame and anger. Many believed the treaty was unfair. This humiliation became fuel for extremist leaders like Hitler, who promised to tear up the treaty and restore German pride.</div>
+      <div class="card-hint" data-en="Click to learn more ▸" data-es="Haz clic para saber más ▸" data-fr="Cliquez pour en savoir plus ▸">Click to learn more ▸</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ 2. HYPERINFLATION ═══════════ -->
+
+<div class="divider"></div>
+<section class="section" id="inflation">
+  <div class="section-label" data-en="Section 2" data-es="Sección 2" data-fr="Section 2">Section 2</div>
+  <h2 data-en="Hyperinflation: When Money <span>Becomes Worthless</span>" data-es="Hiperinflación: Cuando el Dinero <span>Pierde Su Valor</span>" data-fr="Hyperinflation : Quand l'Argent <span>Perd Sa Valeur</span>">Hyperinflation: When Money <span>Becomes Worthless</span></h2>
+
+  <p data-en="To pay the reparations, the German government printed enormous amounts of money. But printing more money does not create more wealth — it just makes each bill worth less. Prices went up so fast that workers had to spend their pay the same day, before it became worthless." data-es="Para pagar las reparaciones, el gobierno alemán imprimió enormes cantidades de dinero. Pero imprimir más dinero no crea más riqueza — solo hace que cada billete valga menos. Los precios subieron tan rápido que los trabajadores tenían que gastar su pago el mismo día, antes de que perdiera su valor." data-fr="Pour payer les réparations, le gouvernement allemand a imprimé d'énormes quantités d'argent. Mais imprimer plus d'argent ne crée pas plus de richesse — cela fait juste que chaque billet vaut moins. Les prix montaient si vite que les travailleurs devaient dépenser leur salaire le jour même, avant qu'il ne perde sa valeur.">To pay the reparations, the German government printed enormous amounts of money. But printing more money does not create more wealth — it just makes each bill worth less. Prices went up so fast that workers had to spend their pay the same day, before it became worthless.</p>
+
+  <div class="inflation-visual">
+    <div class="chart-title" data-en="🍞 Price of One Loaf of Bread in Germany" data-es="🍞 Precio de Una Barra de Pan en Alemania" data-fr="🍞 Prix d'un Pain en Allemagne">🍞 Price of One Loaf of Bread in Germany</div>
+    <div class="chart-subtitle" data-en="(in German Marks)" data-es="(en Marcos Alemanes)" data-fr="(en Marks Allemands)">(in German Marks)</div>
+    <div class="inflation-chart" id="inflationChart"></div>
+
+```
+<div class="bread-comparison">
+  <div class="bread-card">
+    <div class="year">1918</div>
+    <div class="price">0.5 Mark</div>
+    <div class="note" data-en="Normal price — a worker could buy bread easily" data-es="Precio normal — un trabajador podía comprar pan fácilmente" data-fr="Prix normal — un travailleur pouvait acheter du pain facilement">Normal price — a worker could buy bread easily</div>
+  </div>
+  <div class="bread-card">
+    <div class="year">1922</div>
+    <div class="price">163 Marks</div>
+    <div class="note" data-en="Prices rising fast — families worried" data-es="Los precios suben rápido — las familias se preocupan" data-fr="Les prix montent vite — les familles s'inquiètent">Prices rising fast — families worried</div>
+  </div>
+  <div class="bread-card">
+    <div class="year" style="font-size:1rem">Nov. 1923</div>
+    <div class="price" style="font-size:1.1rem">200,000,000,000 Marks</div>
+    <div class="note" data-en="200 BILLION marks for one loaf! People burned money for heat because it was worth less than wood." data-es="¡200 MIL MILLONES de marcos por una barra! La gente quemaba dinero para calentarse porque valía menos que la leña." data-fr="200 MILLIARDS de marks pour un pain ! Les gens brûlaient l'argent pour se chauffer car il valait moins que le bois.">200 BILLION marks for one loaf! People burned money for heat because it was worth less than wood.</div>
+  </div>
+</div>
+```
+
+  </div>
+
+  <div class="callout">
+    <p data-en="📌 <strong>Why does this matter?</strong> When people lose their savings, their jobs, and cannot feed their families, they become desperate. Desperate people look for someone to blame — and for a strong leader who promises to fix everything. This is exactly what happened in Germany." data-es="📌 <strong>¿Por qué importa esto?</strong> Cuando las personas pierden sus ahorros, sus trabajos y no pueden alimentar a sus familias, se desesperan. Las personas desesperadas buscan a alguien a quien culpar — y a un líder fuerte que prometa arreglarlo todo. Esto es exactamente lo que pasó en Alemania." data-fr="📌 <strong>Pourquoi est-ce important ?</strong> Quand les gens perdent leurs économies, leurs emplois et ne peuvent pas nourrir leurs familles, ils deviennent désespérés. Les personnes désespérées cherchent quelqu'un à blâmer — et un leader fort qui promet de tout réparer. C'est exactement ce qui s'est passé en Allemagne.">📌 <strong>Why does this matter?</strong> When people lose their savings, their jobs, and cannot feed their families, they become desperate. Desperate people look for someone to blame — and for a strong leader who promises to fix everything. This is exactly what happened in Germany.</p>
+  </div>
+</section>
+
+<!-- ═══════════ 3. POLITICAL IDEOLOGIES ═══════════ -->
+
+<div class="divider"></div>
+<section class="section" id="ideologies">
+  <div class="section-label" data-en="Section 3" data-es="Sección 3" data-fr="Section 3">Section 3</div>
+  <h2 data-en="Political Ideologies: <span>Big Ideas</span> That Shaped the World" data-es="Ideologías Políticas: <span>Grandes Ideas</span> Que Formaron el Mundo" data-fr="Idéologies Politiques : <span>Grandes Idées</span> Qui Ont Façonné le Monde">Political Ideologies: <span>Big Ideas</span> That Shaped the World</h2>
+
+  <p data-en="After WWI, people were looking for answers. Different countries chose very different systems to organize their economies and governments. Click each card below to understand what each system really means — not just the definition, but how it worked in real life." data-es="Después de la Primera Guerra Mundial, la gente buscaba respuestas. Diferentes países eligieron sistemas muy diferentes para organizar sus economías y gobiernos. Haz clic en cada tarjeta para entender qué significa realmente cada sistema — no solo la definición, sino cómo funcionaba en la vida real." data-fr="Après la Première Guerre mondiale, les gens cherchaient des réponses. Différents pays ont choisi des systèmes très différents pour organiser leurs économies et gouvernements. Cliquez sur chaque carte pour comprendre ce que chaque système signifie vraiment — pas seulement la définition, mais comment il fonctionnait dans la vie réelle.">After WWI, people were looking for answers. Different countries chose very different systems to organize their economies and governments. Click each card below to understand what each system really means — not just the definition, but how it worked in real life.</p>
+
+  <div class="spectrum-bar-container">
+    <div style="font-family:var(--font-display);font-size:0.95rem;margin-bottom:0.25rem" data-en="The Political Spectrum" data-es="El Espectro Político" data-fr="Le Spectre Politique">The Political Spectrum</div>
+    <div style="font-size:0.82rem;color:var(--text-secondary)" data-en="From far left to far right — where do these ideas fall?" data-es="De la extrema izquierda a la extrema derecha — ¿dónde caen estas ideas?" data-fr="De l'extrême gauche à l'extrême droite — où se situent ces idées ?">From far left to far right — where do these ideas fall?</div>
+    <div class="spectrum-bar"></div>
+    <div class="spectrum-labels">
+      <span data-en="← Far Left" data-es="← Extrema Izquierda" data-fr="← Extrême Gauche">← Far Left</span>
+      <span data-en="Center" data-es="Centro" data-fr="Centre">Center</span>
+      <span data-en="Far Right →" data-es="Extrema Derecha →" data-fr="Extrême Droite →">Far Right →</span>
+    </div>
+  </div>
+
+  <div class="ideology-cards">
+    <div class="ideology-card" data-id="communism" onclick="showIdeology('communism')">
+      <h3 data-en="Communism" data-es="Comunismo" data-fr="Communisme">Communism</h3>
+      <div class="ideology-one-line" data-en="The government owns everything for the people" data-es="El gobierno es dueño de todo para el pueblo" data-fr="Le gouvernement possède tout pour le peuple">The government owns everything for the people</div>
+    </div>
+    <div class="ideology-card" data-id="socialism" onclick="showIdeology('socialism')">
+      <h3 data-en="Socialism" data-es="Socialismo" data-fr="Socialisme">Socialism</h3>
+      <div class="ideology-one-line" data-en="The community shares control of major resources" data-es="La comunidad comparte el control de los recursos principales" data-fr="La communauté partage le contrôle des ressources principales">The community shares control of major resources</div>
+    </div>
+    <div class="ideology-card" data-id="capitalism" onclick="showIdeology('capitalism')">
+      <h3 data-en="Capitalism" data-es="Capitalismo" data-fr="Capitalisme">Capitalism</h3>
+      <div class="ideology-one-line" data-en="Private people own businesses and compete freely" data-es="Las personas privadas son dueñas de negocios y compiten libremente" data-fr="Les individus possèdent les entreprises et sont en concurrence">Private people own businesses and compete freely</div>
+    </div>
+    <div class="ideology-card" data-id="fascism" onclick="showIdeology('fascism')">
+      <h3 data-en="Fascism" data-es="Fascismo" data-fr="Fascisme">Fascism</h3>
+      <div class="ideology-one-line" data-en="One leader, one nation, total obedience" data-es="Un líder, una nación, obediencia total" data-fr="Un chef, une nation, obéissance totale">One leader, one nation, total obedience</div>
+    </div>
+    <div class="ideology-card" data-id="nationalism" onclick="showIdeology('nationalism')">
+      <h3 data-en="Nationalism" data-es="Nacionalismo" data-fr="Nationalisme">Nationalism</h3>
+      <div class="ideology-one-line" data-en="&quot;My country is the best and most important&quot;" data-es="&quot;Mi país es el mejor y más importante&quot;" data-fr="&quot;Mon pays est le meilleur et le plus important&quot;">"My country is the best and most important"</div>
+    </div>
+  </div>
+
+  <!-- DETAIL PANELS (hidden by default) -->
+
+  <div class="ideology-detail-panel" id="detail-communism">
+    <h3 data-en="☭ Communism" data-es="☭ Comunismo" data-fr="☭ Communisme">☭ Communism</h3>
+    <div class="detail-grid">
+      <div class="detail-item">
+        <div class="detail-label" data-en="Who owns things?" data-es="¿Quién es dueño de las cosas?" data-fr="Qui possède les choses ?">Who owns things?</div>
+        <div class="detail-text" data-en="The government owns ALL property — factories, farms, land, businesses. No private ownership. The idea is that everything belongs to everyone equally." data-es="El gobierno es dueño de TODA la propiedad — fábricas, granjas, tierras, negocios. Sin propiedad privada. La idea es que todo pertenece a todos por igual." data-fr="Le gouvernement possède TOUTE la propriété — usines, fermes, terres, entreprises. Pas de propriété privée. L'idée est que tout appartient à tous de manière égale.">The government owns ALL property — factories, farms, land, businesses. No private ownership. The idea is that everything belongs to everyone equally.</div>
+      </div>
+      <div class="detail-item">
+        <div class="detail-label" data-en="Who has power?" data-es="¿Quién tiene el poder?" data-fr="Qui a le pouvoir ?">Who has power?</div>
+        <div class="detail-text" data-en="In theory: the workers. In practice: one political party (the Communist Party) controls everything. No other parties allowed. No real elections." data-es="En teoría: los trabajadores. En la práctica: un solo partido político (el Partido Comunista) controla todo. No se permiten otros partidos. No hay elecciones reales." data-fr="En théorie : les travailleurs. En pratique : un seul parti politique (le Parti communiste) contrôle tout. Aucun autre parti autorisé. Pas de vraies élections.">In theory: the workers. In practice: one political party (the Communist Party) controls everything. No other parties allowed. No real elections.</div>
+      </div>
+      <div class="detail-item">
+        <div class="detail-label" data-en="The goal" data-es="El objetivo" data-fr="L'objectif">The goal</div>
+        <div class="detail-text" data-en="A classless society — no rich, no poor. Everyone is supposed to have the same amount. Workers are valued above all." data-es="Una sociedad sin clases — sin ricos, sin pobres. Se supone que todos tienen lo mismo. Los trabajadores son valorados por encima de todo." data-fr="Une société sans classes — pas de riches, pas de pauvres. Tout le monde est censé avoir la même chose. Les travailleurs sont valorisés avant tout.">A classless society — no rich, no poor. Everyone is supposed to have the same amount. Workers are valued above all.</div>
+      </div>
+      <div class="detail-item">
+        <div class="detail-label" data-en="The problem" data-es="El problema" data-fr="Le problème">The problem</div>
+        <div class="detail-text" data-en="In real life, communist governments often became dictatorships. The leaders lived in luxury while ordinary people suffered. Anyone who disagreed was punished or killed." data-es="En la vida real, los gobiernos comunistas a menudo se convirtieron en dictaduras. Los líderes vivían en lujo mientras la gente común sufría. Cualquiera que no estuviera de acuerdo era castigado o asesinado." data-fr="Dans la vie réelle, les gouvernements communistes sont souvent devenus des dictatures. Les dirigeants vivaient dans le luxe tandis que les gens ordinaires souffraient. Quiconque n'était pas d'accord était puni ou tué.">In real life, communist governments often became dictatorships. The leaders lived in luxury while ordinary people suffered. Anyone who disagreed was punished or killed.</div>
+      </div>
+    </div>
+    <div class="real-world-example">
+      <div class="rw-label" data-en="Real World Example" data-es="Ejemplo del Mundo Real" data-fr="Exemple Concret">Real World Example</div>
+      <p data-en="The Soviet Union (Russia) under Lenin and then Stalin. After the Russian Revolution in 1917, the Bolsheviks created the world's first communist state. Stalin took power in the late 1920s and turned the USSR into one of the most brutal dictatorships in history." data-es="La Unión Soviética (Rusia) bajo Lenin y luego Stalin. Después de la Revolución Rusa en 1917, los bolcheviques crearon el primer estado comunista del mundo. Stalin tomó el poder a finales de los años 1920 y convirtió a la URSS en una de las dictaduras más brutales de la historia." data-fr="L'Union soviétique (Russie) sous Lénine puis Staline. Après la Révolution russe de 1917, les bolcheviks ont créé le premier État communiste du monde. Staline a pris le pouvoir à la fin des années 1920 et a transformé l'URSS en l'une des dictatures les plus brutales de l'histoire.">The Soviet Union (Russia) under Lenin and then Stalin. After the Russian Revolution in 1917, the Bolsheviks created the world's first communist state. Stalin took power in the late 1920s and turned the USSR into one of the most brutal dictatorships in history.</p>
+    </div>
+  </div>
+
+  <div class="ideology-detail-panel" id="detail-socialism">
+    <h3 data-en="🤝 Socialism" data-es="🤝 Socialismo" data-fr="🤝 Socialisme">🤝 Socialism</h3>
+    <div class="detail-grid">
+      <div class="detail-item">
+        <div class="detail-label" data-en="Who owns things?" data-es="¿Quién es dueño de las cosas?" data-fr="Qui possède les choses ?">Who owns things?</div>
+        <div class="detail-text" data-en="The government or the community owns major industries (like energy, healthcare, transportation). But people can still own personal property — their house, car, small businesses." data-es="El gobierno o la comunidad es dueño de las industrias principales (como energía, salud, transporte). Pero la gente todavía puede ser dueña de propiedad personal — su casa, carro, pequeños negocios." data-fr="Le gouvernement ou la communauté possède les industries principales (comme l'énergie, la santé, les transports). Mais les gens peuvent encore posséder des biens personnels — leur maison, voiture, petites entreprises.">The government or the community owns major industries (like energy, healthcare, transportation). But people can still own personal property — their house, car, small businesses.</div>
+      </div>
+      <div class="detail-item">
+        <div class="detail-label" data-en="How is it different from communism?" data-es="¿En qué se diferencia del comunismo?" data-fr="En quoi est-ce différent du communisme ?">How is it different from communism?</div>
+        <div class="detail-text" data-en="Socialism can exist in a democracy. People still vote. There can be multiple political parties. Communism usually requires revolution and one-party rule. Think of socialism as the middle ground." data-es="El socialismo puede existir en una democracia. La gente todavía vota. Puede haber múltiples partidos políticos. El comunismo usualmente requiere revolución y gobierno de un solo partido. Piensa en el socialismo como el punto medio." data-fr="Le socialisme peut exister dans une démocratie. Les gens votent encore. Il peut y avoir plusieurs partis politiques. Le communisme exige généralement une révolution et le gouvernement d'un seul parti. Pensez au socialisme comme le juste milieu.">Socialism can exist in a democracy. People still vote. There can be multiple political parties. Communism usually requires revolution and one-party rule. Think of socialism as the middle ground.</div>
+      </div>
+    </div>
+    <div class="real-world-example">
+      <div class="rw-label" data-en="Think of it this way" data-es="Piénsalo así" data-fr="Pensez-y comme ceci">Think of it this way</div>
+      <p data-en="If your school cafeteria gave free lunch to every student, paid for by taxes — that is a socialist idea. Everyone chips in so everyone is fed. You still own your backpack, your phone, your clothes. But the big, important things are shared." data-es="Si la cafetería de tu escuela diera almuerzo gratis a cada estudiante, pagado con impuestos — esa es una idea socialista. Todos aportan para que todos coman. Todavía eres dueño de tu mochila, tu teléfono, tu ropa. Pero las cosas grandes e importantes se comparten." data-fr="Si la cafétéria de votre école donnait un déjeuner gratuit à chaque élève, payé par les impôts — c'est une idée socialiste. Tout le monde contribue pour que tout le monde mange. Vous possédez toujours votre sac à dos, votre téléphone, vos vêtements. Mais les grandes choses importantes sont partagées.">If your school cafeteria gave free lunch to every student, paid for by taxes — that is a socialist idea. Everyone chips in so everyone is fed. You still own your backpack, your phone, your clothes. But the big, important things are shared.</p>
+    </div>
+  </div>
+
+  <div class="ideology-detail-panel" id="detail-capitalism">
+    <h3 data-en="💼 Capitalism" data-es="💼 Capitalismo" data-fr="💼 Capitalisme">💼 Capitalism</h3>
+    <div class="detail-grid">
+      <div class="detail-item">
+        <div class="detail-label" data-en="Who owns things?" data-es="¿Quién es dueño de las cosas?" data-fr="Qui possède les choses ?">Who owns things?</div>
+        <div class="detail-text" data-en="Private individuals and companies. You can start a business, make a product, and keep the profits. The government stays mostly out of the economy." data-es="Individuos privados y empresas. Puedes empezar un negocio, hacer un producto y quedarte con las ganancias. El gobierno se mantiene mayormente fuera de la economía." data-fr="Les individus privés et les entreprises. Vous pouvez créer une entreprise, fabriquer un produit et garder les bénéfices. Le gouvernement reste principalement en dehors de l'économie.">Private individuals and companies. You can start a business, make a product, and keep the profits. The government stays mostly out of the economy.</div>
+      </div>
+      <div class="detail-item">
+        <div class="detail-label" data-en="How does it work?" data-es="¿Cómo funciona?" data-fr="Comment ça fonctionne ?">How does it work?</div>
+        <div class="detail-text" data-en="Competition and supply and demand. If you make a good product, people buy it and you succeed. If not, you fail. The market — not the government — decides what gets made and what things cost." data-es="Competencia y oferta y demanda. Si haces un buen producto, la gente lo compra y tienes éxito. Si no, fracasas. El mercado — no el gobierno — decide qué se produce y cuánto cuestan las cosas." data-fr="La concurrence et l'offre et la demande. Si vous faites un bon produit, les gens l'achètent et vous réussissez. Sinon, vous échouez. Le marché — pas le gouvernement — décide ce qui est produit et combien les choses coûtent.">Competition and supply and demand. If you make a good product, people buy it and you succeed. If not, you fail. The market — not the government — decides what gets made and what things cost.</div>
+      </div>
+    </div>
+    <div class="real-world-example">
+      <div class="rw-label" data-en="Real World Example" data-es="Ejemplo del Mundo Real" data-fr="Exemple Concret">Real World Example</div>
+      <p data-en="The United States. Anyone can try to start a business. There are rich people and poor people. The government does not decide your salary or where you work. The strength: freedom and opportunity. The risk: inequality — some people become extremely rich while others stay poor." data-es="Los Estados Unidos. Cualquiera puede intentar empezar un negocio. Hay personas ricas y personas pobres. El gobierno no decide tu salario ni dónde trabajas. La fortaleza: libertad y oportunidad. El riesgo: desigualdad — algunas personas se vuelven extremadamente ricas mientras otras siguen siendo pobres." data-fr="Les États-Unis. Tout le monde peut essayer de créer une entreprise. Il y a des riches et des pauvres. Le gouvernement ne décide pas votre salaire ni où vous travaillez. La force : liberté et opportunité. Le risque : inégalité — certaines personnes deviennent extrêmement riches tandis que d'autres restent pauvres.">The United States. Anyone can try to start a business. There are rich people and poor people. The government does not decide your salary or where you work. The strength: freedom and opportunity. The risk: inequality — some people become extremely rich while others stay poor.</p>
+    </div>
+  </div>
+
+  <div class="ideology-detail-panel" id="detail-fascism">
+    <h3 data-en="✊ Fascism" data-es="✊ Fascismo" data-fr="✊ Fascisme">✊ Fascism</h3>
+    <div class="detail-grid">
+      <div class="detail-item">
+        <div class="detail-label" data-en="What is it?" data-es="¿Qué es?" data-fr="Qu'est-ce que c'est ?">What is it?</div>
+        <div class="detail-text" data-en="An extreme right-wing system where ONE leader has total power. The nation and its glory come above everything — above individual rights, above truth, above law. Fascism uses violence, propaganda, and fear to control people." data-es="Un sistema de extrema derecha donde UN líder tiene poder total. La nación y su gloria están por encima de todo — por encima de los derechos individuales, la verdad, la ley. El fascismo usa la violencia, la propaganda y el miedo para controlar a la gente." data-fr="Un système d'extrême droite où UN seul dirigeant a le pouvoir total. La nation et sa gloire sont au-dessus de tout — au-dessus des droits individuels, de la vérité, de la loi. Le fascisme utilise la violence, la propagande et la peur pour contrôler les gens.">An extreme right-wing system where ONE leader has total power. The nation and its glory come above everything — above individual rights, above truth, above law. Fascism uses violence, propaganda, and fear to control people.</div>
+      </div>
+      <div class="detail-item">
+        <div class="detail-label" data-en="Key features" data-es="Características clave" data-fr="Caractéristiques clés">Key features</div>
+        <div class="detail-text" data-en="Aggressive nationalism (our nation is superior). Military power is glorified. An enemy group is blamed for all problems (Jews in Germany, for example). No free press. No opposition allowed. The leader is treated like a god." data-es="Nacionalismo agresivo (nuestra nación es superior). El poder militar es glorificado. Un grupo enemigo es culpado de todos los problemas (los judíos en Alemania, por ejemplo). Sin prensa libre. Sin oposición permitida. El líder es tratado como un dios." data-fr="Nationalisme agressif (notre nation est supérieure). Le pouvoir militaire est glorifié. Un groupe ennemi est blâmé pour tous les problèmes (les Juifs en Allemagne, par exemple). Pas de presse libre. Pas d'opposition autorisée. Le leader est traité comme un dieu.">Aggressive nationalism (our nation is superior). Military power is glorified. An enemy group is blamed for all problems (Jews in Germany, for example). No free press. No opposition allowed. The leader is treated like a god.</div>
+      </div>
+    </div>
+    <div class="real-world-example">
+      <div class="rw-label" data-en="How to picture fascism" data-es="Cómo imaginar el fascismo" data-fr="Comment imaginer le fascisme">How to picture fascism</div>
+      <p data-en="Imagine a school where the principal has ALL the power. No student council. No parent meetings. You cannot question any rule. You must wear the school uniform, chant the school motto, and report any student who complains. Students from one neighborhood are told they are better than everyone else. Students from another neighborhood are punished and expelled just for existing. That is fascism — but with a whole country." data-es="Imagina una escuela donde el director tiene TODO el poder. Sin consejo estudiantil. Sin reuniones de padres. No puedes cuestionar ninguna regla. Debes usar el uniforme, repetir el lema de la escuela y reportar a cualquier estudiante que se queje. A los estudiantes de un barrio se les dice que son mejores que todos. A los de otro barrio los castigan y expulsan solo por existir. Eso es el fascismo — pero con todo un país." data-fr="Imaginez une école où le directeur a TOUT le pouvoir. Pas de conseil des élèves. Pas de réunions de parents. Vous ne pouvez questionner aucune règle. Vous devez porter l'uniforme, répéter la devise de l'école et signaler tout élève qui se plaint. On dit aux élèves d'un quartier qu'ils sont meilleurs que tous les autres. Les élèves d'un autre quartier sont punis et expulsés juste pour exister. C'est le fascisme — mais avec tout un pays.">Imagine a school where the principal has ALL the power. No student council. No parent meetings. You cannot question any rule. You must wear the school uniform, chant the school motto, and report any student who complains. Students from one neighborhood are told they are better than everyone else. Students from another neighborhood are punished and expelled just for existing. That is fascism — but with a whole country.</p>
+    </div>
+  </div>
+
+  <div class="ideology-detail-panel" id="detail-nationalism">
+    <h3 data-en="🏴 Nationalism" data-es="🏴 Nacionalismo" data-fr="🏴 Nationalisme">🏴 Nationalism</h3>
+    <div class="detail-grid">
+      <div class="detail-item">
+        <div class="detail-label" data-en="What is it?" data-es="¿Qué es?" data-fr="Qu'est-ce que c'est ?">What is it?</div>
+        <div class="detail-text" data-en="A deep belief that your nation is special and should be independent and powerful. At its best, nationalism can unite people and build pride. At its worst, it leads to hatred of other countries and groups, and the belief that your people are naturally better than others." data-es="Una creencia profunda de que tu nación es especial y debe ser independiente y poderosa. En su mejor forma, el nacionalismo puede unir a la gente y crear orgullo. En su peor forma, lleva al odio hacia otros países y grupos, y a la creencia de que tu pueblo es naturalmente mejor que los demás." data-fr="Une conviction profonde que votre nation est spéciale et doit être indépendante et puissante. Au mieux, le nationalisme peut unir les gens et créer de la fierté. Au pire, il mène à la haine des autres pays et groupes, et à la croyance que votre peuple est naturellement meilleur que les autres.">A deep belief that your nation is special and should be independent and powerful. At its best, nationalism can unite people and build pride. At its worst, it leads to hatred of other countries and groups, and the belief that your people are naturally better than others.</div>
+      </div>
+      <div class="detail-item">
+        <div class="detail-label" data-en="Nationalism after WWI" data-es="Nacionalismo después de la Primera Guerra" data-fr="Le nationalisme après la Première Guerre">Nationalism after WWI</div>
+        <div class="detail-text" data-en="Remember: nationalism helped START World War I. After the war, it got WORSE, not better. Germans felt humiliated. Italians felt cheated (they fought on the winning side but did not get the territory they were promised). Japanese leaders wanted a larger empire. These angry nationalisms all fed the rise of dictators." data-es="Recuerda: el nacionalismo ayudó a INICIAR la Primera Guerra Mundial. Después de la guerra, empeoró, no mejoró. Los alemanes se sentían humillados. Los italianos se sentían engañados (lucharon del lado ganador pero no recibieron el territorio que les prometieron). Los líderes japoneses querían un imperio más grande. Estos nacionalismos furiosos alimentaron el ascenso de los dictadores." data-fr="Rappelez-vous : le nationalisme a aidé à DÉCLENCHER la Première Guerre mondiale. Après la guerre, il est devenu PIRE, pas meilleur. Les Allemands se sentaient humiliés. Les Italiens se sentaient trompés (ils ont combattu du côté gagnant mais n'ont pas obtenu le territoire promis). Les dirigeants japonais voulaient un plus grand empire. Ces nationalismes furieux ont tous nourri la montée des dictateurs.">Remember: nationalism helped START World War I. After the war, it got WORSE, not better. Germans felt humiliated. Italians felt cheated (they fought on the winning side but did not get the territory they were promised). Japanese leaders wanted a larger empire. These angry nationalisms all fed the rise of dictators.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ 4. NATIONALISM ═══════════ -->
+
+<div class="divider"></div>
+<section class="section" id="nationalism">
+  <div class="section-label" data-en="Section 4" data-es="Sección 4" data-fr="Section 4">Section 4</div>
+  <h2 data-en="Nationalism After WWI: From <span>Pride</span> to <span>Rage</span>" data-es="El Nacionalismo Después de la Primera Guerra: Del <span>Orgullo</span> a la <span>Rabia</span>" data-fr="Le Nationalisme Après la Première Guerre : De la <span>Fierté</span> à la <span>Rage</span>">Nationalism After WWI: From <span>Pride</span> to <span>Rage</span></h2>
+
+  <p data-en="During WWI, nationalism meant: 'My country is great. I will fight for it.' After WWI, nationalism turned darker. It became: 'My country was wronged. Someone must pay.' This shift is one of the most important reasons World War II happened." data-es="Durante la Primera Guerra, el nacionalismo significaba: 'Mi país es grandioso. Lucharé por él.' Después de la guerra, el nacionalismo se volvió más oscuro. Se convirtió en: 'Mi país fue agraviado. Alguien tiene que pagar.' Este cambio es una de las razones más importantes por las que la Segunda Guerra Mundial ocurrió." data-fr="Pendant la Première Guerre, le nationalisme signifiait : « Mon pays est grand. Je me battrai pour lui. » Après la guerre, le nationalisme est devenu plus sombre. Il est devenu : « Mon pays a été lésé. Quelqu'un doit payer. » Ce changement est l'une des raisons les plus importantes pour lesquelles la Seconde Guerre mondiale a eu lieu.">During WWI, nationalism meant: "My country is great. I will fight for it." After WWI, nationalism turned darker. It became: "My country was wronged. Someone must pay." This shift is one of the most important reasons World War II happened.</p>
+
+  <div class="treaty-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr))">
+    <div class="treaty-card" onclick="toggleCard(this)">
+      <div class="card-icon">🇩🇪</div>
+      <h3 data-en="Germany" data-es="Alemania" data-fr="Allemagne">Germany</h3>
+      <div class="card-detail" data-en="Humiliated by the Treaty of Versailles. Forced to accept total blame. Lost territory, military, and wealth. Germans wanted revenge and a leader who would restore their honor. Hitler promised exactly that." data-es="Humillada por el Tratado de Versalles. Obligada a aceptar toda la culpa. Perdió territorio, ejército y riqueza. Los alemanes querían venganza y un líder que restaurara su honor. Hitler prometió exactamente eso." data-fr="Humiliée par le Traité de Versailles. Forcée d'accepter toute la responsabilité. A perdu territoire, armée et richesse. Les Allemands voulaient se venger et un leader qui restaurerait leur honneur. Hitler a promis exactement cela.">Humiliated by the Treaty of Versailles. Forced to accept total blame. Lost territory, military, and wealth. Germans wanted revenge and a leader who would restore their honor. Hitler promised exactly that.</div>
+      <div class="card-hint" data-en="Click to learn more ▸" data-es="Haz clic para saber más ▸" data-fr="Cliquez pour en savoir plus ▸">Click to learn more ▸</div>
+    </div>
+    <div class="treaty-card" onclick="toggleCard(this)">
+      <div class="card-icon">🇮🇹</div>
+      <h3 data-en="Italy" data-es="Italia" data-fr="Italie">Italy</h3>
+      <div class="card-detail" data-en="Italy fought on the WINNING side, but the Allies did not give Italy the territory they promised. Italians felt betrayed. The economy collapsed. Workers went on strike. People were afraid of a communist revolution. Mussolini took advantage of this chaos to seize power." data-es="Italia luchó del lado GANADOR, pero los Aliados no le dieron a Italia el territorio que prometieron. Los italianos se sintieron traicionados. La economía colapsó. Los trabajadores hicieron huelga. La gente tenía miedo de una revolución comunista. Mussolini aprovechó este caos para tomar el poder." data-fr="L'Italie a combattu du côté GAGNANT, mais les Alliés n'ont pas donné à l'Italie le territoire promis. Les Italiens se sont sentis trahis. L'économie s'est effondrée. Les travailleurs ont fait grève. Les gens avaient peur d'une révolution communiste. Mussolini a profité de ce chaos pour prendre le pouvoir.">Italy fought on the WINNING side, but the Allies did not give Italy the territory they promised. Italians felt betrayed. The economy collapsed. Workers went on strike. People were afraid of a communist revolution. Mussolini took advantage of this chaos to seize power.</div>
+      <div class="card-hint" data-en="Click to learn more ▸" data-es="Haz clic para saber más ▸" data-fr="Cliquez pour en savoir plus ▸">Click to learn more ▸</div>
+    </div>
+    <div class="treaty-card" onclick="toggleCard(this)">
+      <div class="card-icon">🇷🇺</div>
+      <h3 data-en="Soviet Union (Russia)" data-es="Unión Soviética (Rusia)" data-fr="Union Soviétique (Russie)">Soviet Union (Russia)</h3>
+      <div class="card-detail" data-en="Russia had its own revolution DURING WWI (1917). The Tsar was overthrown and the Bolsheviks (communists) took over. After years of civil war, Stalin rose to power in the late 1920s. He used extreme nationalism — Soviet pride — alongside communist ideology to build a totalitarian state." data-es="Rusia tuvo su propia revolución DURANTE la Primera Guerra (1917). El Zar fue derrocado y los bolcheviques (comunistas) tomaron el control. Después de años de guerra civil, Stalin ascendió al poder a finales de los años 1920. Usó un nacionalismo extremo — orgullo soviético — junto con la ideología comunista para construir un estado totalitario." data-fr="La Russie a eu sa propre révolution PENDANT la Première Guerre (1917). Le Tsar a été renversé et les bolcheviks (communistes) ont pris le pouvoir. Après des années de guerre civile, Staline est monté au pouvoir à la fin des années 1920. Il a utilisé un nationalisme extrême — la fierté soviétique — aux côtés de l'idéologie communiste pour construire un État totalitaire.">Russia had its own revolution DURING WWI (1917). The Tsar was overthrown and the Bolsheviks (communists) took over. After years of civil war, Stalin rose to power in the late 1920s. He used extreme nationalism — Soviet pride — alongside communist ideology to build a totalitarian state.</div>
+      <div class="card-hint" data-en="Click to learn more ▸" data-es="Haz clic para saber más ▸" data-fr="Cliquez pour en savoir plus ▸">Click to learn more ▸</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ 5. TOTALITARIANISM ═══════════ -->
+
+<div class="divider"></div>
+<section class="section" id="totalitarianism">
+  <div class="section-label" data-en="Section 5" data-es="Sección 5" data-fr="Section 5">Section 5</div>
+  <h2 data-en="Totalitarianism: <span>Total Control</span> Over Everything" data-es="Totalitarismo: <span>Control Total</span> Sobre Todo" data-fr="Totalitarisme : <span>Contrôle Total</span> Sur Tout">Totalitarianism: <span>Total Control</span> Over Everything</h2>
+
+  <p data-en="A totalitarian government controls EVERY part of life — not just laws and the economy, but what you think, say, read, believe, and even who your friends are. It is the most extreme form of dictatorship. Both fascist and communist governments in this period became totalitarian. Click each piece of the puzzle below." data-es="Un gobierno totalitario controla CADA parte de la vida — no solo las leyes y la economía, sino lo que piensas, dices, lees, crees, e incluso quiénes son tus amigos. Es la forma más extrema de dictadura. Tanto los gobiernos fascistas como los comunistas en este período se volvieron totalitarios. Haz clic en cada pieza del rompecabezas." data-fr="Un gouvernement totalitaire contrôle CHAQUE partie de la vie — pas seulement les lois et l'économie, mais ce que vous pensez, dites, lisez, croyez, et même qui sont vos amis. C'est la forme la plus extrême de dictature. Les gouvernements fascistes et communistes de cette période sont devenus totalitaires. Cliquez sur chaque pièce du puzzle.">A totalitarian government controls EVERY part of life — not just laws and the economy, but what you think, say, read, believe, and even who your friends are. It is the most extreme form of dictatorship. Both fascist and communist governments in this period became totalitarian. Click each piece of the puzzle below.</p>
+
+  <div class="total-wheel">
+    <div class="wheel-spoke" onclick="toggleCard(this)">
+      <div class="spoke-icon">📢</div>
+      <h4 data-en="Propaganda" data-es="Propaganda" data-fr="Propagande">Propaganda</h4>
+      <p data-en="The government controls all information" data-es="El gobierno controla toda la información" data-fr="Le gouvernement contrôle toute l'information">The government controls all information</p>
+      <div class="spoke-detail" data-en="Newspapers, radio, movies, posters, art — everything says the same message: the leader is great, the nation is strong, the enemy is evil. No other viewpoints are allowed. Children learn propaganda in school. The goal: make people believe the government's version of reality." data-es="Periódicos, radio, películas, carteles, arte — todo dice el mismo mensaje: el líder es grandioso, la nación es fuerte, el enemigo es malvado. No se permiten otros puntos de vista. Los niños aprenden propaganda en la escuela. El objetivo: hacer que la gente crea la versión de la realidad del gobierno." data-fr="Journaux, radio, films, affiches, art — tout dit le même message : le leader est grand, la nation est forte, l'ennemi est mauvais. Aucun autre point de vue n'est autorisé. Les enfants apprennent la propagande à l'école. L'objectif : faire croire aux gens la version de la réalité du gouvernement.">Newspapers, radio, movies, posters, art — everything says the same message: the leader is great, the nation is strong, the enemy is evil. No other viewpoints are allowed. Children learn propaganda in school. The goal: make people believe the government's version of reality.</div>
+    </div>
+    <div class="wheel-spoke" onclick="toggleCard(this)">
+      <div class="spoke-icon">👁️</div>
+      <h4 data-en="Secret Police" data-es="Policía Secreta" data-fr="Police Secrète">Secret Police</h4>
+      <p data-en="Spying on your own people" data-es="Espiar a tu propio pueblo" data-fr="Espionner son propre peuple">Spying on your own people</p>
+      <div class="spoke-detail" data-en="The Gestapo (Germany), the NKVD (Soviet Union), the OVRA (Italy). These secret police forces watched citizens, listened to conversations, and arrested anyone who criticized the government. Even children were encouraged to report their own parents." data-es="La Gestapo (Alemania), la NKVD (Unión Soviética), la OVRA (Italia). Estas fuerzas de policía secreta vigilaban a los ciudadanos, escuchaban conversaciones y arrestaban a cualquiera que criticara al gobierno. Hasta los niños eran alentados a reportar a sus propios padres." data-fr="La Gestapo (Allemagne), le NKVD (Union soviétique), l'OVRA (Italie). Ces forces de police secrète surveillaient les citoyens, écoutaient les conversations et arrêtaient quiconque critiquait le gouvernement. Même les enfants étaient encouragés à dénoncer leurs propres parents.">The Gestapo (Germany), the NKVD (Soviet Union), the OVRA (Italy). These secret police forces watched citizens, listened to conversations, and arrested anyone who criticized the government. Even children were encouraged to report their own parents.</div>
+    </div>
+    <div class="wheel-spoke" onclick="toggleCard(this)">
+      <div class="spoke-icon">🗳️</div>
+      <h4 data-en="One-Party Rule" data-es="Partido Único" data-fr="Parti Unique">One-Party Rule</h4>
+      <p data-en="No elections, no choices" data-es="Sin elecciones, sin opciones" data-fr="Pas d'élections, pas de choix">No elections, no choices</p>
+      <div class="spoke-detail" data-en="Only ONE political party is legal. No opposition. No debates. The leader of the party IS the leader of the country. In Germany it was the Nazi Party. In Italy, the Fascist Party. In the USSR, the Communist Party. If you joined another political group, you could be jailed or killed." data-es="Solo UN partido político es legal. Sin oposición. Sin debates. El líder del partido ES el líder del país. En Alemania era el Partido Nazi. En Italia, el Partido Fascista. En la URSS, el Partido Comunista. Si te unías a otro grupo político, podías ser encarcelado o asesinado." data-fr="Un SEUL parti politique est légal. Pas d'opposition. Pas de débats. Le leader du parti EST le leader du pays. En Allemagne c'était le Parti nazi. En Italie, le Parti fasciste. En URSS, le Parti communiste. Si vous rejoigniez un autre groupe politique, vous pouviez être emprisonné ou tué.">Only ONE political party is legal. No opposition. No debates. The leader of the party IS the leader of the country. In Germany it was the Nazi Party. In Italy, the Fascist Party. In the USSR, the Communist Party. If you joined another political group, you could be jailed or killed.</div>
+    </div>
+    <div class="wheel-spoke" onclick="toggleCard(this)">
+      <div class="spoke-icon">🎓</div>
+      <h4 data-en="Control of Education" data-es="Control de la Educación" data-fr="Contrôle de l'Éducation">Control of Education</h4>
+      <p data-en="Schools teach loyalty to the state" data-es="Las escuelas enseñan lealtad al estado" data-fr="Les écoles enseignent la loyauté envers l'État">Schools teach loyalty to the state</p>
+      <div class="spoke-detail" data-en="Textbooks were rewritten to praise the leader. History was changed. Science that disagreed with the government's beliefs was banned. Youth groups (like the Hitler Youth in Germany or the Young Pioneers in the USSR) trained children to be loyal soldiers and citizens from a young age." data-es="Los libros de texto fueron reescritos para alabar al líder. La historia fue cambiada. La ciencia que no estaba de acuerdo con las creencias del gobierno fue prohibida. Grupos juveniles (como las Juventudes Hitlerianas en Alemania o los Jóvenes Pioneros en la URSS) entrenaban a los niños para ser soldados y ciudadanos leales desde jóvenes." data-fr="Les manuels scolaires ont été réécrits pour louer le leader. L'histoire a été modifiée. La science qui contredisait les croyances du gouvernement a été interdite. Les groupes de jeunes (comme les Jeunesses hitlériennes en Allemagne ou les Jeunes Pionniers en URSS) formaient les enfants à être des soldats et citoyens loyaux dès leur jeune âge.">Textbooks were rewritten to praise the leader. History was changed. Science that disagreed with the government's beliefs was banned. Youth groups (like the Hitler Youth in Germany or the Young Pioneers in the USSR) trained children to be loyal soldiers and citizens from a young age.</div>
+    </div>
+    <div class="wheel-spoke" onclick="toggleCard(this)">
+      <div class="spoke-icon">⛓️</div>
+      <h4 data-en="Terror & Violence" data-es="Terror y Violencia" data-fr="Terreur et Violence">Terror & Violence</h4>
+      <p data-en="Fear is the main tool of control" data-es="El miedo es la herramienta principal de control" data-fr="La peur est l'outil principal de contrôle">Fear is the main tool of control</p>
+      <div class="spoke-detail" data-en="Concentration camps. Labor camps (gulags). Public executions. Mass purges. People disappeared in the middle of the night. The message was clear: obey, or this will happen to you and your family." data-es="Campos de concentración. Campos de trabajo (gulags). Ejecuciones públicas. Purgas masivas. La gente desaparecía en medio de la noche. El mensaje era claro: obedece, o esto le pasará a ti y a tu familia." data-fr="Camps de concentration. Camps de travail (goulags). Exécutions publiques. Purges massives. Les gens disparaissaient au milieu de la nuit. Le message était clair : obéissez, ou cela arrivera à vous et à votre famille.">Concentration camps. Labor camps (gulags). Public executions. Mass purges. People disappeared in the middle of the night. The message was clear: obey, or this will happen to you and your family.</div>
+    </div>
+    <div class="wheel-spoke" onclick="toggleCard(this)">
+      <div class="spoke-icon">🏭</div>
+      <h4 data-en="Economic Control" data-es="Control Económico" data-fr="Contrôle Économique">Economic Control</h4>
+      <p data-en="The government decides what to produce" data-es="El gobierno decide qué producir" data-fr="Le gouvernement décide quoi produire">The government decides what to produce</p>
+      <div class="spoke-detail" data-en="In the USSR, Five-Year Plans told every factory what to make and how much. In Nazi Germany, the economy was organized around preparing for war. Workers had limited rights. Strikes were illegal. The economy served the state — not the people." data-es="En la URSS, los Planes Quinquenales le decían a cada fábrica qué producir y cuánto. En la Alemania Nazi, la economía se organizó para prepararse para la guerra. Los trabajadores tenían derechos limitados. Las huelgas eran ilegales. La economía servía al estado — no a la gente." data-fr="En URSS, les Plans quinquennaux disaient à chaque usine quoi produire et combien. Dans l'Allemagne nazie, l'économie était organisée autour de la préparation à la guerre. Les travailleurs avaient des droits limités. Les grèves étaient illégales. L'économie servait l'État — pas le peuple.">In the USSR, Five-Year Plans told every factory what to make and how much. In Nazi Germany, the economy was organized around preparing for war. Workers had limited rights. Strikes were illegal. The economy served the state — not the people.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ 6. FASCISM VS STALIN ═══════════ -->
+
+<div class="divider"></div>
+<section class="section" id="compare">
+  <div class="section-label" data-en="Section 6" data-es="Sección 6" data-fr="Section 6">Section 6</div>
+  <h2 data-en="Fascism vs. Stalin's Communism: <span>Same Evil, Different Excuse</span>" data-es="Fascismo vs. Comunismo de Stalin: <span>El Mismo Mal, Diferente Excusa</span>" data-fr="Fascisme vs. Communisme de Staline : <span>Le Même Mal, Une Excuse Différente</span>">Fascism vs. Stalin's Communism: <span>Same Evil, Different Excuse</span></h2>
+
+  <p data-en="Both fascism and Stalin's communism were totalitarian — total control over everything. Both used violence, propaganda, and fear. But they had very different IDEAS about why they should have power. Think of two bullies in school — they both hurt people, but they give different reasons for it." data-es="Tanto el fascismo como el comunismo de Stalin eran totalitarios — control total sobre todo. Ambos usaban violencia, propaganda y miedo. Pero tenían IDEAS muy diferentes sobre por qué debían tener el poder. Piensa en dos acosadores en la escuela — ambos lastiman a la gente, pero dan razones diferentes." data-fr="Le fascisme et le communisme de Staline étaient tous deux totalitaires — contrôle total sur tout. Les deux utilisaient la violence, la propagande et la peur. Mais ils avaient des IDÉES très différentes sur pourquoi ils devaient avoir le pouvoir. Pensez à deux intimidateurs à l'école — ils font tous les deux du mal, mais ils donnent des raisons différentes.">Both fascism and Stalin's communism were totalitarian — total control over everything. Both used violence, propaganda, and fear. But they had very different IDEAS about why they should have power. Think of two bullies in school — they both hurt people, but they give different reasons for it.</p>
+
+  <div style="overflow-x:auto">
+    <table class="comparison-table">
+      <thead>
+        <tr>
+          <th></th>
+          <th class="fascism-head" data-en="Fascism (Hitler / Mussolini)" data-es="Fascismo (Hitler / Mussolini)" data-fr="Fascisme (Hitler / Mussolini)">Fascism (Hitler / Mussolini)</th>
+          <th class="communism-head" data-en="Stalin's Communism (USSR)" data-es="Comunismo de Stalin (URSS)" data-fr="Communisme de Staline (URSS)">Stalin's Communism (USSR)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td data-en="Big Idea" data-es="Gran Idea" data-fr="Grande Idée">Big Idea</td>
+          <td data-en="The NATION is everything. Our race / people are superior." data-es="La NACIÓN es todo. Nuestra raza / pueblo es superior." data-fr="La NATION est tout. Notre race / peuple est supérieur.">The NATION is everything. Our race / people are superior.</td>
+          <td data-en="The WORKERS should control everything. End class inequality." data-es="Los TRABAJADORES deben controlar todo. Acabar con la desigualdad de clases." data-fr="Les TRAVAILLEURS doivent tout contrôler. Mettre fin à l'inégalité des classes.">The WORKERS should control everything. End class inequality.</td>
+        </tr>
+        <tr>
+          <td data-en="Who Is the Enemy?" data-es="¿Quién es el Enemigo?" data-fr="Qui est l'Ennemi ?">Who Is the Enemy?</td>
+          <td data-en="Other races, other nations, immigrants, minorities (especially Jewish people in Germany)" data-es="Otras razas, otras naciones, inmigrantes, minorías (especialmente el pueblo judío en Alemania)" data-fr="D'autres races, d'autres nations, les immigrants, les minorités (surtout les Juifs en Allemagne)">Other races, other nations, immigrants, minorities (especially Jewish people in Germany)</td>
+          <td data-en="The rich (bourgeoisie), landowners, capitalists, and anyone the Party calls a 'class enemy'" data-es="Los ricos (burguesía), terratenientes, capitalistas, y cualquiera que el Partido llame 'enemigo de clase'" data-fr="Les riches (bourgeoisie), les propriétaires terriens, les capitalistes, et quiconque le Parti appelle 'ennemi de classe'">The rich (bourgeoisie), landowners, capitalists, and anyone the Party calls a "class enemy"</td>
+        </tr>
+        <tr>
+          <td data-en="Economy" data-es="Economía" data-fr="Économie">Economy</td>
+          <td data-en="Private businesses can exist, but they serve the state. The government tells businesses what to produce." data-es="Los negocios privados pueden existir, pero sirven al estado. El gobierno les dice a los negocios qué producir." data-fr="Les entreprises privées peuvent exister, mais elles servent l'État. Le gouvernement dit aux entreprises quoi produire.">Private businesses can exist, but they serve the state. The government tells businesses what to produce.</td>
+          <td data-en="NO private ownership. The government owns ALL factories, farms, land. Central planning (Five-Year Plans)." data-es="SIN propiedad privada. El gobierno es dueño de TODAS las fábricas, granjas, tierras. Planificación central (Planes Quinquenales)." data-fr="AUCUNE propriété privée. Le gouvernement possède TOUTES les usines, fermes, terres. Planification centrale (Plans quinquennaux).">NO private ownership. The government owns ALL factories, farms, land. Central planning (Five-Year Plans).</td>
+        </tr>
+        <tr>
+          <td data-en="Leadership" data-es="Liderazgo" data-fr="Leadership">Leadership</td>
+          <td data-en="A single dictator with a cult of personality. The leader IS the nation." data-es="Un solo dictador con culto a la personalidad. El líder ES la nación." data-fr="Un seul dictateur avec un culte de la personnalité. Le leader EST la nation.">A single dictator with a cult of personality. The leader IS the nation.</td>
+          <td data-en="A single dictator ruling through the Communist Party. Stalin eliminated anyone who could be a rival." data-es="Un solo dictador gobernando a través del Partido Comunista. Stalin eliminó a cualquiera que pudiera ser un rival." data-fr="Un seul dictateur gouvernant à travers le Parti communiste. Staline éliminait quiconque pouvait être un rival.">A single dictator ruling through the Communist Party. Stalin eliminated anyone who could be a rival.</td>
+        </tr>
+        <tr>
+          <td data-en="Violence" data-es="Violencia" data-fr="Violence">Violence</td>
+          <td data-en="Concentration camps, Holocaust, racial persecution, military aggression" data-es="Campos de concentración, Holocausto, persecución racial, agresión militar" data-fr="Camps de concentration, Holocauste, persécution raciale, agression militaire">Concentration camps, Holocaust, racial persecution, military aggression</td>
+          <td data-en="Gulags (forced labor camps), Great Purge (killed perceived enemies), forced famine in Ukraine (Holodomor)" data-es="Gulags (campos de trabajo forzado), Gran Purga (mató a enemigos percibidos), hambruna forzada en Ucrania (Holodomor)" data-fr="Goulags (camps de travail forcé), Grande Purge (tué les ennemis perçus), famine forcée en Ukraine (Holodomor)">Gulags (forced labor camps), Great Purge (killed perceived enemies), forced famine in Ukraine (Holodomor)</td>
+        </tr>
+        <tr>
+          <td data-en="What They Said vs. What They Did" data-es="Lo que Decían vs. Lo que Hacían" data-fr="Ce Qu'ils Disaient vs. Ce Qu'ils Faisaient">What They Said vs. What They Did</td>
+          <td data-en="Said: 'We will make our nation great again.' Did: Started the deadliest war in history." data-es="Decían: 'Haremos grande a nuestra nación otra vez.' Hicieron: Iniciaron la guerra más mortal de la historia." data-fr="Disaient : « Nous rendrons notre nation grande à nouveau. » Ont fait : Ont déclenché la guerre la plus meurtrière de l'histoire.">Said: "We will make our nation great again." Did: Started the deadliest war in history.</td>
+          <td data-en="Said: 'We will create equality for all workers.' Did: Created a system where millions starved and were enslaved." data-es="Decían: 'Crearemos igualdad para todos los trabajadores.' Hicieron: Crearon un sistema donde millones murieron de hambre y fueron esclavizados." data-fr="Disaient : « Nous créerons l'égalité pour tous les travailleurs. » Ont fait : Ont créé un système où des millions ont souffert de la famine et ont été réduits en esclavage.">Said: "We will create equality for all workers." Did: Created a system where millions starved and were enslaved.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ═══════════ 7. RISE OF DICTATORS ═══════════ -->
+
+<div class="divider"></div>
+<section class="section" id="dictators">
+  <div class="section-label" data-en="Section 7" data-es="Sección 7" data-fr="Section 7">Section 7</div>
+  <h2 data-en="The Rise of the <span>Dictators</span>" data-es="El Ascenso de los <span>Dictadores</span>" data-fr="La Montée des <span>Dictateurs</span>">The Rise of the <span>Dictators</span></h2>
+
+  <p data-en="These three men took power in countries that were suffering. They promised solutions. They delivered destruction. Click each card to learn how they came to power." data-es="Estos tres hombres tomaron el poder en países que estaban sufriendo. Prometieron soluciones. Entregaron destrucción. Haz clic en cada tarjeta para aprender cómo llegaron al poder." data-fr="Ces trois hommes ont pris le pouvoir dans des pays qui souffraient. Ils ont promis des solutions. Ils ont livré la destruction. Cliquez sur chaque carte pour apprendre comment ils sont arrivés au pouvoir.">These three men took power in countries that were suffering. They promised solutions. They delivered destruction. Click each card to learn how they came to power.</p>
+
+  <div class="dictator-cards">
+    <!-- MUSSOLINI -->
+    <div class="dictator-card" onclick="toggleDictator(this)">
+      <div class="dictator-header">
+        <div class="dictator-avatar" style="background:rgba(44,44,44,0.5);border:2px solid #555">🇮🇹</div>
+        <div>
+          <h3>Benito Mussolini</h3>
+          <div class="d-subtitle" data-en="Italy — Fascist Dictator (1922–1943)" data-es="Italia — Dictador Fascista (1922–1943)" data-fr="Italie — Dictateur Fasciste (1922–1943)">Italy — Fascist Dictator (1922–1943)</div>
+        </div>
+      </div>
+      <div class="dictator-body">
+        <div class="d-fact">
+          <div class="d-fact-label" data-en="How he came to power" data-es="Cómo llegó al poder" data-fr="Comment il est arrivé au pouvoir">How he came to power</div>
+          <div class="d-fact-text" data-en="Italy was in economic chaos after WWI. Mussolini created the Fascist Party and organized paramilitary squads called 'Blackshirts' who used violence against opponents. In 1922, he threatened to march on Rome with his followers. The King, afraid of civil war, made Mussolini prime minister. He then eliminated all opposition and declared himself 'Il Duce' (The Leader)." data-es="Italia estaba en caos económico después de la Primera Guerra. Mussolini creó el Partido Fascista y organizó escuadrones paramilitares llamados 'Camisas Negras' que usaban violencia contra los opositores. En 1922, amenazó con marchar sobre Roma con sus seguidores. El Rey, con miedo de una guerra civil, hizo a Mussolini primer ministro. Luego eliminó toda la oposición y se declaró 'Il Duce' (El Líder)." data-fr="L'Italie était en chaos économique après la Première Guerre. Mussolini a créé le Parti fasciste et organisé des escouades paramilitaires appelées 'Chemises noires' qui utilisaient la violence contre les opposants. En 1922, il a menacé de marcher sur Rome avec ses partisans. Le Roi, craignant une guerre civile, a fait de Mussolini le premier ministre. Il a ensuite éliminé toute opposition et s'est déclaré 'Il Duce' (Le Chef).">Italy was in economic chaos after WWI. Mussolini created the Fascist Party and organized paramilitary squads called "Blackshirts" who used violence against opponents. In 1922, he threatened to march on Rome with his followers. The King, afraid of civil war, made Mussolini prime minister. He then eliminated all opposition and declared himself "Il Duce" (The Leader).</div>
+        </div>
+        <div class="d-fact">
+          <div class="d-fact-label" data-en="Key idea" data-es="Idea clave" data-fr="Idée clé">Key idea</div>
+          <div class="d-fact-text" data-en="Mussolini was the FIRST fascist dictator. Hitler admired him and copied many of his tactics." data-es="Mussolini fue el PRIMER dictador fascista. Hitler lo admiraba y copió muchas de sus tácticas." data-fr="Mussolini a été le PREMIER dictateur fasciste. Hitler l'admirait et a copié plusieurs de ses tactiques.">Mussolini was the FIRST fascist dictator. Hitler admired him and copied many of his tactics.</div>
+        </div>
+      </div>
+    </div>
+
+```
+<!-- HITLER -->
+<div class="dictator-card" onclick="toggleDictator(this)">
+  <div class="dictator-header">
+    <div class="dictator-avatar" style="background:rgba(192,57,43,0.15);border:2px solid var(--accent-red)">🇩🇪</div>
+    <div>
+      <h3>Adolf Hitler</h3>
+      <div class="d-subtitle" data-en="Germany — Nazi Dictator (1933–1945)" data-es="Alemania — Dictador Nazi (1933–1945)" data-fr="Allemagne — Dictateur Nazi (1933–1945)">Germany — Nazi Dictator (1933–1945)</div>
+    </div>
+  </div>
+  <div class="dictator-body">
+    <div class="d-fact">
+      <div class="d-fact-label" data-en="How he came to power" data-es="Cómo llegó al poder" data-fr="Comment il est arrivé au pouvoir">How he came to power</div>
+      <div class="d-fact-text" data-en="Hitler used Germany's anger over the Treaty of Versailles and the economic disaster of hyperinflation and the Great Depression. He was a powerful public speaker who blamed Jews, communists, and the Weimar Republic for Germany's problems. His Nazi Party won seats in parliament. In 1933 he was appointed Chancellor (prime minister). He then used an emergency law to give himself total power and became Führer (Leader)." data-es="Hitler usó la rabia de Alemania por el Tratado de Versalles y el desastre económico de la hiperinflación y la Gran Depresión. Era un orador público poderoso que culpaba a los judíos, comunistas y la República de Weimar de los problemas de Alemania. Su Partido Nazi ganó escaños en el parlamento. En 1933 fue nombrado Canciller (primer ministro). Luego usó una ley de emergencia para darse poder total y se convirtió en Führer (Líder)." data-fr="Hitler a utilisé la colère de l'Allemagne face au Traité de Versailles et au désastre économique de l'hyperinflation et de la Grande Dépression. C'était un orateur puissant qui blâmait les Juifs, les communistes et la République de Weimar pour les problèmes de l'Allemagne. Son Parti nazi a gagné des sièges au parlement. En 1933, il a été nommé Chancelier (premier ministre). Il a ensuite utilisé une loi d'urgence pour se donner le pouvoir total et est devenu Führer (Chef).">Hitler used Germany's anger over the Treaty of Versailles and the economic disaster of hyperinflation and the Great Depression. He was a powerful public speaker who blamed Jews, communists, and the Weimar Republic for Germany's problems. His Nazi Party won seats in parliament. In 1933 he was appointed Chancellor (prime minister). He then used an emergency law to give himself total power and became Führer (Leader).</div>
+    </div>
+    <div class="d-fact">
+      <div class="d-fact-label" data-en="Key idea" data-es="Idea clave" data-fr="Idée clé">Key idea</div>
+      <div class="d-fact-text" data-en="Hitler did not take power by force alone. He was appointed legally first, THEN destroyed democracy from the inside." data-es="Hitler no tomó el poder solo por la fuerza. Fue nombrado legalmente primero, y LUEGO destruyó la democracia desde adentro." data-fr="Hitler n'a pas pris le pouvoir uniquement par la force. Il a été nommé légalement d'abord, PUIS a détruit la démocratie de l'intérieur.">Hitler did not take power by force alone. He was appointed legally first, THEN destroyed democracy from the inside.</div>
+    </div>
+  </div>
+</div>
+
+<!-- STALIN -->
+<div class="dictator-card" onclick="toggleDictator(this)">
+  <div class="dictator-header">
+    <div class="dictator-avatar" style="background:rgba(204,0,0,0.15);border:2px solid var(--communist-red)">🇷🇺</div>
+    <div>
+      <h3>Joseph Stalin</h3>
+      <div class="d-subtitle" data-en="Soviet Union — Communist Dictator (late 1920s–1953)" data-es="Unión Soviética — Dictador Comunista (finales de 1920–1953)" data-fr="Union Soviétique — Dictateur Communiste (fin des années 1920–1953)">Soviet Union — Communist Dictator (late 1920s–1953)</div>
+    </div>
+  </div>
+  <div class="dictator-body">
+    <div class="d-fact">
+      <div class="d-fact-label" data-en="How he came to power" data-es="Cómo llegó al poder" data-fr="Comment il est arrivé au pouvoir">How he came to power</div>
+      <div class="d-fact-text" data-en="After the Russian Revolution of 1917, Lenin led the new communist state. When Lenin died in 1924, there was a power struggle. Stalin was not the most popular or the smartest leader. But he was the most ruthless politician. He outmaneuvered his rivals (especially Trotsky), took control of the Communist Party, and by the late 1920s had total power. He then eliminated ANYONE who could challenge him." data-es="Después de la Revolución Rusa de 1917, Lenin lideró el nuevo estado comunista. Cuando Lenin murió en 1924, hubo una lucha por el poder. Stalin no era el líder más popular ni el más inteligente. Pero era el político más despiadado. Superó a sus rivales (especialmente Trotsky), tomó control del Partido Comunista, y para finales de los años 1920 tenía poder total. Luego eliminó a CUALQUIERA que pudiera desafiarlo." data-fr="Après la Révolution russe de 1917, Lénine a dirigé le nouvel État communiste. Quand Lénine est mort en 1924, il y a eu une lutte pour le pouvoir. Staline n'était ni le leader le plus populaire ni le plus intelligent. Mais c'était le politicien le plus impitoyable. Il a déjoué ses rivaux (surtout Trotsky), a pris le contrôle du Parti communiste, et à la fin des années 1920 avait le pouvoir total. Il a ensuite éliminé QUICONQUE pouvait le défier.">After the Russian Revolution of 1917, Lenin led the new communist state. When Lenin died in 1924, there was a power struggle. Stalin was not the most popular or the smartest leader. But he was the most ruthless politician. He outmaneuvered his rivals (especially Trotsky), took control of the Communist Party, and by the late 1920s had total power. He then eliminated ANYONE who could challenge him.</div>
+    </div>
+    <div class="d-fact">
+      <div class="d-fact-label" data-en="Key idea" data-es="Idea clave" data-fr="Idée clé">Key idea</div>
+      <div class="d-fact-text" data-en="Stalin used communism as a tool for his own power. The communist ideal of equality was never the real goal — control was." data-es="Stalin usó el comunismo como herramienta para su propio poder. El ideal comunista de igualdad nunca fue el verdadero objetivo — el control sí lo era." data-fr="Staline a utilisé le communisme comme un outil pour son propre pouvoir. L'idéal communiste d'égalité n'a jamais été le vrai but — le contrôle l'était.">Stalin used communism as a tool for his own power. The communist ideal of equality was never the real goal — control was.</div>
+    </div>
+  </div>
+</div>
+```
+
+  </div>
+</section>
+
+<!-- ═══════════ 8. CAUSE-EFFECT CHAIN ═══════════ -->
+
+<div class="divider"></div>
+<section class="section" id="chain">
+  <div class="section-label" data-en="Section 8" data-es="Sección 8" data-fr="Section 8">Section 8</div>
+  <h2 data-en="The Chain: How WWI <span>Led to</span> WWII" data-es="La Cadena: Cómo la Primera Guerra <span>Llevó a</span> la Segunda" data-fr="La Chaîne : Comment la Première Guerre <span>a Mené à</span> la Seconde">The Chain: How WWI <span>Led to</span> WWII</h2>
+
+  <p data-en="History is a chain of causes and effects. Each event connects to the next. Follow this chain from the end of WWI to the beginning of WWII." data-es="La historia es una cadena de causas y efectos. Cada evento se conecta con el siguiente. Sigue esta cadena desde el fin de la Primera Guerra hasta el inicio de la Segunda." data-fr="L'histoire est une chaîne de causes et d'effets. Chaque événement se connecte au suivant. Suivez cette chaîne de la fin de la Première Guerre au début de la Seconde.">History is a chain of causes and effects. Each event connects to the next. Follow this chain from the end of WWI to the beginning of WWII.</p>
+
+  <div class="chain-container">
+    <div class="chain-step"><div class="chain-dot"></div><div class="chain-line"></div>
+      <div class="chain-content">
+        <h4 data-en="1918 — WWI Ends" data-es="1918 — Termina la Primera Guerra" data-fr="1918 — Fin de la Première Guerre">1918 — WWI Ends</h4>
+        <p data-en="Millions dead. Europe is destroyed. People want someone to blame." data-es="Millones de muertos. Europa está destruida. La gente quiere culpar a alguien." data-fr="Des millions de morts. L'Europe est détruite. Les gens veulent blâmer quelqu'un.">Millions dead. Europe is destroyed. People want someone to blame.</p>
+      </div>
+    </div>
+    <div class="chain-arrow">↓</div>
+    <div class="chain-step"><div class="chain-dot"></div><div class="chain-line"></div>
+      <div class="chain-content">
+        <h4 data-en="1919 — Treaty of Versailles" data-es="1919 — Tratado de Versalles" data-fr="1919 — Traité de Versailles">1919 — Treaty of Versailles</h4>
+        <p data-en="Germany is blamed for everything. Forced to pay billions. Loses territory and military. The German people feel humiliated and angry." data-es="Alemania es culpada de todo. Obligada a pagar miles de millones. Pierde territorio y ejército. El pueblo alemán se siente humillado y furioso." data-fr="L'Allemagne est blâmée pour tout. Forcée de payer des milliards. Perd du territoire et son armée. Le peuple allemand se sent humilié et en colère.">Germany is blamed for everything. Forced to pay billions. Loses territory and military. The German people feel humiliated and angry.</p>
+      </div>
+    </div>
+    <div class="chain-arrow">↓</div>
+    <div class="chain-step"><div class="chain-dot"></div><div class="chain-line"></div>
+      <div class="chain-content">
+        <h4 data-en="1920s — Economic Disaster" data-es="Años 1920 — Desastre Económico" data-fr="Années 1920 — Désastre Économique">1920s — Economic Disaster</h4>
+        <p data-en="Hyperinflation destroys German savings. Bread costs billions of marks. The middle class is wiped out. Italy's economy also collapses. Then comes the Great Depression (1929), hitting the whole world." data-es="La hiperinflación destruye los ahorros alemanes. El pan cuesta miles de millones de marcos. La clase media es eliminada. La economía de Italia también colapsa. Luego viene la Gran Depresión (1929), golpeando al mundo entero." data-fr="L'hyperinflation détruit les économies allemandes. Le pain coûte des milliards de marks. La classe moyenne est anéantie. L'économie italienne s'effondre aussi. Puis vient la Grande Dépression (1929), frappant le monde entier.">Hyperinflation destroys German savings. Bread costs billions of marks. The middle class is wiped out. Italy's economy also collapses. Then comes the Great Depression (1929), hitting the whole world.</p>
+      </div>
+    </div>
+    <div class="chain-arrow">↓</div>
+    <div class="chain-step"><div class="chain-dot"></div><div class="chain-line"></div>
+      <div class="chain-content">
+        <h4 data-en="1920s–1930s — Rise of Extremism" data-es="1920–1930 — Ascenso del Extremismo" data-fr="Années 1920–1930 — Montée de l'Extrémisme">1920s–1930s — Rise of Extremism</h4>
+        <p data-en="Desperate people turn to extreme leaders. Mussolini takes Italy (1922). Stalin consolidates the USSR (late 1920s). Hitler takes Germany (1933). Each promises strength, order, and national glory." data-es="La gente desesperada se vuelve hacia líderes extremos. Mussolini toma Italia (1922). Stalin consolida la URSS (finales de los 1920). Hitler toma Alemania (1933). Cada uno promete fuerza, orden y gloria nacional." data-fr="Les gens désespérés se tournent vers des leaders extrêmes. Mussolini prend l'Italie (1922). Staline consolide l'URSS (fin des années 1920). Hitler prend l'Allemagne (1933). Chacun promet force, ordre et gloire nationale.">Desperate people turn to extreme leaders. Mussolini takes Italy (1922). Stalin consolidates the USSR (late 1920s). Hitler takes Germany (1933). Each promises strength, order, and national glory.</p>
+      </div>
+    </div>
+    <div class="chain-arrow">↓</div>
+    <div class="chain-step"><div class="chain-dot"></div><div class="chain-line"></div>
+      <div class="chain-content">
+        <h4 data-en="1930s — Aggression & Appeasement" data-es="Años 1930 — Agresión y Apaciguamiento" data-fr="Années 1930 — Agression et Apaisement">1930s — Aggression & Appeasement</h4>
+        <p data-en="Hitler rebuilds the military (breaking the Treaty). Takes back the Rhineland, then Austria, then Czechoslovakia. Britain and France try to avoid war by giving Hitler what he wants (appeasement). It does not work." data-es="Hitler reconstruye el ejército (violando el Tratado). Recupera la Renania, luego Austria, luego Checoslovaquia. Gran Bretaña y Francia intentan evitar la guerra dándole a Hitler lo que quiere (apaciguamiento). No funciona." data-fr="Hitler reconstruit l'armée (en violant le Traité). Reprend la Rhénanie, puis l'Autriche, puis la Tchécoslovaquie. La Grande-Bretagne et la France essaient d'éviter la guerre en donnant à Hitler ce qu'il veut (apaisement). Ça ne fonctionne pas.">Hitler rebuilds the military (breaking the Treaty). Takes back the Rhineland, then Austria, then Czechoslovakia. Britain and France try to avoid war by giving Hitler what he wants (appeasement). It does not work.</p>
+      </div>
+    </div>
+    <div class="chain-arrow">↓</div>
+    <div class="chain-step"><div class="chain-dot" style="background:var(--accent-red)"></div><div class="chain-line" style="background:var(--accent-red)"></div>
+      <div class="chain-content" style="border-color:rgba(192,57,43,0.3)">
+        <h4 data-en="1939 — World War II Begins" data-es="1939 — Comienza la Segunda Guerra Mundial" data-fr="1939 — La Seconde Guerre Mondiale Commence">1939 — World War II Begins</h4>
+        <p data-en="Hitler invades Poland on September 1, 1939. Britain and France declare war. The chain that started with the Treaty of Versailles has reached its terrible conclusion." data-es="Hitler invade Polonia el 1 de septiembre de 1939. Gran Bretaña y Francia declaran la guerra. La cadena que comenzó con el Tratado de Versalles ha llegado a su terrible conclusión." data-fr="Hitler envahit la Pologne le 1er septembre 1939. La Grande-Bretagne et la France déclarent la guerre. La chaîne qui a commencé avec le Traité de Versailles a atteint sa terrible conclusion.">Hitler invades Poland on September 1, 1939. Britain and France declare war. The chain that started with the Treaty of Versailles has reached its terrible conclusion.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ 9. CHECK YOUR UNDERSTANDING ═══════════ -->
+
+<div class="divider"></div>
+<section class="section" id="check">
+  <div class="section-label" data-en="Section 9" data-es="Sección 9" data-fr="Section 9">Section 9</div>
+  <h2 data-en="Check Your <span>Understanding</span>" data-es="Comprueba Tu <span>Comprensión</span>" data-fr="Vérifiez Votre <span>Compréhension</span>">Check Your <span>Understanding</span></h2>
+
+  <div class="quiz-section">
+    <!-- Q1 -->
+    <div class="quiz-q">
+      <h4 data-en="1. What was the War Guilt Clause?" data-es="1. ¿Qué era la Cláusula de Culpa de Guerra?" data-fr="1. Qu'est-ce que la Clause de Culpabilité de Guerre ?">1. What was the War Guilt Clause?</h4>
+      <div class="quiz-options">
+        <div class="quiz-opt" data-correct="false" onclick="checkAnswer(this)" data-en="A peace agreement between Germany and France" data-es="Un acuerdo de paz entre Alemania y Francia" data-fr="Un accord de paix entre l'Allemagne et la France">A peace agreement between Germany and France</div>
+        <div class="quiz-opt" data-correct="true" onclick="checkAnswer(this)" data-en="Article 231 — it said Germany was completely responsible for WWI" data-es="El Artículo 231 — decía que Alemania era completamente responsable de la Primera Guerra" data-fr="L'Article 231 — il disait que l'Allemagne était entièrement responsable de la Première Guerre">Article 231 — it said Germany was completely responsible for WWI</div>
+        <div class="quiz-opt" data-correct="false" onclick="checkAnswer(this)" data-en="A law that allowed Germany to rebuild its military" data-es="Una ley que permitió a Alemania reconstruir su ejército" data-fr="Une loi qui a permis à l'Allemagne de reconstruire son armée">A law that allowed Germany to rebuild its military</div>
+      </div>
+      <div class="quiz-feedback"></div>
+    </div>
+
+```
+<!-- Q2 -->
+<div class="quiz-q">
+  <h4 data-en="2. What caused hyperinflation in Germany?" data-es="2. ¿Qué causó la hiperinflación en Alemania?" data-fr="2. Qu'est-ce qui a causé l'hyperinflation en Allemagne ?">2. What caused hyperinflation in Germany?</h4>
+  <div class="quiz-options">
+    <div class="quiz-opt" data-correct="false" onclick="checkAnswer(this)" data-en="Germany started too many businesses" data-es="Alemania empezó demasiados negocios" data-fr="L'Allemagne a créé trop d'entreprises">Germany started too many businesses</div>
+    <div class="quiz-opt" data-correct="false" onclick="checkAnswer(this)" data-en="Other countries gave Germany too much money" data-es="Otros países le dieron a Alemania demasiado dinero" data-fr="D'autres pays ont donné trop d'argent à l'Allemagne">Other countries gave Germany too much money</div>
+    <div class="quiz-opt" data-correct="true" onclick="checkAnswer(this)" data-en="The government printed too much money to pay reparations" data-es="El gobierno imprimió demasiado dinero para pagar las reparaciones" data-fr="Le gouvernement a imprimé trop d'argent pour payer les réparations">The government printed too much money to pay reparations</div>
+  </div>
+  <div class="quiz-feedback"></div>
+</div>
+
+<!-- Q3 -->
+<div class="quiz-q">
+  <h4 data-en="3. What is the main difference between fascism and communism?" data-es="3. ¿Cuál es la diferencia principal entre el fascismo y el comunismo?" data-fr="3. Quelle est la principale différence entre le fascisme et le communisme ?">3. What is the main difference between fascism and communism?</h4>
+  <div class="quiz-options">
+    <div class="quiz-opt" data-correct="true" onclick="checkAnswer(this)" data-en="Fascism focuses on the nation/race being superior; communism focuses on worker equality" data-es="El fascismo se enfoca en que la nación/raza es superior; el comunismo se enfoca en la igualdad de los trabajadores" data-fr="Le fascisme se concentre sur la supériorité de la nation/race; le communisme sur l'égalité des travailleurs">Fascism focuses on the nation/race being superior; communism focuses on worker equality</div>
+    <div class="quiz-opt" data-correct="false" onclick="checkAnswer(this)" data-en="Communism uses violence but fascism does not" data-es="El comunismo usa violencia pero el fascismo no" data-fr="Le communisme utilise la violence mais pas le fascisme">Communism uses violence but fascism does not</div>
+    <div class="quiz-opt" data-correct="false" onclick="checkAnswer(this)" data-en="Fascism is democratic but communism is not" data-es="El fascismo es democrático pero el comunismo no" data-fr="Le fascisme est démocratique mais pas le communisme">Fascism is democratic but communism is not</div>
+  </div>
+  <div class="quiz-feedback"></div>
+</div>
+
+<!-- Q4 -->
+<div class="quiz-q">
+  <h4 data-en="4. Which dictator came to power FIRST?" data-es="4. ¿Cuál dictador llegó al poder PRIMERO?" data-fr="4. Quel dictateur est arrivé au pouvoir EN PREMIER ?">4. Which dictator came to power FIRST?</h4>
+  <div class="quiz-options">
+    <div class="quiz-opt" data-correct="false" onclick="checkAnswer(this)">Adolf Hitler</div>
+    <div class="quiz-opt" data-correct="true" onclick="checkAnswer(this)">Benito Mussolini</div>
+    <div class="quiz-opt" data-correct="false" onclick="checkAnswer(this)">Joseph Stalin</div>
+  </div>
+  <div class="quiz-feedback"></div>
+</div>
+
+<!-- Q5 -->
+<div class="quiz-q">
+  <h4 data-en="5. What is totalitarianism?" data-es="5. ¿Qué es el totalitarismo?" data-fr="5. Qu'est-ce que le totalitarisme ?">5. What is totalitarianism?</h4>
+  <div class="quiz-options">
+    <div class="quiz-opt" data-correct="false" onclick="checkAnswer(this)" data-en="A system where people vote for their leaders" data-es="Un sistema donde la gente vota por sus líderes" data-fr="Un système où les gens votent pour leurs dirigeants">A system where people vote for their leaders</div>
+    <div class="quiz-opt" data-correct="false" onclick="checkAnswer(this)" data-en="A government that only controls the military" data-es="Un gobierno que solo controla el ejército" data-fr="Un gouvernement qui contrôle seulement l'armée">A government that only controls the military</div>
+    <div class="quiz-opt" data-correct="true" onclick="checkAnswer(this)" data-en="A government that controls EVERY part of life — what you say, think, and believe" data-es="Un gobierno que controla CADA parte de la vida — lo que dices, piensas y crees" data-fr="Un gouvernement qui contrôle CHAQUE partie de la vie — ce que vous dites, pensez et croyez">A government that controls EVERY part of life — what you say, think, and believe</div>
+  </div>
+  <div class="quiz-feedback"></div>
+</div>
+```
+
+  </div>
+</section>
+
+<div style="text-align:center;padding:3rem 2rem 5rem;color:var(--text-secondary);font-family:var(--font-serif);font-size:0.9rem">
+  <p data-en="Mr. Miljus' Class — East Lee County High School" data-es="Clase del Sr. Miljus — East Lee County High School" data-fr="Classe de M. Miljus — East Lee County High School">Mr. Miljus' Class — East Lee County High School</p>
+</div>
+
+<script>
+// ═══════════ LANGUAGE SYSTEM ═══════════
+let currentLang = 'en';
+
+function setLang(lang) {
+  currentLang = lang;
+  // Update buttons
+  document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+  document.querySelector(`.lang-btn[onclick="setLang('${lang}')"]`).classList.add('active');
+
+  // Update all text elements
+  document.querySelectorAll('[data-' + lang + ']').forEach(el => {
+    const text = el.getAttribute('data-' + lang);
+    if (text !== null) {
+      if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+        el.value = text;
+      } else {
+        el.innerHTML = text;
+      }
+    }
+  });
+
+  // Update ideology detail panels if visible
+  document.querySelectorAll('.ideology-detail-panel.visible').forEach(panel => {
+    panel.querySelectorAll('[data-' + lang + ']').forEach(el => {
+      el.innerHTML = el.getAttribute('data-' + lang);
+    });
+  });
+}
+
+// ═══════════ TOGGLE CARDS ═══════════
+function toggleCard(el) {
+  el.classList.toggle('open');
+}
+
+function toggleDictator(card) {
+  card.classList.toggle('open');
+}
+
+// ═══════════ IDEOLOGY PANELS ═══════════
+function showIdeology(id) {
+  // Toggle active card
+  document.querySelectorAll('.ideology-card').forEach(c => {
+    c.classList.toggle('active', c.dataset.id === id && !c.classList.contains('active'));
+  });
+
+  // Toggle panel
+  const panel = document.getElementById('detail-' + id);
+  const wasVisible = panel.classList.contains('visible');
+  document.querySelectorAll('.ideology-detail-panel').forEach(p => p.classList.remove('visible'));
+  if (!wasVisible) {
+    panel.classList.add('visible');
+    // Re-apply language
+    panel.querySelectorAll('[data-' + currentLang + ']').forEach(el => {
+      el.innerHTML = el.getAttribute('data-' + currentLang);
+    });
+  } else {
+    document.querySelectorAll('.ideology-card').forEach(c => c.classList.remove('active'));
+  }
+}
+
+// ═══════════ QUIZ ═══════════
+function checkAnswer(opt) {
+  const quizQ = opt.closest('.quiz-q');
+  if (quizQ.dataset.answered) return;
+  quizQ.dataset.answered = 'true';
+
+  const isCorrect = opt.dataset.correct === 'true';
+  const feedback = quizQ.querySelector('.quiz-feedback');
+
+  if (isCorrect) {
+    opt.classList.add('correct');
+    feedback.style.color = '#27ae60';
+    const msgs = {en: '✓ Correct!', es: '✓ ¡Correcto!', fr: '✓ Correct !'};
+    feedback.textContent = msgs[currentLang];
+  } else {
+    opt.classList.add('wrong');
+    // Highlight correct answer
+    quizQ.querySelectorAll('.quiz-opt').forEach(o => {
+      if (o.dataset.correct === 'true') o.classList.add('correct');
+    });
+    feedback.style.color = '#e74c3c';
+    const msgs = {en: '✗ Not quite. The correct answer is highlighted in green.', es: '✗ No exactamente. La respuesta correcta está en verde.', fr: '✗ Pas tout à fait. La bonne réponse est en vert.'};
+    feedback.textContent = msgs[currentLang];
+  }
+  feedback.style.display = 'block';
+}
+
+// ═══════════ INFLATION CHART ═══════════
+function buildInflationChart() {
+  const chart = document.getElementById('inflationChart');
+  if (!chart) return;
+
+  const data = [
+    {year: '1918', price: 0.5, color: '#27ae60'},
+    {year: '1919', price: 1.5, color: '#2ecc71'},
+    {year: '1920', price: 12, color: '#f1c40f'},
+    {year: '1921', price: 35, color: '#f39c12'},
+    {year: '1922', price: 163, color: '#e67e22'},
+    {year: 'Jan 1923', price: 700, color: '#e74c3c'},
+    {year: 'Jul 1923', price: 3500, color: '#c0392b'},
+    {year: 'Sep 1923', price: 15000000, color: '#a93226'},
+    {year: 'Nov 1923', price: 200000000000, color: '#7b241c'},
+  ];
+
+  // Use log scale for visual
+  const maxLog = Math.log10(200000000000);
+  chart.innerHTML = '';
+
+  data.forEach((d, i) => {
+    const logVal = d.price > 0 ? Math.log10(d.price) : 0;
+    const heightPct = (logVal / maxLog) * 100;
+    const group = document.createElement('div');
+    group.className = 'inflation-bar-group';
+
+    const bar = document.createElement('div');
+    bar.className = 'inflation-bar';
+    bar.style.background = d.color;
+    bar.style.height = '0%';
+    setTimeout(() => { bar.style.height = Math.max(heightPct, 2) + '%'; }, 200 + i * 120);
+
+    const value = document.createElement('div');
+    value.className = 'bar-value';
+    value.textContent = d.price >= 1000000 ? d.price.toExponential(1) + ' ℳ' : d.price.toLocaleString() + ' ℳ';
+
+    const label = document.createElement('div');
+    label.className = 'bar-label';
+    label.textContent = d.year;
+
+    bar.appendChild(value);
+    group.appendChild(bar);
+    group.appendChild(label);
+    chart.appendChild(group);
+  });
+}
+
+// ═══════════ INIT ═══════════
+document.addEventListener('DOMContentLoaded', () => {
+  buildInflationChart();
+  setLang('en');
+});
+
+// Rebuild chart on scroll into view (animate)
+let chartAnimated = false;
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting && !chartAnimated) {
+      chartAnimated = true;
+      buildInflationChart();
+    }
+  });
+}, {threshold: 0.3});
+
+const chartEl = document.getElementById('inflationChart');
+if (chartEl) observer.observe(chartEl);
+</script>
+
+</body>
+</html>
