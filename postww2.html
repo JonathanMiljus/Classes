@@ -1,0 +1,1817 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The World After WWII — Mr. Miljus' Class</title>
+<meta name="description" content="An interactive, trilingual lesson on the world after World War II: the New World Order, Communism, and the Chinese Civil War." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=DM+Sans:ital,opsz,wght@0,9..40,300..800;1,9..40,300..800&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #FAF7F2;
+    --bg-alt: #F3EFE8;
+    --surface: #FFFFFF;
+    --text: #0A0A0A;
+    --text-2: #4A4A4A;
+    --text-3: #8A8A8A;
+    --accent: #C8102E;
+    --accent-soft: #F4D5DA;
+    --blue: #0A2540;
+    --gold: #B8860B;
+    --border: #E8E4DC;
+    --border-strong: #D4CFC3;
+
+```
+--serif: 'Fraunces', Georgia, 'Times New Roman', serif;
+--sans: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+
+--ease: cubic-bezier(0.22, 1, 0.36, 1);
+--ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+
+--container: 1200px;
+```
+
+}
+
+- { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+  body {
+  font-family: var(–sans);
+  background: var(–bg);
+  color: var(–text);
+  line-height: 1.6;
+  font-size: 17px;
+  overflow-x: hidden;
+  }
+
+/* Paper grain texture — subtle */
+body::before {
+content: ‘’;
+position: fixed; inset: 0;
+pointer-events: none;
+opacity: 0.035;
+z-index: 1;
+background-image: url(“data:image/svg+xml,%3Csvg viewBox=‘0 0 200 200’ xmlns=‘http://www.w3.org/2000/svg’%3E%3Cfilter id=‘n’%3E%3CfeTurbulence type=‘fractalNoise’ baseFrequency=‘0.9’ numOctaves=‘2’ /%3E%3C/filter%3E%3Crect width=‘100%25’ height=‘100%25’ filter=‘url(%23n)’ /%3E%3C/svg%3E”);
+}
+
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; background: none; border: none; cursor: pointer; }
+
+.container {
+max-width: var(–container);
+margin: 0 auto;
+padding: 0 32px;
+}
+
+/* ─────────── NAV ─────────── */
+.nav {
+position: sticky; top: 0; z-index: 100;
+backdrop-filter: saturate(180%) blur(20px);
+-webkit-backdrop-filter: saturate(180%) blur(20px);
+background: rgba(250, 247, 242, 0.8);
+border-bottom: 1px solid var(–border);
+}
+.nav-inner {
+max-width: var(–container);
+margin: 0 auto;
+padding: 14px 32px;
+display: flex;
+align-items: center;
+justify-content: space-between;
+gap: 32px;
+}
+.nav-brand {
+font-family: var(–serif);
+font-weight: 500;
+font-size: 18px;
+letter-spacing: -0.01em;
+display: flex; align-items: center; gap: 10px;
+}
+.nav-brand .mark {
+width: 8px; height: 8px; border-radius: 50%;
+background: var(–accent);
+}
+.nav-links {
+display: flex; gap: 28px;
+font-size: 14px; font-weight: 500;
+color: var(–text-2);
+}
+.nav-links a {
+transition: color 0.2s var(–ease);
+position: relative;
+}
+.nav-links a:hover { color: var(–text); }
+.nav-links a::after {
+content: ‘’; position: absolute; bottom: -4px; left: 0;
+width: 0; height: 1px; background: var(–accent);
+transition: width 0.3s var(–ease);
+}
+.nav-links a:hover::after { width: 100%; }
+
+.lang-toggle {
+display: flex;
+background: var(–surface);
+border: 1px solid var(–border);
+border-radius: 100px;
+padding: 3px;
+gap: 2px;
+}
+.lang-btn {
+padding: 6px 12px;
+font-size: 12px;
+font-weight: 600;
+letter-spacing: 0.06em;
+color: var(–text-3);
+border-radius: 100px;
+transition: all 0.3s var(–ease);
+min-width: 40px;
+}
+.lang-btn.active {
+background: var(–text);
+color: var(–bg);
+}
+
+@media (max-width: 900px) {
+.nav-links { display: none; }
+}
+
+/* ─────────── HERO ─────────── */
+.hero {
+position: relative;
+padding: 140px 0 160px;
+overflow: hidden;
+}
+.hero::before {
+content: ‘1945’;
+position: absolute;
+top: 50%;
+right: -5%;
+transform: translateY(-50%);
+font-family: var(–serif);
+font-size: clamp(200px, 40vw, 560px);
+font-weight: 200;
+font-style: italic;
+color: var(–text);
+opacity: 0.04;
+letter-spacing: -0.05em;
+line-height: 0.8;
+pointer-events: none;
+user-select: none;
+z-index: 0;
+}
+.hero .container { position: relative; z-index: 2; }
+
+.hero-eyebrow {
+font-size: 13px;
+font-weight: 600;
+letter-spacing: 0.15em;
+text-transform: uppercase;
+color: var(–accent);
+margin-bottom: 32px;
+display: flex; align-items: center; gap: 12px;
+}
+.hero-eyebrow::before {
+content: ‘’; width: 32px; height: 1px; background: var(–accent);
+}
+
+.hero-title {
+font-family: var(–serif);
+font-size: clamp(48px, 9vw, 128px);
+line-height: 0.95;
+letter-spacing: -0.035em;
+font-weight: 400;
+max-width: 12ch;
+}
+.hero-title .italic {
+font-style: italic;
+font-weight: 300;
+color: var(–accent);
+}
+.hero-title .line {
+display: block;
+opacity: 0;
+transform: translateY(24px);
+animation: fadeUp 1s var(–ease) forwards;
+}
+.hero-title .line:nth-child(1) { animation-delay: 0.1s; }
+.hero-title .line:nth-child(2) { animation-delay: 0.25s; }
+.hero-title .line:nth-child(3) { animation-delay: 0.4s; }
+
+.hero-subtitle {
+margin-top: 40px;
+font-size: clamp(18px, 1.5vw, 22px);
+color: var(–text-2);
+max-width: 32ch;
+line-height: 1.4;
+opacity: 0;
+transform: translateY(16px);
+animation: fadeUp 1s var(–ease) 0.6s forwards;
+}
+
+.hero-meta {
+margin-top: 64px;
+display: flex;
+gap: 48px;
+flex-wrap: wrap;
+opacity: 0;
+animation: fadeUp 1s var(–ease) 0.8s forwards;
+}
+.hero-meta-item { font-size: 13px; color: var(–text-3); }
+.hero-meta-item strong {
+display: block;
+color: var(–text);
+font-family: var(–serif);
+font-size: 24px;
+font-weight: 500;
+margin-bottom: 2px;
+}
+
+@keyframes fadeUp {
+to { opacity: 1; transform: translateY(0); }
+}
+
+/* ─────────── GENERIC SECTION ─────────── */
+section.module {
+padding: 140px 0;
+position: relative;
+}
+.section-head {
+margin-bottom: 80px;
+max-width: 720px;
+}
+.section-label {
+font-size: 12px;
+font-weight: 600;
+letter-spacing: 0.2em;
+text-transform: uppercase;
+color: var(–accent);
+margin-bottom: 16px;
+display: flex; align-items: center; gap: 12px;
+}
+.section-label::before {
+content: ‘§’; font-family: var(–serif); font-style: italic;
+color: var(–text-3); font-size: 16px;
+}
+.section-title {
+font-family: var(–serif);
+font-size: clamp(36px, 5vw, 64px);
+line-height: 1.05;
+letter-spacing: -0.025em;
+font-weight: 400;
+margin-bottom: 24px;
+}
+.section-title .italic { font-style: italic; color: var(–accent); }
+.section-lede {
+font-size: 20px;
+color: var(–text-2);
+line-height: 1.5;
+max-width: 56ch;
+}
+
+/* ─────────── INTRO ─────────── */
+.intro { background: var(–bg); }
+.intro-grid {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 80px;
+align-items: start;
+}
+.intro-body p {
+font-size: 19px;
+color: var(–text-2);
+margin-bottom: 24px;
+line-height: 1.65;
+}
+.intro-body p strong {
+color: var(–text);
+font-weight: 600;
+}
+.intro-stats {
+display: grid;
+gap: 24px;
+position: sticky; top: 100px;
+}
+.stat {
+background: var(–surface);
+border: 1px solid var(–border);
+border-radius: 20px;
+padding: 32px;
+transition: transform 0.4s var(–ease), border-color 0.4s var(–ease);
+}
+.stat:hover {
+transform: translateY(-2px);
+border-color: var(–border-strong);
+}
+.stat-num {
+font-family: var(–serif);
+font-size: 56px;
+font-weight: 400;
+letter-spacing: -0.03em;
+line-height: 1;
+margin-bottom: 12px;
+}
+.stat-num .unit { font-size: 24px; color: var(–text-3); }
+.stat-label { font-size: 14px; color: var(–text-2); line-height: 1.4; }
+
+@media (max-width: 820px) {
+.intro-grid { grid-template-columns: 1fr; gap: 48px; }
+.intro-stats { position: static; }
+}
+
+/* ─────────── TIMELINE ─────────── */
+.timeline-wrap {
+position: relative;
+padding: 20px 0;
+}
+.timeline-wrap::before {
+content: ‘’;
+position: absolute;
+left: 50%; top: 0; bottom: 0;
+width: 1px;
+background: linear-gradient(to bottom,
+transparent 0%,
+var(–border-strong) 10%,
+var(–border-strong) 90%,
+transparent 100%);
+transform: translateX(-0.5px);
+}
+.tl-item {
+position: relative;
+width: 50%;
+padding: 32px 48px;
+opacity: 0;
+transform: translateY(24px);
+transition: opacity 0.8s var(–ease), transform 0.8s var(–ease);
+}
+.tl-item.visible { opacity: 1; transform: translateY(0); }
+.tl-item:nth-child(odd) {
+left: 0;
+padding-right: 64px;
+text-align: right;
+}
+.tl-item:nth-child(even) {
+left: 50%;
+padding-left: 64px;
+}
+.tl-dot {
+position: absolute;
+top: 40px;
+width: 14px; height: 14px;
+border-radius: 50%;
+background: var(–surface);
+border: 2px solid var(–accent);
+box-shadow: 0 0 0 6px var(–bg);
+transition: transform 0.3s var(–ease), background 0.3s var(–ease);
+}
+.tl-item:hover .tl-dot {
+background: var(–accent);
+transform: scale(1.3);
+}
+.tl-item:nth-child(odd) .tl-dot { right: -8px; }
+.tl-item:nth-child(even) .tl-dot { left: -8px; }
+.tl-card {
+display: inline-block;
+background: var(–surface);
+border: 1px solid var(–border);
+border-radius: 16px;
+padding: 24px 28px;
+max-width: 420px;
+transition: all 0.4s var(–ease);
+text-align: left;
+}
+.tl-item:hover .tl-card {
+border-color: var(–accent);
+transform: translateY(-2px);
+box-shadow: 0 8px 40px rgba(200, 16, 46, 0.08);
+}
+.tl-date {
+font-family: var(–serif);
+font-style: italic;
+font-size: 15px;
+color: var(–accent);
+font-weight: 500;
+margin-bottom: 8px;
+letter-spacing: 0.02em;
+}
+.tl-title {
+font-family: var(–serif);
+font-size: 22px;
+font-weight: 500;
+letter-spacing: -0.01em;
+margin-bottom: 10px;
+line-height: 1.2;
+}
+.tl-desc {
+font-size: 15px;
+color: var(–text-2);
+line-height: 1.55;
+}
+
+@media (max-width: 820px) {
+.timeline-wrap::before { left: 16px; }
+.tl-item, .tl-item:nth-child(odd), .tl-item:nth-child(even) {
+width: 100%; left: 0;
+padding: 20px 0 20px 48px;
+text-align: left;
+}
+.tl-item:nth-child(odd) .tl-dot,
+.tl-item:nth-child(even) .tl-dot { left: 10px; right: auto; }
+.tl-card { max-width: 100%; }
+}
+
+/* ─────────── CONCEPTS (FLIP CARDS) ─────────── */
+.concepts { background: var(–bg-alt); }
+.concept-grid {
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+gap: 20px;
+}
+@media (max-width: 900px) { .concept-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .concept-grid { grid-template-columns: 1fr; } }
+
+.flip-card {
+perspective: 1200px;
+height: 280px;
+cursor: pointer;
+}
+.flip-inner {
+position: relative;
+width: 100%; height: 100%;
+transform-style: preserve-3d;
+transition: transform 0.8s var(–ease);
+}
+.flip-card.flipped .flip-inner,
+.flip-card:hover .flip-inner {
+transform: rotateY(180deg);
+}
+.flip-face {
+position: absolute;
+inset: 0;
+backface-visibility: hidden;
+-webkit-backface-visibility: hidden;
+border-radius: 20px;
+padding: 32px;
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+}
+.flip-front {
+background: var(–surface);
+border: 1px solid var(–border);
+}
+.flip-back {
+background: var(–text);
+color: var(–bg);
+transform: rotateY(180deg);
+}
+.flip-num {
+font-family: var(–serif);
+font-style: italic;
+font-size: 14px;
+color: var(–accent);
+margin-bottom: 12px;
+}
+.flip-term {
+font-family: var(–serif);
+font-size: 30px;
+font-weight: 500;
+letter-spacing: -0.02em;
+line-height: 1.1;
+}
+.flip-back .flip-term { color: var(–accent-soft); font-size: 20px; margin-bottom: 12px; }
+.flip-hint {
+font-size: 12px;
+color: var(–text-3);
+letter-spacing: 0.1em;
+text-transform: uppercase;
+display: flex; align-items: center; gap: 8px;
+}
+.flip-hint::after {
+content: ‘→’; font-family: var(–serif); font-size: 16px;
+transition: transform 0.3s var(–ease);
+}
+.flip-card:hover .flip-hint::after { transform: translateX(4px); }
+.flip-def {
+font-size: 15px;
+line-height: 1.5;
+color: rgba(250, 247, 242, 0.9);
+}
+
+/* ─────────── COMMUNISM DEEP DIVE ─────────── */
+.compare-grid {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 4px;
+background: var(–border);
+border: 1px solid var(–border);
+border-radius: 24px;
+overflow: hidden;
+}
+.compare-col {
+background: var(–surface);
+padding: 48px;
+}
+.compare-col.left { background: #0A1A2F; color: var(–bg); }
+.compare-col.right { background: var(–bg); }
+.compare-tag {
+display: inline-block;
+font-size: 11px;
+font-weight: 700;
+letter-spacing: 0.18em;
+text-transform: uppercase;
+padding: 4px 12px;
+border-radius: 100px;
+margin-bottom: 20px;
+}
+.compare-col.left .compare-tag {
+background: var(–accent); color: white;
+}
+.compare-col.right .compare-tag {
+background: var(–text); color: var(–bg);
+}
+.compare-title {
+font-family: var(–serif);
+font-size: 42px;
+font-weight: 400;
+letter-spacing: -0.025em;
+margin-bottom: 24px;
+line-height: 1;
+}
+.compare-country {
+font-size: 13px;
+color: inherit;
+opacity: 0.5;
+font-style: italic;
+margin-bottom: 28px;
+}
+.compare-list { list-style: none; }
+.compare-list li {
+padding: 14px 0;
+font-size: 15px;
+line-height: 1.5;
+border-bottom: 1px solid;
+border-color: inherit;
+opacity: 0.9;
+position: relative;
+padding-left: 24px;
+}
+.compare-col.left .compare-list li { border-color: rgba(255,255,255,0.08); }
+.compare-col.right .compare-list li { border-color: var(–border); }
+.compare-list li::before {
+content: ‘’;
+position: absolute;
+left: 0; top: 22px;
+width: 12px; height: 1px;
+background: currentColor;
+opacity: 0.5;
+}
+.compare-list li:last-child { border-bottom: none; }
+.compare-list li strong {
+font-weight: 600;
+display: block;
+margin-bottom: 2px;
+opacity: 1;
+}
+
+@media (max-width: 820px) {
+.compare-grid { grid-template-columns: 1fr; }
+.compare-col { padding: 32px; }
+}
+
+/* ─────────── CHINA ─────────── */
+.china { background: var(–text); color: var(–bg); }
+.china .section-label { color: var(–accent); }
+.china .section-label::before { color: rgba(255,255,255,0.3); }
+.china .section-title { color: var(–bg); }
+.china .section-title .italic { color: var(–accent); }
+.china .section-lede { color: rgba(250, 247, 242, 0.7); }
+
+.phases {
+display: grid;
+grid-template-columns: repeat(4, 1fr);
+gap: 16px;
+margin-top: 32px;
+}
+.phase {
+background: rgba(255,255,255,0.04);
+border: 1px solid rgba(255,255,255,0.08);
+border-radius: 20px;
+padding: 32px;
+position: relative;
+transition: all 0.5s var(–ease);
+min-height: 320px;
+display: flex; flex-direction: column; justify-content: space-between;
+}
+.phase:hover {
+background: rgba(255,255,255,0.06);
+border-color: var(–accent);
+transform: translateY(-4px);
+}
+.phase-num {
+font-family: var(–serif);
+font-style: italic;
+font-size: 13px;
+color: var(–accent);
+letter-spacing: 0.05em;
+}
+.phase-years {
+font-family: var(–serif);
+font-size: 42px;
+font-weight: 300;
+letter-spacing: -0.03em;
+line-height: 1;
+margin: 16px 0 20px;
+}
+.phase-title {
+font-family: var(–serif);
+font-size: 20px;
+font-weight: 500;
+margin-bottom: 12px;
+line-height: 1.2;
+}
+.phase-desc {
+font-size: 14px;
+color: rgba(250, 247, 242, 0.7);
+line-height: 1.55;
+}
+
+@media (max-width: 900px) { .phases { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .phases { grid-template-columns: 1fr; } }
+
+.china-quote {
+margin-top: 80px;
+padding: 48px;
+border-left: 2px solid var(–accent);
+background: rgba(255,255,255,0.03);
+border-radius: 0 20px 20px 0;
+}
+.china-quote p {
+font-family: var(–serif);
+font-size: 28px;
+font-style: italic;
+font-weight: 300;
+line-height: 1.3;
+letter-spacing: -0.015em;
+margin-bottom: 16px;
+}
+.china-quote footer {
+font-size: 13px;
+color: var(–text-3);
+letter-spacing: 0.05em;
+}
+
+/* ─────────── GLOSSARY ─────────── */
+.glossary { background: var(–bg); }
+.glossary-grid {
+display: grid;
+gap: 0;
+border-top: 1px solid var(–border);
+}
+.glo-item {
+border-bottom: 1px solid var(–border);
+transition: background 0.3s var(–ease);
+}
+.glo-item:hover { background: rgba(200, 16, 46, 0.025); }
+.glo-header {
+width: 100%;
+padding: 28px 0;
+display: flex;
+align-items: baseline;
+gap: 32px;
+text-align: left;
+font: inherit;
+}
+.glo-letter {
+font-family: var(–serif);
+font-style: italic;
+font-size: 14px;
+color: var(–accent);
+width: 40px;
+flex-shrink: 0;
+}
+.glo-term {
+font-family: var(–serif);
+font-size: 28px;
+font-weight: 500;
+letter-spacing: -0.015em;
+flex: 1;
+line-height: 1.1;
+}
+.glo-toggle {
+font-family: var(–serif);
+font-size: 24px;
+color: var(–text-3);
+transition: transform 0.4s var(–ease);
+flex-shrink: 0;
+}
+.glo-item.open .glo-toggle { transform: rotate(45deg); color: var(–accent); }
+.glo-body {
+max-height: 0;
+overflow: hidden;
+transition: max-height 0.5s var(–ease);
+}
+.glo-item.open .glo-body { max-height: 500px; }
+.glo-body-inner {
+padding: 0 0 32px 72px;
+max-width: 68ch;
+}
+.glo-body p {
+font-size: 17px;
+color: var(–text-2);
+line-height: 1.65;
+}
+.glo-body p + p { margin-top: 12px; }
+
+@media (max-width: 600px) {
+.glo-header { gap: 16px; }
+.glo-letter { width: 24px; font-size: 12px; }
+.glo-term { font-size: 22px; }
+.glo-body-inner { padding-left: 40px; }
+}
+
+/* ─────────── FOOTER ─────────── */
+footer.site-foot {
+background: var(–text);
+color: var(–bg);
+padding: 80px 0 48px;
+}
+.foot-grid {
+display: flex;
+justify-content: space-between;
+align-items: end;
+flex-wrap: wrap;
+gap: 32px;
+padding-bottom: 48px;
+border-bottom: 1px solid rgba(255,255,255,0.1);
+margin-bottom: 32px;
+}
+.foot-big {
+font-family: var(–serif);
+font-size: clamp(40px, 6vw, 80px);
+font-weight: 300;
+line-height: 0.95;
+letter-spacing: -0.03em;
+max-width: 14ch;
+}
+.foot-big em { color: var(–accent); font-style: italic; }
+.foot-meta {
+text-align: right;
+font-size: 13px;
+color: rgba(250, 247, 242, 0.5);
+line-height: 1.6;
+}
+.foot-meta strong {
+display: block;
+color: var(–bg);
+font-family: var(–serif);
+font-weight: 500;
+font-size: 18px;
+margin-bottom: 4px;
+}
+.foot-bottom {
+display: flex;
+justify-content: space-between;
+align-items: center;
+font-size: 12px;
+color: var(–text-3);
+letter-spacing: 0.05em;
+flex-wrap: wrap;
+gap: 16px;
+}
+
+/* reveal on scroll */
+.reveal {
+opacity: 0;
+transform: translateY(32px);
+transition: opacity 0.9s var(–ease), transform 0.9s var(–ease);
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+@media (max-width: 600px) {
+.container { padding: 0 20px; }
+section.module { padding: 90px 0; }
+.section-head { margin-bottom: 48px; }
+}
+</style>
+
+</head>
+<body>
+
+<!-- ═══════════════ NAV ═══════════════ -->
+
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-brand">
+      <span class="mark"></span>
+      <span data-i18n="brand">Mr. Miljus' Class</span>
+    </div>
+    <div class="nav-links">
+      <a href="#intro" data-i18n="navIntro">Overview</a>
+      <a href="#timeline" data-i18n="navTimeline">Timeline</a>
+      <a href="#concepts" data-i18n="navConcepts">Key Ideas</a>
+      <a href="#communism" data-i18n="navCommunism">Communism</a>
+      <a href="#china" data-i18n="navChina">China</a>
+      <a href="#glossary" data-i18n="navGlossary">Glossary</a>
+    </div>
+    <div class="lang-toggle" role="tablist" aria-label="Language">
+      <button class="lang-btn active" data-lang="en">EN</button>
+      <button class="lang-btn" data-lang="es">ES</button>
+      <button class="lang-btn" data-lang="fr">FR</button>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══════════════ HERO ═══════════════ -->
+
+<section class="hero">
+  <div class="container">
+    <div class="hero-eyebrow" data-i18n="heroEyebrow">World History · Unit Five</div>
+    <h1 class="hero-title">
+      <span class="line" data-i18n="heroLine1">The World</span>
+      <span class="line italic" data-i18n="heroLine2">After</span>
+      <span class="line" data-i18n="heroLine3">World War II</span>
+    </h1>
+    <p class="hero-subtitle" data-i18n="heroSubtitle">
+      A new era begins in 1945. Two superpowers. A divided world. The birth of the Cold War.
+    </p>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <strong>1945 – 1991</strong>
+        <span data-i18n="metaYears">The Cold War</span>
+      </div>
+      <div class="hero-meta-item">
+        <strong>2</strong>
+        <span data-i18n="metaSuperpowers">Superpowers</span>
+      </div>
+      <div class="hero-meta-item">
+        <strong>51 → 193</strong>
+        <span data-i18n="metaUn">UN members, 1945 to today</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ INTRO ═══════════════ -->
+
+<section class="module intro" id="intro">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-label" data-i18n="introLabel">Overview</div>
+      <h2 class="section-title">
+        <span data-i18n="introTitle1">A new kind of war,</span>
+        <span class="italic" data-i18n="introTitle2">without a battlefield.</span>
+      </h2>
+    </div>
+
+```
+<div class="intro-grid">
+  <div class="intro-body reveal">
+    <p data-i18n="introP1">
+      In 1945, World War II ended. More than <strong>60 million people</strong> had died. Cities lay in ruins. Europe was exhausted. But a new kind of conflict was already beginning.
+    </p>
+    <p data-i18n="introP2">
+      Two countries came out of the war much stronger than everyone else: the <strong>United States</strong> and the <strong>Soviet Union</strong>. We call them <strong>superpowers</strong>. They had very different ideas about how people should live, how governments should work, and who should own businesses.
+    </p>
+    <p data-i18n="introP3">
+      This disagreement became the <strong>Cold War</strong>. It was called "cold" because the two superpowers never fought each other directly. Instead, they fought with money, spies, ideas, and the threat of nuclear weapons. And the world was divided in two.
+    </p>
+    <p data-i18n="introP4">
+      At the same time, in Asia, a massive civil war was ending in <strong>China</strong>. Its result would change the balance of power for the next century.
+    </p>
+  </div>
+
+  <div class="intro-stats reveal">
+    <div class="stat">
+      <div class="stat-num">60<span class="unit">M+</span></div>
+      <div class="stat-label" data-i18n="stat1">People killed in World War II</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">46<span class="unit"> yrs</span></div>
+      <div class="stat-label" data-i18n="stat2">Length of the Cold War (1945–1991)</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">$13<span class="unit">B</span></div>
+      <div class="stat-label" data-i18n="stat3">U.S. Marshall Plan aid to rebuild Europe</div>
+    </div>
+  </div>
+</div>
+```
+
+  </div>
+</section>
+
+<!-- ═══════════════ TIMELINE ═══════════════ -->
+
+<section class="module" id="timeline" style="background: var(--bg-alt);">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-label" data-i18n="tlLabel">Timeline</div>
+      <h2 class="section-title">
+        <span data-i18n="tlTitle1">Twenty years that</span>
+        <span class="italic" data-i18n="tlTitle2">remade the world.</span>
+      </h2>
+      <p class="section-lede" data-i18n="tlLede">
+        Click or tap any event to learn more. The story starts before World War II ends, because the seeds of the Cold War were already growing.
+      </p>
+    </div>
+
+```
+<div class="timeline-wrap">
+  <div class="tl-item"><div class="tl-dot"></div><div class="tl-card">
+    <div class="tl-date">1927</div>
+    <h3 class="tl-title" data-i18n="tl01t">Chinese Civil War begins</h3>
+    <p class="tl-desc" data-i18n="tl01d">Nationalists (led by Chiang Kai-shek) fight against Communists (led by Mao Zedong) for control of China.</p>
+  </div></div>
+
+  <div class="tl-item"><div class="tl-dot"></div><div class="tl-card">
+    <div class="tl-date">1937</div>
+    <h3 class="tl-title" data-i18n="tl02t">Japan invades China</h3>
+    <p class="tl-desc" data-i18n="tl02d">Chinese Nationalists and Communists pause their fighting and unite against the Japanese invasion.</p>
+  </div></div>
+
+  <div class="tl-item"><div class="tl-dot"></div><div class="tl-card">
+    <div class="tl-date">February 1945</div>
+    <h3 class="tl-title" data-i18n="tl03t">Yalta Conference</h3>
+    <p class="tl-desc" data-i18n="tl03d">Roosevelt, Churchill, and Stalin meet to plan the post-war world. They divide Germany into four zones.</p>
+  </div></div>
+
+  <div class="tl-item"><div class="tl-dot"></div><div class="tl-card">
+    <div class="tl-date">May 1945</div>
+    <h3 class="tl-title" data-i18n="tl04t">Germany surrenders</h3>
+    <p class="tl-desc" data-i18n="tl04d">World War II ends in Europe. Soviet troops occupy Eastern Europe; American and British troops hold the West.</p>
+  </div></div>
+
+  <div class="tl-item"><div class="tl-dot"></div><div class="tl-card">
+    <div class="tl-date">August 1945</div>
+    <h3 class="tl-title" data-i18n="tl05t">Hiroshima &amp; Nagasaki</h3>
+    <p class="tl-desc" data-i18n="tl05d">The U.S. drops atomic bombs on two Japanese cities. Japan surrenders. The nuclear age begins.</p>
+  </div></div>
+
+  <div class="tl-item"><div class="tl-dot"></div><div class="tl-card">
+    <div class="tl-date">October 1945</div>
+    <h3 class="tl-title" data-i18n="tl06t">United Nations founded</h3>
+    <p class="tl-desc" data-i18n="tl06d">51 countries sign the UN Charter. Its goal: prevent another world war and protect human rights.</p>
+  </div></div>
+
+  <div class="tl-item"><div class="tl-dot"></div><div class="tl-card">
+    <div class="tl-date">March 1946</div>
+    <h3 class="tl-title" data-i18n="tl07t">"Iron Curtain" speech</h3>
+    <p class="tl-desc" data-i18n="tl07d">Winston Churchill warns that an "Iron Curtain" has fallen across Europe, dividing free nations from Soviet-controlled ones.</p>
+  </div></div>
+
+  <div class="tl-item"><div class="tl-dot"></div><div class="tl-card">
+    <div class="tl-date">March 1947</div>
+    <h3 class="tl-title" data-i18n="tl08t">Truman Doctrine</h3>
+    <p class="tl-desc" data-i18n="tl08d">President Truman promises U.S. support to any country fighting against communism. The Cold War strategy is set.</p>
+  </div></div>
+
+  <div class="tl-item"><div class="tl-dot"></div><div class="tl-card">
+    <div class="tl-date">June 1947</div>
+    <h3 class="tl-title" data-i18n="tl09t">Marshall Plan</h3>
+    <p class="tl-desc" data-i18n="tl09d">The U.S. sends $13 billion to help rebuild Western Europe — and keep it out of Soviet hands.</p>
+  </div></div>
+
+  <div class="tl-item"><div class="tl-dot"></div><div class="tl-card">
+    <div class="tl-date">1948 – 1949</div>
+    <h3 class="tl-title" data-i18n="tl10t">Berlin Airlift</h3>
+    <p class="tl-desc" data-i18n="tl10d">The Soviets block West Berlin. The U.S. and Britain fly food and fuel to the city for nearly a year. Stalin backs down.</p>
+  </div></div>
+
+  <div class="tl-item"><div class="tl-dot"></div><div class="tl-card">
+    <div class="tl-date">April 1949</div>
+    <h3 class="tl-title" data-i18n="tl11t">NATO is formed</h3>
+    <p class="tl-desc" data-i18n="tl11d">The U.S., Canada, and ten Western European nations promise to defend each other against Soviet attack.</p>
+  </div></div>
+
+  <div class="tl-item"><div class="tl-dot"></div><div class="tl-card">
+    <div class="tl-date">October 1949</div>
+    <h3 class="tl-title" data-i18n="tl12t">Mao wins in China</h3>
+    <p class="tl-desc" data-i18n="tl12d">The Chinese Communists defeat the Nationalists. Mao Zedong proclaims the People's Republic of China.</p>
+  </div></div>
+
+  <div class="tl-item"><div class="tl-dot"></div><div class="tl-card">
+    <div class="tl-date">May 1955</div>
+    <h3 class="tl-title" data-i18n="tl13t">Warsaw Pact</h3>
+    <p class="tl-desc" data-i18n="tl13d">The Soviet Union and its Eastern European allies form their own military alliance. Europe is officially two armed camps.</p>
+  </div></div>
+</div>
+```
+
+  </div>
+</section>
+
+<!-- ═══════════════ CONCEPTS (FLIP CARDS) ═══════════════ -->
+
+<section class="module concepts" id="concepts">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-label" data-i18n="cLabel">Key Ideas</div>
+      <h2 class="section-title">
+        <span data-i18n="cTitle1">Six ideas that</span>
+        <span class="italic" data-i18n="cTitle2">shaped the era.</span>
+      </h2>
+      <p class="section-lede" data-i18n="cLede">Hover — or tap on a phone — to flip each card and read the definition.</p>
+    </div>
+
+```
+<div class="concept-grid">
+  <div class="flip-card" tabindex="0">
+    <div class="flip-inner">
+      <div class="flip-face flip-front">
+        <div>
+          <div class="flip-num">01</div>
+          <div class="flip-term" data-i18n="cc1t">New World Order</div>
+        </div>
+        <div class="flip-hint" data-i18n="flipHint">Flip</div>
+      </div>
+      <div class="flip-face flip-back">
+        <div>
+          <div class="flip-term" data-i18n="cc1t">New World Order</div>
+          <p class="flip-def" data-i18n="cc1d">The new way the world worked after 1945. The U.S. and U.S.S.R. became the two strongest countries. New groups like the UN, IMF, and World Bank were created to keep peace and rebuild.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="flip-card" tabindex="0">
+    <div class="flip-inner">
+      <div class="flip-face flip-front">
+        <div>
+          <div class="flip-num">02</div>
+          <div class="flip-term" data-i18n="cc2t">Cold War</div>
+        </div>
+        <div class="flip-hint" data-i18n="flipHint">Flip</div>
+      </div>
+      <div class="flip-face flip-back">
+        <div>
+          <div class="flip-term" data-i18n="cc2t">Cold War</div>
+          <p class="flip-def" data-i18n="cc2d">A long fight between the U.S. and Soviet Union (1945–1991). They never fought directly. Instead, they used money, spies, propaganda, and the threat of nuclear weapons.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="flip-card" tabindex="0">
+    <div class="flip-inner">
+      <div class="flip-face flip-front">
+        <div>
+          <div class="flip-num">03</div>
+          <div class="flip-term" data-i18n="cc3t">Iron Curtain</div>
+        </div>
+        <div class="flip-hint" data-i18n="flipHint">Flip</div>
+      </div>
+      <div class="flip-face flip-back">
+        <div>
+          <div class="flip-term" data-i18n="cc3t">Iron Curtain</div>
+          <p class="flip-def" data-i18n="cc3d">An invisible wall dividing Europe. Free, democratic nations on the West side. Communist nations controlled by the Soviet Union on the East. Named by Winston Churchill in 1946.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="flip-card" tabindex="0">
+    <div class="flip-inner">
+      <div class="flip-face flip-front">
+        <div>
+          <div class="flip-num">04</div>
+          <div class="flip-term" data-i18n="cc4t">Containment</div>
+        </div>
+        <div class="flip-hint" data-i18n="flipHint">Flip</div>
+      </div>
+      <div class="flip-face flip-back">
+        <div>
+          <div class="flip-term" data-i18n="cc4t">Containment</div>
+          <p class="flip-def" data-i18n="cc4d">The main U.S. strategy in the Cold War. The goal was to stop communism from spreading to new countries. The Truman Doctrine and Marshall Plan were both part of containment.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="flip-card" tabindex="0">
+    <div class="flip-inner">
+      <div class="flip-face flip-front">
+        <div>
+          <div class="flip-num">05</div>
+          <div class="flip-term" data-i18n="cc5t">Superpower</div>
+        </div>
+        <div class="flip-hint" data-i18n="flipHint">Flip</div>
+      </div>
+      <div class="flip-face flip-back">
+        <div>
+          <div class="flip-term" data-i18n="cc5t">Superpower</div>
+          <p class="flip-def" data-i18n="cc5d">A country with so much military, economic, and cultural power that it can influence events almost anywhere in the world. After 1945, only two countries were superpowers: the U.S. and the Soviet Union.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="flip-card" tabindex="0">
+    <div class="flip-inner">
+      <div class="flip-face flip-front">
+        <div>
+          <div class="flip-num">06</div>
+          <div class="flip-term" data-i18n="cc6t">Decolonization</div>
+        </div>
+        <div class="flip-hint" data-i18n="flipHint">Flip</div>
+      </div>
+      <div class="flip-face flip-back">
+        <div>
+          <div class="flip-term" data-i18n="cc6t">Decolonization</div>
+          <p class="flip-def" data-i18n="cc6d">After WWII, European empires were weak. Many colonies in Asia and Africa became independent countries. This changed the map of the world — and both superpowers tried to win these new nations as allies.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+  </div>
+</section>
+
+<!-- ═══════════════ COMMUNISM ═══════════════ -->
+
+<section class="module" id="communism">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-label" data-i18n="comLabel">Communism vs. Capitalism</div>
+      <h2 class="section-title">
+        <span data-i18n="comTitle1">Two answers to</span>
+        <span class="italic" data-i18n="comTitle2">one big question.</span>
+      </h2>
+      <p class="section-lede" data-i18n="comLede">
+        Who should own factories, farms, and businesses? Who decides how much workers get paid? The answers split the 20th-century world in half.
+      </p>
+    </div>
+
+```
+<div class="compare-grid reveal">
+  <div class="compare-col left">
+    <span class="compare-tag" data-i18n="comLeftTag">East</span>
+    <h3 class="compare-title" data-i18n="comLeftTitle">Communism</h3>
+    <p class="compare-country" data-i18n="comLeftCountries">Soviet Union, China (after 1949), Cuba, North Korea</p>
+    <ul class="compare-list">
+      <li><strong data-i18n="comL1s">The government owns everything.</strong><span data-i18n="comL1">Factories, farms, and land belong to the state, not private people.</span></li>
+      <li><strong data-i18n="comL2s">One political party.</strong><span data-i18n="comL2">Only the Communist Party is allowed. No free elections.</span></li>
+      <li><strong data-i18n="comL3s">Planned economy.</strong><span data-i18n="comL3">The government decides what is made, how much, and the price.</span></li>
+      <li><strong data-i18n="comL4s">Goal: total equality.</strong><span data-i18n="comL4">No rich or poor. In theory. In reality, leaders lived well while people suffered.</span></li>
+      <li><strong data-i18n="comL5s">Founder of the idea:</strong><span data-i18n="comL5">Karl Marx (German philosopher, 1818–1883).</span></li>
+    </ul>
+  </div>
+
+  <div class="compare-col right">
+    <span class="compare-tag" data-i18n="comRightTag">West</span>
+    <h3 class="compare-title" data-i18n="comRightTitle">Capitalism</h3>
+    <p class="compare-country" data-i18n="comRightCountries">United States, United Kingdom, France, West Germany, Japan</p>
+    <ul class="compare-list">
+      <li><strong data-i18n="comR1s">Private people own businesses.</strong><span data-i18n="comR1">You can start a company, buy property, and keep the profit.</span></li>
+      <li><strong data-i18n="comR2s">Democracy and free elections.</strong><span data-i18n="comR2">People vote for their leaders. Many political parties compete.</span></li>
+      <li><strong data-i18n="comR3s">Free market.</strong><span data-i18n="comR3">Supply and demand set prices. The government mostly stays out of business decisions.</span></li>
+      <li><strong data-i18n="comR4s">Goal: freedom and opportunity.</strong><span data-i18n="comR4">People can become wealthy through work or ideas. But inequality can be high.</span></li>
+      <li><strong data-i18n="comR5s">Rooted in the ideas of:</strong><span data-i18n="comR5">Adam Smith (Scottish economist, 1723–1790).</span></li>
+    </ul>
+  </div>
+</div>
+```
+
+  </div>
+</section>
+
+<!-- ═══════════════ CHINA ═══════════════ -->
+
+<section class="module china" id="china">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-label" data-i18n="chLabel">Chinese Civil War</div>
+      <h2 class="section-title">
+        <span data-i18n="chTitle1">A civil war,</span>
+        <span class="italic" data-i18n="chTitle2">paused by a world war.</span>
+      </h2>
+      <p class="section-lede" data-i18n="chLede">
+        The conflict between Chinese Nationalists and Communists ran for 22 years. It stopped for eight of those years — only so both sides could fight Japan. When WWII ended, they picked up right where they left off.
+      </p>
+    </div>
+
+```
+<div class="phases">
+  <div class="phase reveal">
+    <div>
+      <div class="phase-num" data-i18n="ph1n">Phase 01</div>
+      <div class="phase-years">1927–1937</div>
+      <h3 class="phase-title" data-i18n="ph1t">The first fight</h3>
+    </div>
+    <p class="phase-desc" data-i18n="ph1d">Nationalists (KMT) under Chiang Kai-shek try to crush the Communists. Mao Zedong leads the survivors on the Long March — a 6,000-mile retreat.</p>
+  </div>
+  <div class="phase reveal">
+    <div>
+      <div class="phase-num" data-i18n="ph2n">Phase 02</div>
+      <div class="phase-years">1937–1945</div>
+      <h3 class="phase-title" data-i18n="ph2t">Truce against Japan</h3>
+    </div>
+    <p class="phase-desc" data-i18n="ph2d">Japan invades China. Nationalists and Communists stop fighting each other to defend their country. Both grow stronger during WWII.</p>
+  </div>
+  <div class="phase reveal">
+    <div>
+      <div class="phase-num" data-i18n="ph3n">Phase 03</div>
+      <div class="phase-years">1945–1949</div>
+      <h3 class="phase-title" data-i18n="ph3t">Civil war returns</h3>
+    </div>
+    <p class="phase-desc" data-i18n="ph3d">Japan surrenders. The truce is over. Mao's Communists, supported by peasants, slowly push Chiang's Nationalists out of mainland China.</p>
+  </div>
+  <div class="phase reveal">
+    <div>
+      <div class="phase-num" data-i18n="ph4n">Phase 04</div>
+      <div class="phase-years">October 1949</div>
+      <h3 class="phase-title" data-i18n="ph4t">Mao wins</h3>
+    </div>
+    <p class="phase-desc" data-i18n="ph4d">Mao proclaims the People's Republic of China. Chiang and the Nationalists escape to the island of Taiwan. The world's most populous country is now communist.</p>
+  </div>
+</div>
+
+<div class="china-quote reveal">
+  <p data-i18n="chQuote">"The Chinese people have stood up."</p>
+  <footer data-i18n="chQuoteAttr">— Mao Zedong, proclaiming the People's Republic · October 1, 1949</footer>
+</div>
+```
+
+  </div>
+</section>
+
+<!-- ═══════════════ GLOSSARY ═══════════════ -->
+
+<section class="module glossary" id="glossary">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-label" data-i18n="gLabel">Glossary</div>
+      <h2 class="section-title">
+        <span data-i18n="gTitle1">Every term,</span>
+        <span class="italic" data-i18n="gTitle2">explained simply.</span>
+      </h2>
+      <p class="section-lede" data-i18n="gLede">Tap any term to see its definition. Study-ready, no hard words.</p>
+    </div>
+
+```
+<div class="glossary-grid">
+  <div class="glo-item"><button class="glo-header"><span class="glo-letter">A</span><span class="glo-term" data-i18n="g01t">Atomic Bomb</span><span class="glo-toggle">+</span></button><div class="glo-body"><div class="glo-body-inner"><p data-i18n="g01d">A nuclear weapon with enormous power. The U.S. was the first country to build one. Two atomic bombs were used on Japan in August 1945. They killed more than 150,000 people and ended World War II. After the war, both superpowers raced to build more.</p></div></div></div>
+
+  <div class="glo-item"><button class="glo-header"><span class="glo-letter">B</span><span class="glo-term" data-i18n="g02t">Berlin Airlift</span><span class="glo-toggle">+</span></button><div class="glo-body"><div class="glo-body-inner"><p data-i18n="g02d">In 1948, the Soviets blocked all roads into West Berlin to starve it. For almost a year, the U.S. and Britain flew food, coal, and medicine into the city every few minutes. It was a major Cold War victory without a single shot fired.</p></div></div></div>
+
+  <div class="glo-item"><button class="glo-header"><span class="glo-letter">C</span><span class="glo-term" data-i18n="g03t">Capitalism</span><span class="glo-toggle">+</span></button><div class="glo-body"><div class="glo-body-inner"><p data-i18n="g03d">An economic system where private people (not the government) own businesses and property. Prices are set by supply and demand. People can become rich through work, ideas, or investment. The United States is the classic example.</p></div></div></div>
+
+  <div class="glo-item"><button class="glo-header"><span class="glo-letter">C</span><span class="glo-term" data-i18n="g04t">Chiang Kai-shek</span><span class="glo-toggle">+</span></button><div class="glo-body"><div class="glo-body-inner"><p data-i18n="g04d">Leader of the Chinese Nationalists (KMT). He fought Japan during WWII and Mao's Communists before and after. He lost the civil war in 1949 and fled to the island of Taiwan, where he ran a separate government until his death in 1975.</p></div></div></div>
+
+  <div class="glo-item"><button class="glo-header"><span class="glo-letter">C</span><span class="glo-term" data-i18n="g05t">Cold War</span><span class="glo-toggle">+</span></button><div class="glo-body"><div class="glo-body-inner"><p data-i18n="g05d">The long conflict between the United States and the Soviet Union from 1945 to 1991. They did not fight each other with soldiers. They competed with money, spies, technology, sports, and the constant threat of nuclear war.</p></div></div></div>
+
+  <div class="glo-item"><button class="glo-header"><span class="glo-letter">C</span><span class="glo-term" data-i18n="g06t">Communism</span><span class="glo-toggle">+</span></button><div class="glo-body"><div class="glo-body-inner"><p data-i18n="g06d">An economic and political system in which the government owns all businesses and land. The goal, in theory, is equality — no rich, no poor. In practice, communist countries like the Soviet Union became dictatorships ruled by a single party.</p></div></div></div>
+
+  <div class="glo-item"><button class="glo-header"><span class="glo-letter">C</span><span class="glo-term" data-i18n="g07t">Containment</span><span class="glo-toggle">+</span></button><div class="glo-body"><div class="glo-body-inner"><p data-i18n="g07d">The main U.S. strategy in the Cold War. The idea was simple: stop communism from spreading to any new country. The Truman Doctrine, the Marshall Plan, and NATO were all tools of containment.</p></div></div></div>
+
+  <div class="glo-item"><button class="glo-header"><span class="glo-letter">D</span><span class="glo-term" data-i18n="g08t">Decolonization</span><span class="glo-toggle">+</span></button><div class="glo-body"><div class="glo-body-inner"><p data-i18n="g08d">The process by which European colonies in Asia and Africa became independent countries after WWII. Britain, France, and other powers could no longer afford to hold their empires. Dozens of new nations were born between 1945 and 1975.</p></div></div></div>
+
+  <div class="glo-item"><button class="glo-header"><span class="glo-letter">I</span><span class="glo-term" data-i18n="g09t">Iron Curtain</span><span class="glo-toggle">+</span></button><div class="glo-body"><div class="glo-body-inner"><p data-i18n="g09d">The invisible line that divided Europe during the Cold War. West of the line: free, democratic, capitalist nations. East of the line: communist countries controlled by the Soviet Union. Winston Churchill named it in a famous 1946 speech.</p></div></div></div>
+
+  <div class="glo-item"><button class="glo-header"><span class="glo-letter">M</span><span class="glo-term" data-i18n="g10t">Mao Zedong</span><span class="glo-toggle">+</span></button><div class="glo-body"><div class="glo-body-inner"><p data-i18n="g10d">Leader of the Chinese Communist Party. He won the Chinese Civil War in 1949 and founded the People's Republic of China. He ruled until his death in 1976. His policies caused enormous progress — and enormous suffering.</p></div></div></div>
+
+  <div class="glo-item"><button class="glo-header"><span class="glo-letter">M</span><span class="glo-term" data-i18n="g11t">Marshall Plan</span><span class="glo-toggle">+</span></button><div class="glo-body"><div class="glo-body-inner"><p data-i18n="g11d">A U.S. program (1948–1951) that sent about $13 billion to help Western European countries rebuild after WWII. The goal was both kind and strategic: help allies recover, and keep them out of Soviet hands.</p></div></div></div>
+
+  <div class="glo-item"><button class="glo-header"><span class="glo-letter">N</span><span class="glo-term" data-i18n="g12t">NATO</span><span class="glo-toggle">+</span></button><div class="glo-body"><div class="glo-body-inner"><p data-i18n="g12d">North Atlantic Treaty Organization. A military alliance created in 1949 by the U.S., Canada, and Western European countries. If one member is attacked, all members promise to defend it. Still exists today with 32 members.</p></div></div></div>
+
+  <div class="glo-item"><button class="glo-header"><span class="glo-letter">N</span><span class="glo-term" data-i18n="g13t">New World Order</span><span class="glo-toggle">+</span></button><div class="glo-body"><div class="glo-body-inner"><p data-i18n="g13d">A phrase describing the way the world was organized after 1945. The old European empires were weak. The U.S. and Soviet Union became the dominant powers. New institutions like the UN, the IMF, and the World Bank were built to manage a global system.</p></div></div></div>
+
+  <div class="glo-item"><button class="glo-header"><span class="glo-letter">P</span><span class="glo-term" data-i18n="g14t">People's Republic of China</span><span class="glo-toggle">+</span></button><div class="glo-body"><div class="glo-body-inner"><p data-i18n="g14d">The official name of communist China, declared by Mao Zedong on October 1, 1949. It replaced the Nationalist government on the Chinese mainland. Today it is the most populous country on Earth and a global superpower.</p></div></div></div>
+
+  <div class="glo-item"><button class="glo-header"><span class="glo-letter">S</span><span class="glo-term" data-i18n="g15t">Superpower</span><span class="glo-toggle">+</span></button><div class="glo-body"><div class="glo-body-inner"><p data-i18n="g15d">A country with so much military, economic, and cultural power that it shapes events across the globe. After WWII, there were only two: the United States and the Soviet Union.</p></div></div></div>
+
+  <div class="glo-item"><button class="glo-header"><span class="glo-letter">T</span><span class="glo-term" data-i18n="g16t">Truman Doctrine</span><span class="glo-toggle">+</span></button><div class="glo-body"><div class="glo-body-inner"><p data-i18n="g16d">A 1947 speech by U.S. President Harry Truman. He promised American support to any country fighting against communism. This marked the official beginning of containment and the Cold War.</p></div></div></div>
+
+  <div class="glo-item"><button class="glo-header"><span class="glo-letter">U</span><span class="glo-term" data-i18n="g17t">United Nations (UN)</span><span class="glo-toggle">+</span></button><div class="glo-body"><div class="glo-body-inner"><p data-i18n="g17d">An international organization founded in October 1945 with 51 countries. Its goal: prevent another world war and protect human rights. Today almost every country on Earth is a member — 193 in total.</p></div></div></div>
+
+  <div class="glo-item"><button class="glo-header"><span class="glo-letter">W</span><span class="glo-term" data-i18n="g18t">Warsaw Pact</span><span class="glo-toggle">+</span></button><div class="glo-body"><div class="glo-body-inner"><p data-i18n="g18d">A military alliance created in 1955 by the Soviet Union and its Eastern European communist allies. It was the communist response to NATO. The pact ended in 1991 when the Soviet Union collapsed.</p></div></div></div>
+
+  <div class="glo-item"><button class="glo-header"><span class="glo-letter">Y</span><span class="glo-term" data-i18n="g19t">Yalta Conference</span><span class="glo-toggle">+</span></button><div class="glo-body"><div class="glo-body-inner"><p data-i18n="g19d">A meeting in February 1945 between Franklin Roosevelt (U.S.), Winston Churchill (UK), and Joseph Stalin (USSR). They agreed on how to divide Germany and organize post-war Europe. It is often seen as the beginning of the Cold War division.</p></div></div></div>
+</div>
+```
+
+  </div>
+</section>
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+
+<footer class="site-foot">
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-big">
+        <span data-i18n="footBig1">History</span>
+        <em data-i18n="footBig2">in three languages.</em>
+      </div>
+      <div class="foot-meta">
+        <strong data-i18n="footBrand">Mr. Miljus' Class</strong>
+        <span data-i18n="footSub">Multilingual Classroom · World History</span>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span data-i18n="footCopy">© 2026 — Built for 10th grade World History</span>
+      <span data-i18n="footTag">EN · ES · FR</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ═══════════════ TRANSLATIONS ═══════════════ */
+const i18n = {
+  en: {
+    brand: "Mr. Miljus' Class",
+    navIntro: "Overview", navTimeline: "Timeline", navConcepts: "Key Ideas",
+    navCommunism: "Communism", navChina: "China", navGlossary: "Glossary",
+
+    heroEyebrow: "World History · Unit Five",
+    heroLine1: "The World", heroLine2: "After", heroLine3: "World War II",
+    heroSubtitle: "A new era begins in 1945. Two superpowers. A divided world. The birth of the Cold War.",
+    metaYears: "The Cold War",
+    metaSuperpowers: "Superpowers",
+    metaUn: "UN members, 1945 to today",
+
+    introLabel: "Overview",
+    introTitle1: "A new kind of war,",
+    introTitle2: "without a battlefield.",
+    introP1: "In 1945, World War II ended. More than <strong>60 million people</strong> had died. Cities lay in ruins. Europe was exhausted. But a new kind of conflict was already beginning.",
+    introP2: "Two countries came out of the war much stronger than everyone else: the <strong>United States</strong> and the <strong>Soviet Union</strong>. We call them <strong>superpowers</strong>. They had very different ideas about how people should live, how governments should work, and who should own businesses.",
+    introP3: "This disagreement became the <strong>Cold War</strong>. It was called \"cold\" because the two superpowers never fought each other directly. Instead, they fought with money, spies, ideas, and the threat of nuclear weapons. And the world was divided in two.",
+    introP4: "At the same time, in Asia, a massive civil war was ending in <strong>China</strong>. Its result would change the balance of power for the next century.",
+    stat1: "People killed in World War II",
+    stat2: "Length of the Cold War (1945–1991)",
+    stat3: "U.S. Marshall Plan aid to rebuild Europe",
+
+    tlLabel: "Timeline",
+    tlTitle1: "Twenty years that",
+    tlTitle2: "remade the world.",
+    tlLede: "Click or tap any event to learn more. The story starts before World War II ends, because the seeds of the Cold War were already growing.",
+    tl01t: "Chinese Civil War begins",
+    tl01d: "Nationalists (led by Chiang Kai-shek) fight against Communists (led by Mao Zedong) for control of China.",
+    tl02t: "Japan invades China",
+    tl02d: "Chinese Nationalists and Communists pause their fighting and unite against the Japanese invasion.",
+    tl03t: "Yalta Conference",
+    tl03d: "Roosevelt, Churchill, and Stalin meet to plan the post-war world. They divide Germany into four zones.",
+    tl04t: "Germany surrenders",
+    tl04d: "World War II ends in Europe. Soviet troops occupy Eastern Europe; American and British troops hold the West.",
+    tl05t: "Hiroshima & Nagasaki",
+    tl05d: "The U.S. drops atomic bombs on two Japanese cities. Japan surrenders. The nuclear age begins.",
+    tl06t: "United Nations founded",
+    tl06d: "51 countries sign the UN Charter. Its goal: prevent another world war and protect human rights.",
+    tl07t: "\"Iron Curtain\" speech",
+    tl07d: "Winston Churchill warns that an \"Iron Curtain\" has fallen across Europe, dividing free nations from Soviet-controlled ones.",
+    tl08t: "Truman Doctrine",
+    tl08d: "President Truman promises U.S. support to any country fighting against communism. The Cold War strategy is set.",
+    tl09t: "Marshall Plan",
+    tl09d: "The U.S. sends $13 billion to help rebuild Western Europe — and keep it out of Soviet hands.",
+    tl10t: "Berlin Airlift",
+    tl10d: "The Soviets block West Berlin. The U.S. and Britain fly food and fuel to the city for nearly a year. Stalin backs down.",
+    tl11t: "NATO is formed",
+    tl11d: "The U.S., Canada, and ten Western European nations promise to defend each other against Soviet attack.",
+    tl12t: "Mao wins in China",
+    tl12d: "The Chinese Communists defeat the Nationalists. Mao Zedong proclaims the People's Republic of China.",
+    tl13t: "Warsaw Pact",
+    tl13d: "The Soviet Union and its Eastern European allies form their own military alliance. Europe is officially two armed camps.",
+
+    cLabel: "Key Ideas",
+    cTitle1: "Six ideas that",
+    cTitle2: "shaped the era.",
+    cLede: "Hover — or tap on a phone — to flip each card and read the definition.",
+    flipHint: "Flip",
+    cc1t: "New World Order",
+    cc1d: "The new way the world worked after 1945. The U.S. and U.S.S.R. became the two strongest countries. New groups like the UN, IMF, and World Bank were created to keep peace and rebuild.",
+    cc2t: "Cold War",
+    cc2d: "A long fight between the U.S. and Soviet Union (1945–1991). They never fought directly. Instead, they used money, spies, propaganda, and the threat of nuclear weapons.",
+    cc3t: "Iron Curtain",
+    cc3d: "An invisible wall dividing Europe. Free, democratic nations on the West side. Communist nations controlled by the Soviet Union on the East. Named by Winston Churchill in 1946.",
+    cc4t: "Containment",
+    cc4d: "The main U.S. strategy in the Cold War. The goal was to stop communism from spreading to new countries. The Truman Doctrine and Marshall Plan were both part of containment.",
+    cc5t: "Superpower",
+    cc5d: "A country with so much military, economic, and cultural power that it can influence events almost anywhere in the world. After 1945, only two countries were superpowers: the U.S. and the Soviet Union.",
+    cc6t: "Decolonization",
+    cc6d: "After WWII, European empires were weak. Many colonies in Asia and Africa became independent countries. This changed the map of the world — and both superpowers tried to win these new nations as allies.",
+
+    comLabel: "Communism vs. Capitalism",
+    comTitle1: "Two answers to",
+    comTitle2: "one big question.",
+    comLede: "Who should own factories, farms, and businesses? Who decides how much workers get paid? The answers split the 20th-century world in half.",
+    comLeftTag: "East",
+    comLeftTitle: "Communism",
+    comLeftCountries: "Soviet Union, China (after 1949), Cuba, North Korea",
+    comL1s: "The government owns everything.", comL1: "Factories, farms, and land belong to the state, not private people.",
+    comL2s: "One political party.", comL2: "Only the Communist Party is allowed. No free elections.",
+    comL3s: "Planned economy.", comL3: "The government decides what is made, how much, and the price.",
+    comL4s: "Goal: total equality.", comL4: "No rich or poor. In theory. In reality, leaders lived well while people suffered.",
+    comL5s: "Founder of the idea:", comL5: "Karl Marx (German philosopher, 1818–1883).",
+    comRightTag: "West",
+    comRightTitle: "Capitalism",
+    comRightCountries: "United States, United Kingdom, France, West Germany, Japan",
+    comR1s: "Private people own businesses.", comR1: "You can start a company, buy property, and keep the profit.",
+    comR2s: "Democracy and free elections.", comR2: "People vote for their leaders. Many political parties compete.",
+    comR3s: "Free market.", comR3: "Supply and demand set prices. The government mostly stays out of business decisions.",
+    comR4s: "Goal: freedom and opportunity.", comR4: "People can become wealthy through work or ideas. But inequality can be high.",
+    comR5s: "Rooted in the ideas of:", comR5: "Adam Smith (Scottish economist, 1723–1790).",
+
+    chLabel: "Chinese Civil War",
+    chTitle1: "A civil war,",
+    chTitle2: "paused by a world war.",
+    chLede: "The conflict between Chinese Nationalists and Communists ran for 22 years. It stopped for eight of those years — only so both sides could fight Japan. When WWII ended, they picked up right where they left off.",
+    ph1n: "Phase 01", ph1t: "The first fight",
+    ph1d: "Nationalists (KMT) under Chiang Kai-shek try to crush the Communists. Mao Zedong leads the survivors on the Long March — a 6,000-mile retreat.",
+    ph2n: "Phase 02", ph2t: "Truce against Japan",
+    ph2d: "Japan invades China. Nationalists and Communists stop fighting each other to defend their country. Both grow stronger during WWII.",
+    ph3n: "Phase 03", ph3t: "Civil war returns",
+    ph3d: "Japan surrenders. The truce is over. Mao's Communists, supported by peasants, slowly push Chiang's Nationalists out of mainland China.",
+    ph4n: "Phase 04", ph4t: "Mao wins",
+    ph4d: "Mao proclaims the People's Republic of China. Chiang and the Nationalists escape to the island of Taiwan. The world's most populous country is now communist.",
+    chQuote: "\"The Chinese people have stood up.\"",
+    chQuoteAttr: "— Mao Zedong, proclaiming the People's Republic · October 1, 1949",
+
+    gLabel: "Glossary",
+    gTitle1: "Every term,",
+    gTitle2: "explained simply.",
+    gLede: "Tap any term to see its definition. Study-ready, no hard words.",
+    g01t: "Atomic Bomb", g01d: "A nuclear weapon with enormous power. The U.S. was the first country to build one. Two atomic bombs were used on Japan in August 1945. They killed more than 150,000 people and ended World War II. After the war, both superpowers raced to build more.",
+    g02t: "Berlin Airlift", g02d: "In 1948, the Soviets blocked all roads into West Berlin to starve it. For almost a year, the U.S. and Britain flew food, coal, and medicine into the city every few minutes. It was a major Cold War victory without a single shot fired.",
+    g03t: "Capitalism", g03d: "An economic system where private people (not the government) own businesses and property. Prices are set by supply and demand. People can become rich through work, ideas, or investment. The United States is the classic example.",
+    g04t: "Chiang Kai-shek", g04d: "Leader of the Chinese Nationalists (KMT). He fought Japan during WWII and Mao's Communists before and after. He lost the civil war in 1949 and fled to the island of Taiwan, where he ran a separate government until his death in 1975.",
+    g05t: "Cold War", g05d: "The long conflict between the United States and the Soviet Union from 1945 to 1991. They did not fight each other with soldiers. They competed with money, spies, technology, sports, and the constant threat of nuclear war.",
+    g06t: "Communism", g06d: "An economic and political system in which the government owns all businesses and land. The goal, in theory, is equality — no rich, no poor. In practice, communist countries like the Soviet Union became dictatorships ruled by a single party.",
+    g07t: "Containment", g07d: "The main U.S. strategy in the Cold War. The idea was simple: stop communism from spreading to any new country. The Truman Doctrine, the Marshall Plan, and NATO were all tools of containment.",
+    g08t: "Decolonization", g08d: "The process by which European colonies in Asia and Africa became independent countries after WWII. Britain, France, and other powers could no longer afford to hold their empires. Dozens of new nations were born between 1945 and 1975.",
+    g09t: "Iron Curtain", g09d: "The invisible line that divided Europe during the Cold War. West of the line: free, democratic, capitalist nations. East of the line: communist countries controlled by the Soviet Union. Winston Churchill named it in a famous 1946 speech.",
+    g10t: "Mao Zedong", g10d: "Leader of the Chinese Communist Party. He won the Chinese Civil War in 1949 and founded the People's Republic of China. He ruled until his death in 1976. His policies caused enormous progress — and enormous suffering.",
+    g11t: "Marshall Plan", g11d: "A U.S. program (1948–1951) that sent about $13 billion to help Western European countries rebuild after WWII. The goal was both kind and strategic: help allies recover, and keep them out of Soviet hands.",
+    g12t: "NATO", g12d: "North Atlantic Treaty Organization. A military alliance created in 1949 by the U.S., Canada, and Western European countries. If one member is attacked, all members promise to defend it. Still exists today with 32 members.",
+    g13t: "New World Order", g13d: "A phrase describing the way the world was organized after 1945. The old European empires were weak. The U.S. and Soviet Union became the dominant powers. New institutions like the UN, the IMF, and the World Bank were built to manage a global system.",
+    g14t: "People's Republic of China", g14d: "The official name of communist China, declared by Mao Zedong on October 1, 1949. It replaced the Nationalist government on the Chinese mainland. Today it is the most populous country on Earth and a global superpower.",
+    g15t: "Superpower", g15d: "A country with so much military, economic, and cultural power that it shapes events across the globe. After WWII, there were only two: the United States and the Soviet Union.",
+    g16t: "Truman Doctrine", g16d: "A 1947 speech by U.S. President Harry Truman. He promised American support to any country fighting against communism. This marked the official beginning of containment and the Cold War.",
+    g17t: "United Nations (UN)", g17d: "An international organization founded in October 1945 with 51 countries. Its goal: prevent another world war and protect human rights. Today almost every country on Earth is a member — 193 in total.",
+    g18t: "Warsaw Pact", g18d: "A military alliance created in 1955 by the Soviet Union and its Eastern European communist allies. It was the communist response to NATO. The pact ended in 1991 when the Soviet Union collapsed.",
+    g19t: "Yalta Conference", g19d: "A meeting in February 1945 between Franklin Roosevelt (U.S.), Winston Churchill (UK), and Joseph Stalin (USSR). They agreed on how to divide Germany and organize post-war Europe. It is often seen as the beginning of the Cold War division.",
+
+    footBig1: "History",
+    footBig2: "in three languages.",
+    footBrand: "Mr. Miljus' Class",
+    footSub: "Multilingual Classroom · World History",
+    footCopy: "© 2026 — Built for 10th grade World History",
+    footTag: "EN · ES · FR"
+  },
+
+  es: {
+    brand: "Clase del Sr. Miljus",
+    navIntro: "Introducción", navTimeline: "Cronología", navConcepts: "Ideas Clave",
+    navCommunism: "Comunismo", navChina: "China", navGlossary: "Glosario",
+
+    heroEyebrow: "Historia Mundial · Unidad Cinco",
+    heroLine1: "El mundo", heroLine2: "después de", heroLine3: "la Segunda Guerra Mundial",
+    heroSubtitle: "Una nueva era comienza en 1945. Dos superpotencias. Un mundo dividido. El nacimiento de la Guerra Fría.",
+    metaYears: "La Guerra Fría",
+    metaSuperpowers: "Superpotencias",
+    metaUn: "Miembros de la ONU, de 1945 a hoy",
+
+    introLabel: "Introducción",
+    introTitle1: "Un nuevo tipo de guerra,",
+    introTitle2: "sin campo de batalla.",
+    introP1: "En 1945 terminó la Segunda Guerra Mundial. Más de <strong>60 millones de personas</strong> habían muerto. Las ciudades estaban en ruinas. Europa estaba agotada. Pero un nuevo tipo de conflicto ya estaba comenzando.",
+    introP2: "Dos países salieron de la guerra mucho más fuertes que los demás: <strong>Estados Unidos</strong> y la <strong>Unión Soviética</strong>. Los llamamos <strong>superpotencias</strong>. Tenían ideas muy diferentes sobre cómo debían vivir las personas, cómo debían funcionar los gobiernos y quién debía ser dueño de las empresas.",
+    introP3: "Este desacuerdo se convirtió en la <strong>Guerra Fría</strong>. Se llamó \"fría\" porque las dos superpotencias nunca pelearon directamente. En cambio, lucharon con dinero, espías, ideas y la amenaza de armas nucleares. Y el mundo se dividió en dos.",
+    introP4: "Al mismo tiempo, en Asia, una enorme guerra civil estaba terminando en <strong>China</strong>. Su resultado cambiaría el equilibrio de poder durante el próximo siglo.",
+    stat1: "Personas muertas en la Segunda Guerra Mundial",
+    stat2: "Duración de la Guerra Fría (1945–1991)",
+    stat3: "Ayuda del Plan Marshall para reconstruir Europa",
+
+    tlLabel: "Cronología",
+    tlTitle1: "Veinte años que",
+    tlTitle2: "rehicieron el mundo.",
+    tlLede: "Haz clic o toca cualquier evento para aprender más. La historia comienza antes del fin de la Segunda Guerra Mundial, porque las semillas de la Guerra Fría ya estaban creciendo.",
+    tl01t: "Comienza la Guerra Civil China",
+    tl01d: "Los Nacionalistas (dirigidos por Chiang Kai-shek) luchan contra los Comunistas (dirigidos por Mao Zedong) por el control de China.",
+    tl02t: "Japón invade China",
+    tl02d: "Los Nacionalistas y Comunistas chinos pausan sus combates y se unen contra la invasión japonesa.",
+    tl03t: "Conferencia de Yalta",
+    tl03d: "Roosevelt, Churchill y Stalin se reúnen para planear el mundo de la posguerra. Dividen Alemania en cuatro zonas.",
+    tl04t: "Alemania se rinde",
+    tl04d: "La Segunda Guerra Mundial termina en Europa. Las tropas soviéticas ocupan Europa del Este; las tropas estadounidenses y británicas mantienen el Oeste.",
+    tl05t: "Hiroshima y Nagasaki",
+    tl05d: "EE. UU. lanza bombas atómicas sobre dos ciudades japonesas. Japón se rinde. Comienza la era nuclear.",
+    tl06t: "Se funda la ONU",
+    tl06d: "51 países firman la Carta de la ONU. Su objetivo: prevenir otra guerra mundial y proteger los derechos humanos.",
+    tl07t: "Discurso del \"Telón de Acero\"",
+    tl07d: "Winston Churchill advierte que un \"Telón de Acero\" ha caído sobre Europa, dividiendo a las naciones libres de las controladas por los soviéticos.",
+    tl08t: "Doctrina Truman",
+    tl08d: "El presidente Truman promete apoyo de EE. UU. a cualquier país que luche contra el comunismo. Se establece la estrategia de la Guerra Fría.",
+    tl09t: "Plan Marshall",
+    tl09d: "EE. UU. envía 13 mil millones de dólares para ayudar a reconstruir Europa Occidental — y mantenerla fuera de las manos soviéticas.",
+    tl10t: "Puente aéreo de Berlín",
+    tl10d: "Los soviéticos bloquean Berlín Occidental. EE. UU. y Gran Bretaña llevan comida y combustible a la ciudad por avión durante casi un año. Stalin se retira.",
+    tl11t: "Se forma la OTAN",
+    tl11d: "EE. UU., Canadá y diez naciones de Europa Occidental prometen defenderse mutuamente contra un ataque soviético.",
+    tl12t: "Mao gana en China",
+    tl12d: "Los Comunistas chinos derrotan a los Nacionalistas. Mao Zedong proclama la República Popular China.",
+    tl13t: "Pacto de Varsovia",
+    tl13d: "La Unión Soviética y sus aliados de Europa del Este forman su propia alianza militar. Europa queda oficialmente dividida en dos campos armados.",
+
+    cLabel: "Ideas Clave",
+    cTitle1: "Seis ideas que",
+    cTitle2: "marcaron la era.",
+    cLede: "Pasa el cursor — o toca en el teléfono — para voltear cada tarjeta y leer la definición.",
+    flipHint: "Voltear",
+    cc1t: "Nuevo Orden Mundial",
+    cc1d: "La nueva forma en que funcionó el mundo después de 1945. EE. UU. y la URSS se convirtieron en los dos países más fuertes. Se crearon grupos nuevos como la ONU, el FMI y el Banco Mundial para mantener la paz y reconstruir.",
+    cc2t: "Guerra Fría",
+    cc2d: "Una larga lucha entre EE. UU. y la Unión Soviética (1945–1991). Nunca pelearon directamente. En cambio, usaron dinero, espías, propaganda y la amenaza de armas nucleares.",
+    cc3t: "Telón de Acero",
+    cc3d: "Una pared invisible que dividió Europa. Naciones libres y democráticas en el Oeste. Naciones comunistas controladas por la Unión Soviética en el Este. Nombrado por Winston Churchill en 1946.",
+    cc4t: "Contención",
+    cc4d: "La principal estrategia de EE. UU. en la Guerra Fría. El objetivo era detener la expansión del comunismo a nuevos países. La Doctrina Truman y el Plan Marshall formaron parte de la contención.",
+    cc5t: "Superpotencia",
+    cc5d: "Un país con tanto poder militar, económico y cultural que puede influir en los eventos casi en cualquier parte del mundo. Después de 1945, solo dos países eran superpotencias: EE. UU. y la Unión Soviética.",
+    cc6t: "Descolonización",
+    cc6d: "Después de la Segunda Guerra Mundial, los imperios europeos estaban débiles. Muchas colonias en Asia y África se convirtieron en países independientes. Esto cambió el mapa del mundo — y ambas superpotencias intentaron ganar a estas nuevas naciones como aliadas.",
+
+    comLabel: "Comunismo vs. Capitalismo",
+    comTitle1: "Dos respuestas a",
+    comTitle2: "una gran pregunta.",
+    comLede: "¿Quién debe ser dueño de las fábricas, granjas y empresas? ¿Quién decide cuánto gana un trabajador? Las respuestas dividieron al mundo del siglo XX en dos.",
+    comLeftTag: "Este",
+    comLeftTitle: "Comunismo",
+    comLeftCountries: "Unión Soviética, China (después de 1949), Cuba, Corea del Norte",
+    comL1s: "El gobierno es dueño de todo.", comL1: "Las fábricas, granjas y tierras pertenecen al Estado, no a personas privadas.",
+    comL2s: "Un solo partido político.", comL2: "Solo se permite el Partido Comunista. No hay elecciones libres.",
+    comL3s: "Economía planificada.", comL3: "El gobierno decide qué se produce, cuánto y a qué precio.",
+    comL4s: "Meta: igualdad total.", comL4: "Ni ricos ni pobres. En teoría. En la realidad, los líderes vivían bien mientras el pueblo sufría.",
+    comL5s: "Fundador de la idea:", comL5: "Karl Marx (filósofo alemán, 1818–1883).",
+    comRightTag: "Oeste",
+    comRightTitle: "Capitalismo",
+    comRightCountries: "Estados Unidos, Reino Unido, Francia, Alemania Occidental, Japón",
+    comR1s: "Las personas privadas son dueñas de las empresas.", comR1: "Puedes abrir una compañía, comprar propiedad y quedarte con las ganancias.",
+    comR2s: "Democracia y elecciones libres.", comR2: "Las personas votan por sus líderes. Muchos partidos políticos compiten.",
+    comR3s: "Mercado libre.", comR3: "La oferta y la demanda fijan los precios. El gobierno casi no interviene en las decisiones de negocios.",
+    comR4s: "Meta: libertad y oportunidad.", comR4: "Las personas pueden hacerse ricas con su trabajo o ideas. Pero la desigualdad puede ser alta.",
+    comR5s: "Basado en las ideas de:", comR5: "Adam Smith (economista escocés, 1723–1790).",
+
+    chLabel: "Guerra Civil China",
+    chTitle1: "Una guerra civil,",
+    chTitle2: "pausada por una guerra mundial.",
+    chLede: "El conflicto entre los Nacionalistas y los Comunistas chinos duró 22 años. Se detuvo durante ocho de esos años — solo para que ambos bandos pudieran luchar contra Japón. Cuando terminó la Segunda Guerra Mundial, continuaron justo donde lo habían dejado.",
+    ph1n: "Fase 01", ph1t: "La primera lucha",
+    ph1d: "Los Nacionalistas (KMT) bajo Chiang Kai-shek intentan aplastar a los Comunistas. Mao Zedong dirige a los sobrevivientes en la Larga Marcha — una retirada de casi 10.000 km.",
+    ph2n: "Fase 02", ph2t: "Tregua contra Japón",
+    ph2d: "Japón invade China. Los Nacionalistas y Comunistas dejan de luchar entre sí para defender su país. Ambos se fortalecen durante la Segunda Guerra Mundial.",
+    ph3n: "Fase 03", ph3t: "Vuelve la guerra civil",
+    ph3d: "Japón se rinde. La tregua termina. Los Comunistas de Mao, apoyados por los campesinos, empujan lentamente a los Nacionalistas de Chiang fuera de la China continental.",
+    ph4n: "Fase 04", ph4t: "Mao gana",
+    ph4d: "Mao proclama la República Popular China. Chiang y los Nacionalistas escapan a la isla de Taiwán. El país más poblado del mundo ahora es comunista.",
+    chQuote: "«El pueblo chino se ha puesto de pie.»",
+    chQuoteAttr: "— Mao Zedong, al proclamar la República Popular · 1 de octubre de 1949",
+
+    gLabel: "Glosario",
+    gTitle1: "Cada término,",
+    gTitle2: "explicado con claridad.",
+    gLede: "Toca cualquier término para ver su definición. Listo para estudiar, sin palabras difíciles.",
+    g01t: "Bomba Atómica", g01d: "Un arma nuclear con un poder enorme. EE. UU. fue el primer país en construir una. Se usaron dos bombas atómicas contra Japón en agosto de 1945. Mataron a más de 150.000 personas y terminaron la Segunda Guerra Mundial. Después de la guerra, ambas superpotencias compitieron por construir más.",
+    g02t: "Puente Aéreo de Berlín", g02d: "En 1948, los soviéticos bloquearon todas las carreteras hacia Berlín Occidental para hacerla morir de hambre. Por casi un año, EE. UU. y Gran Bretaña llevaron comida, carbón y medicinas en avión a la ciudad cada pocos minutos. Fue una gran victoria de la Guerra Fría sin disparar un solo tiro.",
+    g03t: "Capitalismo", g03d: "Un sistema económico donde las personas privadas (no el gobierno) son dueñas de las empresas y la propiedad. Los precios los fija la oferta y la demanda. Las personas pueden hacerse ricas por su trabajo, ideas o inversiones. Estados Unidos es el ejemplo clásico.",
+    g04t: "Chiang Kai-shek", g04d: "Líder de los Nacionalistas chinos (KMT). Luchó contra Japón durante la Segunda Guerra Mundial y contra los Comunistas de Mao antes y después. Perdió la guerra civil en 1949 y huyó a la isla de Taiwán, donde dirigió un gobierno separado hasta su muerte en 1975.",
+    g05t: "Guerra Fría", g05d: "El largo conflicto entre Estados Unidos y la Unión Soviética desde 1945 hasta 1991. No lucharon entre sí con soldados. Compitieron con dinero, espías, tecnología, deportes y la amenaza constante de una guerra nuclear.",
+    g06t: "Comunismo", g06d: "Un sistema económico y político en el cual el gobierno es dueño de todas las empresas y tierras. La meta, en teoría, es la igualdad — ni ricos ni pobres. En la práctica, países comunistas como la Unión Soviética se convirtieron en dictaduras gobernadas por un solo partido.",
+    g07t: "Contención", g07d: "La principal estrategia de EE. UU. durante la Guerra Fría. La idea era simple: detener la expansión del comunismo a cualquier país nuevo. La Doctrina Truman, el Plan Marshall y la OTAN fueron herramientas de la contención.",
+    g08t: "Descolonización", g08d: "El proceso por el cual las colonias europeas en Asia y África se convirtieron en países independientes después de la Segunda Guerra Mundial. Gran Bretaña, Francia y otras potencias ya no podían mantener sus imperios. Decenas de nuevas naciones nacieron entre 1945 y 1975.",
+    g09t: "Telón de Acero", g09d: "La línea invisible que dividió Europa durante la Guerra Fría. Al oeste de la línea: naciones libres, democráticas y capitalistas. Al este de la línea: países comunistas controlados por la Unión Soviética. Winston Churchill le puso este nombre en un famoso discurso de 1946.",
+    g10t: "Mao Zedong", g10d: "Líder del Partido Comunista Chino. Ganó la Guerra Civil China en 1949 y fundó la República Popular China. Gobernó hasta su muerte en 1976. Sus políticas causaron un enorme progreso — y un enorme sufrimiento.",
+    g11t: "Plan Marshall", g11d: "Un programa de EE. UU. (1948–1951) que envió unos 13 mil millones de dólares para ayudar a los países de Europa Occidental a reconstruirse después de la Segunda Guerra Mundial. La meta era buena y estratégica: ayudar a los aliados y mantenerlos fuera de las manos soviéticas.",
+    g12t: "OTAN", g12d: "Organización del Tratado del Atlántico Norte. Una alianza militar creada en 1949 por EE. UU., Canadá y países de Europa Occidental. Si atacan a un miembro, todos los miembros prometen defenderlo. Existe hoy con 32 miembros.",
+    g13t: "Nuevo Orden Mundial", g13d: "Frase que describe cómo se organizó el mundo después de 1945. Los viejos imperios europeos estaban débiles. EE. UU. y la Unión Soviética se convirtieron en las potencias dominantes. Se construyeron nuevas instituciones como la ONU, el FMI y el Banco Mundial para manejar un sistema global.",
+    g14t: "República Popular China", g14d: "El nombre oficial de la China comunista, declarado por Mao Zedong el 1 de octubre de 1949. Reemplazó al gobierno Nacionalista en la China continental. Hoy es el país más poblado de la Tierra y una superpotencia global.",
+    g15t: "Superpotencia", g15d: "Un país con tanto poder militar, económico y cultural que moldea los eventos en todo el mundo. Después de la Segunda Guerra Mundial, solo había dos: Estados Unidos y la Unión Soviética.",
+    g16t: "Doctrina Truman", g16d: "Un discurso de 1947 del presidente Harry Truman. Prometió apoyo estadounidense a cualquier país que luchara contra el comunismo. Marcó el comienzo oficial de la contención y de la Guerra Fría.",
+    g17t: "Naciones Unidas (ONU)", g17d: "Una organización internacional fundada en octubre de 1945 con 51 países. Su meta: prevenir otra guerra mundial y proteger los derechos humanos. Hoy casi todos los países de la Tierra son miembros — 193 en total.",
+    g18t: "Pacto de Varsovia", g18d: "Una alianza militar creada en 1955 por la Unión Soviética y sus aliados comunistas de Europa del Este. Fue la respuesta comunista a la OTAN. El pacto terminó en 1991 cuando la Unión Soviética se colapsó.",
+    g19t: "Conferencia de Yalta", g19d: "Una reunión en febrero de 1945 entre Franklin Roosevelt (EE. UU.), Winston Churchill (Reino Unido) y Joseph Stalin (URSS). Acordaron cómo dividir Alemania y organizar la Europa de posguerra. A menudo se ve como el comienzo de la división de la Guerra Fría.",
+
+    footBig1: "Historia",
+    footBig2: "en tres idiomas.",
+    footBrand: "Clase del Sr. Miljus",
+    footSub: "Salón Multilingüe · Historia Mundial",
+    footCopy: "© 2026 — Hecho para Historia Mundial, 10º grado",
+    footTag: "EN · ES · FR"
+  },
+
+  fr: {
+    brand: "Classe de M. Miljus",
+    navIntro: "Introduction", navTimeline: "Chronologie", navConcepts: "Idées Clés",
+    navCommunism: "Communisme", navChina: "Chine", navGlossary: "Glossaire",
+
+    heroEyebrow: "Histoire du Monde · Unité Cinq",
+    heroLine1: "Le monde", heroLine2: "après", heroLine3: "la Seconde Guerre mondiale",
+    heroSubtitle: "Une nouvelle ère commence en 1945. Deux superpuissances. Un monde divisé. La naissance de la Guerre froide.",
+    metaYears: "La Guerre froide",
+    metaSuperpowers: "Superpuissances",
+    metaUn: "Membres de l'ONU, de 1945 à aujourd'hui",
+
+    introLabel: "Introduction",
+    introTitle1: "Un nouveau type de guerre,",
+    introTitle2: "sans champ de bataille.",
+    introP1: "En 1945, la Seconde Guerre mondiale prend fin. Plus de <strong>60 millions de personnes</strong> sont mortes. Les villes sont en ruines. L'Europe est épuisée. Mais un nouveau type de conflit commence déjà.",
+    introP2: "Deux pays sortent de la guerre beaucoup plus forts que les autres : les <strong>États-Unis</strong> et l'<strong>Union soviétique</strong>. On les appelle les <strong>superpuissances</strong>. Ils avaient des idées très différentes sur la façon dont les gens devraient vivre, comment les gouvernements devraient fonctionner, et qui devrait posséder les entreprises.",
+    introP3: "Ce désaccord est devenu la <strong>Guerre froide</strong>. On l'a appelée « froide » parce que les deux superpuissances ne se sont jamais affrontées directement. Elles se sont battues avec de l'argent, des espions, des idées et la menace d'armes nucléaires. Et le monde a été divisé en deux.",
+    introP4: "Au même moment, en Asie, une immense guerre civile touchait à sa fin en <strong>Chine</strong>. Son résultat allait changer l'équilibre des pouvoirs pour le siècle à venir.",
+    stat1: "Morts pendant la Seconde Guerre mondiale",
+    stat2: "Durée de la Guerre froide (1945–1991)",
+    stat3: "Aide du Plan Marshall pour reconstruire l'Europe",
+
+    tlLabel: "Chronologie",
+    tlTitle1: "Vingt années qui",
+    tlTitle2: "ont refait le monde.",
+    tlLede: "Cliquez ou touchez un événement pour en savoir plus. L'histoire commence avant la fin de la guerre, car les graines de la Guerre froide poussaient déjà.",
+    tl01t: "Début de la Guerre civile chinoise",
+    tl01d: "Les Nationalistes (dirigés par Tchang Kaï-chek) combattent les Communistes (dirigés par Mao Zedong) pour le contrôle de la Chine.",
+    tl02t: "Le Japon envahit la Chine",
+    tl02d: "Les Nationalistes et Communistes chinois arrêtent leurs combats et s'unissent contre l'invasion japonaise.",
+    tl03t: "Conférence de Yalta",
+    tl03d: "Roosevelt, Churchill et Staline se réunissent pour planifier le monde d'après-guerre. Ils divisent l'Allemagne en quatre zones.",
+    tl04t: "L'Allemagne se rend",
+    tl04d: "La Seconde Guerre mondiale se termine en Europe. Les troupes soviétiques occupent l'Europe de l'Est ; les Américains et les Britanniques tiennent l'Ouest.",
+    tl05t: "Hiroshima et Nagasaki",
+    tl05d: "Les États-Unis larguent des bombes atomiques sur deux villes japonaises. Le Japon se rend. L'ère nucléaire commence.",
+    tl06t: "Fondation de l'ONU",
+    tl06d: "51 pays signent la Charte de l'ONU. Son but : empêcher une nouvelle guerre mondiale et protéger les droits humains.",
+    tl07t: "Discours du « Rideau de fer »",
+    tl07d: "Winston Churchill avertit qu'un « Rideau de fer » est tombé sur l'Europe, séparant les nations libres de celles contrôlées par les Soviétiques.",
+    tl08t: "Doctrine Truman",
+    tl08d: "Le président Truman promet le soutien américain à tout pays luttant contre le communisme. La stratégie de la Guerre froide est lancée.",
+    tl09t: "Plan Marshall",
+    tl09d: "Les États-Unis envoient 13 milliards de dollars pour aider à reconstruire l'Europe de l'Ouest — et la garder hors des mains soviétiques.",
+    tl10t: "Pont aérien de Berlin",
+    tl10d: "Les Soviétiques bloquent Berlin-Ouest. Les États-Unis et la Grande-Bretagne livrent de la nourriture et du carburant par avion pendant presque un an. Staline recule.",
+    tl11t: "Création de l'OTAN",
+    tl11d: "Les États-Unis, le Canada et dix pays d'Europe de l'Ouest promettent de se défendre mutuellement contre une attaque soviétique.",
+    tl12t: "Mao gagne en Chine",
+    tl12d: "Les Communistes chinois battent les Nationalistes. Mao Zedong proclame la République populaire de Chine.",
+    tl13t: "Pacte de Varsovie",
+    tl13d: "L'Union soviétique et ses alliés d'Europe de l'Est forment leur propre alliance militaire. L'Europe est officiellement divisée en deux camps armés.",
+
+    cLabel: "Idées Clés",
+    cTitle1: "Six idées qui",
+    cTitle2: "ont façonné l'époque.",
+    cLede: "Survolez — ou touchez sur mobile — pour retourner chaque carte et lire la définition.",
+    flipHint: "Retourner",
+    cc1t: "Nouvel Ordre Mondial",
+    cc1d: "La nouvelle façon dont le monde a fonctionné après 1945. Les États-Unis et l'URSS sont devenus les deux pays les plus forts. De nouveaux groupes comme l'ONU, le FMI et la Banque mondiale ont été créés pour maintenir la paix et reconstruire.",
+    cc2t: "Guerre froide",
+    cc2d: "Une longue lutte entre les États-Unis et l'Union soviétique (1945–1991). Ils ne se sont jamais battus directement. Ils ont utilisé l'argent, les espions, la propagande et la menace nucléaire.",
+    cc3t: "Rideau de fer",
+    cc3d: "Un mur invisible qui a divisé l'Europe. Nations libres et démocratiques à l'Ouest. Nations communistes contrôlées par l'Union soviétique à l'Est. Nommé par Winston Churchill en 1946.",
+    cc4t: "Endiguement",
+    cc4d: "La principale stratégie américaine pendant la Guerre froide. Le but : empêcher le communisme de se répandre dans de nouveaux pays. La Doctrine Truman et le Plan Marshall en faisaient partie.",
+    cc5t: "Superpuissance",
+    cc5d: "Un pays avec tant de puissance militaire, économique et culturelle qu'il peut influencer les événements presque partout dans le monde. Après 1945, seuls deux pays étaient des superpuissances : les États-Unis et l'Union soviétique.",
+    cc6t: "Décolonisation",
+    cc6d: "Après la Seconde Guerre mondiale, les empires européens étaient faibles. De nombreuses colonies en Asie et en Afrique sont devenues indépendantes. Cela a changé la carte du monde — et les deux superpuissances ont essayé de gagner ces nouvelles nations comme alliées.",
+
+    comLabel: "Communisme vs. Capitalisme",
+    comTitle1: "Deux réponses à",
+    comTitle2: "une grande question.",
+    comLede: "Qui devrait posséder les usines, les fermes, les entreprises ? Qui décide combien les travailleurs gagnent ? Les réponses ont coupé le monde du XXe siècle en deux.",
+    comLeftTag: "Est",
+    comLeftTitle: "Communisme",
+    comLeftCountries: "Union soviétique, Chine (après 1949), Cuba, Corée du Nord",
+    comL1s: "Le gouvernement possède tout.", comL1: "Les usines, les fermes et les terres appartiennent à l'État, pas aux particuliers.",
+    comL2s: "Un seul parti politique.", comL2: "Seul le Parti communiste est autorisé. Pas d'élections libres.",
+    comL3s: "Économie planifiée.", comL3: "Le gouvernement décide de ce qui est produit, en quelle quantité et à quel prix.",
+    comL4s: "But : égalité totale.", comL4: "Ni riches ni pauvres. En théorie. En réalité, les dirigeants vivaient bien pendant que le peuple souffrait.",
+    comL5s: "Fondateur de l'idée :", comL5: "Karl Marx (philosophe allemand, 1818–1883).",
+    comRightTag: "Ouest",
+    comRightTitle: "Capitalisme",
+    comRightCountries: "États-Unis, Royaume-Uni, France, Allemagne de l'Ouest, Japon",
+    comR1s: "Les particuliers possèdent les entreprises.", comR1: "On peut créer une société, acheter des biens et garder les profits.",
+    comR2s: "Démocratie et élections libres.", comR2: "Les gens votent pour leurs dirigeants. Plusieurs partis politiques se concurrencent.",
+    comR3s: "Marché libre.", comR3: "L'offre et la demande fixent les prix. Le gouvernement intervient peu dans les affaires.",
+    comR4s: "But : liberté et opportunité.", comR4: "Les gens peuvent s'enrichir par le travail ou les idées. Mais les inégalités peuvent être fortes.",
+    comR5s: "Basé sur les idées de :", comR5: "Adam Smith (économiste écossais, 1723–1790).",
+
+    chLabel: "Guerre civile chinoise",
+    chTitle1: "Une guerre civile,",
+    chTitle2: "suspendue par une guerre mondiale.",
+    chLede: "Le conflit entre Nationalistes et Communistes chinois a duré 22 ans. Il s'est arrêté pendant huit de ces années — uniquement pour que les deux camps puissent combattre le Japon. À la fin de la Seconde Guerre mondiale, ils ont repris exactement où ils s'étaient arrêtés.",
+    ph1n: "Phase 01", ph1t: "Le premier combat",
+    ph1d: "Les Nationalistes (KMT) de Tchang Kaï-chek tentent d'écraser les Communistes. Mao Zedong conduit les survivants dans la Longue Marche — une retraite de près de 10 000 km.",
+    ph2n: "Phase 02", ph2t: "Trêve contre le Japon",
+    ph2d: "Le Japon envahit la Chine. Nationalistes et Communistes arrêtent de se combattre pour défendre leur pays. Les deux se renforcent pendant la Seconde Guerre mondiale.",
+    ph3n: "Phase 03", ph3t: "Retour de la guerre civile",
+    ph3d: "Le Japon se rend. La trêve est finie. Les Communistes de Mao, soutenus par les paysans, repoussent lentement les Nationalistes de Tchang hors de la Chine continentale.",
+    ph4n: "Phase 04", ph4t: "Mao gagne",
+    ph4d: "Mao proclame la République populaire de Chine. Tchang et les Nationalistes s'enfuient sur l'île de Taïwan. Le pays le plus peuplé du monde est désormais communiste.",
+    chQuote: "« Le peuple chinois s'est levé. »",
+    chQuoteAttr: "— Mao Zedong, à la proclamation de la République populaire · 1er octobre 1949",
+
+    gLabel: "Glossaire",
+    gTitle1: "Chaque terme,",
+    gTitle2: "expliqué simplement.",
+    gLede: "Touchez n'importe quel terme pour voir sa définition. Prêt à étudier, sans mots compliqués.",
+    g01t: "Bombe atomique", g01d: "Une arme nucléaire d'une puissance énorme. Les États-Unis ont été le premier pays à en construire une. Deux bombes atomiques ont été utilisées contre le Japon en août 1945. Elles ont tué plus de 150 000 personnes et ont mis fin à la Seconde Guerre mondiale. Après la guerre, les deux superpuissances se sont lancées dans une course pour en construire davantage.",
+    g02t: "Pont aérien de Berlin", g02d: "En 1948, les Soviétiques ont bloqué toutes les routes menant à Berlin-Ouest pour l'affamer. Pendant presque un an, les États-Unis et la Grande-Bretagne ont livré de la nourriture, du charbon et des médicaments par avion, toutes les quelques minutes. Ce fut une grande victoire de la Guerre froide sans un seul coup de feu.",
+    g03t: "Capitalisme", g03d: "Un système économique où les particuliers (et non le gouvernement) possèdent les entreprises et les biens. Les prix sont fixés par l'offre et la demande. Les gens peuvent s'enrichir par le travail, les idées ou l'investissement. Les États-Unis en sont l'exemple classique.",
+    g04t: "Tchang Kaï-chek", g04d: "Chef des Nationalistes chinois (KMT). Il a combattu le Japon pendant la Seconde Guerre mondiale et les Communistes de Mao avant et après. Il a perdu la guerre civile en 1949 et s'est enfui sur l'île de Taïwan, où il a dirigé un gouvernement séparé jusqu'à sa mort en 1975.",
+    g05t: "Guerre froide", g05d: "Le long conflit entre les États-Unis et l'Union soviétique, de 1945 à 1991. Ils ne se sont pas battus avec des soldats. Ils ont rivalisé avec de l'argent, des espions, la technologie, le sport et la menace constante de la guerre nucléaire.",
+    g06t: "Communisme", g06d: "Un système économique et politique dans lequel le gouvernement possède toutes les entreprises et toutes les terres. Le but, en théorie, est l'égalité — ni riches, ni pauvres. En pratique, les pays communistes comme l'Union soviétique sont devenus des dictatures dirigées par un seul parti.",
+    g07t: "Endiguement", g07d: "La principale stratégie américaine pendant la Guerre froide. L'idée était simple : empêcher le communisme de se répandre à de nouveaux pays. La Doctrine Truman, le Plan Marshall et l'OTAN étaient tous des outils de l'endiguement.",
+    g08t: "Décolonisation", g08d: "Le processus par lequel les colonies européennes en Asie et en Afrique sont devenues des pays indépendants après la Seconde Guerre mondiale. La Grande-Bretagne, la France et les autres puissances ne pouvaient plus maintenir leurs empires. Des dizaines de nouvelles nations sont nées entre 1945 et 1975.",
+    g09t: "Rideau de fer", g09d: "La ligne invisible qui a divisé l'Europe pendant la Guerre froide. À l'ouest : nations libres, démocratiques, capitalistes. À l'est : pays communistes contrôlés par l'Union soviétique. Winston Churchill l'a nommée ainsi dans un célèbre discours de 1946.",
+    g10t: "Mao Zedong", g10d: "Chef du Parti communiste chinois. Il a gagné la Guerre civile chinoise en 1949 et fondé la République populaire de Chine. Il a régné jusqu'à sa mort en 1976. Ses politiques ont causé d'énormes progrès — et d'énormes souffrances.",
+    g11t: "Plan Marshall", g11d: "Un programme américain (1948–1951) qui a envoyé environ 13 milliards de dollars pour aider les pays d'Europe de l'Ouest à se reconstruire après la Seconde Guerre mondiale. Le but était à la fois bienveillant et stratégique : aider les alliés et les garder hors des mains soviétiques.",
+    g12t: "OTAN", g12d: "Organisation du Traité de l'Atlantique Nord. Une alliance militaire créée en 1949 par les États-Unis, le Canada et les pays d'Europe de l'Ouest. Si un membre est attaqué, tous les membres promettent de le défendre. Existe toujours aujourd'hui avec 32 membres.",
+    g13t: "Nouvel Ordre Mondial", g13d: "Une expression qui décrit la façon dont le monde a été organisé après 1945. Les vieux empires européens étaient faibles. Les États-Unis et l'Union soviétique sont devenus les puissances dominantes. De nouvelles institutions comme l'ONU, le FMI et la Banque mondiale ont été construites pour gérer un système mondial.",
+    g14t: "République populaire de Chine", g14d: "Le nom officiel de la Chine communiste, déclaré par Mao Zedong le 1er octobre 1949. Il a remplacé le gouvernement Nationaliste sur la Chine continentale. Aujourd'hui, c'est le pays le plus peuplé de la Terre et une superpuissance mondiale.",
+    g15t: "Superpuissance", g15d: "Un pays avec tant de puissance militaire, économique et culturelle qu'il façonne les événements partout dans le monde. Après la Seconde Guerre mondiale, il n'y en avait que deux : les États-Unis et l'Union soviétique.",
+    g16t: "Doctrine Truman", g16d: "Un discours de 1947 du président américain Harry Truman. Il a promis le soutien américain à tout pays luttant contre le communisme. Cela a marqué le début officiel de l'endiguement et de la Guerre froide.",
+    g17t: "Nations Unies (ONU)", g17d: "Une organisation internationale fondée en octobre 1945 avec 51 pays. Son but : empêcher une nouvelle guerre mondiale et protéger les droits humains. Aujourd'hui, presque tous les pays du monde en sont membres — 193 au total.",
+    g18t: "Pacte de Varsovie", g18d: "Une alliance militaire créée en 1955 par l'Union soviétique et ses alliés communistes d'Europe de l'Est. C'était la réponse communiste à l'OTAN. Le pacte a pris fin en 1991 avec l'effondrement de l'Union soviétique.",
+    g19t: "Conférence de Yalta", g19d: "Une réunion en février 1945 entre Franklin Roosevelt (États-Unis), Winston Churchill (Royaume-Uni) et Joseph Staline (URSS). Ils se sont mis d'accord sur la division de l'Allemagne et l'organisation de l'Europe d'après-guerre. Elle est souvent vue comme le début de la division de la Guerre froide.",
+
+    footBig1: "L'Histoire",
+    footBig2: "en trois langues.",
+    footBrand: "Classe de M. Miljus",
+    footSub: "Classe multilingue · Histoire du monde",
+    footCopy: "© 2026 — Créé pour l'Histoire du monde, Seconde",
+    footTag: "EN · ES · FR"
+  }
+};
+
+/* ═══════════════ LANGUAGE SWITCHING ═══════════════ */
+const htmlKeys = new Set([
+  'introP1','introP2','introP3','introP4',
+  'comL1','comL2','comL3','comL4','comL5',
+  'comR1','comR2','comR3','comR4','comR5'
+]);
+
+function setLang(lang) {
+  const dict = i18n[lang] || i18n.en;
+  document.documentElement.setAttribute('lang', lang);
+
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (dict[key] !== undefined) {
+      if (htmlKeys.has(key)) {
+        el.innerHTML = dict[key];
+      } else {
+        el.textContent = dict[key];
+      }
+    }
+  });
+
+  // compound strong+span entries: comL1s, comR1s etc. are handled via the
+  // <strong data-i18n="comL1s"> and <span data-i18n="comL1"> pairs above.
+
+  // active button state
+  document.querySelectorAll('.lang-btn').forEach(b => {
+    b.classList.toggle('active', b.dataset.lang === lang);
+  });
+
+  try { sessionStorage.setItem('lang', lang); } catch(e) {}
+}
+
+document.querySelectorAll('.lang-btn').forEach(btn => {
+  btn.addEventListener('click', () => setLang(btn.dataset.lang));
+});
+
+// restore
+let initial = 'en';
+try { initial = sessionStorage.getItem('lang') || 'en'; } catch(e) {}
+setLang(initial);
+
+/* ═══════════════ FLIP CARDS (tap on touch) ═══════════════ */
+document.querySelectorAll('.flip-card').forEach(card => {
+  const toggle = () => card.classList.toggle('flipped');
+  card.addEventListener('click', toggle);
+  card.addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
+  });
+});
+
+/* ═══════════════ GLOSSARY ACCORDION ═══════════════ */
+document.querySelectorAll('.glo-header').forEach(btn => {
+  btn.addEventListener('click', () => {
+    btn.parentElement.classList.toggle('open');
+  });
+});
+
+/* ═══════════════ REVEAL ON SCROLL ═══════════════ */
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      io.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+
+document.querySelectorAll('.reveal, .tl-item').forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
